@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { Callout } from 'react-native-maps'
-import Styles from './Styles/BaseMapCalloutCalloutStyles'
+import Styles from './Styles/BaseMapCalloutStyles'
 
 export default class BaseMapCallout extends React.Component {
   constructor (props) {

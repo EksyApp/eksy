@@ -42,7 +42,7 @@ class BaseMap extends React.Component {
     * `ignite generate map-utilities`
     *************************************************************/
     // const region = calculateRegion(locations, { latPadding: 0.05, longPadding: 0.05 })
-    const region = {latitude: 123, longitude: 123, latitudeDelta: 0.1, longitudeDelta: 0.1}
+    const region = {latitude: 60.204681, longitude: 24.962161, latitudeDelta: 0.1, longitudeDelta: 0.1}
     this.state = {
       region,
       locations,
@@ -99,6 +99,14 @@ class BaseMap extends React.Component {
         <BaseMapCallout location={location} onPress={this.calloutPress} />
       </MapView.Marker>
     )
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {this._setRegion(position)}, (error) => {alert("Current location unknown")}, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000});
+  }
+
+  _setRegion(position) {
+    this.setState({region: {latitude: position.coords.latitude, longitude: position.coords.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1}});
   }
 
   render () {
