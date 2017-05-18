@@ -15,10 +15,10 @@ ExamplesRegistry.addPluginExample('Maps', () =>
         height: 320
       }}
       initialRegion={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
+        latitude: 60.170882,
+        longitude: 24.944220,
+        latitudeDelta: 0.0500,
+        longitudeDelta: 0.0500
       }}
     />
   </View>
