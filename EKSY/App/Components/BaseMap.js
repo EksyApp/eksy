@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+// import { View } from 'react-native'
 import MapView from 'react-native-maps'
 import BaseMapCallout from './BaseMapCallout'
 import Styles from './Styles/BaseMapStyles'
@@ -42,7 +42,7 @@ class BaseMap extends React.Component {
     * `ignite generate map-utilities`
     *************************************************************/
     // const region = calculateRegion(locations, { latPadding: 0.05, longPadding: 0.05 })
-    const region = { latitude: 123, longitude: 123, latitudeDelta: 0.1, longitudeDelta: 0.1}
+    const region = {latitude: 123, longitude: 123, latitudeDelta: 0.1, longitudeDelta: 0.1}
     this.state = {
       region,
       locations,
@@ -84,7 +84,6 @@ class BaseMap extends React.Component {
     * Configure what will happen (if anything) when the user
     * presses your callout.
     *************************************************************/
-    
     // console.tron.log(location) // Reactotron
   }
 
@@ -117,4 +116,3 @@ class BaseMap extends React.Component {
 }
 
 export default BaseMap
-
