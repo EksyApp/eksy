@@ -1,5 +1,5 @@
 import React from 'react'
-// import { View } from 'react-native'
+import { Alert } from 'react-native'
 import MapView from 'react-native-maps'
 import BaseMapCallout from './BaseMapCallout'
 import Styles from './Styles/BaseMapStyles'
@@ -101,12 +101,12 @@ class BaseMap extends React.Component {
     )
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition((position) => {this._setRegion(position)}, (error) => {alert("Current location unknown")}, {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000});
+  componentDidMount () {
+    navigator.geolocation.getCurrentPosition((position) => { this._setRegion(position) }, () => { Alert.alert('Current location unknown') }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 })
   }
 
-  _setRegion(position) {
-    this.setState({region: {latitude: position.coords.latitude, longitude: position.coords.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1}});
+  _setRegion (position) {
+    this.setState({region: {latitude: position.coords.latitude, longitude: position.coords.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1}})
   }
 
   render () {
