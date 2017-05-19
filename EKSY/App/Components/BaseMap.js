@@ -100,6 +100,7 @@ class BaseMap extends React.Component {
       </MapView.Marker>
     )
   }
+
   componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -113,6 +114,7 @@ class BaseMap extends React.Component {
       }
     )
   }
+
   _setRegion (position) {
     this.setState({
       region: {
