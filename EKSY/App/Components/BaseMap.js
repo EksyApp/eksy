@@ -100,13 +100,28 @@ class BaseMap extends React.Component {
       </MapView.Marker>
     )
   }
-
   componentDidMount () {
-    navigator.geolocation.getCurrentPosition((position) => { this._setRegion(position) }, () => { Alert.alert('Current location unknown') }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 })
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this._setRegion(position)
+      },
+      () => {
+        Alert.alert('Current location unknown')
+      },
+      {
+        enableHighAccuracy: true, timeout: 20000, maximumAge: 1000
+      }
+    )
   }
-
   _setRegion (position) {
-    this.setState({region: {latitude: position.coords.latitude, longitude: position.coords.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1}})
+    this.setState({
+      region: {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        latitudeDelta: 0.1,
+        longitudeDelta: 0.1
+      }
+    })
   }
 
   render () {
