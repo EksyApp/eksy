@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert } from 'react-native'
+// import {  } from 'react-native'
 import MapView from 'react-native-maps'
 import BaseMapCallout from './BaseMapCallout'
 import Styles from './Styles/BaseMapStyles'
@@ -107,7 +107,7 @@ class BaseMap extends React.Component {
         this._setRegion(position)
       },
       () => {
-        Alert.alert('Current location unknown')
+        console.log("Location not found for maps' initial region.")
       },
       {
         enableHighAccuracy: true, timeout: 20000, maximumAge: 1000
