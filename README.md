@@ -1,6 +1,8 @@
 # eksy
 Eksy-sovellus
 
+[![Build Status](https://travis-ci.org/EksyApp/eksy.svg?branch=master)](https://travis-ci.org/EksyApp/eksy)
+
 # Documents
 
 [Backlog](https://goo.gl/6SSsyu)
