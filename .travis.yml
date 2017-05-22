@@ -1,13 +1,14 @@
 language: android
 
-before_install: #1.1
+before_install:
 - nvm install 7
 - node --version
+cd EKSY/
 
 install:
 - npm install
 
-android: #1.3
+android:
   components:
   - build-tools-23.0.1
   - android-23
