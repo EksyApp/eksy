@@ -2,6 +2,7 @@
 Eksy-sovellus
 
 [![Build Status](https://travis-ci.org/EksyApp/eksy.svg?branch=master)](https://travis-ci.org/EksyApp/eksy)
+[![Coverage Status](https://coveralls.io/repos/github/EksyApp/eksy/badge.svg?branch=master)](https://coveralls.io/github/EksyApp/eksy?branch=master)
 
 # Documents
 
