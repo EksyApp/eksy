@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Tests/Setup.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">Tests</a> Setup.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70.37% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>19/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">76% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>19/25</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</td><td class="line-coverage quiet"><span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">4006x</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3926x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import mockery from 'mockery'
+import m from 'module'
+import english from '../App/I18n/languages/english.json'
+import {keys, replace, forEach} from 'ramda'
+&nbsp;
+// inject __DEV__ as it is not available when running through the tests
+global.__DEV__ = true
+&nbsp;
+// We enable mockery and leave it on.
+mockery.enable()
+&nbsp;
+// Silence the warnings when *real* modules load... this is a change from
+// the norm.  We want to opt-in instead of opt-out because not everything
+// will be mocked.
+mockery.warnOnUnregistered(false)
+&nbsp;
+// Mock any libs that get called in here
+// I'm looking at you react-native-router-flux, reactotron etc!
+mockery.registerMock('reactotron-react-native', {})
+mockery.registerMock('reactotron-redux', {})
+mockery.registerMock('reactotron-apisauce', {})
+mockery.registerMock('react-native-animatable', {View: 'Animatable.View'})
+mockery.registerMock('react-native-vector-icons/Ionicons', {})
+mockery.registerMock('react-native-router-flux', {Actions: {'myScreen': <span class="fstat-no" title="function not covered" >() =&gt; </span>{}}, ActionConst: {RESET: 'reset'}})
+&nbsp;
+// Mock i18n as it uses react native stuff
+// This mock returns the interpolated text from the english.json file in App/I18n
+// If you are not using '../App/I18n/english.json' for your I18n values, simply replace import english
+// with the import at the top of this file from '../App/I18n/english.json' with the I18n json file you
+// want to use, such as "import french from '../App/I18n/fr.json'" and set 'let value = french[key]`
+mockery.registerMock('react-native-i18n', {
+  t: <span class="fstat-no" title="function not covered" >(</span>key, replacements) =&gt; {
+    l</span>et value = <span class="cstat-no" title="statement not covered" >english[key]
+<span class="cstat-no" title="statement not covered" >    if (!value) <span class="cstat-no" title="statement not covered" >r</span>eturn key</span>
+<span class="cstat-no" title="statement not covered" >    if (!replacements) <span class="cstat-no" title="statement not covered" >r</span>eturn value</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    forEach(<span class="fstat-no" title="function not covered" >(</span>r) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      value = replace(`{{${r}}}`, replacements[r], value)</span>
+    }, keys(replacements))
+<span class="cstat-no" title="statement not covered" >    return value</span>
+  }
+})
+&nbsp;
+// Mock all images for React Native
+const originalLoader = m._load
+m._load = (request, parent, isMain) =&gt; {
+  if (request.match(/.jpeg|.jpg|.png|.gif$/)) {
+    return { uri: request }
+  }
+&nbsp;
+  return originalLoader(request, parent, isMain)
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 22 2017 11:17:57 GMT+0300 (EEST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
