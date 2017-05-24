@@ -18,8 +18,8 @@ android:
   - addon-google_apis-google-16
 
 script:
-- npm test 
+
 
 after_success: 
-- npm run coverageToCoveralls
+
 
