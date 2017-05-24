@@ -3,7 +3,6 @@ language: android
 before_install:
 - nvm install 7
 - node --version
-- cd EKSY/
 
 install:
 - npm install
@@ -15,11 +14,10 @@ android:
   - extra-android-m2repository
   - extra-google-google_play_services
   - extra-google-m2repository
-  - addon-google_apis-google-16
+  - addon-google_apis-google-19
 
 script:
 
 
 after_success: 
-
 
