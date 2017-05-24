@@ -1,5 +1,4 @@
-import './App/Config/ReactotronConfig'
-import { AppRegistry } from 'react-native'
-import App from './App/Containers/App'
+import { AppRegistry } from 'react-native';
+import Map from './Map';
 
-AppRegistry.registerComponent('EKSY', () => App)
+AppRegistry.registerComponent('EKSY', () => Map);
