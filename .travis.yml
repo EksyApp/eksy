@@ -8,6 +8,7 @@ before_install:
 install:
 - npm install
 
+
 android:
   components:
   - build-tools-23.0.1
@@ -15,10 +16,10 @@ android:
   - extra-android-m2repository
   - extra-google-google_play_services
   - extra-google-m2repository
-  - addon-google_apis-google-16
+  - addon-google_apis-google-19
 
 script:
-- npm test 
+- npm test
 
 after_success: 
 - npm run coverageToCoveralls

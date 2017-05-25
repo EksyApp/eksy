@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for data.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> data.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const characters = [
+  {
+    name: 'Kevin',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane03/sub-buzz-3484-1481210659-5.png',
+    coordinate: [ 40.764466, -73.974488 ],
+    good: true,
+  },
+  {
+    name: 'Uncle Frank',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane02/sub-buzz-25788-1481210705-7.png',
+    coordinate: [ 40.764656, -73.980907 ],
+    good: false,
+  },
+  {
+    name: 'Aunt Leslie',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane01/sub-buzz-5211-1481210889-4.png',
+    coordinate: [ 40.764838, -73.981193 ],
+    good: false,
+  },
+  {
+    name: 'The guy with the same coat as Kevin’s dad',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane03/sub-buzz-4392-1481212051-3.jpg',
+    coordinate: [ 40.748418, -73.985702 ],
+    good: false,
+  },
+  {
+    name: 'Donald Trump',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane03/sub-buzz-5109-1481213313-1.png',
+    coordinate: [ 40.762389, -73.973817 ],
+    good: false,
+  },
+  {
+    name: 'The lady from Plaza Hotel reservations',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-6769-1481213418-3.png',
+    coordinate: [ 40.779707, -73.979012 ],
+    good: false,
+  },
+  {
+    name: 'This scary ass big-tilted Santa',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane02/sub-buzz-27082-1481212691-2.png',
+    coordinate: [ 40.747067, -74.004496 ],
+    good: false,
+  },
+  {
+    name: 'Random cousins/siblings',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-7903-1481215701-1.png',
+    coordinate: [ 40.765298, -73.976022 ],
+    good: false,
+  },
+  {
+    name: '“Watch it kid HAHAHAHA” guy',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-8357-1481215914-1.png',
+    coordinate: [ 40.791939, -73.963466 ],
+    good: false,
+  },
+  {
+    name: 'The taxi driver near Central Park',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-8061-1481216019-8.png',
+    coordinate: [ 40.792364, -73.964200 ],
+    good: false,
+  },
+  {
+    name: 'The prostitutes near Central Park',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane03/sub-buzz-6355-1481215967-1.png',
+    coordinate: [ 40.791646, -73.964681 ],
+    good: false,
+  },
+  {
+    name: 'Buzz',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane03/sub-buzz-4009-1481211103-1.png',
+    coordinate: [ 40.764298, -73.971752 ],
+    good: false,
+  },
+  {
+    name: 'Esther Stone, hotel lady',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-6874-1481213534-3.png',
+    coordinate: [ 40.764116, -73.973581 ],
+    good: false,
+  },
+  {
+    name: 'Fuller',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane02/sub-buzz-26273-1481211159-3.png',
+    coordinate: [ 40.763241, -73.975782 ],
+    good: false,
+  },
+  {
+    name: 'Mrs. McCallister',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane02/sub-buzz-25796-1481211030-8.png',
+    coordinate: [ 40.758702, -73.978598 ],
+    good: false,
+  },
+  {
+    name: 'Mr. McCallister',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane03/sub-buzz-4020-1481211789-2.png',
+    coordinate: [ 40.758889, -73.985125 ],
+    good: false,
+  },
+  {
+    name: 'The NYC cop who takes Mrs. McCallister to Rockefeller Plaza',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/13/asset/buzzfeed-prod-fastlane01/sub-buzz-21202-1481220551-1.png',
+    coordinate: [ 40.771156, -73.979802 ],
+    good: true,
+  },
+  {
+    name: 'The woman that slaps/punches Marv twice',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane03/sub-buzz-5073-1481213214-2.png',
+    coordinate: [ 40.761432, -73.977645 ],
+    good: false,
+  },
+  {
+    name: 'Harry',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-6492-1481212963-3.png',
+    coordinate: [ 40.792084, -73.966925 ],
+    good: false,
+  },
+  {
+    name: 'Tim Curry',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-6839-1481213501-1.png',
+    coordinate: [ 40.764859, -73.975421 ],
+    good: true,
+  },
+  {
+    name: 'Duncan',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane02/sub-buzz-28268-1481214964-2.png',
+    coordinate: [ 40.763560, -73.972198 ],
+    good: true,
+  },
+  {
+    name: 'Marv',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane02/sub-buzz-27059-1481212962-1.png',
+    coordinate: [ 40.791871, -73.966812 ],
+    good: false,
+  },
+  {
+    name: 'The Pigeon Lady',
+    image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane02/sub-buzz-27109-1481213135-7.png',
+    coordinate: [ 40.765126, -73.979924 ],
+    good: true,
+  },
+];
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 25 2017 12:50:46 GMT+0300 (EEST)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
