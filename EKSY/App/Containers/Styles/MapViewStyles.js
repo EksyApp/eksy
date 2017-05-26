@@ -7,7 +7,12 @@ export default {
     position: "absolute",
     top: 0,
     left: 0,
-    zIndex: 1,
+    zIndex: 1
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: "black"
   }
 
 }
