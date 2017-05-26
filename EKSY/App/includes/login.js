@@ -47,9 +47,9 @@ class Login extends Component {
             });
 
             setTimeout(() => {
-                this.props.navigator.push({
-                    name: "Home"
-                })
+                // this.props.navigator.push({
+                //     name: "Home"
+                // })
             }, 1500);
 
         } catch (error) {
@@ -72,9 +72,9 @@ class Login extends Component {
             });
 
             setTimeout(() => {
-                this.props.navigator.push({
-                    name: "Home"
-                })
+                // this.props.navigator.push({
+                //     name: "Home"
+                // })
             }, 1500);
 
         } catch (error) {
