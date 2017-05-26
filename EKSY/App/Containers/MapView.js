@@ -14,8 +14,8 @@ class MapView extends Component {
   render() {
     console.log(Styles);
     return (
-      <Container>
-        <Content>
+      <Container style={Styles.container}>
+        <Content style={Styles.container}>
           <Button transparent onPress={() => {
             this.po.getPacket("drawer").open = true;
             this.po.sendPacket("drawer");
