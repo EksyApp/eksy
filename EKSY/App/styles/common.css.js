@@ -1,4 +1,4 @@
-const Common = {
+const CommonStyle = {
 
     container: {
         flex: 1,
@@ -12,4 +12,4 @@ const Common = {
 
 };
 
-module.exports = Common;
+export default CommonStyle;

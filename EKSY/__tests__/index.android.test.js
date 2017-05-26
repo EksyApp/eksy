@@ -1,4 +1,4 @@
-import 'react-native';
+import rn from '../_mocks_/setup.js'
 import React from 'react';
 import Index from '../index.android.js';
 
