@@ -39,7 +39,7 @@ class NavigationDrawer extends Component {
       return (
         <Drawer
           ref={(ref) => { this.drawer = ref; }}
-          content={<SideBar /*navigator={this.navigator}*/ />}
+          content={<SideBar navigator={this.navigator} />}
           onClose={() => {
             this.po.getPacket("drawer").open = false;
             this.po.sendPacket("drawer");

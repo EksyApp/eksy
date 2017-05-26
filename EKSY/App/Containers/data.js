@@ -18,7 +18,7 @@ export const characters = [
     good: false,
   },
   {
-    name: 'The guy with the same coat as Kevin’s dad',
+    name: 'The guy with the same coat as Kevin?s dad',
     image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/10/asset/buzzfeed-prod-fastlane03/sub-buzz-4392-1481212051-3.jpg',
     coordinate: [ 40.748418, -73.985702 ],
     good: false,
@@ -48,7 +48,7 @@ export const characters = [
     good: false,
   },
   {
-    name: '“Watch it kid HAHAHAHA” guy',
+    name: '?Watch it kid HAHAHAHA? guy',
     image: 'https://img.buzzfeed.com/buzzfeed-static/static/2016-12/8/11/asset/buzzfeed-prod-fastlane01/sub-buzz-8357-1481215914-1.png',
     coordinate: [ 40.791939, -73.963466 ],
     good: false,
