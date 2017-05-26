@@ -17,7 +17,7 @@ class Firebase {
 
 }
 
-module.exports = Firebase;
+export default Firebase
 
 // async logout() {
 //

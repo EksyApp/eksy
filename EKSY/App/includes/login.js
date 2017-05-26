@@ -155,4 +155,4 @@ const styles = StyleSheet.create({
     }
 });
 
-module.exports = Login;
+export default Login
