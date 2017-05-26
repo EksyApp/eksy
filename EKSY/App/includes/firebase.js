@@ -14,7 +14,6 @@ class Firebase {
       storageBucket: "eksyapp-1495447025903.appspot.com"
     });
   }
-
 }
 
 export default Firebase
