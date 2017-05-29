@@ -1,11 +1,28 @@
 import React, {Component} from 'react'
-import {View, Text} from 'react-native'
-import Login from '../includes/login'
+import Style from './Styles/SideBarStyles'
+import {Container, Content, Button} from 'native-base'
+import {Image, ScrollView, Text, View} from 'react-native'
+import {Actions} from 'react-native-router-flux'
+import SideBarLogo from './SideBarLogo'
 
 class SideBar extends Component {
   render() {
     return (
-        <Login/>
+      <Container>
+        <Content style={Style.content}>
+          <ScrollView>
+
+            <SideBarLogo />
+
+            <Button light full onPress={Actions.addMarker} style={Style.button}>
+              <Text>Add a marker</Text>
+            </Button>
+            <Button light full onPress={Actions.login} style={Style.button}>
+              <Text>Login</Text>
+            </Button>
+          </ScrollView>
+        </Content>
+      </Container>
     )
   }
 }
