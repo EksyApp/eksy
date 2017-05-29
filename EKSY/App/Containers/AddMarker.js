@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
 import {View, Text} from 'react-native'
 
-class RegisterScreen extends Component {
+class AddMarker extends Component {
 
   render() {
     return(
       <View>
-        <Text>RegisterScreen</Text>
+        <Text>AddMarker</Text>
       </View>
     )
   }
-
 }
 
-export default RegisterScreen
+export default AddMarker

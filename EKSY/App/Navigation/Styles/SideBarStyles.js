@@ -1,13 +1,12 @@
-
-
 export default {
 
   content: {
     backgroundColor: "white",
   },
 
-  image: {
-    alignSelf: 'stretch'
+  button: {
+    marginTop: 5,
+    marginBottom: 5
   }
 
 }
