@@ -3,6 +3,7 @@ import Style from './Styles/SideBarStyles'
 import {Container, Content, Button} from 'native-base'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
+import SideBarLogo from './SideBarLogo'
 
 class SideBar extends Component {
   render() {
@@ -11,7 +12,7 @@ class SideBar extends Component {
         <Content style={Style.content}>
           <ScrollView>
 
-            <Image source={require('../Images/logoPlaceHolder.png')} style={Style.image} />
+            <SideBarLogo />
 
             <Button light full onPress={Actions.addMarker} style={Style.button}>
               <Text>Add a marker</Text>
