@@ -10,7 +10,7 @@ class Marker {
     this._pinColor = null;
     this._text = "";
     this._markerComp = null;
-
+    this.key = null;
   }
 
   getLatitude() {
@@ -43,6 +43,7 @@ class Marker {
         coordinate={{latitude: this._latitude, longitude: this._longitude}}
         pinColor={this._pinColor}
         ref={(ref) => this.markerComp = ref}
+        key={this.key}
       >
         <MapView.Callout tooltip style={styles.callout}>
           <Callout

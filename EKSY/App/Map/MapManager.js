@@ -13,6 +13,7 @@ class MapManager {
   }
 
   addMarker(marker) {
+    marker.key = this._markers.length;
     this._markers.push(marker);
   }
 
