@@ -3,6 +3,7 @@ import { Container, Content, Button, Icon } from 'native-base'
 import Map from './Map'
 import PostOffice from '../lib/PostOffice'
 import Styles from './Styles/MapViewStyles'
+import MenuButton from '../Components/MenuButton'
 
 class MapView extends Component {
 
@@ -16,12 +17,7 @@ class MapView extends Component {
     return (
       <Container style={Styles.container}>
         <Content style={Styles.container}>
-          <Button transparent onPress={() => {
-            this.po.getPacket("drawer").open = true;
-            this.po.sendPacket("drawer");
-          }} style={Styles.buttonStyle}>
-            <Icon name='menu' />
-          </Button>
+          <MenuButton transparent />
           <Map />
         </Content>
       </Container>

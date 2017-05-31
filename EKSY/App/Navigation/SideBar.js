@@ -4,8 +4,30 @@ import {Container, Content, Button} from 'native-base'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
+import PostOffice from '../lib/PostOffice'
 
 class SideBar extends Component {
+
+  constructor(props) {
+    super(props)
+    this.po = new PostOffice();
+  }
+
+  closeDrawer() {
+    this.po.getPacket("drawer").open=false;
+    this.po.sendPacket("drawer");
+  }
+
+  goToLoginScreen() {
+    Actions.login()
+    this.closeDrawer();
+  }
+
+  goToAddMarker() {
+    Actions.login()
+    this.closeDrawer();
+  }
+
   render() {
     return (
       <Container>
@@ -14,10 +36,10 @@ class SideBar extends Component {
 
             <SideBarLogo />
 
-            <Button light full onPress={Actions.addMarker} style={Style.button}>
+            <Button light full onPress={() => this.goToAddMarker()} style={Style.button}>
               <Text>Add a marker</Text>
             </Button>
-            <Button light full onPress={Actions.login} style={Style.button}>
+            <Button light full onPress={() => this.goToLoginScreen()} style={Style.button}>
               <Text>Login</Text>
             </Button>
           </ScrollView>
