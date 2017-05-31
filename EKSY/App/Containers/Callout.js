@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Image,              // Renders images
   StyleSheet,         // CSS-like styles
   Text,               // Renders text
-  View,               // Container component
-} from 'react-native';
+  View               // Container component
+} from 'react-native'
 
 export default class Callout extends Component {
-  render() {
-    const { name, image } = this.props;
+  render () {
+    const { name, image, description } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.bubble}>
@@ -18,19 +18,20 @@ export default class Callout extends Component {
               style={styles.image}
               source={{ uri: image }}
             />
+            <Text style={styles.description}>{description}</Text>
           </View>
         </View>
         <View style={styles.arrowBorder} />
         <View style={styles.arrow} />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-start'
   },
   // Callout bubble
   bubble: {
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 0.5,
     padding: 15,
-    width: 150,
+    width: 150
   },
   // Arrow below the bubble
   arrow: {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#fff',
     borderWidth: 16,
     alignSelf: 'center',
-    marginTop: -32,
+    marginTop: -32
   },
   arrowBorder: {
     backgroundColor: 'transparent',
@@ -58,16 +59,16 @@ const styles = StyleSheet.create({
     borderTopColor: '#007a87',
     borderWidth: 16,
     alignSelf: 'center',
-    marginTop: -0.5,
+    marginTop: -0.5
   },
   // Character name
   name: {
     fontSize: 16,
-    marginBottom: 5,
+    marginBottom: 5
   },
   // Character image
   image: {
     width: 120,
-    height: 80,
-  },
-});
+    height: 80
+  }
+})

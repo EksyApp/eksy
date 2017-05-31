@@ -11,6 +11,8 @@ import { characters } from './data';
 import Callout from './Callout';
 import styles from './Styles/MapStyles'
 
+import testData from '../includes/data/Sarjakuvat.json'
+
 export default class Map extends Component {
 
   state = {
@@ -18,56 +20,64 @@ export default class Map extends Component {
     showGoodOnly: false,
   }
 
+  renderPampylat() {
+    return testData.features.map((pampyla, index) => {
+      console.log(pampyla.properties.gx_media_links)
+      return (
+          // If showGoodOnly is true, but the character is bad - do not show it
+        <MapView.Marker
+          coordinate={{
+            longitude: pampyla.geometry.coordinates[0],
+            latitude: pampyla.geometry.coordinates[1],
+          }}
+          // Callout offset
+          calloutOffset={{ x: -8, y: 28 }}
+          // Greed color for good characters and red for others
+          pinColor={'#009688'}
+          key={index}
+        >
+        {/* Callout */}
+          <MapView.Callout tooltip style={styles.callout}>
+            <Callout
+              name={pampyla.properties.Name}
+              description={pampyla.properties.description}
+              image={pampyla.properties.gx_media_links}
+            />
+          </MapView.Callout>
+        </MapView.Marker>
+      )
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
       {/* Map*/}
-      <MapView
-      style={styles.map}
-      // Position on Manhattan, New York
-      initialRegion={{
-        latitude: 40.77096,
-        longitude: -73.97702,
-        latitudeDelta: 0.0491,
-        longitudeDelta: 0.0375,
-      }}
-      >
-      {/* Loop through characters and add pins on the map */}
-      {characters.map((character, index) =>
-            // If showGoodOnly is true, but the character is bad - do not show it
-            this.state.showGoodOnly && !character.good || <MapView.Marker
-              coordinate={{
-                latitude: character.coordinate[0],
-                longitude: character.coordinate[1],
-              }}
-              // Callout offset
-              calloutOffset={{ x: -8, y: 28 }}
-              // Greed color for good characters and red for others
-              pinColor={character.good ? '#009688' : '#f44336'}
-              key={index}
-            >
-              {/* Callout */}
-              <MapView.Callout tooltip style={styles.callout}>
-                <Callout
-                  name={character.name}
-                  image={character.image}
-                />
-              </MapView.Callout>
-            </MapView.Marker>
-          )}
-      </MapView>
-      {/* Button */}
-      <View style={styles.buttonContainer}>
-      <TouchableOpacity
-      style={styles.button}
-      // Toggle this.state.showGoodOnly
-      onPress={() => this.setState({
-        showGoodOnly: !this.state.showGoodOnly
-      })}
-      >
-      <Text>{this.state.showGoodOnly ? 'Show All' : 'Show Good Only'}</Text>
-      </TouchableOpacity>
-      </View>
+        <MapView
+          style={styles.map}
+          // Position on Manhattan, New York
+          initialRegion={{
+            latitude: 60.1824268,
+            longitude: 24.9632764,
+            latitudeDelta: 0.0491,
+            longitudeDelta: 0.0375,
+          }}
+        >
+        {/* Loop through characters and add pins on the map */}
+          {this.renderPampylat()}
+        </MapView>
+          {/* Button */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            // Toggle this.state.showGoodOnly
+            onPress={() => this.setState({
+              showGoodOnly: !this.state.showGoodOnly
+            })}
+          >
+            <Text>{this.state.showGoodOnly ? 'Show All' : 'Show Good Only'}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
