@@ -47,7 +47,7 @@ class Marker {
       >
         <MapView.Callout tooltip style={styles.callout}>
           <Callout
-            text={this._text}
+            description={this._text}
           />
         </MapView.Callout>
       </MapView.Marker>

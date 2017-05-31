@@ -12,7 +12,9 @@ class MapView extends Component {
   constructor(props) {
     super(props);
     this.po = new PostOffice();
-    new MapManager().addMarker(new Marker(60.185359, 24.951338, 1))
+    let marker = new Marker(60.185359, 24.951338, 1);
+    marker.setText("Testi text");
+    new MapManager().addMarker(marker);
   }
 
   render() {
