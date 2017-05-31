@@ -4,13 +4,13 @@ import styles from './Styles/MapStyles'
 import Callout from './Callout'
 
 class Marker {
-  constructor(latitude, longitude) {
+  constructor(latitude, longitude, id) {
     this._latitude = latitude;
     this._longitude = longitude;
     this._pinColor = null;
     this._text = "";
     this._markerComp = null;
-    this.key = null;
+    this.key = id;
   }
 
   getLatitude() {
