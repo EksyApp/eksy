@@ -5,6 +5,7 @@ class MapManager {
   constructor() {
     if (!instance) {
       this._markers = new Array();
+      this._updater = null;
       instance = this;
     }
 
@@ -17,6 +18,14 @@ class MapManager {
 
   getMarkers() {
     return this._markers;
+  }
+
+  setUpdateFunction(func) {
+    this._updater = func;
+  }
+
+  update() {
+    this._updater();
   }
 
 }

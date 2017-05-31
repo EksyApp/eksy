@@ -17,7 +17,11 @@ export default class Map extends Component {
   constructor(props) {
     super(props)
     this.manager = new MapManager();
+    this.manager.setUpdateFunction(() => this.update());
+  }
 
+  update() {
+    this.forceUpdate();
   }
 
   state = {
