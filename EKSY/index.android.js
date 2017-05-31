@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Map from './Map';
+import Main from './App/Containers/Main';
 
-AppRegistry.registerComponent('EKSY', () => Map);
+AppRegistry.registerComponent('EKSY', () => Main);
