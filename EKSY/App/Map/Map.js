@@ -64,7 +64,6 @@ export default class Map extends Component {
     return (
       <View style={styles.container}>
       {/* Map*/}
-<<<<<<< HEAD:EKSY/App/Map/Map.js
       <MapView
       style={styles.map}
       // Position on Manhattan, New York
@@ -76,6 +75,7 @@ export default class Map extends Component {
       }}
       >
       {this.manager.getMarkers().map((marker, index) => marker.getComponent())}
+      {this.renderPampylat()}
       </MapView>
       {/* Button */}
       <View style={styles.buttonContainer}>
@@ -89,33 +89,7 @@ export default class Map extends Component {
       <Text>{this.state.showGoodOnly ? 'Show All' : 'Show Good Only'}</Text>
       </TouchableOpacity>
       </View>
-=======
-        <MapView
-          style={styles.map}
-          // Position on Manhattan, New York
-          initialRegion={{
-            latitude: 60.1824268,
-            longitude: 24.9632764,
-            latitudeDelta: 0.0491,
-            longitudeDelta: 0.0375,
-          }}
-        >
-        {/* Loop through characters and add pins on the map */}
-          {this.renderPampylat()}
-        </MapView>
-          {/* Button */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            // Toggle this.state.showGoodOnly
-            onPress={() => this.setState({
-              showGoodOnly: !this.state.showGoodOnly
-            })}
-          >
-            <Text>{this.state.showGoodOnly ? 'Show All' : 'Show Good Only'}</Text>
-          </TouchableOpacity>
-        </View>
->>>>>>> lisaa-testidataa:EKSY/App/Containers/Map.js
+
       </View>
     );
   }
