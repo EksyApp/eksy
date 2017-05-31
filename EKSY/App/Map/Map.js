@@ -7,11 +7,18 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 // Import data
-import { characters } from './data';
+// import { characters } from './data';
 import Callout from './Callout';
 import styles from './Styles/MapStyles'
+import MapManager from './MapManager'
 
 export default class Map extends Component {
+
+  constructor(props) {
+    super(props)
+    this.manager = new MapManager();
+
+  }
 
   state = {
     // Show good or all characters flag
@@ -26,35 +33,13 @@ export default class Map extends Component {
       style={styles.map}
       // Position on Manhattan, New York
       initialRegion={{
-        latitude: 40.77096,
-        longitude: -73.97702,
+        latitude: 60.184356,
+        longitude: 24.949326,
         latitudeDelta: 0.0491,
         longitudeDelta: 0.0375,
       }}
       >
-      {/* Loop through characters and add pins on the map */}
-      {characters.map((character, index) =>
-            // If showGoodOnly is true, but the character is bad - do not show it
-            this.state.showGoodOnly && !character.good || <MapView.Marker
-              coordinate={{
-                latitude: character.coordinate[0],
-                longitude: character.coordinate[1],
-              }}
-              // Callout offset
-              calloutOffset={{ x: -8, y: 28 }}
-              // Greed color for good characters and red for others
-              pinColor={character.good ? '#009688' : '#f44336'}
-              key={index}
-            >
-              {/* Callout */}
-              <MapView.Callout tooltip style={styles.callout}>
-                <Callout
-                  name={character.name}
-                  image={character.image}
-                />
-              </MapView.Callout>
-            </MapView.Marker>
-          )}
+      {this.manager.getMarkerComponents().map((marker, index) => marker.getComponent())}
       </MapView>
       {/* Button */}
       <View style={styles.buttonContainer}>

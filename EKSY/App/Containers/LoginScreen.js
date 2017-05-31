@@ -15,13 +15,12 @@ import {
 import MenuButton from '../Components/MenuButton'
 import React, {Component} from "react";
 import * as firebase from "firebase";
-import Button from "apsl-react-native-button";
+import {Button} from "native-base";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import {Sae} from "react-native-textinput-effects";
 import DismissKeyboard from "dismissKeyboard";
 
 import styles from './Styles/LoginScreenStyles'
-import CommonStyle from "../styles/common.css";
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -92,35 +91,37 @@ class LoginScreen extends Component {
         return (
 
             <TouchableWithoutFeedback onPress={() => {DismissKeyboard()}}>
-                <View style={CommonStyle.container}>
+                <View style={styles.container}>
                   <MenuButton />
                     <View style={styles.formGroup}>
-                        <Text style={styles.title}>Firebase Sample</Text>
+                        <Text style={styles.title}>Login</Text>
                         <Sae
                             label={"Email Address"}
                             iconClass={FontAwesomeIcon}
                             iconName={"pencil"}
-                            iconColor={"white"}
+                            iconColor={"black"}
                             onChangeText={(email) => this.setState({email})}
                             keyboardType="email-address"
                             autoCapitalize="none"
+                            inputStyle={styles.inputStyle}
                         />
                         <Sae
                             label={"Password"}
                             iconClass={FontAwesomeIcon}
                             iconName={"key"}
-                            iconColor={"white"}
+                            iconColor={"black"}
                             onChangeText={(password) => this.setState({password})}
                             password={true}
                             autoCapitalize="none"
+                            inputStyle={styles.inputStyle}
                         />
 
                         <View style={styles.submit}>
-                            <Button onPress={this.signup} style={CommonStyle.buttons} textStyle={{fontSize: 18}}>
-                                Sign up
+                            <Button onPress={this.signup} style={styles.buttons} textStyle={{fontSize: 18}}>
+                                <Text>Sign up</Text>
                             </Button>
                             <Button onPress={this.login} style={styles.buttons} textStyle={{fontSize: 18}}>
-                                Login
+                                <Text>Login</Text>
                             </Button>
                         </View>
                     </View>

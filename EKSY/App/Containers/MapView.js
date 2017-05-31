@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import { Container, Content, Button, Icon } from 'native-base'
-import Map from './Map'
+import Map from '../Map/Map'
 import PostOffice from '../lib/PostOffice'
 import Styles from './Styles/MapViewStyles'
 import MenuButton from '../Components/MenuButton'
+import MapManager from '../Map/MapManager'
+import Marker from '../Map/Marker'
 
 class MapView extends Component {
 
   constructor(props) {
     super(props);
     this.po = new PostOffice();
+    new MapManager().addMarker(new Marker(60.185359, 24.951338))
   }
 
   render() {
