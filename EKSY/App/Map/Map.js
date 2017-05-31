@@ -39,7 +39,7 @@ export default class Map extends Component {
         longitudeDelta: 0.0375,
       }}
       >
-      {this.manager.getMarkerComponents().map((marker, index) => marker.getComponent())}
+      {this.manager.getMarkers().map((marker, index) => marker.getComponent())}
       </MapView>
       {/* Button */}
       <View style={styles.buttonContainer}>

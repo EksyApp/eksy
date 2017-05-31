@@ -15,7 +15,7 @@ class MapManager {
     this._markers.push(marker);
   }
 
-  getMarkerComponents() {
+  getMarkers() {
     return this._markers;
   }
 
