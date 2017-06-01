@@ -16,17 +16,22 @@ export default class Map extends Component {
 
   constructor(props) {
     super(props)
-    this.manager = new MapManager();
-    this.manager.setUpdateFunction(() => this.update());
+    this._manager = new MapManager();
+    this._manager.setMapObject(this);
+    this._map = null;
   }
 
   update() {
     this.forceUpdate();
   }
 
-  state = {
-    // Show good or all characters flag
-    showGoodOnly: false,
+  animateToCoordinate(position, delay) {
+    if (this._map) {
+      this._map.animateToCoordinate(position, delay);
+    } else {
+      console.warn("Map not rendered when used animateToCoordinate");
+    }
+
   }
 
   renderPampylat() {
@@ -62,6 +67,7 @@ export default class Map extends Component {
     return (
       <View style={styles.container}>
         <MapView
+          ref={(ref) => this._map = ref}
           style={styles.map}
           initialRegion={{
             latitude: 60.184356,
@@ -70,7 +76,7 @@ export default class Map extends Component {
             longitudeDelta: 0.0375,
           }}
         >
-          {this.manager.getMarkers().map((marker, index) => marker.getComponent())}
+          {this._manager.getMarkers().map((marker, index) => marker.getComponent())}
           {this.renderPampylat()}
         </MapView>
       </View>

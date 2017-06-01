@@ -3,6 +3,8 @@ import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
 import Callout from './Callout'
 
+let idCounter = -1;
+
 class Marker {
   constructor(latitude, longitude, id) {
     this._latitude = latitude;
@@ -11,6 +13,15 @@ class Marker {
     this._text = "";
     this._markerComp = null;
     this.key = id;
+  }
+
+  static getNextID() {
+    idCounter++;
+    return idCounter;
+  }
+
+  setIdFromCounter() {
+    this.key = Marker.getNextID();
   }
 
   getLatitude() {

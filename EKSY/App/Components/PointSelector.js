@@ -15,15 +15,25 @@ class PointSelector extends Component {
       },
     }
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => this._setInitial(position),
-      (error) => this._handleLocationError(error),
-      {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
-    )
+    this.goToCurrentPosition()
 
   }
 
-  _setInitial(position) {
+  async goToCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => this.flyToPosition(position.coords.latitude, position.coords.longitude),
+      (error) => this._handleLocationError(error),
+      {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
+    )
+  }
+
+  flyToPosition(latitude, longitude) {
+    let position = {
+      latitude: latitude,
+      longitude: longitude,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005
+    }
     this._mapView.animateToRegion(position, 100)
   }
 
@@ -38,6 +48,7 @@ class PointSelector extends Component {
         ref = {(ref) => this._mapView = ref}
         style={this.props.style}
         initialRegion = {this.state.initialLocation}
+        onRegionChange = {this.props.onChange}
       >
 
       </MapView>

@@ -5,10 +5,9 @@ class MapManager {
   constructor() {
     if (!instance) {
       this._markers = new Array();
-      this._updater = null;
+      this._map = null;
       instance = this;
     }
-
     return instance;
   }
 
@@ -20,12 +19,32 @@ class MapManager {
     return this._markers;
   }
 
-  setUpdateFunction(func) {
-    this._updater = func;
+  setMapObject(map) {
+    this._map = map;
   }
 
   update() {
-    this._updater();
+    this._map.update();
+  }
+
+  goToCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => this.flyToPosition(position.coords.latitude, position.coords.longitude),
+      (error) => this._handleLocationError(error),
+      {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
+    )
+  }
+
+  flyToPosition(latitude, longitude) {
+    let position = {
+      latitude: latitude,
+      longitude: longitude,
+    }
+    this._map.animateToCoordinate(position, 1000)
+  }
+
+  _handleLocationError(error) {
+    console.log(error)
   }
 
 }
