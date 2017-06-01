@@ -24,7 +24,7 @@ class SideBar extends Component {
   }
 
   goToAddMarker() {
-    Actions.login()
+    Actions.addMarker()
     this.closeDrawer();
   }
 
