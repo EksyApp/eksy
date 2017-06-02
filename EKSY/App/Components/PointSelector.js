@@ -13,6 +13,10 @@ class PointSelector extends Component {
         latitudeDelta: 0.0491,
         longitudeDelta: 0.0375,
       },
+      markerLocation: {
+        latitude: 60.184356,
+        longitude: 24.949326,
+      },
     }
 
     this.goToCurrentPosition()
@@ -41,16 +45,21 @@ class PointSelector extends Component {
     console.log(error)
   }
 
+  _handleChange(region){
+    this.setState({markerLocation: {latitude: region.latitude, longitude: region.longitude}})
+    this.props.onChange(region)
+  }
+
   render() {
     console.log(this.state.initialLocation)
     return(
       <MapView
-        ref = {(ref) => this._mapView = ref}
-        style={this.props.style}
-        initialRegion = {this.state.initialLocation}
-        onRegionChange = {this.props.onChange}
+      ref = {(ref) => this._mapView = ref}
+      style={this.props.style}
+      initialRegion = {this.state.initialLocation}
+      onRegionChange = {(region) => this._handleChange(region)}
       >
-
+      <MapView.Marker coordinate={this.state.markerLocation}/>
       </MapView>
     )
   }
