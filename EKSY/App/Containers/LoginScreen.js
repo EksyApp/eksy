@@ -19,6 +19,7 @@ import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import {Sae} from "react-native-textinput-effects";
 import DismissKeyboard from "dismissKeyboard";
+import PostOffice from '../lib/PostOffice'
 
 import styles from './Styles/LoginScreenStyles'
 
@@ -32,8 +33,7 @@ class LoginScreen extends Component {
             response: ""
         };
 
-        this.signup = this.signup.bind(this);
-        this.login = this.login.bind(this);
+        this.po = new PostOffice();
     }
 
     async signup() {
@@ -47,11 +47,8 @@ class LoginScreen extends Component {
                 response: "account created"
             });
 
-            setTimeout(() => {
-                // this.props.navigator.push({
-                //     name: "Home"
-                // })
-            }, 1500);
+            this.po.getPacket("user").email = this.state.email;
+
 
         } catch (error) {
             this.setState({
@@ -72,11 +69,8 @@ class LoginScreen extends Component {
                 response: "Logged In!"
             });
 
-            setTimeout(() => {
-                // this.props.navigator.push({
-                //     name: "Home"
-                // })
-            }, 1500);
+            this.po.getPacket("user").email = this.state.email;
+
 
         } catch (error) {
             this.setState({
@@ -98,21 +92,33 @@ class LoginScreen extends Component {
               </Body>
             </Header>
             <Content>
-              <Form>
+              <Form style={style.form}>
                 <Item>
-                  <Input />
+                  <Input
+                    style={style.input}
+                    placeholder="Email"
+                    onChangeText = {(text) => this.setState({email: text})}
+                  />
                 </Item>
                 <Item>
-                  <Input />
+                  <Input
+                    style={style.input}
+                    placeholder="Password"
+                    onChangeText = {(text) => this.setState({password: text})}
+                    secureTextEntry
+                  />
                 </Item>
               </Form>
-              <View>
-                <Button block>
-                  <Text>Login</Text>
+              <View style={style.buttons}>
+                <Button style={style.button} block onPress={() => this.login()}>
+                  <Text style={style.text}>Login</Text>
                 </Button>
-                <Button block>
-                  <Text>Signup</Text>
+                <Button style={style.button} block onPress={() => this.signup()}>
+                  <Text style={style.text}>Signup</Text>
                 </Button>
+              </View>
+              <View style={style.response}>
+                <Text style={style.responseText}>{this.state.response}</Text>
               </View>
             </Content>
           </Container>
@@ -120,5 +126,39 @@ class LoginScreen extends Component {
     }
 }
 
+const style = {
+  input: {
+    marginTop: 20,
+  },
+
+  buttons: {
+    marginTop: 50,
+  },
+
+  button: {
+    marginTop: 20,
+    width: '50%',
+    alignSelf: 'center',
+  },
+
+  text: {
+    color: 'white'
+  },
+
+  form: {
+    marginTop: 50
+  },
+
+  responseText: {
+    textAlign: 'center',
+    width: '100%',
+    fontSize: 18
+  },
+
+  response: {
+    marginTop: 50
+  }
+
+}
 
 export default LoginScreen
