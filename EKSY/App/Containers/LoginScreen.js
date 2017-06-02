@@ -15,7 +15,7 @@ import {
 import MenuButton from '../Components/MenuButton'
 import React, {Component} from "react";
 import * as firebase from "firebase";
-import {Button} from "native-base";
+import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item} from "native-base";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import {Sae} from "react-native-textinput-effects";
 import DismissKeyboard from "dismissKeyboard";
@@ -89,47 +89,33 @@ class LoginScreen extends Component {
     render() {
 
         return (
-
-            <TouchableWithoutFeedback onPress={() => {DismissKeyboard()}}>
-                <View style={styles.container}>
-                  <MenuButton />
-                    <View style={styles.formGroup}>
-                        <Text style={styles.title}>Login</Text>
-                        <Sae
-                            label={"Email Address"}
-                            iconClass={FontAwesomeIcon}
-                            iconName={"pencil"}
-                            iconColor={"black"}
-                            onChangeText={(email) => this.setState({email})}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                            inputStyle={styles.inputStyle}
-                        />
-                        <Sae
-                            label={"Password"}
-                            iconClass={FontAwesomeIcon}
-                            iconName={"key"}
-                            iconColor={"black"}
-                            onChangeText={(password) => this.setState({password})}
-                            password={true}
-                            autoCapitalize="none"
-                            inputStyle={styles.inputStyle}
-                        />
-
-                        <View style={styles.submit}>
-                            <Button onPress={this.signup} style={styles.buttons} textStyle={{fontSize: 18}}>
-                                <Text>Sign up</Text>
-                            </Button>
-                            <Button onPress={this.login} style={styles.buttons} textStyle={{fontSize: 18}}>
-                                <Text>Login</Text>
-                            </Button>
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={styles.response}>{this.state.response}</Text>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
+          <Container>
+            <Header>
+              <MenuButton />
+              <Left />
+              <Body>
+                <Title>Login</Title>
+              </Body>
+            </Header>
+            <Content>
+              <Form>
+                <Item>
+                  <Input />
+                </Item>
+                <Item>
+                  <Input />
+                </Item>
+              </Form>
+              <View>
+                <Button block>
+                  <Text>Login</Text>
+                </Button>
+                <Button block>
+                  <Text>Signup</Text>
+                </Button>
+              </View>
+            </Content>
+          </Container>
         );
     }
 }
