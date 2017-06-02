@@ -1,26 +1,24 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
+import PostOffice from '../lib/PostOffice'
 
 class PointSelector extends Component {
 
   constructor(props) {
     super(props)
+    this.po = new PostOffice()
+    let currentRegion = this.po.getPacket("currentRegion")
 
     this.state = {
-      initialLocation: {
-        latitude: 60.184356,
-        longitude: 24.949326,
-        latitudeDelta: 0.0491,
-        longitudeDelta: 0.0375,
-      },
+      initialLocation:
+      currentRegion,
       markerLocation: {
-        latitude: 60.184356,
-        longitude: 24.949326,
+        latitude: currentRegion.latitude,
+        longitude: currentRegion.longitude,
       },
     }
-
-    this.goToCurrentPosition()
-
+    //
+    // this.goToCurrentPosition()
   }
 
   async goToCurrentPosition() {
