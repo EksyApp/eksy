@@ -22,7 +22,14 @@ export default class Map extends Component {
     this._manager.setMapObject(this);
     this._map = null;
     this.po = new PostOffice();
-      this.state = { mapLoaded: false }
+    this.state = { mapLoaded: false }
+    this.po.setPacket("currentRegion", {
+      latitude: this._manager.getPosition().latitude,
+      longitude: this._manager.getPosition().longitude,
+      latitudeDelta: 0.0491,
+      longitudeDelta: 0.0375
+    });
+
   }
 
   update () {
@@ -31,6 +38,7 @@ export default class Map extends Component {
 
   componentDidMount () {
     this.setState({ mapLoaded: true })
+    this._manager.goToCurrentPosition();
   }
 
   animateToCoordinate (position, delay) {
@@ -85,13 +93,9 @@ export default class Map extends Component {
       <MapView
       ref={(ref) => this._map = ref}
       style={styles.map}
-      initialRegion={{
-        latitude: 60.184356,
-        longitude: 24.949326,
-        latitudeDelta: 0.0491,
-        longitudeDelta: 0.0375,
-      }}
+      initialRegion={this.po.getPacket("currentRegion")}
       onRegionChangeComplete = {(region) => this._setRegion(region)}
+      showsUserLocation
       >
       {this._manager.getMarkers().map((marker, index) => marker.getComponent())}
       {this.renderPampylat()}

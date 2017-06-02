@@ -6,6 +6,7 @@ import Styles from './Styles/MapViewStyles'
 import MenuButton from '../Components/MenuButton'
 import MapManager from '../Map/MapManager'
 import Marker from '../Map/Marker'
+import {View} from 'react-native'
 
 class MapView extends Component {
 
@@ -28,14 +29,11 @@ class MapView extends Component {
   }
 
   render () {
-    console.log(Styles)
     return (
-      <Container style={Styles.container}>
-        <Content style={Styles.container}>
-          <Map />
-          <MenuButton transparent />
-        </Content>
-      </Container>
+      <View style={Styles.container}>
+        <Map />
+        <MenuButton transparent />
+      </View>
     )
   }
 }

@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PostOffice from '../lib/PostOffice'
+import MapManager from '../Map/MapManager'
 
 class PointSelector extends Component {
 
   constructor(props) {
     super(props)
     this.po = new PostOffice()
+    this.mapManager = new MapManager();
     let currentRegion = this.po.getPacket("currentRegion")
 
     this.state = {
@@ -22,11 +24,7 @@ class PointSelector extends Component {
   }
 
   async goToCurrentPosition() {
-    navigator.geolocation.getCurrentPosition(
-      (position) => this.flyToPosition(position.coords.latitude, position.coords.longitude),
-      (error) => this._handleLocationError(error),
-      {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
-    )
+    this.flyToPosition(this.mapManager.getPosition().latitude, this.mapManager.getPosition().longitude)
   }
 
   flyToPosition(latitude, longitude) {
@@ -37,10 +35,6 @@ class PointSelector extends Component {
       longitudeDelta: 0.005
     }
     this._mapView.animateToRegion(position, 100)
-  }
-
-  _handleLocationError(error) {
-    console.log(error)
   }
 
   _handleChange(region){
