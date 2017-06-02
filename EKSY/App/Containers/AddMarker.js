@@ -54,7 +54,7 @@ class AddMarker extends Component {
             style = {Style.textInput}
           />
           <Button block onPress={() => this.addNewMarker()} style={Style.button}>
-            <Text>Add</Text>
+            <Text style={Style.text}>Add</Text>
           </Button>
         </Content>
 

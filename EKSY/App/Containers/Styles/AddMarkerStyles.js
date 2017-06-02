@@ -17,5 +17,8 @@ export default {
     marginTop: 20,
     alignSelf: 'center',
     width: '50%',
+  },
+  text: {
+    color: 'white'
   }
 }
