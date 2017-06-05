@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import NavigationRouter from '../Navigation/NavigationRouter'
-
-import * as firebase from 'firebase'
-import Firebase from '../includes/firebase'
+import FirebaseConfig from '../includes/FirebaseConfig'
 
 class Main extends Component {
+
   constructor (props) {
     super(props)
-    Firebase.initialise()
+    FirebaseConfig.initialise()
   }
+
   render () {
     return (
-      
+
       <NavigationRouter />
     )
   }
