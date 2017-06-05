@@ -1,37 +1,43 @@
 import React, { Component } from 'react'
 import {
-  Image,              // Renders images
-  StyleSheet,         // CSS-like styles
-  Text,               // Renders text
-  View               // Container component
-} from 'react-native'
+  Modal,
+  Text,
+  View,
+  TouchableHighlight,
+  StyleSheet,
+  Image
+ } from 'react-native'
 
-export default class Callout extends Component {
-  render () {
-    const { name, image, description } = this.props
-    return (
-      <View style={styles.container}>
-        <View style={styles.bubble}>
-          <View>
-            <Text style={styles.name}>{name}</Text>
-            <Image
-              style={styles.image}
-              source={{ uri: image }}
-            />
-            <Text style={styles.description}>{description}</Text>
-          </View>
+export default CalloutModal = (props) => {
+  return (
+    <View style={styles.container}>
+      <Modal
+        animationType={'slide'}
+        transparent
+        visible={props.modalVisible}
+        onRequestClose={() => {}}
+      >
+        <View>
+          <TouchableHighlight onPress={props.closeModal}>
+            <Text>Sulje</Text>
+          </TouchableHighlight>
+          <Text style={styles.name}>{props.name}</Text>
+          <Image
+            style={styles.image}
+            source={{ uri: props.image }}
+          />
+          <Text style={styles.description}>{props.description}</Text>
         </View>
-        <View style={styles.arrowBorder} />
-        <View style={styles.arrow} />
-      </View>
-    )
-  }
+      </Modal>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFFFFF'
   },
   // Callout bubble
   bubble: {

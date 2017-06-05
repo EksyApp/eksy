@@ -15,13 +15,13 @@ import {
 import MenuButton from '../Components/MenuButton'
 import React, {Component} from "react";
 import * as firebase from "firebase";
-import Button from "apsl-react-native-button";
+import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item} from "native-base";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import {Sae} from "react-native-textinput-effects";
 import DismissKeyboard from "dismissKeyboard";
+import PostOffice from '../lib/PostOffice'
 
 import styles from './Styles/LoginScreenStyles'
-import CommonStyle from "../styles/common.css";
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -33,8 +33,7 @@ class LoginScreen extends Component {
             response: ""
         };
 
-        this.signup = this.signup.bind(this);
-        this.login = this.login.bind(this);
+        this.po = new PostOffice();
     }
 
     async signup() {
@@ -48,11 +47,8 @@ class LoginScreen extends Component {
                 response: "account created"
             });
 
-            setTimeout(() => {
-                // this.props.navigator.push({
-                //     name: "Home"
-                // })
-            }, 1500);
+            this.po.getPacket("user").email = this.state.email;
+
 
         } catch (error) {
             this.setState({
@@ -73,11 +69,8 @@ class LoginScreen extends Component {
                 response: "Logged In!"
             });
 
-            setTimeout(() => {
-                // this.props.navigator.push({
-                //     name: "Home"
-                // })
-            }, 1500);
+            this.po.getPacket("user").email = this.state.email;
+
 
         } catch (error) {
             this.setState({
@@ -90,48 +83,82 @@ class LoginScreen extends Component {
     render() {
 
         return (
-
-            <TouchableWithoutFeedback onPress={() => {DismissKeyboard()}}>
-                <View style={CommonStyle.container}>
-                  <MenuButton />
-                    <View style={styles.formGroup}>
-                        <Text style={styles.title}>Firebase Sample</Text>
-                        <Sae
-                            label={"Email Address"}
-                            iconClass={FontAwesomeIcon}
-                            iconName={"pencil"}
-                            iconColor={"white"}
-                            onChangeText={(email) => this.setState({email})}
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                        />
-                        <Sae
-                            label={"Password"}
-                            iconClass={FontAwesomeIcon}
-                            iconName={"key"}
-                            iconColor={"white"}
-                            onChangeText={(password) => this.setState({password})}
-                            password={true}
-                            autoCapitalize="none"
-                        />
-
-                        <View style={styles.submit}>
-                            <Button onPress={this.signup} style={CommonStyle.buttons} textStyle={{fontSize: 18}}>
-                                Sign up
-                            </Button>
-                            <Button onPress={this.login} style={styles.buttons} textStyle={{fontSize: 18}}>
-                                Login
-                            </Button>
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={styles.response}>{this.state.response}</Text>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
+          <Container>
+            <Header>
+              <MenuButton />
+              <Left />
+              <Body>
+                <Title>Login</Title>
+              </Body>
+            </Header>
+            <Content>
+              <Form style={style.form}>
+                <Item>
+                  <Input
+                    style={style.input}
+                    placeholder="Email"
+                    onChangeText = {(text) => this.setState({email: text})}
+                  />
+                </Item>
+                <Item>
+                  <Input
+                    style={style.input}
+                    placeholder="Password"
+                    onChangeText = {(text) => this.setState({password: text})}
+                    secureTextEntry
+                  />
+                </Item>
+              </Form>
+              <View style={style.buttons}>
+                <Button style={style.button} block onPress={() => this.login()}>
+                  <Text style={style.text}>Login</Text>
+                </Button>
+                <Button style={style.button} block onPress={() => this.signup()}>
+                  <Text style={style.text}>Signup</Text>
+                </Button>
+              </View>
+              <View style={style.response}>
+                <Text style={style.responseText}>{this.state.response}</Text>
+              </View>
+            </Content>
+          </Container>
         );
     }
 }
 
+const style = {
+  input: {
+    marginTop: 20,
+  },
+
+  buttons: {
+    marginTop: 50,
+  },
+
+  button: {
+    marginTop: 20,
+    width: '50%',
+    alignSelf: 'center',
+  },
+
+  text: {
+    color: 'white'
+  },
+
+  form: {
+    marginTop: 50
+  },
+
+  responseText: {
+    textAlign: 'center',
+    width: '100%',
+    fontSize: 18
+  },
+
+  response: {
+    marginTop: 50
+  }
+
+}
 
 export default LoginScreen

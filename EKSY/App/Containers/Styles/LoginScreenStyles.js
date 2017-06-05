@@ -7,6 +7,10 @@ export default StyleSheet.create({
         padding: 50
     },
 
+    inputStyle: {
+      color: "black"
+    },
+
     title: {
         paddingBottom: 16,
         textAlign: "center",
@@ -23,6 +27,14 @@ export default StyleSheet.create({
     response: {
         textAlign: "center",
         paddingTop: 0,
-        padding: 50
+        padding: 50,
+    },
+
+    button: {
+
+    },
+
+    container: {
+
     }
 });
