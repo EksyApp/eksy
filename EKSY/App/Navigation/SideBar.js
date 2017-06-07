@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import Style from './Styles/SideBarStyles'
-import {Container, Content, Button} from 'native-base'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
 import PostOffice from '../lib/PostOffice'
+import Button from '../Components/Button'
 
 class SideBar extends Component {
+
+
 
   constructor(props) {
     super(props)
@@ -35,25 +37,39 @@ class SideBar extends Component {
 
   render() {
     return (
-      <Container>
-        <Content style={Style.content}>
-          <ScrollView>
-
+      <View style={styles.menubarStyle}>
+        <View style={styles.logoStyle}>
             <SideBarLogo />
-
-            <Button light full onPress={() => this.goToMap()} style={Style.button}>
-              <Text>Map</Text>
-            </Button>
-            <Button light full onPress={() => this.goToAddMarker()} style={Style.button}>
-              <Text>Add a marker</Text>
-            </Button>
-            <Button light full onPress={() => this.goToLoginScreen()} style={Style.button}>
-              <Text>Login</Text>
-            </Button>
-          </ScrollView>
-        </Content>
-      </Container>
+        </View>
+        <View style={styles.buttonList}>
+          <Button onPress={() => this.goToMap()}>
+            Go to map
+          </Button>
+          <Button onPress={() => this.goToAddMarker()}>
+            Add a marker
+          </Button>
+          <Button onPress={() => this.goToLoginScreen()}>
+            Login
+          </Button>
+        </View>
+      </View>
     )
+  }
+}
+
+const styles = {
+  menubarStyle: {
+    flex: 1,
+    flexDirection: 'column',
+    // Placeholder background color
+    backgroundColor: '#fff'
+  },
+  buttonList: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  logoStyle: {
+    // Three blue lines are from the logo picture
   }
 }
 
