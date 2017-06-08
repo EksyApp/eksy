@@ -2,17 +2,14 @@ import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
 import Callout from './Callout'
+import PropTypes from 'prop-types'
 
 let idCounter = -1;
 
-class Marker {
-  constructor(latitude, longitude, id) {
-    this._latitude = latitude;
-    this._longitude = longitude;
-    this._pinColor = null;
-    this._text = "";
+class Marker extends Component {
+  constructor(Props) {
+    super(props)
     this._markerComp = null;
-    this.key = id;
   }
 
   static getNextID() {
@@ -20,52 +17,30 @@ class Marker {
     return idCounter;
   }
 
-  setIdFromCounter() {
-    this.key = Marker.getNextID();
-  }
-
-  getLatitude() {
-    return this._latitude;
-  }
-
-  getLongitude() {
-    return this._longitude;
-  }
-
-  setColor(color) {
-    this._pinColor = color;
-  }
-
-  getColor() {
-    return this._pinColor;
-  }
-
-  setText(text) {
-    this._text = text;
-  }
-
-  getText() {
-    return this._text;
-  }
-
-  getComponent() {
+  render() {
     return(
       <MapView.Marker
-        coordinate={{latitude: this._latitude, longitude: this._longitude}}
-        pinColor={this._pinColor}
+        coordinate={{latitude: this.props.latitude, longitude: this.props.longitude}}
+        pinColor={this.props.color}
         ref={(ref) => this.markerComp = ref}
-        key={this.key}
+        key={this.props.key}
       >
         <MapView.Callout tooltip style={styles.callout}>
-          <Callout
-            description={this._text}
-          />
+          <Callout>
+            <Text>{this.props.text}</Text>
+          </Callout>
         </MapView.Callout>
       </MapView.Marker>
     )
   }
+}
 
-
+Marker.propTypes = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  color: PropTypes.string,
+  key: PropTypes.number.isRequired,
+  text: PropTypes.string
 }
 
 export default Marker
