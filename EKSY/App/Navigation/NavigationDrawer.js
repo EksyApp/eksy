@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SideBar from './SideBar'
 import {DefaultRenderer} from 'react-native-router-flux'
-import {drawerToggle} from '../Actions'
+import * as Actions from '../Actions'
 import {SideMenu} from 'react-native-elements'
 import {connect} from 'react-redux'
 
@@ -13,6 +13,7 @@ class NavigationDrawer extends Component {
       <SideMenu
         isOpen={this.props.drawerOpen}
         menu={SideBar}
+        onChange={(isOpen) => !isOpen ? this.props.drawerClose() : false}
       >
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
       </SideMenu>
@@ -22,11 +23,17 @@ class NavigationDrawer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {drawerOpen: state.ui.drawerOpen}
+  return {
+    drawerOpen: state.ui.drawerOpen
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    drawerClose: () => {
+      dispatch(Actions.drawerClose())
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer)

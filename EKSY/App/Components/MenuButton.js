@@ -7,7 +7,7 @@ class MenuButton extends Component {
 
   render() {
     return(
-      <Icon onPress={this.props.onPress} name="menu" containerStyle={style.buttonStyle} size={35} />
+      <Icon onPress={this.props.onPress} name="menu" iconStyle={style.iconStyle} containerStyle={style.buttonStyle} size={35} />
     )
   }
 }
@@ -17,8 +17,13 @@ const style = {
     position: "absolute",
     top: 0,
     left: 0,
-    zIndex: 1
+    zIndex: 1,
+    width: 50,
+    height: 50
+  },
 
+  iconStyle: {
+    color: "blue",
   }
 }
 export default MenuButton

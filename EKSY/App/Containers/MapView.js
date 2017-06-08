@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    MenuButtonPress: () => {dispatch(Actions.drawerToggle())}
+    MenuButtonPress: () => {dispatch(Actions.drawerOpen())}
   }
 }
 
