@@ -12,7 +12,7 @@ class NavigationDrawer extends Component {
     return(
       <SideMenu
         isOpen={this.props.drawerOpen}
-        menu={SideBar}
+        menu={<SideBar />}
         onChange={(isOpen) => !isOpen ? this.props.drawerClose() : false}
       >
         <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />

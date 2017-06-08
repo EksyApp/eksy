@@ -3,37 +3,11 @@ import Style from './Styles/SideBarStyles'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
-import PostOffice from '../lib/PostOffice'
 import Button from '../Components/Button'
+import * as ReduxActions from '../Actions'
+import {connect} from 'react-redux'
 
 class SideBar extends Component {
-
-
-
-  constructor(props) {
-    super(props)
-    this.po = new PostOffice();
-  }
-
-  closeDrawer() {
-    this.po.getPacket("drawer").open=false;
-    this.po.sendPacket("drawer");
-  }
-
-  goToLoginScreen() {
-    Actions.login();
-    this.closeDrawer();
-  }
-
-  goToAddMarker() {
-    Actions.addMarker();
-    this.closeDrawer();
-  }
-
-  goToMap() {
-    Actions.mapView();
-    this.closeDrawer();
-  }
 
   render() {
     return (
@@ -42,13 +16,13 @@ class SideBar extends Component {
             <SideBarLogo />
         </View>
         <View style={styles.buttonList}>
-          <Button onPress={() => this.goToMap()}>
+          <Button onPress={this.props.goToMap}>
             Go to map
           </Button>
-          <Button onPress={() => this.goToAddMarker()}>
+          <Button onPress={this.props.goToAddMarker}>
             Add a marker
           </Button>
-          <Button onPress={() => this.goToLoginScreen()}>
+          <Button onPress={this.props.goToLoginScreen}>
             Login
           </Button>
         </View>
@@ -73,4 +47,27 @@ const styles = {
   }
 }
 
-export default SideBar
+const mapStateToProps = (state) => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    goToMap: () => {
+      Actions.mapView()
+      dispatch(ReduxActions.drawerClose())
+    },
+    goToAddMarker: () => {
+      Actions.addMarker()
+      dispatch(ReduxActions.drawerClose())
+    },
+    goToLoginScreen: () => {
+      Actions.login()
+      dispatch(ReduxActions.drawerClose())
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar)

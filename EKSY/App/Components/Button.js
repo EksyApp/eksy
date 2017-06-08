@@ -1,17 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types'
 
-const Button = ({ onPress, children }) => {
-  const { buttonStyle, textStyle } = styles;
+class Button extends Component {
+  render() {
+    return (
+      <TouchableOpacity onPress={this.props.onPress} style={styles.buttonStyle}>
+        <Text style={styles.textStyle}>
+          {this.props.children}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
+}
 
-  return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      <Text style={textStyle}>
-        {children}
-      </Text>
-    </TouchableOpacity>
-  );
-};
+Button.propTypes = {
+  onPress: PropTypes.func,
+  children: PropTypes.string
+}
+
 
 const styles = {
   textStyle: {
@@ -30,7 +37,8 @@ const styles = {
     borderWidth: 1,
     borderColor: '#007aff',
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
+    marginTop: 5
   }
 };
 
