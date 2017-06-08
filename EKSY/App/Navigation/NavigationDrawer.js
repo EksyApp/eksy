@@ -24,7 +24,7 @@ class NavigationDrawer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    drawerOpen: state.ui.drawerOpen
+    drawerOpen: state.ui.drawer.drawerOpen
   }
 }
 

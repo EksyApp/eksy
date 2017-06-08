@@ -11,6 +11,7 @@ import Callout from './Callout'
 import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
 import PostOffice from '../lib/PostOffice'
+import * as Actions from '../Actions'
 
 import testData from '../includes/data/Sarjakuvat.json'
 
@@ -22,13 +23,9 @@ export default class Map extends Component {
     this._manager.setMapObject(this);
     this._map = null;
     this.po = new PostOffice();
-    this.state = { mapLoaded: false }
-    this.po.setPacket("currentRegion", {
-      latitude: this._manager.getPosition().latitude,
-      longitude: this._manager.getPosition().longitude,
-      latitudeDelta: 0.0491,
-      longitudeDelta: 0.0375
-    });
+    this.state = {
+      mapLoaded: false
+    }
 
   }
 
@@ -78,9 +75,10 @@ export default class Map extends Component {
      })
    }
 
-  _setRegion(region){
-    this.po.setPacket("currentRegion", region);
-  }
+   handleRegionChange(region) {
+     this.props.regionChange(region)
+   }
+
 
   renderMapView () {
     if (!this.state.mapLoaded) {
@@ -89,12 +87,14 @@ export default class Map extends Component {
       )
     }
 
+
+
     return (
       <MapView
       ref={(ref) => this._map = ref}
       style={styles.map}
-      initialRegion={this.po.getPacket("currentRegion")}
-      onRegionChangeComplete = {(region) => this._setRegion(region)}
+      initialRegion={this.props.initialRegion}
+      onRegionChangeComplete = {(region) => this.handleRegionChange(region)}
       showsUserLocation
       >
       {this._manager.getMarkers().map((marker, index) => marker.getComponent())}

@@ -1,3 +1,5 @@
+import * as Actions from '../Actions'
+import store from '../Store'
 
 let instance = null
 
@@ -6,34 +8,37 @@ class MapManager {
     if (!instance) {
       this._markers = new Array();
       this._map = null;
-      this._position = null;
-      this._positionSet = false;
+      this._currentLocationMoveRequested = false;
+      this._reduxState = null;
+      store.subscribe(() => this.storeListener())
       this.startLocationWatcher();
       instance = this;
     }
     return instance;
   }
 
+  storeListener() {
+    this._reduxState = store.getState();
+    this.handleFlyingToCurrentLocation()
+  }
+
+  handleFlyingToCurrentLocation() {
+    console.log("handleFlyingToCurrentLocation")
+    console.log(this._currentLocationMoveRequested)
+    if (this._currentLocationMoveRequested) {
+      this.goToCurrentPosition()
+    }
+  }
+
   startLocationWatcher() {
     navigator.geolocation.watchPosition(
       (position) => {
-        this._position = position.coords;
-        this._positionSet = true;
+        store.dispatch(Actions.updateLocation(position.coords))
+        store.dispatch(Actions.locationKnown(true))
       },
-      (error) => this._handleLocationError(error),
+      (error) => store.dispatch(Actions.locationKnown(false)),
       {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
     )
-  }
-
-  getPosition() {
-    if (!this.positionKnown()) {
-      this.setPositionToKallio();
-    }
-    return this._position;
-  }
-
-  positionKnown() {
-    return this._positionSet;
   }
 
   addMarker(marker) {
@@ -48,16 +53,15 @@ class MapManager {
     this._map = map;
   }
 
-  update() {
-    this._map.update();
-  }
-
   goToCurrentPosition() {
-    if (!this.positionKnown()) {
-      setTimeout(() => this.goToCurrentPosition(), 1000);
-      return;
+    console.log("goToCurrentPosition")
+    console.log(this._currentLocationMoveRequested)
+    console.log(this._reduxState)
+    if (this._reduxState && this._reduxState.map.location.isKnown) {
+      this._currentLocationMoveRequested = false
+      this.flyToPosition(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
     }
-    this.flyToPosition(this.getPosition().latitude, this.getPosition().longitude);
+    this._currentLocationMoveRequested = true
   }
 
   flyToPosition(latitude, longitude) {
@@ -67,21 +71,6 @@ class MapManager {
     }
     this._map.animateToCoordinate(position, 1000)
 
-  }
-
-  _handleLocationError(error) {
-    if (!this._position) {
-      this.setPositionToKallio();
-    }
-    console.warn(error)
-  }
-
-  setPositionToKallio() {
-    this._positionSet = false;
-    this._position = {
-      latitude: 60.184356,
-      longitude: 24.949326
-    }
   }
 
 }

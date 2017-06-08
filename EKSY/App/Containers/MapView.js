@@ -32,20 +32,24 @@ class MapView extends Component {
   render () {
     return (
       <View style={Styles.container}>
-        <Map />
-        <MenuButton onPress = {() => {this.props.MenuButtonPress()}} />
+        <Map initialRegion={this.props.initialRegion} regionChange={this.props.regionChange} />
+        <MenuButton onPress = {() => {this.props.menuButtonPress()}} />
       </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    initialRegion: state.map.currentRegion
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    MenuButtonPress: () => {dispatch(Actions.drawerOpen())}
+    menuButtonPress: () => {dispatch(Actions.drawerOpen())},
+    regionChange: (region) => {dispatch(Actions.updateRegion(region))}
+
   }
 }
 

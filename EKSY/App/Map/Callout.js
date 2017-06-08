@@ -20,7 +20,7 @@ export default class Callout extends Component {
             />
             <Text style={styles.description}>{description}</Text>
           </View> */}
-          {children}
+          {this.props.children}
         </View>
         <View style={styles.arrowBorder} />
         <View style={styles.arrow} />

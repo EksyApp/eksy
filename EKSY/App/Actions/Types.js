@@ -7,3 +7,4 @@ export const DRAWER_TOGGLE = "drawer toggle"
 
 export const UPDATE_CURRENT_REGION = "update current region"
 export const UPDATE_CURRENT_LOCATION = "update current location"
+export const LOCATION_KNOWN = "location known"
