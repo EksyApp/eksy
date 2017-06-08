@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, TextInput} from 'react-native'
-import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
+// import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
 import MenuButton from '../Components/MenuButton'
 import PointSelector from '../Components/PointSelector'
 import Style from './Styles/AddMarkerStyles'
@@ -36,29 +36,30 @@ class AddMarker extends Component {
 
   render() {
     return(
-      <Container>
-        <Header>
-
-          <MenuButton />
-          <Left />
-          <Body>
-            <Title>Add a new marker</Title>
-          </Body>
-        </Header>
-        <Content style={Style.container}>
-          <PointSelector onChange={(region) => this.state.region = region} style={Style.map} />
-          <TextInput
-            onChange={(event) => this.state.text = event.nativeEvent.text}
-            multiline
-            numberOfLines={10}
-            style = {Style.textInput}
-          />
-          <Button block onPress={() => this.addNewMarker()} style={Style.button}>
-            <Text style={Style.text}>Add</Text>
-          </Button>
-        </Content>
-
-      </Container>
+      // <Container>
+      //   <Header>
+      //
+      //     <MenuButton />
+      //     <Left />
+      //     <Body>
+      //       <Title>Add a new marker</Title>
+      //     </Body>
+      //   </Header>
+      //   <Content style={Style.container}>
+      //     <PointSelector onChange={(region) => this.state.region = region} style={Style.map} />
+      //     <TextInput
+      //       onChange={(event) => this.state.text = event.nativeEvent.text}
+      //       multiline
+      //       numberOfLines={10}
+      //       style = {Style.textInput}
+      //     />
+      //     <Button block onPress={() => this.addNewMarker()} style={Style.button}>
+      //       <Text style={Style.text}>Add</Text>
+      //     </Button>
+      //   </Content>
+      //
+      // </Container>
+      <View><Text>AddMarker</Text></View>
     )
   }
 }

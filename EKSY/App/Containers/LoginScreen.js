@@ -15,7 +15,7 @@ import {
 import MenuButton from '../Components/MenuButton'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
-import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item} from 'native-base'
+// import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item} from 'native-base'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import {Sae} from 'react-native-textinput-effects'
 import DismissKeyboard from 'dismissKeyboard'
@@ -74,45 +74,50 @@ class LoginScreen extends Component {
 
   render () {
     return (
-      <Container>
-        <Header>
-          <MenuButton />
-          <Left />
-          <Body>
-            <Title>Login</Title>
-          </Body>
-        </Header>
-        <Content>
-          <Form style={style.form}>
-            <Item>
-              <Input
-                style={style.input}
-                placeholder='Email'
-                onChangeText={(text) => this.setState({email: text})}
-                  />
-            </Item>
-            <Item>
-              <Input
-                style={style.input}
-                placeholder='Password'
-                onChangeText={(text) => this.setState({password: text})}
-                secureTextEntry
-                  />
-            </Item>
-          </Form>
-          <View style={style.buttons}>
-            <Button style={style.button} block onPress={() => this.login()}>
-              <Text style={style.text}>Login</Text>
-            </Button>
-            <Button style={style.button} block onPress={() => this.signup()}>
-              <Text style={style.text}>Signup</Text>
-            </Button>
-          </View>
-          <View style={style.response}>
-            <Text style={style.responseText}>{this.state.response}</Text>
-          </View>
-        </Content>
-      </Container>
+
+      // <Container>
+      //   <Header>
+      //     <MenuButton />
+      //     <Left />
+      //     <Body>
+      //       <Title>Login</Title>
+      //     </Body>
+      //   </Header>
+      //   <Content>
+      //     <Form style={style.form}>
+      //       <Item>
+      //         <Input
+      //           style={style.input}
+      //           placeholder='Email'
+      //           onChangeText={(text) => this.setState({email: text})}
+      //             />
+      //       </Item>
+      //       <Item>
+      //         <Input
+      //           style={style.input}
+      //           placeholder='Password'
+      //           onChangeText={(text) => this.setState({password: text})}
+      //           secureTextEntry
+      //             />
+      //       </Item>
+      //     </Form>
+      //     <View style={style.buttons}>
+      //       <Button style={style.button} block onPress={() => this.login()}>
+      //         <Text style={style.text}>Login</Text>
+      //       </Button>
+      //       <Button style={style.button} block onPress={() => this.signup()}>
+      //         <Text style={style.text}>Signup</Text>
+      //       </Button>
+      //     </View>
+      //     <View style={style.response}>
+      //       <Text style={style.responseText}>{this.state.response}</Text>
+      //     </View>
+      //   </Content>
+      // </Container>
+    
+      <View>
+        <Text>LoginScreen</Text>
+      </View>
     )
   }
 }

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import NavigationRouter from '../Navigation/NavigationRouter'
 import FirebaseConfig from '../includes/FirebaseConfig'
+import {Provider} from 'react-redux'
+import store from '../Store'
 
 class Main extends Component {
 
@@ -11,8 +13,9 @@ class Main extends Component {
 
   render () {
     return (
-
-      <NavigationRouter />
+      <Provider store={store}>
+        <NavigationRouter />
+      </Provider>
     )
   }
 }

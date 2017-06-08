@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Container, Content, Button, Icon } from 'native-base'
 import {PermissionsAndroid} from 'react-native'
 import Map from '../Map/Map'
 import Styles from './Styles/MapViewStyles'
@@ -7,6 +6,8 @@ import MenuButton from '../Components/MenuButton'
 import MapManager from '../Map/MapManager'
 import Marker from '../Map/Marker'
 import {View} from 'react-native'
+import * as Actions from '../Actions'
+import {connect} from 'react-redux'
 
 class MapView extends Component {
 
@@ -32,10 +33,20 @@ class MapView extends Component {
     return (
       <View style={Styles.container}>
         <Map />
-        <MenuButton transparent />
+        <MenuButton onPress = {() => {this.props.MenuButtonPress()}} />
       </View>
     )
   }
 }
 
-export default MapView
+const mapStateToProps = (state) => {
+  return {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    MenuButtonPress: () => {dispatch(Actions.drawerToggle())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapView)

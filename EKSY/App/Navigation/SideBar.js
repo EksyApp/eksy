@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Style from './Styles/SideBarStyles'
-import {Container, Content, Button} from 'native-base'
+// import {Container, Content, Button} from 'native-base'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
@@ -35,24 +35,7 @@ class SideBar extends Component {
 
   render() {
     return (
-      <Container>
-        <Content style={Style.content}>
-          <ScrollView>
-
-            <SideBarLogo />
-
-            <Button light full onPress={() => this.goToMap()} style={Style.button}>
-              <Text>Map</Text>
-            </Button>
-            <Button light full onPress={() => this.goToAddMarker()} style={Style.button}>
-              <Text>Add a marker</Text>
-            </Button>
-            <Button light full onPress={() => this.goToLoginScreen()} style={Style.button}>
-              <Text>Login</Text>
-            </Button>
-          </ScrollView>
-        </Content>
-      </Container>
+      <View><Text>SideBar</Text></View>
     )
   }
 }
