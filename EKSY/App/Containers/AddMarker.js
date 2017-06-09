@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput} from 'react-native'
+import {View, Text, TextInput, StyleSheet} from 'react-native'
 // import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
 import MenuButton from '../Components/MenuButton'
 import PointSelector from '../Components/PointSelector'
 import Style from './Styles/AddMarkerStyles'
 import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
-import {Actions} from 'react-native-router-flux'
 import Header from '../Components/Header'
+import * as Actions from '../Actions'
+import {connect} from 'react-redux'
+import {BackgroundColor} from '../Theme'
+import {Grid, Row, FormInput} from 'react-native-elements'
 
 class AddMarker extends Component {
 
@@ -61,11 +64,54 @@ class AddMarker extends Component {
       //
       // </Container>
 
-      <View>
-        <Header title="Add Marker" />
+      <View style={styles.container}>
+        <Header title="Add Marker" menuButtonPress={this.props.menuButtonPress} />
+        <Grid>
+          <Row size={2}>
+            <PointSelector onChange={this.props.regionChange} initialRegion={this.props.initialRegion} style={styles.map} />
+          </Row>
+          <Row size={2}>
+            <FormInput onChangeText={(text) => this.setState({text: text})} multiline numberOfLines={8} style={styles.textArea} />
+          </Row>
+          <Row size={1}>
+
+          </Row>
+        </Grid>
       </View>
     )
   }
 }
 
-export default AddMarker
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: BackgroundColor,
+    flex: 1
+  },
+
+  map: {
+    flex: 1,
+  },
+
+  textArea: {
+    flex:1,
+    textAlignVertical: 'top',
+    width: '100%'
+  }
+
+
+})
+
+const mapStateToProps = (state) => {
+  return {
+    initialRegion: state.map.currentRegion
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    menuButtonPress: () => {dispatch(Actions.drawerOpen())},
+    regionChange: (region) => {dispatch(Actions.updateRegion(region))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMarker)
