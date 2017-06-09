@@ -11,7 +11,7 @@ class Header extends Component {
     return(
       <View style={styles.container}>
         <MenuButton />
-        <Text>{this.props.title}</Text>
+        <Text style={styles.text}>{this.props.title}</Text>
       </View>
     )
   }
@@ -22,7 +22,14 @@ const styles = StyleSheet.create({
 
   container: {
     height: 50,
-    backgroundColor: Theme.FrontgroundColor
+    backgroundColor: Theme.FrontgroundColor,
+    justifyContent: 'center'
+  },
+
+  text: {
+    alignSelf: 'center',
+    fontSize: 18,
+    color: Theme.FontColor
   }
 
 })
