@@ -1,6 +1,3 @@
-/**
-* @class Login
-*/
 
 import {
   Text,
@@ -10,14 +7,22 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 
+import {
+    Grid,
+    Row,
+    FormLabel,
+    FormInput
+} from 'react-native-elements'
+
+import Header from '../Components/Header'
 import MenuButton from '../Components/MenuButton'
 import Button from '../Components/Button'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
 import PostOffice from '../lib/PostOffice'
-import { FormLabel, FormInput } from 'react-native-elements'
-import Header from '../Components/Header'
+import {connect} from 'react-redux'
+import * as Actions from '../Actions'
 
 class LoginScreen extends Component {
   constructor (props) {
@@ -70,9 +75,8 @@ class LoginScreen extends Component {
 
   render () {
     return (
-
       <View>
-        <Header />
+        <Header title="Login/Signup" menuButtonPress={this.props.menuButtonPress}/>
         <View>
           <FormLabel>Email</FormLabel>
           <FormInput
@@ -132,4 +136,14 @@ const styles = StyleSheet.create({
 
 })
 
-export default LoginScreen
+const mapStateToProps = (state) => {
+  return {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    menuButtonPress: () => { dispatch(Actions.drawerOpen()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
