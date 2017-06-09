@@ -1,16 +1,15 @@
 import React, {Component} from 'react'
 import {View, Text, TextInput, StyleSheet} from 'react-native'
 // import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
-import MenuButton from '../Components/MenuButton'
 import PointSelector from '../Components/PointSelector'
-import Style from './Styles/AddMarkerStyles'
 import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
 import Header from '../Components/Header'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
-import {BackgroundColor} from '../Theme'
-import {Grid, Row, FormInput} from 'react-native-elements'
+import {BackgroundColor, FrontgroundColor} from '../Theme'
+import {Grid, Row, FormInput, Button} from 'react-native-elements'
+import ActionButton from '../Components/ActionButton'
 
 class AddMarker extends Component {
 
@@ -30,14 +29,13 @@ class AddMarker extends Component {
     let longitude = this.state.region.longitude;
 
     Actions.mapView();
-    let marker = new Marker(latitude, longitude, 0);
-    marker.setIdFromCounter();
-    marker.setText(this.state.text);
+    let marker = <Marker latitude={latitude} longitude={longitude} key={Marker.getNextID()} text={this.state.text}/>;
     this.mapManager.addMarker(marker);
     setTimeout(() => this.mapManager.flyToPosition(latitude, longitude), 1000)
     // this.mapManager.update();
   }
 
+  
   render() {
     return(
       // <Container>
@@ -67,14 +65,14 @@ class AddMarker extends Component {
       <View style={styles.container}>
         <Header title="Add Marker" menuButtonPress={this.props.menuButtonPress} />
         <Grid>
-          <Row size={2}>
-            <PointSelector onChange={this.props.regionChange} initialRegion={this.props.initialRegion} style={styles.map} />
+          <Row size={2} containerStyle={styles.row}>
+            <PointSelector onChange={(region) => {this.setState({region: region})}} initialRegion={this.props.initialRegion} style={styles.map} />
           </Row>
-          <Row size={2}>
+          <Row size={2} containerStyle={styles.row}>
             <FormInput onChangeText={(text) => this.setState({text: text})} multiline numberOfLines={8} style={styles.textArea} />
           </Row>
-          <Row size={1}>
-
+          <Row size={1} containerStyle={styles.row}>
+            <ActionButton title="Add" onPress={() => {this.addNewMarker()}} />
           </Row>
         </Grid>
       </View>
@@ -88,6 +86,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
 
+  row: {
+    width: '100%'
+  },
+
   map: {
     flex: 1,
   },
@@ -95,7 +97,9 @@ const styles = StyleSheet.create({
   textArea: {
     flex:1,
     textAlignVertical: 'top',
-    width: '100%'
+    width: '100%',
+    backgroundColor: FrontgroundColor,
+    marginTop: 10
   }
 
 
