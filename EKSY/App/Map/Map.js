@@ -97,7 +97,7 @@ export default class Map extends Component {
       onRegionChangeComplete = {(region) => this.handleRegionChange(region)}
       showsUserLocation
       >
-      {this._manager.getMarkers().map((marker, index) => marker.getComponent())}
+      {this._manager.getMarkers().map((marker, index) => marker.render())}
       {this.renderPampylat()}
       </MapView>
     )

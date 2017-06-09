@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Styles from './Styles/MenuButtonStyle'
 import PostOffice from '../lib/PostOffice'
 import {Button, Icon} from 'react-native-elements'
+import * as Theme from '../Theme'
 
 class MenuButton extends Component {
 
@@ -23,7 +24,7 @@ const style = {
   },
 
   iconStyle: {
-    color: "blue",
+    color: Theme.AccentColor,
   }
 }
 export default MenuButton

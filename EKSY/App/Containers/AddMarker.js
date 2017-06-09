@@ -7,6 +7,7 @@ import Style from './Styles/AddMarkerStyles'
 import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
 import {Actions} from 'react-native-router-flux'
+import Header from '../Components/Header'
 
 class AddMarker extends Component {
 
@@ -59,7 +60,10 @@ class AddMarker extends Component {
       //   </Content>
       //
       // </Container>
-      <View><Text>AddMarker</Text></View>
+
+      <View>
+        <Header title="Add Marker" />
+      </View>
     )
   }
 }
