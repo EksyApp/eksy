@@ -19,12 +19,17 @@ class SideBar extends Component {
   }
 
   goToLoginScreen() {
-    Actions.login()
+    Actions.login();
     this.closeDrawer();
   }
 
   goToAddMarker() {
-    Actions.login()
+    Actions.addMarker();
+    this.closeDrawer();
+  }
+
+  goToMap() {
+    Actions.mapView();
     this.closeDrawer();
   }
 
@@ -36,6 +41,9 @@ class SideBar extends Component {
 
             <SideBarLogo />
 
+            <Button light full onPress={() => this.goToMap()} style={Style.button}>
+              <Text>Map</Text>
+            </Button>
             <Button light full onPress={() => this.goToAddMarker()} style={Style.button}>
               <Text>Add a marker</Text>
             </Button>

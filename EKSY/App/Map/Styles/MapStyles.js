@@ -1,6 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-const windowDim = Dimensions.get('window')
 
 export default StyleSheet.create({
   container: {
@@ -9,8 +8,11 @@ export default StyleSheet.create({
     alignItems: 'center',               // Center button horizontally
   },
   map: {
-    width: windowDim.width,
-    height: windowDim.height
+    position:'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   buttonContainer: {
     marginVertical: 20,

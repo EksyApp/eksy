@@ -1,26 +1,39 @@
 import React, {Component} from 'react'
 import { Container, Content, Button, Icon } from 'native-base'
-import Map from './Map'
-import PostOffice from '../lib/PostOffice'
+import {PermissionsAndroid} from 'react-native'
+import Map from '../Map/Map'
 import Styles from './Styles/MapViewStyles'
 import MenuButton from '../Components/MenuButton'
+import MapManager from '../Map/MapManager'
+import Marker from '../Map/Marker'
+import {View} from 'react-native'
 
 class MapView extends Component {
 
-  constructor(props) {
-    super(props);
-    this.po = new PostOffice();
+  constructor (props) {
+    super(props)
+
+    this.requestLocationPermission()
+
+    // let marker = new Marker(60.185359, 24.951338, 1);
+    // marker.setText("Testi text");
+    // new MapManager().addMarker(marker);
   }
 
-  render() {
-    console.log(Styles);
+  async requestLocationPermission () {
+    try {
+      await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+    } catch (err) {
+      console.warn(err)
+    }
+  }
+
+  render () {
     return (
-      <Container style={Styles.container}>
-        <Content style={Styles.container}>
-          <MenuButton transparent />
-          <Map />
-        </Content>
-      </Container>
+      <View style={Styles.container}>
+        <Map />
+        <MenuButton transparent />
+      </View>
     )
   }
 }
