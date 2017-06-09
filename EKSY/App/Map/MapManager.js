@@ -60,8 +60,9 @@ class MapManager {
     if (this._reduxState && this._reduxState.map.location.isKnown) {
       this._currentLocationMoveRequested = false
       this.flyToPosition(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
+    } else {
+      this._currentLocationMoveRequested = true
     }
-    this._currentLocationMoveRequested = true
   }
 
   flyToPosition(latitude, longitude) {
