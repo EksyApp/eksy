@@ -34,11 +34,10 @@ describe('LoginScreen', () => {
   })
 
   it('changes response when login() is called', () => {
-    let loginScreen = shallow(<LoginScreen />);
+    let loginScreen = shallow(<LoginScreen />)
     let responseAtFirst = loginScreen.instance().state.response
     return loginScreen.instance().login().then(() => {
       expect(loginScreen.instance().state.response).not.toEqual(responseAtFirst)
     })
   })
-
 })
