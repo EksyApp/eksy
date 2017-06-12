@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import Style from './Styles/SideBarStyles'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
 import Button from '../Components/Button'
 import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
+import * as Theme from '../Theme'
 
 class SideBar extends Component {
 
@@ -36,7 +36,7 @@ const styles = {
     flex: 1,
     flexDirection: 'column',
     // Placeholder background color
-    backgroundColor: '#fff'
+    backgroundColor: Theme.backgroundColor,
   },
   buttonList: {
     flexDirection: 'column',

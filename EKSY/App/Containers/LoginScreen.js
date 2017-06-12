@@ -9,20 +9,20 @@ import {
 
 import {
     Grid,
-    Row,
-    FormLabel,
-    FormInput
+    Row
 } from 'react-native-elements'
 
 import Header from '../Components/Header'
 import MenuButton from '../Components/MenuButton'
 import Button from '../Components/Button'
+import Input from '../Components/Input'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
 import PostOffice from '../lib/PostOffice'
 import {connect} from 'react-redux'
 import * as Actions from '../Actions'
+import * as Theme from '../Theme'
 
 class LoginScreen extends Component {
   constructor (props) {
@@ -75,21 +75,24 @@ class LoginScreen extends Component {
 
   render () {
     return (
-      <View>
-        <Header title="Login/Signup" menuButtonPress={this.props.menuButtonPress}/>
+      <View style={styles.container}>
+        <Header title='Login/Signup' menuButtonPress={this.props.menuButtonPress} />
         <View>
-          <FormLabel>Email</FormLabel>
-          <FormInput
-            onChangeText={(text) => this.setState({email: text})}
+          <Input
+            label='Email'
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
+            placeholder='user@gmail.com'
           />
         </View>
-
         <View>
-          <FormLabel>Password</FormLabel>
-          <FormInput
-            onChangeText={(text) => this.setState({password: text})}
+          <Input
+            label='Password'
+            value={this.state.password}
+            onChangeText={password => this.setState({ password })}
+            placeholder='your password'
             secureTextEntry
-          />
+        />
         </View>
         <View style={styles.buttons}>
           <Button onPress={() => this.login()}>
@@ -108,26 +111,20 @@ class LoginScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  input: {
-    marginTop: 20
+  container: {
+    flex: 1,
+    backgroundColor: Theme.backgroundColor
   },
 
   buttons: {
     marginTop: 50
   },
 
-  text: {
-    color: 'white'
-  },
-
-  form: {
-    marginTop: 50
-  },
-
   responseText: {
     textAlign: 'center',
     width: '100%',
-    fontSize: 18
+    fontSize: 18,
+    color: 'white'
   },
 
   response: {
@@ -137,7 +134,7 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state) => {
-  return {};
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {

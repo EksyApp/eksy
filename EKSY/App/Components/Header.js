@@ -28,14 +28,15 @@ const styles = StyleSheet.create({
 
   container: {
     height: 50,
-    backgroundColor: Theme.frontgroundColor,
+    backgroundColor: Theme.backgroundColor,
     justifyContent: 'center'
   },
 
   text: {
     alignSelf: 'center',
-    fontSize: 18,
-    color: Theme.fontColor
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Theme.accentColor
   }
 
 })
