@@ -8,7 +8,7 @@ import Header from '../Components/Header'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
-import {BackgroundColor, FrontgroundColor} from '../Theme'
+import {backgroundColor, frontgroundColor} from '../Theme'
 import {Grid, Row, FormInput, Button} from 'react-native-elements'
 import ActionButton from '../Components/ActionButton'
 
@@ -85,27 +85,29 @@ class AddMarker extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: BackgroundColor,
-    flex: 1
-  },
+	container: {
+		backgroundColor: backgroundColor,
+		flex: 1
+	},
 
-  row: {
-    width: '100%'
-  },
+	row: {
+		width: '100%'
+	},
 
-  map: {
-    flex: 1
-  },
+	map: {
+		flex: 1,
+	},
 
-  textArea: {
-    flex: 1,
-    textAlignVertical: 'top',
-    width: '100%',
-    backgroundColor: FrontgroundColor,
-    marginTop: 10
-  }
+	textArea: {
+		flex: 1,
+		textAlignVertical: 'top',
+		width: '100%',
+		backgroundColor: frontgroundColor,
+		marginTop: 10
+	}
 
+
+>>>>>>> 382418bececaea36fb934a9c5ce022cbe0a56fab
 })
 
 const mapStateToProps = (state) => {

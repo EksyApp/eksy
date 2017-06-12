@@ -25,7 +25,7 @@ const style = {
   },
 
   iconStyle: {
-    color: Theme.AccentColor,
+    color: Theme.accentColor,
   }
 }
 export default MenuButton

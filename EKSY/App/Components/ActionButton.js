@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {StyleSheet} from 'react-native'
 import {Button} from 'react-native-elements'
-import {AccentColor, FontLightColor} from '../Theme'
+import {accentColor, fontLightColor} from '../Theme'
 
 class ActionButton extends Component {
 
@@ -23,13 +23,13 @@ const styles = StyleSheet.create({
 
   button: {
     width: '50%',
-    backgroundColor: AccentColor,
+    backgroundColor: accentColor,
     alignSelf: 'center',
     margin: 10
   },
 
   text: {
-    color: FontLightColor
+    color: fontLightColor
   }
 })
 
