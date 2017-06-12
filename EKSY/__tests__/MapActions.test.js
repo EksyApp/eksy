@@ -16,3 +16,28 @@ describe('actions', () => {
     expect(actions.updateRegion(region)).toEqual(expectedAction)
   })
 })
+
+describe('actions', () => {
+  it('should create an action to update location', () => {
+    const position = {
+      latitude: 37.78825,
+      longitude: -122.4324
+    }
+    const expectedAction = {
+      type: types.UPDATE_CURRENT_LOCATION,
+      position
+    }
+    expect(actions.updateLocation(position)).toEqual(expectedAction)
+  })
+})
+
+describe('actions', () => {
+  it('should create an action depending if location is known', () => {
+    const isKnown = true
+    const expectedAction = {
+      type: types.LOCATION_KNOWN,
+      isKnown
+    }
+    expect(actions.locationKnown(isKnown)).toEqual(expectedAction)
+  })
+})
