@@ -8,7 +8,7 @@ import Header from '../Components/Header'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
-import {BackgroundColor, FrontgroundColor} from '../Theme'
+import {backgroundColor, frontgroundColor} from '../Theme'
 import {Grid, Row, FormInput, Button} from 'react-native-elements'
 import ActionButton from '../Components/ActionButton'
 
@@ -85,7 +85,7 @@ class AddMarker extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: BackgroundColor,
+		backgroundColor: backgroundColor,
 		flex: 1
 	},
 	
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		textAlignVertical: 'top',
 		width: '100%',
-		backgroundColor: FrontgroundColor,
+		backgroundColor: frontgroundColor,
 		marginTop: 10
 	}
 	
