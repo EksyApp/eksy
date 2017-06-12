@@ -4,33 +4,33 @@ import store from '../Store'
 let instance = null
 
 class MapManager {
-  constructor() {
+  constructor () {
     if (!instance) {
-      this._markers = new Array();
-      this._map = null;
-      this._currentLocationMoveRequested = false;
-      this._reduxState = null;
+      this._markers = new Array()
+      this._map = null
+      this._currentLocationMoveRequested = false
+      this._reduxState = null
       store.subscribe(() => this.storeListener())
-      this.startLocationWatcher();
-      instance = this;
+      this.startLocationWatcher()
+      instance = this
     }
-    return instance;
+    return instance
   }
 
-  storeListener() {
-    this._reduxState = store.getState();
+  storeListener () {
+    this._reduxState = store.getState()
     this.handleFlyingToCurrentLocation()
   }
 
-  handleFlyingToCurrentLocation() {
-    console.log("handleFlyingToCurrentLocation")
+  handleFlyingToCurrentLocation () {
+    console.log('handleFlyingToCurrentLocation')
     console.log(this._currentLocationMoveRequested)
     if (this._currentLocationMoveRequested) {
       this.goToCurrentPosition()
     }
   }
 
-  startLocationWatcher() {
+  startLocationWatcher () {
     navigator.geolocation.watchPosition(
       (position) => {
         store.dispatch(Actions.updateLocation(position.coords))
@@ -41,20 +41,20 @@ class MapManager {
     )
   }
 
-  addMarker(marker) {
-    this._markers.push(marker);
+  addMarker (marker) {
+    this._markers.push(marker)
   }
 
-  getMarkers() {
-    return this._markers;
+  getMarkers () {
+    return this._markers
   }
 
-  setMapObject(map) {
-    this._map = map;
+  setMapObject (map) {
+    this._map = map
   }
 
-  goToCurrentPosition() {
-    console.log("goToCurrentPosition")
+  goToCurrentPosition () {
+    console.log('goToCurrentPosition')
     console.log(this._currentLocationMoveRequested)
     console.log(this._reduxState)
     if (this._reduxState && this._reduxState.map.location.isKnown) {
@@ -65,13 +65,12 @@ class MapManager {
     }
   }
 
-  flyToPosition(latitude, longitude) {
+  flyToPosition (latitude, longitude) {
     let position = {
       latitude: latitude,
-      longitude: longitude,
+      longitude: longitude
     }
     this._map.animateToCoordinate(position, 1000)
-
   }
 
 }
