@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import Styles from './Styles/MenuButtonStyle'
+//import Styles from './Styles/MenuButtonStyle'
+//import styles from './Styles/LoginScreenStyles'
 import PostOffice from '../lib/PostOffice'
 import {Button, Icon} from 'react-native-elements'
 import * as Theme from '../Theme'
