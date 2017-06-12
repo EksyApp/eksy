@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet} from 'react-native'
-// import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
+import {View, Text, TextInput, StyleSheet, Keyboard} from 'react-native'
 import PointSelector from '../Components/PointSelector'
 import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
@@ -29,6 +28,7 @@ class AddMarker extends Component {
 		let longitude = this.props.currentRegion.longitude;
 		let marker = <Marker latitude={latitude} longitude={longitude} text={this.state.text}/>;
 		this.mapManager.addMarker(marker);
+		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(latitude, longitude), 1000)
 		Actions.mapView();
 		// this.mapManager.update();
