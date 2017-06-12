@@ -105,9 +105,6 @@ const styles = StyleSheet.create({
 		backgroundColor: frontgroundColor,
 		marginTop: 10
 	}
-
-
->>>>>>> 382418bececaea36fb934a9c5ce022cbe0a56fab
 })
 
 const mapStateToProps = (state) => {
