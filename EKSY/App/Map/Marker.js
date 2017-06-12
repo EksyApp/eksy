@@ -5,17 +5,10 @@ import Callout from './Callout'
 import PropTypes from 'prop-types'
 import {Text} from 'react-native'
 
-let idCounter = -1
-
 class Marker extends Component {
   constructor (props) {
     super(props)
-    this.key = Marker.getNextID()
-  }
-
-  static getNextID () {
-    idCounter++
-    return idCounter
+    this._key = Marker.getNextID()
   }
 
   render () {
@@ -23,7 +16,6 @@ class Marker extends Component {
       <MapView.Marker
         coordinate={{latitude: this.props.latitude, longitude: this.props.longitude}}
         pinColor={this.props.color}
-        key={this._key}
 				>
         <MapView.Callout
           tooltip

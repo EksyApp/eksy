@@ -16,14 +16,14 @@ import Marker from '../Map/Marker'
 import testData from '../includes/data/Sarjakuvat.json'
 
 export default class Map extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
 		this.po = new PostOffice();
-		
+
 		// testData.features.map((pampyla, index) => {
 		// 	let marker = {
 		// 		longitude: pampyla.geometry.coordinates[0],
@@ -33,26 +33,20 @@ export default class Map extends Component {
 		// 	this._manager.addMarker(marker)
 		// })
 	}
-	
-	
+
+
 	animateToCoordinate(position, delay) {
 		this._map.animateToCoordinate(position, delay)
 	}
-	
+
 	handleRegionChange(region) {
 		this.props.regionChange(region)
 	}
-	
+
 	renderMarkers() {
-		return this._manager.getMarkers().map((marker, index) =>
-			<Marker
-					latitude={marker.latitude}
-					longitude={marker.longitude}
-					text={marker.text}
-			/>
-		)
+		return this._manager.getMarkers().map((marker, index) => marker)
 	}
-	
+
 	renderMapView() {
 		return (
 				<MapView
@@ -67,7 +61,7 @@ export default class Map extends Component {
 				</MapView>
 		)
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
@@ -75,7 +69,7 @@ export default class Map extends Component {
 				</View>
 		)
 	}
-	
+
 }
 
 
@@ -107,8 +101,3 @@ export default class Map extends Component {
 // 		)
 // 	})
 // }
-	
-	
-	
-	
-	
