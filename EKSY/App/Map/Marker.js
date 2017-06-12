@@ -8,7 +8,6 @@ import {Text} from 'react-native'
 class Marker extends Component {
   constructor (props) {
     super(props)
-    this._key = Marker.getNextID()
   }
 
   render () {
