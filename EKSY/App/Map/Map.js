@@ -98,7 +98,7 @@ export default class Map extends Component {
       showsUserLocation
       showCompass = {false}
       >
-      {this._manager.getMarkers().map((marker, index) => {marker})}
+      {this._manager.getMarkers().map((marker, index) => marker)}
       {this.renderPampylat()}
       </MapView>
     )
