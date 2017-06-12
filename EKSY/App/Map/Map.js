@@ -93,11 +93,12 @@ export default class Map extends Component {
       <MapView
       ref={(ref) => this._map = ref}
       style={styles.map}
-      initialRegion={this.props.initialRegion}
+      initialRegion={this.props.currentRegion}
       onRegionChangeComplete = {(region) => this.handleRegionChange(region)}
       showsUserLocation
+      showCompass = {false}
       >
-      {this._manager.getMarkers().map((marker, index) => marker.render())}
+      {this._manager.getMarkers().map((marker, index) => {marker})}
       {this.renderPampylat()}
       </MapView>
     )

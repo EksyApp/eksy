@@ -32,7 +32,7 @@ class MapView extends Component {
   render () {
     return (
       <View style={Styles.container}>
-        <Map initialRegion={this.props.initialRegion} regionChange={this.props.regionChange} />
+        <Map currentRegion={this.props.currentRegion} regionChange={this.props.regionChange} />
         <MenuButton onPress = {() => {this.props.menuButtonPress()}} />
       </View>
     )
@@ -41,7 +41,7 @@ class MapView extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    initialRegion: state.map.currentRegion
+    currentRegion: state.map.currentRegion
   }
 }
 
