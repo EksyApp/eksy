@@ -29,7 +29,7 @@ export default Input;
 
 const styles = StyleSheet.create({
   containerStyle: {
-  backgroundColor: Theme.inputColor,
+  backgroundColor: Theme.frontgroundColor,
   margin: 10
   },
   inputStyle:{

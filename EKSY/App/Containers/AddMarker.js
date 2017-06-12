@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlignVertical: 'top',
     width: '100%',
-    backgroundColor: Theme.inputColor,
+    backgroundColor: Theme.frontgroundColor,
     marginTop: 20
   },
 
