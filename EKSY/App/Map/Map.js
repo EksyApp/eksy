@@ -53,7 +53,7 @@ export default class Map extends Component {
 						ref={(ref) => this._map = ref}
 						style={styles.map}
 						initialRegion={this.props.currentRegion}
-						onRegionChangeComplete={(region) => this.handleRegionChange(region)}
+						onRegionChange={(region) => this.handleRegionChange(region)}
 						showsUserLocation
 						showCompass={false}
 				>
