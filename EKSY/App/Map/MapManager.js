@@ -4,6 +4,7 @@ import store from '../Store'
 let instance = null
 
 class MapManager {
+	
 	constructor() {
 		if (!instance) {
 			this._markers = new Array();
@@ -23,8 +24,6 @@ class MapManager {
 	}
 	
 	handleFlyingToCurrentLocation() {
-		console.log("handleFlyingToCurrentLocation")
-		console.log(this._currentLocationMoveRequested)
 		if (this._currentLocationMoveRequested) {
 			this.goToCurrentPosition()
 		}
