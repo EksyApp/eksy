@@ -18,7 +18,8 @@ describe('LoginScreen', () => {
     let loginScreen = shallow(<LoginScreen />)
     loginScreen.instance().login = loginMock
     loginScreen.update()
-    loginScreen.find('[block=true]').first().simulate('press')
+    //onko Button oikein? Löytääkö oikean elementin?
+    loginScreen.find('Button').first().simulate('press')
     expect(loginMock.mock.calls.length).toBe(1)
   })
 
@@ -27,16 +28,16 @@ describe('LoginScreen', () => {
     let loginScreen = shallow(<LoginScreen />)
     loginScreen.instance().signup = signupMock
     loginScreen.update()
-    loginScreen.find('[block=true]').last().simulate('press')
+    //onko Button oikein? Löytääkö oikean elementin?
+    loginScreen.find('Button').last().simulate('press')
     expect(signupMock.mock.calls.length).toBe(1)
   })
 
   it('changes response when login() is called', () => {
-    let loginScreen = shallow(<LoginScreen />);
+    let loginScreen = shallow(<LoginScreen />)
     let responseAtFirst = loginScreen.instance().state.response
     return loginScreen.instance().login().then(() => {
       expect(loginScreen.instance().state.response).not.toEqual(responseAtFirst)
     })
   })
-
 })

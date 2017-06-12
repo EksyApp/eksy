@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet} from 'react-native'
-// import {Container, Content, Header, Body, Title, Left, Button} from 'native-base'
+import {View, Text, TextInput, StyleSheet, Keyboard} from 'react-native'
 import PointSelector from '../Components/PointSelector'
 import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
@@ -13,7 +12,6 @@ import {Grid, Row, FormInput} from 'react-native-elements'
 import Button from '../Components/Button'
 
 class AddMarker extends Component {
-
   constructor (props) {
     super(props)
 
@@ -25,60 +23,41 @@ class AddMarker extends Component {
   }
 
   addNewMarker () {
-    let latitude = this.props.currentRegion.latitude
-    let longitude = this.props.currentRegion.longitude
-    let marker = <Marker latitude={latitude} longitude={longitude} text={this.state.text} />
+    let marker = {
+      latitude: this.props.currentRegion.latitude,
+      longitude: this.props.currentRegion.longitude,
+      text: this.state.text
+    }
     this.mapManager.addMarker(marker)
-    setTimeout(() => this.mapManager.flyToPosition(latitude, longitude), 1000)
+    Keyboard.dismiss()
+    setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
     Actions.mapView()
-		// this.mapManager.update();
   }
 
   render () {
     return (
-				// <Container>
-				//   <Header>
-				//
-				//     <MenuButton />
-				//     <Left />
-				//     <Body>
-				//       <Title>Add a new marker</Title>
-				//     </Body>
-				//   </Header>
-				//   <Content style={Style.container}>
-				//     <PointSelector onChange={(region) => this.state.region = region} style={Style.map} />
-				//     <TextInput
-				//       onChange={(event) => this.state.text = event.nativeEvent.text}
-				//       multiline
-				//       numberOfLines={10}
-				//       style = {Style.textInput}
-				//     />
-				//     <Button block onPress={() => this.addNewMarker()} style={Style.button}>
-				//       <Text style={Style.text}>Add</Text>
-				//     </Button>
-				//   </Content>
-				//
-				// </Container>
-
       <View style={styles.container}>
         <Header title='Add Marker' menuButtonPress={this.props.menuButtonPress} />
         <Grid>
-          <Row size={2} containerStyle={styles.row}>
+          <Row size={3} containerStyle={styles.row}>
             <PointSelector onChange={(region) => {
               this.props.regionChange(region)
             }} currentRegion={this.props.currentRegion} style={styles.map} />
           </Row>
           <Row size={2} containerStyle={styles.row}>
-            <FormInput onChangeText={(text) => this.setState({text: text})} multiline numberOfLines={5} style={styles.textArea} />
+            <FormInput onChangeText={(text) => this.setState({text: text})} multiline numberOfLines={5}
+              style={styles.textArea} />
           </Row>
           <Row size={1} containerStyle={styles.row}>
+					<View style={styles.buttons}>
             <Button onPress={() => {this.addNewMarker()}}>
 							Add
 						</Button>
+						</View>
           </Row>
         </Grid>
       </View>
-		)
+    )
   }
 }
 
@@ -102,8 +81,11 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Theme.inputColor,
     marginTop: 20
-  }
+  },
 
+	buttons: {
+		flex:1
+	}
 })
 
 const mapStateToProps = (state) => {
