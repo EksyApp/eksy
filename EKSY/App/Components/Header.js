@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import * as Theme from '../Theme'
 import {StyleSheet, View, Text} from 'react-native'
 import MenuButton from './MenuButton'
+import MenuBackButton from './MenuBackButton'
 import {PropTypes} from 'prop-types'
 
 console.log(Theme)
@@ -9,9 +10,14 @@ console.log(Theme)
 class Header extends Component {
 
   render() {
+    let button = <MenuButton onPress={this.props.menuButtonPress} />
+    if(this.props.backButton) {
+      button = <MenuBackButton />
+    }
+    
     return(
       <View style={styles.container}>
-        <MenuButton onPress={this.props.menuButtonPress} />
+        {button}
         <Text style={styles.text}>{this.props.title}</Text>
       </View>
     )
@@ -21,7 +27,8 @@ class Header extends Component {
 
 Header.propTypes = {
   title: PropTypes.string,
-  menuButtonPress: PropTypes.func.isRequired
+  menuButtonPress: PropTypes.func,
+  backButton : PropTypes.bool
 }
 
 const styles = StyleSheet.create({

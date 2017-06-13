@@ -1,21 +1,22 @@
 import {MARKER_SELECTED} from '../Actions/Types'
 
 const initial = {
-	marker: null
+	marker: {
+		latitude: null,
+		longitude: null,
+		color: "",
+		text: "",
+		title: "",
+		images: []
+	}
 }
 
 export default function(state = initial, action) {
 	switch(action.type) {
-		case UPDATE_CURRENT_LOCATION:
+		case MARKER_SELECTED:
 			return {
 				...state,
-				latitude: action.position.latitude,
-				longitude: action.position.longitude
-			}
-		case LOCATION_KNOWN:
-			return {
-				...state,
-				isKnown: action.isKnown
+				marker: action.marker
 			}
 		default:
 			return state

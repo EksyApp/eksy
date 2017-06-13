@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {StyleSheet, TouchableOpacity} from 'react-native'
+import PropTypes from 'prop-types'
 
 class Image extends Component {
 	

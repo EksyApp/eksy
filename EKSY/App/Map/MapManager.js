@@ -49,7 +49,7 @@ class MapManager {
 	}
 
 	addMarker(marker) {
-		let markerComponent = <Marker latitude={marker.latitude} longitude={marker.longitude} text={marker.text} key={MapManager.getNextID()}/>
+		let markerComponent = <Marker title={marker.title} images={marker.images} latitude={marker.latitude} longitude={marker.longitude} text={marker.text} key={MapManager.getNextID()}/>
 		this._markers.push(markerComponent);
 	}
 

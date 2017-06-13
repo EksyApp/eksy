@@ -1,108 +1,137 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet, Keyboard} from 'react-native'
+import {View, Text, TextInput, StyleSheet, Keyboard, ScrollView} from 'react-native'
 import PointSelector from '../Components/PointSelector'
-import Marker from '../Map/Marker'
 import MapManager from '../Map/MapManager'
 import Header from '../Components/Header'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
-import {Grid, Row, FormInput} from 'react-native-elements'
 import Button from '../Components/Button'
+import Input from '../Components/Input'
+import TextArea from '../Components/TextArea'
 
 class AddMarker extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      text: ''
-    }
-
-    this.mapManager = new MapManager()
-  }
-
-  addNewMarker () {
-    let marker = {
-      latitude: this.props.currentRegion.latitude,
-      longitude: this.props.currentRegion.longitude,
-      text: this.state.text
-    }
-    this.mapManager.addMarker(marker)
-    Keyboard.dismiss()
-    setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
-    Actions.mapView()
-  }
-
-  render () {
-    return (
-      <View style={styles.container}>
-        <Header title='Add Marker' menuButtonPress={this.props.menuButtonPress} />
-        <Grid>
-          <Row size={3} containerStyle={styles.row}>
-            <PointSelector onChange={(region) => {
-              this.props.regionChange(region)
-            }} currentRegion={this.props.currentRegion} style={styles.map} />
-          </Row>
-          <Row size={2} containerStyle={styles.row}>
-            <FormInput onChangeText={(text) => this.setState({text: text})} multiline numberOfLines={5}
-              style={styles.textArea} />
-          </Row>
-          <Row size={1} containerStyle={styles.row}>
-					<View style={styles.buttons}>
-            <Button onPress={() => {this.addNewMarker()}}>
-							Add
-						</Button>
+	constructor(props) {
+		super(props)
+		
+		this._urlField = null;
+		
+		this.state = {
+			text: '',
+			title: '',
+			url: '',
+			images: []
+		}
+		
+		this.mapManager = new MapManager()
+	}
+	
+	addNewMarker() {
+		let marker = {
+			latitude: this.props.currentRegion.latitude,
+			longitude: this.props.currentRegion.longitude,
+			text: this.state.text,
+			title: this.state.title,
+			images: this.state.images
+		}
+		this.mapManager.addMarker(marker)
+		Keyboard.dismiss()
+		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
+		Actions.mapView()
+	}
+	
+	_addImage() {
+		this.setState({
+			url: '',
+			images: [...this.state.images, {uri: this.state.uri}]
+		});
+	}
+	
+	render() {
+		return (
+				<View style={styles.container}>
+					<Header title='Add Marker' menuButtonPress={this.props.menuButtonPress}/>
+					<View style={styles.container}>
+						<View style={styles.mapContainer}>
+							<PointSelector onChange={(region) => {
+								this.props.regionChange(region)
+							}} currentRegion={this.props.currentRegion} style={styles.map}/>
 						</View>
-          </Row>
-        </Grid>
-      </View>
-    )
-  }
+						<ScrollView>
+							<View style={styles.formContainer}>
+								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
+								<TextArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
+								<Input value={this.state.url} label="Image URL" onChangeText={(text) => this.setState({url: text})}/>
+								<Button onPress={() => this._addImage()}>
+									Add image
+								</Button>
+								
+							</View>
+							<View style={styles.buttonContainer}>
+								
+								<Button onPress={() => {
+									this.addNewMarker()
+								}}>
+									Add marker
+								</Button>
+							</View>
+						</ScrollView>
+					
+					</View>
+				</View>
+		)
+	}
+	
+	
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Theme.backgroundColor,
-    flex: 1
-  },
+	container: {
+		backgroundColor: Theme.backgroundColor,
+		flex: 1
+	},
+	
+	mapContainer: {
+		height: '50%',
+		width: '100%'
+	},
+	
+	buttonContainer: {
+		marginTop: 10,
+		marginBottom:20
+	},
+	
+	map: {
+		...StyleSheet.absoluteFillObject
+	},
+	
+	textArea: {
+		flex: 1,
+		textAlignVertical: 'top',
+		width: '100%',
+		backgroundColor: Theme.frontgroundColor,
+		marginTop: 20
+	},
+	
 
-  row: {
-    width: '100%'
-  },
-
-  map: {
-    flex: 1
-  },
-
-  textArea: {
-    flex: 1,
-    textAlignVertical: 'top',
-    width: '100%',
-    backgroundColor: Theme.frontgroundColor,
-    marginTop: 20
-  },
-
-	buttons: {
-		flex:1
-	}
 })
 
 const mapStateToProps = (state) => {
-  return {
-    currentRegion: state.map.currentRegion
-  }
+	return {
+		currentRegion: state.map.currentRegion
+	}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    menuButtonPress: () => {
-      dispatch(ReduxActions.drawerOpen())
-    },
-    regionChange: (region) => {
-      dispatch(ReduxActions.updateRegion(region))
-    }
-  }
+	return {
+		menuButtonPress: () => {
+			dispatch(ReduxActions.drawerOpen())
+		},
+		regionChange: (region) => {
+			dispatch(ReduxActions.updateRegion(region))
+		}
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMarker)
