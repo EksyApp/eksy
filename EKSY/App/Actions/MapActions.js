@@ -1,4 +1,4 @@
-import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN} from './Types'
+import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN, MARKER_SELECTED} from './Types'
 
 
 export const updateRegion = (region) => {
@@ -19,5 +19,12 @@ export const locationKnown = (isKnown) => {
   return {
     type: LOCATION_KNOWN,
     isKnown: isKnown
+  }
+}
+
+export const setSelectedMarker = (marker) => {
+  return {
+    type: MARKER_SELECTED,
+    marker: marker
   }
 }

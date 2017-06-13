@@ -9,6 +9,15 @@ class Marker extends Component {
   constructor (props) {
     super(props)
   }
+  
+  getPropsAsObject() {
+    return {
+      latitude: this.props.latitude,
+      longitude: this.props.longitude,
+      color: this.props.color,
+      text: this.props.text,
+    }
+  }
 
   render () {
     return (
