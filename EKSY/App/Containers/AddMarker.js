@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet, Keyboard, ScrollView} from 'react-native'
+import {View, Text, TextInput, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
 import PointSelector from '../Components/PointSelector'
 import MapManager from '../Map/MapManager'
 import Header from '../Components/Header'
@@ -11,6 +11,7 @@ import Button from '../Components/Button'
 import Input from '../Components/Input'
 import TextArea from '../Components/TextArea'
 
+
 class AddMarker extends Component {
 	constructor(props) {
 		super(props)
@@ -21,7 +22,8 @@ class AddMarker extends Component {
 			text: '',
 			title: '',
 			uri: '',
-			images: []
+			images: [],
+			imageResponse: ""
 		}
 		
 		this.mapManager = new MapManager()
@@ -42,8 +44,16 @@ class AddMarker extends Component {
 	}
 	
 	_addImage() {
-		this.setState({images: [...this.state.images, {uri: this.state.uri}]});
-		this.setState({uri:''})
+		Image.getSize(this.state.uri, (width, height) => {this._imageUriWorks(width, height)}, (error) => {this._imageUrlError(error)})
+	}
+	
+	_imageUrlError(error) {
+		this.setState({imageResponse: error.message});
+	}
+	
+	_imageUriWorks(width, height) {
+		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
+		this.setState({uri:'', imageResponse: "Image found!"})
 	}
 	
 	render() {
@@ -61,6 +71,7 @@ class AddMarker extends Component {
 								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
 								<TextArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
 								<Input value={this.state.uri} label="Image URL" onChangeText={(text) => this.setState({uri: text})}/>
+								<Text>{this.state.imageResponse}</Text>
 								<Button onPress={() => this._addImage()}>
 									Add image
 								</Button>
@@ -80,6 +91,7 @@ class AddMarker extends Component {
 				</View>
 		)
 	}
+	
 	
 	
 }

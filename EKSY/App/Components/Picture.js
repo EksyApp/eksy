@@ -42,6 +42,7 @@ class Picture extends Component {
 		Image.getSize(this.props.uri, (width, height) => {
 			this._imageOnGetSize(width, height)
 		}, (error) => {
+			this.setState({wantedDimensions: {dimensions: {width: 0, height: 0}}})
 			console.warn(error)
 		})
 		
