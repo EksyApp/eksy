@@ -9,9 +9,9 @@ class Picture extends Component {
 	constructor(props) {
 		super(props)
 		
-		console.log(props)
-		let defaultWidth = 500
-		let defaultHeight = 500
+		let defaultWidth = this.props.data.width
+		let defaultHeight = this.props.data.height
+		
 		if (this.props.containerStyle && StyleSheet.flatten(this.props.containerStyle).width) {
 			defaultWidth = StyleSheet.flatten(this.props.containerStyle).width
 		}
@@ -19,15 +19,10 @@ class Picture extends Component {
 			defaultHeight = StyleSheet.flatten(this.props.containerStyle).height
 		}
 		
-		this.ImageDimensions = {
-			width: 500,
-			height: 500
-		}
 		
-		this.ViewWidth = 500
+		this.ViewWidth = this.props.data.width
 		
 		this.ViewDimensionKnown = false
-		this.ImageDimensionsKnown = false
 		this.wantedCalculated = false;
 		
 		this.state = {
@@ -39,12 +34,6 @@ class Picture extends Component {
 			},
 		}
 		
-		Image.getSize(this.props.uri, (width, height) => {
-			this._imageOnGetSize(width, height)
-		}, (error) => {
-			this.setState({wantedDimensions: {dimensions: {width: 0, height: 0}}})
-			console.warn(error)
-		})
 		
 	}
 	
@@ -54,14 +43,9 @@ class Picture extends Component {
 		this._setImageDimensions()
 	}
 	
-	_imageOnGetSize(width, height) {
-		this.ImageDimensionsKnown = true
-		this.ImageDimensions = {width: width, height: height}
-		this._setImageDimensions()
-	}
 	
 	_setImageDimensions() {
-		if (this.ImageDimensionsKnown && this.ViewDimensionKnown && !this.wantedCalculated) {
+		if (this.ViewDimensionKnown && !this.wantedCalculated) {
 			let {wantedWidth, wantedHeight} = this._calculateWantedDimensions()
 			this.wantedCalculated = true;
 			this.setState({wantedDimensions: {dimensions: {width: wantedWidth, height: wantedHeight}}})
@@ -70,7 +54,7 @@ class Picture extends Component {
 	
 	_calculateWantedDimensions() {
 		let wantedWidth = this.ViewWidth
-		let wantedHeight = (this.ImageDimensions.height / this.ImageDimensions.width) * this.ViewWidth
+		let wantedHeight = (this.props.data.height / this.props.data.width) * this.ViewWidth
 		return {wantedWidth, wantedHeight}
 	}
 	
@@ -88,8 +72,7 @@ class Picture extends Component {
 			imageStyle.push(this.props.imageStyle)
 		}
 		imageStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions);
-
-		console.log(this)
+		
 		return (
 				<View
 						style={containerStyle}
@@ -99,7 +82,7 @@ class Picture extends Component {
 				>
 					<TouchableOpacity onPress={this.props.onPress}>
 						<Image
-								source={{uri: this.props.uri}}
+								source={{uri: this.props.data.uri}}
 								style={imageStyle}
 						/>
 					</TouchableOpacity>
@@ -117,7 +100,9 @@ const style = StyleSheet.create({
 })
 
 Picture.propTypes = {
-	uri: PropTypes.string.isRequired,
+	data: PropTypes.shape({
+		uri: PropTypes.string.isRequired
+	}),
 	key: PropTypes.any,
 	onPress: PropTypes.func
 }

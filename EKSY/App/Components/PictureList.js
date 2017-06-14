@@ -20,7 +20,7 @@ class PictureList extends Component {
 				<ListView
 						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
-				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={this.props.imageContainerStyle} uri={picture.uri} />}
+				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={this.props.imageContainerStyle} data={picture} />}
 				/>
 		)
 	}
