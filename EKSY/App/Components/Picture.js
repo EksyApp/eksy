@@ -1,12 +1,15 @@
 import React, {Component} from 'react'
-import {StyleSheet, TouchableOpacity} from 'react-native'
+import {StyleSheet, TouchableOpacity, Image, View} from 'react-native'
 import PropTypes from 'prop-types'
 
-class Image extends Component {
+
+
+class Picture extends Component {
 	
 	constructor(props) {
 		super(props)
 		
+		console.log(props)
 		let defaultWidth = 500
 		let defaultHeight = 500
 		if (this.props.containerStyle && this.props.containerStyle.width) {
@@ -25,14 +28,17 @@ class Image extends Component {
 			viewWidth: 500,
 			
 			wantedDimensions: {
-				width: defaultWidth,
-				height: defaultHeight
+				dimensions: {
+					width: defaultWidth,
+					height: defaultHeight
+				}
 			},
 			
 			ViewDimensionKnown: false,
 			ImageDimesionsKnown: false
 		}
-		
+		console.log("init")
+		console.log(this.state)
 		
 		Image.getSize(this.props.uri, (width, height) => {
 			this._imageOnGetSize(width, height)
@@ -43,46 +49,77 @@ class Image extends Component {
 	}
 	
 	_viewOnLayout(event) {
+		console.log("ViewOnLayout")
+		console.log(this.state)
 		this.setState({
 			ViewWidth: event.nativeEvent.width,
+		})
+		this.setState({
 			ViewDimensionKnown: true
 		})
+		console.log(this.state)
 		this._setImageDimensions()
 	}
 	
 	_imageOnGetSize(width, height) {
+		console.log("imageOnGetSize")
+		console.log(this.state)
 		this.setState({
 			imageDimensions: {width: width, height: height},
+		})
+		this.setState({
 			imageDimensionsKnown: true
 		})
+		console.log(this.state)
 		this._setImageDimensions()
 	}
 	
 	_setImageDimensions() {
+		console.log("SetImageDimensions")
+		console.log(this.state)
 		if (this.state.ImageDimesionsKnown && this.state.ViewDimensionKnown) {
 			let {wantedWidth, wantedHeight} = this._calculateWantedDimensions()
-			this.setState({wantedDimensions: {width: wantedWidth, height: wantedHeight}})
+			this.setState({wantedDimensions: {dimensions: {width: wantedWidth, height: wantedHeight}}})
 		}
+		console.log(this.state)
 	}
 	
 	_calculateWantedDimensions() {
 		let wantedWidth = this.state.viewWidth
 		let wantedHeight = (this.state.imageDimensions.height / this.state.imageDimensions.width) * this.state.viewWidth
+		console.log([wantedWidth, wantedHeight])
 		return {wantedWidth, wantedHeight}
 	}
 	
 	render() {
+		console.log("Render")
+		console.log(this.state)
+		let containerStyle = [style.container];
+		if(this.props.containerStyle) {
+			containerStyle.push(this.props.containerStyle)
+		}
+		containerStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions)
+		
+		
+		let imageStyle = [style.image];
+		if(this.props.imageStyle) {
+			imageStyle.push(this.props.imageStyle)
+		}
+		imageStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions);
+		console.log(this.state)
+		console.log(containerStyle)
+		console.log(imageStyle)
 		return (
 				<View
-						style={[style.container, this.props.containerStyle, StyleSheet.create(this.state.wantedDimensions)]}
+						style={containerStyle}
 						onLayout={(event) => {
-							this.viewOnLayout(event)
+							this._viewOnLayout(event)
 						}}
 				>
 					<TouchableOpacity onPress={this.props.onPress}>
 						<Image
-								source={require(this.props.uri)}
-								style={[style.image, this.props.imageStyle, StyleSheet.create(this.state.wantedDimensions)]}
+								source={{uri: this.props.uri}}
+								style={imageStyle}
 						/>
 					</TouchableOpacity>
 				
@@ -92,12 +129,20 @@ class Image extends Component {
 	
 }
 
-Image.propTypes = {
+const style = StyleSheet.create({
+	container: {
+		color: 'white'
+	},
+	
+	image: {
+		color: 'white'
+	}
+})
+
+Picture.propTypes = {
 	uri: PropTypes.string.isRequired,
-	containerStyle: PropTypes.StyleSheet,
-	imageStyle: PropTypes.StyleSheet,
 	key: PropTypes.any,
 	onPress: PropTypes.func
 }
 
-export default Image
+export default Picture

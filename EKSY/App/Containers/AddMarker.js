@@ -20,7 +20,7 @@ class AddMarker extends Component {
 		this.state = {
 			text: '',
 			title: '',
-			url: '',
+			uri: '',
 			images: []
 		}
 		
@@ -42,10 +42,8 @@ class AddMarker extends Component {
 	}
 	
 	_addImage() {
-		this.setState({
-			url: '',
-			images: [...this.state.images, {uri: this.state.uri}]
-		});
+		this.setState({images: [...this.state.images, {uri: this.state.uri}]});
+		this.setState({uri:''})
 	}
 	
 	render() {
@@ -62,7 +60,7 @@ class AddMarker extends Component {
 							<View style={styles.formContainer}>
 								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
 								<TextArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
-								<Input value={this.state.url} label="Image URL" onChangeText={(text) => this.setState({url: text})}/>
+								<Input value={this.state.uri} label="Image URL" onChangeText={(text) => this.setState({uri: text})}/>
 								<Button onPress={() => this._addImage()}>
 									Add image
 								</Button>

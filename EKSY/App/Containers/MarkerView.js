@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {View, ScrollView, Text} from 'react-native'
 import Header from "../Components/Header";
-import ImageList from '../Components/ImageList'
-import Image from '../Components/Image'
+import PictureList from '../Components/PictureList'
 import * as ReactActions from '../Actions'
 import {connect} from 'react-redux'
 
@@ -19,7 +18,7 @@ class MarkerView extends Component {
 							</Text>
 						</View>
 						<View>
-							<ImageList data={this.props.marker.images} />
+							<PictureList data={this.props.marker.images} />
 							
 						</View>
 					</ScrollView>
