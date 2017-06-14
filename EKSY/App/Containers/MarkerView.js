@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, ScrollView, Text} from 'react-native'
+import {View, ScrollView, Text, StyleSheet} from 'react-native'
 import Header from "../Components/Header";
 import PictureList from '../Components/PictureList'
 import * as ReactActions from '../Actions'
@@ -18,7 +18,7 @@ class MarkerView extends Component {
 							</Text>
 						</View>
 						<View>
-							<PictureList data={this.props.marker.images} />
+							<PictureList data={this.props.marker.images} listStyle={style.listStyle} imageContainerStyle={style.imageContainer} />
 							
 						</View>
 					</ScrollView>
@@ -27,6 +27,16 @@ class MarkerView extends Component {
 	}
 	
 }
+
+const style = StyleSheet.create({
+	imageContainer: {
+		width: '100%',
+	},
+	
+	listStyle: {
+		margin: 10
+	}
+})
 
 const mapStateToProps = (state) => {
 	return {

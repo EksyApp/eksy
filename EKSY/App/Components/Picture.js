@@ -12,33 +12,32 @@ class Picture extends Component {
 		console.log(props)
 		let defaultWidth = 500
 		let defaultHeight = 500
-		if (this.props.containerStyle && this.props.containerStyle.width) {
-			defaultWidth = StyleSheet.flatten(this.state.containerStyle).width
+		if (this.props.containerStyle && StyleSheet.flatten(this.props.containerStyle).width) {
+			defaultWidth = StyleSheet.flatten(this.props.containerStyle).width
 		}
-		if (this.props.containerStyle && this.props.containerStyle.height) {
-			defaultHeight = StyleSheet.flatten(this.state.containerStyle).height
+		if (this.props.containerStyle && StyleSheet.flatten(this.props.containerStyle).height) {
+			defaultHeight = StyleSheet.flatten(this.props.containerStyle).height
 		}
 		
+		this.ImageDimensions = {
+			width: 500,
+			height: 500
+		}
+		
+		this.ViewWidth = 500
+		
+		this.ViewDimensionKnown = false
+		this.ImageDimensionsKnown = false
+		this.wantedCalculated = false;
+		
 		this.state = {
-			imageDimensions: {
-				width: 500,
-				height: 500
-			},
-			
-			viewWidth: 500,
-			
 			wantedDimensions: {
 				dimensions: {
 					width: defaultWidth,
 					height: defaultHeight
 				}
 			},
-			
-			ViewDimensionKnown: false,
-			ImageDimesionsKnown: false
 		}
-		console.log("init")
-		console.log(this.state)
 		
 		Image.getSize(this.props.uri, (width, height) => {
 			this._imageOnGetSize(width, height)
@@ -49,51 +48,33 @@ class Picture extends Component {
 	}
 	
 	_viewOnLayout(event) {
-		console.log("ViewOnLayout")
-		console.log(this.state)
-		this.setState({
-			ViewWidth: event.nativeEvent.width,
-		})
-		this.setState({
-			ViewDimensionKnown: true
-		})
-		console.log(this.state)
+		this.ViewDimensionKnown = true
+		this.ViewWidth = event.nativeEvent.layout.width
 		this._setImageDimensions()
 	}
 	
 	_imageOnGetSize(width, height) {
-		console.log("imageOnGetSize")
-		console.log(this.state)
-		this.setState({
-			imageDimensions: {width: width, height: height},
-		})
-		this.setState({
-			imageDimensionsKnown: true
-		})
-		console.log(this.state)
+		this.ImageDimensionsKnown = true
+		this.ImageDimensions = {width: width, height: height}
 		this._setImageDimensions()
 	}
 	
 	_setImageDimensions() {
-		console.log("SetImageDimensions")
-		console.log(this.state)
-		if (this.state.ImageDimesionsKnown && this.state.ViewDimensionKnown) {
+		if (this.ImageDimensionsKnown && this.ViewDimensionKnown && !this.wantedCalculated) {
 			let {wantedWidth, wantedHeight} = this._calculateWantedDimensions()
+			this.wantedCalculated = true;
 			this.setState({wantedDimensions: {dimensions: {width: wantedWidth, height: wantedHeight}}})
 		}
-		console.log(this.state)
 	}
 	
 	_calculateWantedDimensions() {
-		let wantedWidth = this.state.viewWidth
-		let wantedHeight = (this.state.imageDimensions.height / this.state.imageDimensions.width) * this.state.viewWidth
-		console.log([wantedWidth, wantedHeight])
+		let wantedWidth = this.ViewWidth
+		let wantedHeight = (this.ImageDimensions.height / this.ImageDimensions.width) * this.ViewWidth
 		return {wantedWidth, wantedHeight}
 	}
 	
 	render() {
-		console.log("Render")
-		console.log(this.state)
+		
 		let containerStyle = [style.container];
 		if(this.props.containerStyle) {
 			containerStyle.push(this.props.containerStyle)
@@ -106,9 +87,8 @@ class Picture extends Component {
 			imageStyle.push(this.props.imageStyle)
 		}
 		imageStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions);
-		console.log(this.state)
-		console.log(containerStyle)
-		console.log(imageStyle)
+
+		console.log(this)
 		return (
 				<View
 						style={containerStyle}
@@ -130,12 +110,8 @@ class Picture extends Component {
 }
 
 const style = StyleSheet.create({
-	container: {
-		color: 'white'
-	},
-	
 	image: {
-		color: 'white'
+		resizeMode: 'contain'
 	}
 })
 

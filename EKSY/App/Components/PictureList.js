@@ -16,11 +16,11 @@ class PictureList extends Component {
 	}
 	
 	render() {
-		console.log(this.props)
 		return (
 				<ListView
+						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
-				    renderRow = {(picture) => <Picture uri={picture.uri} />}
+				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={this.props.imageContainerStyle} uri={picture.uri} />}
 				/>
 		)
 	}
