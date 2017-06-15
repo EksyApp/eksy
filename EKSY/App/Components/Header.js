@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		justifyContent: 'center'
 	},
-	
-	
 })
 
 export default Header

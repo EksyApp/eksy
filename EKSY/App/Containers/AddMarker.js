@@ -49,7 +49,6 @@ export class AddMarker extends Component {
 	}
 	
 	_imageUrlError(error) {
-		
 		this.setState({imageResponse: "URL not valid"});
 	}
 	
