@@ -6,8 +6,6 @@ import MenuBackButton from './MenuBackButton'
 import {PropTypes} from 'prop-types'
 import Label from './Label'
 
-console.log(Theme)
-
 class Header extends Component {
 	
 	render() {

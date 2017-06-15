@@ -13,7 +13,7 @@ import Label from '../Components/Label'
 import TextInputArea from '../Components/TextInputArea'
 
 
-class AddMarker extends Component {
+export class AddMarker extends Component {
 	constructor(props) {
 		super(props)
 		
