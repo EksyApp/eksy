@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {StyleSheet, TouchableOpacity, Image, View} from 'react-native'
+import {StyleSheet, TouchableWithoutFeedback, Image, View} from 'react-native'
 import PropTypes from 'prop-types'
 
 
@@ -80,12 +80,12 @@ class Picture extends Component {
 							this._viewOnLayout(event)
 						}}
 				>
-					<TouchableOpacity onPress={this.props.onPress}>
+					<TouchableWithoutFeedback onPress={this.props.onPress}>
 						<Image
 								source={{uri: this.props.data.uri}}
 								style={imageStyle}
 						/>
-					</TouchableOpacity>
+					</TouchableWithoutFeedback>
 				
 				</View>
 		)

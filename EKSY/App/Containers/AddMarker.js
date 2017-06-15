@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
+import {View, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
 import PointSelector from '../Components/PointSelector'
 import MapManager from '../Map/MapManager'
 import Header from '../Components/Header'
@@ -9,7 +9,8 @@ import {connect} from 'react-redux'
 import * as Theme from '../Theme'
 import Button from '../Components/Button'
 import Input from '../Components/Input'
-import TextArea from '../Components/TextArea'
+import Label from '../Components/Label'
+import TextInputArea from '../Components/TextInputArea'
 
 
 class AddMarker extends Component {
@@ -48,18 +49,19 @@ class AddMarker extends Component {
 	}
 	
 	_imageUrlError(error) {
-		this.setState({imageResponse: error.message});
+		
+		this.setState({imageResponse: "URL not valid"});
 	}
 	
 	_imageUriWorks(width, height) {
 		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
-		this.setState({uri:'', imageResponse: "Image found!"})
+		this.setState({uri:'', imageResponse: "Image added!"})
 	}
 	
 	render() {
 		return (
 				<View style={styles.container}>
-					<Header title='Add Marker' menuButtonPress={this.props.menuButtonPress}/>
+					<Header title='Add Marker' backButton/>
 					<View style={styles.container}>
 						<View style={styles.mapContainer}>
 							<PointSelector onChange={(region) => {
@@ -69,9 +71,9 @@ class AddMarker extends Component {
 						<ScrollView>
 							<View style={styles.formContainer}>
 								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
-								<TextArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
+								<TextInputArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
 								<Input value={this.state.uri} label="Image URL" onChangeText={(text) => this.setState({uri: text})}/>
-								<Text>{this.state.imageResponse}</Text>
+								<Label>{this.state.imageResponse}</Label>
 								<Button onPress={() => this._addImage()}>
 									Add image
 								</Button>

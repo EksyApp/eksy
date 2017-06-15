@@ -76,7 +76,7 @@ class LoginScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Header title='Login/Signup' menuButtonPress={this.props.menuButtonPress} />
+        <Header title='Login/Signup' backButton />
         <View>
           <Input
             label='Email'
@@ -113,7 +113,7 @@ class LoginScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Theme.backgroundColor
+    backgroundColor: Theme.backgroundColor,
   },
 
   buttons: {

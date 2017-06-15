@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {ListView} from 'react-native'
+import {ListView, StyleSheet} from 'react-native'
 import PropTypes from 'prop-types'
 import Picture from './Picture'
 
@@ -20,11 +20,17 @@ class PictureList extends Component {
 				<ListView
 						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
-				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={this.props.imageContainerStyle} data={picture} />}
+				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={[style.imageContainer, this.props.imageContainerStyle]} data={picture} />}
 				/>
 		)
 	}
 }
+
+const style = StyleSheet.create({
+	imageContainer: {
+		marginTop: 10
+	}
+})
 
 PictureList.propTypes = {
 	data: PropTypes.arrayOf(PropTypes.shape({
