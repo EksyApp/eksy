@@ -8,18 +8,14 @@ describe('actions', () => {
     }
     expect(actions.drawerToggle()).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action to open drawer', () => {
     const expectedAction = {
       type: types.DRAWER_OPEN,
     }
     expect(actions.drawerOpen()).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action to close drawer', () => {
     const expectedAction = {
       type: types.DRAWER_CLOSE,
