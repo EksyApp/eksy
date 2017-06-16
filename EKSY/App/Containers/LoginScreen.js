@@ -1,29 +1,30 @@
-/**
- * @class Login
- */
 
 import {
-    AppRegistry,
-    TextInput,
-    Text,
-    View,
-    StyleSheet,
-    dismissKeyboard,
-    TouchableWithoutFeedback
+  Text,
+  View,
+  StyleSheet,
+  dismissKeyboard,
+  TouchableWithoutFeedback
 } from 'react-native'
 
+import {
+    Grid,
+    Row
+} from 'react-native-elements'
+
+import Header from '../Components/Header'
 import MenuButton from '../Components/MenuButton'
+import Button from '../Components/Button'
+import Input from '../Components/Input'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
-import {Button, Container, Header, Content, Left, Body, Title, Form, Input, Item} from 'native-base'
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
-import {Sae} from 'react-native-textinput-effects'
 import DismissKeyboard from 'dismissKeyboard'
 import PostOffice from '../lib/PostOffice'
+import {connect} from 'react-redux'
+import * as Actions from '../Actions'
+import * as Theme from '../Theme'
 
-import styles from './Styles/LoginScreenStyles'
-
-class LoginScreen extends Component {
+export class LoginScreen extends Component {
   constructor (props) {
     super(props)
 
@@ -74,82 +75,72 @@ class LoginScreen extends Component {
 
   render () {
     return (
-      <Container>
-        <Header>
-          <MenuButton />
-          <Left />
-          <Body>
-            <Title>Login</Title>
-          </Body>
-        </Header>
-        <Content>
-          <Form style={style.form}>
-            <Item>
-              <Input
-                style={style.input}
-                placeholder='Email'
-                onChangeText={(text) => this.setState({email: text})}
-                  />
-            </Item>
-            <Item>
-              <Input
-                style={style.input}
-                placeholder='Password'
-                onChangeText={(text) => this.setState({password: text})}
-                secureTextEntry
-                  />
-            </Item>
-          </Form>
-          <View style={style.buttons}>
-            <Button style={style.button} block onPress={() => this.login()}>
-              <Text style={style.text}>Login</Text>
-            </Button>
-            <Button style={style.button} block onPress={() => this.signup()}>
-              <Text style={style.text}>Signup</Text>
-            </Button>
-          </View>
-          <View style={style.response}>
-            <Text style={style.responseText}>{this.state.response}</Text>
-          </View>
-        </Content>
-      </Container>
+      <View style={styles.container}>
+        <Header title='Login/Signup' backButton />
+        <View>
+          <Input
+            label='Email'
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
+            placeholder='user@gmail.com'
+          />
+        </View>
+        <View>
+          <Input
+            label='Password'
+            value={this.state.password}
+            onChangeText={password => this.setState({ password })}
+            placeholder='your password'
+            secureTextEntry
+        />
+        </View>
+        <View style={styles.buttons}>
+          <Button onPress={() => this.login()}>
+          Log in
+          </Button>
+          <Button onPress={() => this.signup()}>
+          Sign up
+          </Button>
+        </View>
+        <View style={styles.response}>
+          <Text style={styles.responseText}>{this.state.response}</Text>
+        </View>
+      </View>
     )
   }
 }
 
-const style = {
-  input: {
-    marginTop: 20
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Theme.backgroundColor,
   },
 
   buttons: {
     marginTop: 50
   },
 
-  button: {
-    marginTop: 20,
-    width: '50%',
-    alignSelf: 'center'
-  },
-
-  text: {
-    color: 'white'
-  },
-
-  form: {
-    marginTop: 50
-  },
-
   responseText: {
     textAlign: 'center',
     width: '100%',
-    fontSize: 18
+    fontSize: 18,
+    color: 'white'
   },
 
   response: {
     marginTop: 50
   }
 
+})
+
+const mapStateToProps = (state) => {
+  return {}
 }
 
-export default LoginScreen
+const mapDispatchToProps = (dispatch) => {
+  return {
+    menuButtonPress: () => { dispatch(Actions.drawerOpen()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)

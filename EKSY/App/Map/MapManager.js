@@ -1,88 +1,83 @@
+import React from 'react'
+import * as Actions from '../Actions'
+import store from '../Store'
+import Marker from './Marker'
 
 let instance = null
+let idCounter = 0
 
 class MapManager {
-  constructor() {
-    if (!instance) {
-      this._markers = new Array();
-      this._map = null;
-      this._position = null;
-      this._positionSet = false;
-      this.startLocationWatcher();
-      instance = this;
-    }
-    return instance;
+
+	constructor() {
+		if (!instance) {
+			this._markers = new Array();
+			this._map = null;
+			this._currentLocationMoveRequested = false;
+			this._reduxState = null;
+			store.subscribe(() => this.storeListener())
+			this.startLocationWatcher();
+			instance = this;
+		}
+		return instance;
+	}
+
+	static getNextID () {
+    idCounter++
+    return idCounter
   }
 
-  startLocationWatcher() {
-    navigator.geolocation.watchPosition(
-      (position) => {
-        this._position = position.coords;
-        this._positionSet = true;
-      },
-      (error) => this._handleLocationError(error),
-      {enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
-    )
-  }
+	storeListener() {
+		this._reduxState = store.getState();
+		this.handleFlyingToCurrentLocation()
+	}
 
-  getPosition() {
-    if (!this.positionKnown()) {
-      this.setPositionToKallio();
-    }
-    return this._position;
-  }
+	handleFlyingToCurrentLocation() {
+		if (this._currentLocationMoveRequested) {
+			this.goToCurrentPosition()
+		}
+	}
 
-  positionKnown() {
-    return this._positionSet;
-  }
+	startLocationWatcher() {
+		navigator.geolocation.watchPosition(
+				(position) => {
+					store.dispatch(Actions.updateLocation(position.coords))
+					store.dispatch(Actions.locationKnown(true))
+				},
+				(error) => store.dispatch(Actions.locationKnown(false)),
+				{enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
+		)
+	}
 
-  addMarker(marker) {
-    this._markers.push(marker);
-  }
+	addMarker(marker) {
+		let markerComponent = <Marker title={marker.title} images={marker.images} latitude={marker.latitude} longitude={marker.longitude} text={marker.text} key={MapManager.getNextID()}/>
+		this._markers.push(markerComponent);
+	}
 
-  getMarkers() {
-    return this._markers;
-  }
+	getMarkers() {
+		return this._markers;
+	}
 
-  setMapObject(map) {
-    this._map = map;
-  }
+	setMapObject(map) {
+		this._map = map;
+	}
 
-  update() {
-    this._map.update();
-  }
+	goToCurrentPosition() {
+		if (this._reduxState && this._reduxState.map.location.isKnown) {
+			this._currentLocationMoveRequested = false
+			this.flyToPosition(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
+		} else {
+			this._currentLocationMoveRequested = true
+		}
+	}
 
-  goToCurrentPosition() {
-    if (!this.positionKnown()) {
-      setTimeout(() => this.goToCurrentPosition(), 1000);
-      return;
-    }
-    this.flyToPosition(this.getPosition().latitude, this.getPosition().longitude);
-  }
+	flyToPosition(latitude, longitude) {
+		let position = {
+			latitude: latitude,
+			longitude: longitude,
+		}
+		this._map.animateToCoordinate(position, 1000)
 
-  flyToPosition(latitude, longitude) {
-    let position = {
-      latitude: latitude,
-      longitude: longitude,
-    }
-    this._map.animateToCoordinate(position, 1000)
-
-  }
-
-  _handleLocationError(error) {
-    if (!this._position) {
-      this.setPositionToKallio();
-    }
-    console.warn(error)
-  }
-
-  setPositionToKallio() {
-    this._positionSet = false;
-    this._position = {
-      latitude: 60.184356,
-      longitude: 24.949326
-    }
-  }
+	}
 
 }
 

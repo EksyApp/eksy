@@ -8,11 +8,3 @@ import renderer from 'react-test-renderer';
 test.only('this will be the only test that runs', () => {
   expect(true).toBe(true);
 });
-
-
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <Index />
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
-});

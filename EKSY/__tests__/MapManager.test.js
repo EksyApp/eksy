@@ -1,13 +1,14 @@
-import React from 'react';
-import MapManager from '../App/Map/MapManager';
-import Marker from '../App/Map/Marker';
+import React from 'react'
+import 'react-native'
+import MapManager from '../App/Map/MapManager'
 
-var mapManager = new MapManager();
+MapManager.prototype.startLocationWatcher = jest.fn()
+var mapManager = new MapManager()
 
-describe('addMarker', function() {
-  it('adds a new marker to the list', () => {
-    var marker = new Marker(60.1699, 24.9384, 1);
-    mapManager.addMarker(marker);
-    expect(mapManager.getMarkers().length).toEqual(1);
-  })
+describe('MapManager', function () {
+	it('adds a new marker to the list', () => {
+		var marker = {latitude: 60.1699, longitude: 24.9384}
+		mapManager.addMarker(marker)
+		expect(mapManager.getMarkers().length).toEqual(1)
+	})
 })

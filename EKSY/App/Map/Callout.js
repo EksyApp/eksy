@@ -8,18 +8,19 @@ import {
 
 export default class Callout extends Component {
   render () {
-    const { name, image, description } = this.props
+    // const { name, image, description } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.bubble}>
-          <View>
+          {/* <View>
             <Text style={styles.name}>{name}</Text>
             <Image
               style={styles.image}
               source={{ uri: image }}
             />
             <Text style={styles.description}>{description}</Text>
-          </View>
+          </View> */}
+          {this.props.children}
         </View>
         <View style={styles.arrowBorder} />
         <View style={styles.arrow} />
