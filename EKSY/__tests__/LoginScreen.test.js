@@ -1,6 +1,6 @@
 import React from 'react'
 import 'react-native'
-import LoginScreen from '../App/Containers/LoginScreen'
+import { LoginScreen } from '../App/Containers/LoginScreen'
 import {shallow} from 'enzyme'
 
 jest.mock('firebase', () => ({

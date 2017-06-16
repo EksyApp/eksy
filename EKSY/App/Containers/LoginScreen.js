@@ -24,7 +24,7 @@ import {connect} from 'react-redux'
 import * as Actions from '../Actions'
 import * as Theme from '../Theme'
 
-class LoginScreen extends Component {
+export class LoginScreen extends Component {
   constructor (props) {
     super(props)
 
