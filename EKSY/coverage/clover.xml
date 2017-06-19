@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1497875171299" clover="3.2.0">
-  <project timestamp="1497875171299" name="All files">
-    <metrics statements="301" coveredstatements="208" conditionals="49" coveredconditionals="25" methods="131" coveredmethods="75" elements="481" coveredelements="308" complexity="0" loc="301" ncloc="301" packages="14" files="48" classes="48">
+<coverage generated="1497875884922" clover="3.2.0">
+  <project timestamp="1497875884923" name="All files">
+    <metrics statements="304" coveredstatements="210" conditionals="49" coveredconditionals="25" methods="132" coveredmethods="75" elements="485" coveredelements="310" complexity="0" loc="304" ncloc="304" packages="14" files="49" classes="49">
       <package name="EKSY">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <file name="index.android.js" path="/home/mlyra/projektit/eksy/EKSY/index.android.js">
@@ -458,7 +458,7 @@
         </file>
       </package>
       <package name="EKSY._mocks_">
-        <metrics statements="15" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <metrics statements="18" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <file name="MapManagerMock.js" path="/home/mlyra/projektit/eksy/EKSY/_mocks_/MapManagerMock.js">
           <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
           <line num="4" count="1" type="stmt"/>
@@ -479,6 +479,12 @@
           <line num="28" count="0" type="stmt"/>
           <line num="29" count="0" type="stmt"/>
           <line num="30" count="0" type="stmt"/>
+        </file>
+        <file name="setup.js" path="/home/mlyra/projektit/eksy/EKSY/_mocks_/setup.js">
+          <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
         </file>
       </package>
       <package name="EKSY.jest">
