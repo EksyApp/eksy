@@ -11,7 +11,7 @@ MapManager.prototype.flyToPosition = jest.fn()
 
 jest.mock('react-native-router-flux', () => ({
 	Actions: {
-		mapView: jest.fn()
+		pop: jest.fn()
 	}
 }))
 

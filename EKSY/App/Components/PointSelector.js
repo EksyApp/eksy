@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
-import PostOffice from '../lib/PostOffice'
 import MapManager from '../Map/MapManager'
 
 class PointSelector extends Component {

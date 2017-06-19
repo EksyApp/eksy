@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picture picture renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Array [
+      undefined,
+      Object {
+        "height": 240,
+        "width": 320,
+      },
+    ]
+  }
+>
+  <Image
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hitSlop={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    source={
+      Object {
+        "uri": "http://www.catpic.com",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "resizeMode": "contain",
+        },
+        Object {
+          "height": 240,
+          "width": 320,
+        },
+      ]
+    }
+    testID={undefined}
+  />
+</View>
+`;
