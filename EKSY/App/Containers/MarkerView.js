@@ -9,8 +9,8 @@ import * as Theme from '../Theme'
 import Divider from '../Components/Divider'
 import Label from '../Components/Label'
 
-class MarkerView extends Component {
-	
+export class MarkerView extends Component {
+
 	_renderImages() {
 		if(this.props.marker.images.length > 0) {
 			return(
@@ -24,7 +24,7 @@ class MarkerView extends Component {
 			return null
 		}
 	}
-	
+
 	render() {
 		return(
 				<View style={style.container}>
@@ -35,30 +35,30 @@ class MarkerView extends Component {
 								{this.props.marker.text}
 							</TextArea>
 						</View>
-						
+
 						{this._renderImages()}
-						
+
 					</ScrollView>
 				</View>
 		)
 	}
-	
+
 }
 
 const style = StyleSheet.create({
 	imageContainer: {
 		width: '100%',
 	},
-	
+
 	listStyle: {
 		margin: 10
 	},
-	
+
 	container: {
 		backgroundColor: Theme.backgroundColor,
 		flex: 1
 	},
-	
+
 })
 
 const mapStateToProps = (state) => {

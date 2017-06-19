@@ -2,6 +2,7 @@ import React from 'react'
 import 'react-native'
 import { LoginScreen } from '../App/Containers/LoginScreen'
 import {shallow} from 'enzyme'
+import renderer from 'react-test-renderer'
 
 jest.mock('firebase', () => ({
   auth () {
@@ -13,6 +14,13 @@ jest.mock('firebase', () => ({
 }))
 
 describe('LoginScreen', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(
+     <LoginScreen/>
+   ).toJSON();
+   expect(tree).toMatchSnapshot();
+  })
+
   it('Runs login() when the login button is pressed', () => {
     let loginMock = jest.fn()
     let loginScreen = shallow(<LoginScreen />)

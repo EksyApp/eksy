@@ -9,7 +9,8 @@ import {View} from 'react-native'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 
-class MapView extends Component {
+
+export class MapView extends Component {
 
   constructor (props) {
     super(props)

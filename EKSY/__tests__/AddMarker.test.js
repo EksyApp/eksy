@@ -2,7 +2,8 @@ import React from 'react'
 import 'react-native'
 import {shallow} from 'enzyme'
 import {AddMarker} from "../App/Containers/AddMarker";
-import MapManager from "../App/Map/MapManager";
+import MapManager from "../App/Map/MapManager"
+import renderer from 'react-test-renderer'
 
 MapManager.prototype.startLocationWatcher = jest.fn()
 MapManager.prototype.storeListener = jest.fn()
@@ -26,19 +27,45 @@ let currentRegion = {
 // let addMarker = shallow(<AddMarker currentRegion={currentRegion} />);
 let mapManager = new MapManager();
 
+jest.mock('react-native-maps', () => {
+  const React = require.requireActual('react');
+  const MapView = require.requireActual('react-native-maps');
+
+  class MockCallout extends React.Component {
+    render() {
+      return React.createElement('Callout', this.props, this.props.children);
+    }
+  }
+
+  class MockMarker extends React.Component {
+    render() {
+      return React.createElement('Marker', this.props, this.props.children);
+    }
+  }
+
+  class MockMapView extends React.Component {
+    render() {
+      return React.createElement('MapView', this.props, this.props.children);
+    }
+  }
+
+  MockCallout.propTypes = MapView.Callout.propTypes;
+  MockMarker.propTypes = MapView.Marker.propTypes;
+  MockMapView.propTypes = MapView.propTypes;
+  MockMapView.Marker = MockMarker;
+  MockMapView.Callout = MockCallout;
+  return MockMapView;
+});
+
+
 describe("AddMarker", () => {
 
-	beforeEach(() => {
-		// mapManager.getMarkers().length = 0;
-		// addMarker.instance().setState({
-		// 	text: '',
-		// 	title: '',
-		// 	uri: '',
-		// 	images: [],
-		// 	imageResponse: ""
-		// })
-		// addMarker.update()
-	})
+	it('renders correctly', () => {
+	  const tree = renderer.create(
+	    <AddMarker currentRegion={currentRegion}/>
+	  ).toJSON();
+	  expect(tree).toMatchSnapshot();
+	});
 
 	it('Adds a marker without content', () => {
 		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
@@ -78,6 +105,13 @@ describe("AddMarker", () => {
 			addMarker.find('Button').last().simulate('press')
 			expect(mapManager.getMarkers()[4].props.images[0].uri).toBe("http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
 		})
+	})
+
+	it('imageurlerror sets state correctly', () => {
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
+		expect(addMarker.instance().state.imageResponse).toBe("")
+		addMarker.instance()._imageUrlError()
+		expect(addMarker.instance().state.imageResponse).toBe("URL not valid")
 	})
 
 	//it('Doesnt add an image when URL is invalid', () => {
