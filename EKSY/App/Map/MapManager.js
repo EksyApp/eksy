@@ -10,7 +10,7 @@ class MapManager {
 
 	constructor() {
 		if (!instance) {
-			this._markers = new Array();
+			this._markers = new Map();
 			this._map = null;
 			this._currentLocationMoveRequested = false;
 			this._reduxState = null;
@@ -48,9 +48,14 @@ class MapManager {
 		)
 	}
 
-	addMarker(marker) {
+	addMarker(key, marker) {
 		let markerComponent = <Marker title={marker.title} images={marker.images} latitude={marker.latitude} longitude={marker.longitude} text={marker.text} key={MapManager.getNextID()}/>
-		this._markers.push(markerComponent);
+		this._markers.set(key, markerComponent);
+		this._map.forceUpdate()
+	}
+	
+	removeMarker(key) {
+		this._markers.delete(key);
 	}
 
 	getMarkers() {

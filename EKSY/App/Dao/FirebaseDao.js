@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 import GeoFire from 'geofire'
-
+import MapManager from '../Map/MapManager'
 
 class FirebaseDao {
 	
@@ -11,8 +11,28 @@ class FirebaseDao {
 			FirebaseDao.instance = this;
 			this._geofire = null
 			this._initGeofire();
+			this._geofireQuery = null;
+			this._mapManager = new MapManager()
 		}
 		return FirebaseDao.instance;
+	}
+	
+	updateLocation(latitude, longitude) {
+		console.warn(latitude, longitude)
+		if(!this._geofireQuery) {
+			this._geofireQuery = this._geofire.query({
+				center: [latitude, longitude],
+				radius: 0.1
+			})
+			this._geofireQuery.on('key_entered', (key) => {
+				this._addMarkerToMapManager(key)
+			})
+			this._geofireQuery.on('key_exited', (key) => {
+				this._removeMarkerFromMapManager(key)
+			})
+		} else {
+			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
+		}
 	}
 	
 	_initGeofire() {
@@ -41,8 +61,16 @@ class FirebaseDao {
 		})
 	}
 	
+	_addMarkerToMapManager(key) {
+		let markerRef = firebase.database().ref("/markers/markers_info/" + key).once('value').then((snapshot) => {
+			console.log(snapshot.val())
+			this._mapManager.addMarker(key, snapshot.val());
+		})
+	}
 	
-	
+	_removeMarkerFromMapManager(key) {
+		this._mapManager.removeMarker(key)
+	}
 }
 
 export default FirebaseDao

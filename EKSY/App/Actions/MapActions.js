@@ -9,6 +9,8 @@ export const updateRegion = (region) => {
 }
 
 export const updateLocation = (position) => {
+  let dao = new Dao()
+  dao.updateLocation(position.latitude, position.longitude)
   return {
     type: UPDATE_CURRENT_LOCATION,
     position: position

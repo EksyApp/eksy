@@ -44,7 +44,7 @@ export default class Map extends Component {
 	}
 
 	renderMarkers() {
-		return this._manager.getMarkers().map((marker, index) => marker)
+		return Array.from(this._manager.getMarkers().values()).map((marker, key) => marker)
 	}
 
 	renderMapView() {
