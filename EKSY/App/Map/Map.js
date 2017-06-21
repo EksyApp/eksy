@@ -46,6 +46,13 @@ export default class Map extends Component {
 		return Array.from(this._manager.getMarkers().values()).map((marker, key) => marker)
 	}
 
+	renderUserCircle() {
+		if (this.props.currentLocation.isKnown) {
+			return <MapView.Circle center={this.props.currentLocation} radius={100} key={'circle'} />
+		}
+		return null
+	}
+
 	renderMapView() {
 		return (
 				<MapView
@@ -57,6 +64,7 @@ export default class Map extends Component {
 						showCompass={false}
 				>
 					{this.renderMarkers()}
+					{this.renderUserCircle()}
 				</MapView>
 		)
 	}
