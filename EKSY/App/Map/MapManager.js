@@ -45,7 +45,7 @@ class MapManager {
 					this._map.forceUpdate()
 				},
 				(error) => store.dispatch(Actions.locationKnown(false)),
-				{enableHighAccuracy: true, timeout: 500, maximumAge: 500, distanceFilter: 10}
+				{enableHighAccuracy: false, timeout: 500, maximumAge: 500, distanceFilter: 10}
 		)
 	}
 
