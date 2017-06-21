@@ -18,7 +18,7 @@ class FirebaseDao {
 	}
 	
 	updateLocation(latitude, longitude) {
-		console.warn(latitude, longitude)
+		console.warn("location updated to lat: " + latitude + ", long: " + longitude)
 		if(!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
@@ -63,12 +63,13 @@ class FirebaseDao {
 	
 	_addMarkerToMapManager(key) {
 		let markerRef = firebase.database().ref("/markers/markers_info/" + key).once('value').then((snapshot) => {
-			console.log(snapshot.val())
+			console.warn("marker with title " + snapshot.val().title + " added to map")
 			this._mapManager.addMarker(key, snapshot.val());
 		})
 	}
 	
 	_removeMarkerFromMapManager(key) {
+		console.warn("marker removed from map")
 		this._mapManager.removeMarker(key)
 	}
 }

@@ -12,7 +12,7 @@ import Label from '../Components/Label'
 export class MarkerView extends Component {
 
 	_renderImages() {
-		if(this.props.marker.images.length > 0) {
+		if(this.props.marker.images && this.props.marker.images.length > 0) {
 			return(
 					<View>
 						<Divider />
