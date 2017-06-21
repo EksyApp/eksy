@@ -7,7 +7,6 @@ import {
 	ActivityIndicator
 } from 'react-native'
 import MapView from 'react-native-maps'
-import Callout from './Callout'
 import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
 import PostOffice from '../lib/PostOffice'
