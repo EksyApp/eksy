@@ -44,7 +44,7 @@ class MapManager {
 					store.dispatch(Actions.locationKnown(true))
 				},
 				(error) => store.dispatch(Actions.locationKnown(false)),
-				{enableHighAccuracy: false, timeout: 10000, maximumAge: 10000}
+				{enableHighAccuracy: true, timeout: 500, maximumAge: 500}
 		)
 	}
 
@@ -56,6 +56,7 @@ class MapManager {
 	
 	removeMarker(key) {
 		this._markers.delete(key);
+		this._map.forceUpdate()
 	}
 
 	getMarkers() {
