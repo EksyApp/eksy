@@ -38,7 +38,8 @@ export class AddMarker extends Component {
 			title: this.state.title,
 			images: this.state.images
 		}
-		this.mapManager.addMarker(marker)
+		// this.mapManager.addMarker(marker)
+		this.props.addNewMarker(marker);
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
@@ -141,6 +142,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		regionChange: (region) => {
 			dispatch(ReduxActions.updateRegion(region))
+		},
+		addNewMarker: (marker) => {
+			dispatch(ReduxActions.addNewMarker(marker))
 		}
 	}
 }

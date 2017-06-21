@@ -11,3 +11,4 @@ export const UPDATE_CURRENT_LOCATION = "update current location"
 export const LOCATION_KNOWN = "location known"
 
 export const MARKER_SELECTED = "marker selected"
+export const MARKER_ADDED = "marker added"
