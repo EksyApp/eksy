@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
-import Callout from './Callout'
 import PropTypes from 'prop-types'
 import {Text} from 'react-native'
 import * as ReduxActions from '../Actions'
@@ -12,7 +11,7 @@ class Marker extends Component {
   constructor (props) {
     super(props)
   }
-  
+
   getPropsAsObject() {
     return {
       latitude: this.props.latitude,
@@ -23,7 +22,7 @@ class Marker extends Component {
       images: this.props.images
     }
   }
-	
+
 	_handlePress(event) {
 		Store.dispatch(ReduxActions.setSelectedMarker(this.getPropsAsObject()));
 		Actions.markerView()
@@ -48,8 +47,8 @@ class Marker extends Component {
       </MapView.Marker>
     )
   }
-	
-	
+
+
 }
 
 Marker.propTypes = {
