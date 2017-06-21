@@ -1,18 +1,13 @@
+import ReactNative, { StyleSheet } from 'react-native';
 import React from 'react';
-import { MapView } from '../App/Containers/MapView';
-import MapManager from '../App/Map/MapManager';
+import PointSelector from '../App/Components/PointSelector';
 import renderer from 'react-test-renderer';
-
-MapManager.prototype.startLocationWatcher = jest.fn()
-MapManager.prototype.storeListener = jest.fn()
-MapManager.prototype.goToCurrentPosition = jest.fn()
-MapManager.prototype.flyToPosition = jest.fn()
 
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');
   const MapView = require.requireActual('react-native-maps');
 
-  class MockCallout extends React.Component {
+  class MockCallout extends React.Component {                                    
     render() {
       return React.createElement('Callout', this.props, this.props.children);
     }
@@ -38,11 +33,9 @@ jest.mock('react-native-maps', () => {
   return MockMapView;
 });
 
-describe('Mapview renders correctly', () => {
- it('renders correctly', () => {
-   const rendered = renderer.create(
-     <MapView />
-   );
-   expect(rendered.toJSON()).toMatchSnapshot();
- });
+test('pointselector renders correctly', () => {
+  const tree = renderer.create(
+    <PointSelector currentRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}} style={StyleSheet.create({width: 10, height: 10})}/>
+  ).toJSON();
+  expect(tree).toMatchSnapshot();
 });

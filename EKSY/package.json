@@ -51,6 +51,18 @@
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!react-native|connectStyle)/"
+    ],
+    "testPathIgnorePatterns": [
+      "App/Images",
+      "node_modules",
+      "App/lib",
+      "App/includes"
+    ],
+    "coveragePathIgnorePatterns": [
+      "App/Images",
+      "node_modules",
+      "App/lib",
+      "App/includes"
     ]
   }
 }

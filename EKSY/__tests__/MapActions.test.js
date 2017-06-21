@@ -15,9 +15,7 @@ describe('actions', () => {
     }
     expect(actions.updateRegion(region)).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action to update location', () => {
     const position = {
       latitude: 37.78825,
@@ -29,9 +27,7 @@ describe('actions', () => {
     }
     expect(actions.updateLocation(position)).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action depending if location is known', () => {
     const isKnown = true
     const expectedAction = {

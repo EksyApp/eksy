@@ -1,14 +1,6 @@
-import React from 'react';
-import { MapView } from '../App/Containers/MapView';
-import MapManager from '../App/Map/MapManager';
-import renderer from 'react-test-renderer';
+import 'react-native'
 
-MapManager.prototype.startLocationWatcher = jest.fn()
-MapManager.prototype.storeListener = jest.fn()
-MapManager.prototype.goToCurrentPosition = jest.fn()
-MapManager.prototype.flyToPosition = jest.fn()
-
-jest.mock('react-native-maps', () => {
+export default jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');
   const MapView = require.requireActual('react-native-maps');
 
@@ -36,13 +28,4 @@ jest.mock('react-native-maps', () => {
   MockMapView.Marker = MockMarker;
   MockMapView.Callout = MockCallout;
   return MockMapView;
-});
-
-describe('Mapview renders correctly', () => {
- it('renders correctly', () => {
-   const rendered = renderer.create(
-     <MapView />
-   );
-   expect(rendered.toJSON()).toMatchSnapshot();
- });
 });

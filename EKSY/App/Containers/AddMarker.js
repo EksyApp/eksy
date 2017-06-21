@@ -16,9 +16,9 @@ import TextInputArea from '../Components/TextInputArea'
 export class AddMarker extends Component {
 	constructor(props) {
 		super(props)
-		
+
 		this._urlField = null;
-		
+
 		this.state = {
 			text: '',
 			title: '',
@@ -26,10 +26,10 @@ export class AddMarker extends Component {
 			images: [],
 			imageResponse: ""
 		}
-		
+
 		this.mapManager = new MapManager()
 	}
-	
+
 	addNewMarker() {
 		let marker = {
 			latitude: this.props.currentRegion.latitude,
@@ -41,22 +41,22 @@ export class AddMarker extends Component {
 		this.mapManager.addMarker(marker)
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
-		Actions.mapView()
+		Actions.pop()
 	}
 	
 	_addImage() {
 		Image.getSize(this.state.uri, (width, height) => {this._imageUriWorks(width, height)}, (error) => {this._imageUrlError(error)})
 	}
-	
+
 	_imageUrlError(error) {
 		this.setState({imageResponse: "URL not valid"});
 	}
-	
+
 	_imageUriWorks(width, height) {
 		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
 		this.setState({uri:'', imageResponse: "Image added!"})
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
@@ -76,10 +76,10 @@ export class AddMarker extends Component {
 								<Button onPress={() => this._addImage()}>
 									Add image
 								</Button>
-								
+
 							</View>
 							<View style={styles.buttonContainer}>
-								
+
 								<Button onPress={() => {
 									this.addNewMarker()
 								}}>
@@ -87,14 +87,14 @@ export class AddMarker extends Component {
 								</Button>
 							</View>
 						</ScrollView>
-					
+
 					</View>
 				</View>
 		)
 	}
-	
-	
-	
+
+
+
 }
 
 const styles = StyleSheet.create({
@@ -102,21 +102,21 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor,
 		flex: 1
 	},
-	
+
 	mapContainer: {
 		height: '50%',
 		width: '100%'
 	},
-	
+
 	buttonContainer: {
 		marginTop: 10,
 		marginBottom:20
 	},
-	
+
 	map: {
 		...StyleSheet.absoluteFillObject
 	},
-	
+
 	textArea: {
 		flex: 1,
 		textAlignVertical: 'top',
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
 	},
-	
+
 
 })
 

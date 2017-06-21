@@ -7,7 +7,7 @@ import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
 
-class SideBar extends Component {
+export class SideBar extends Component {
 
   render() {
     return (
