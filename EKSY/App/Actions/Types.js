@@ -1,5 +1,6 @@
 export const LOGIN_SUCCESS = "login success"
 export const LOGIN_ERROR = "login error"
+export const USER_CREATED = "user created"
 
 export const DRAWER_OPEN = "drawer open"
 export const DRAWER_CLOSE = "drawer close"
