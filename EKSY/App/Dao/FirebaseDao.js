@@ -18,7 +18,7 @@ class FirebaseDao {
 	}
 	
 	updateLocation(latitude, longitude) {
-		console.warn("location updated to lat: " + latitude + ", long: " + longitude)
+		// console.warn("location updated to lat: " + latitude + ", long: " + longitude)
 		if(!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
@@ -48,11 +48,37 @@ class FirebaseDao {
 	}
 	
 	async addMarker(marker) {
+		marker = await this._addInfoToMarker(marker)
 		let markers = await firebase.database().ref("/markers/markers_info")
 		let markerRef = await markers.push()
 		let key = markerRef.key
 		await markerRef.set(marker)
 		this._addGeofireLocation(key, marker.latitude, marker.longitude)
+		this._addMarkerToCurrentUser(key)
+	}
+	
+	async _addInfoToMarker(marker) {
+		let currentUser = await this.getCurrentUser()
+		marker = {
+			...marker,
+			creationInfo: {
+				createdAt: new Date().toUTCString(),
+			},
+			verified: false
+		}
+		if (currentUser) {
+			marker = {...marker, creationInfo: {...marker.creationInfo, user: currentUser.uid}}
+		}
+		return marker
+	}
+	
+	async _addMarkerToCurrentUser(markerKey) {
+		let currentUser = await this.getCurrentUser()
+		if(currentUser) {
+			let reference =  await firebase.database().ref("/users/" + currentUser.uid + '/markers')
+			reference.push(markerKey)
+		}
+		
 	}
 	
 	async _addGeofireLocation(key, latitude, longitude) {
@@ -71,6 +97,10 @@ class FirebaseDao {
 	_removeMarkerFromMapManager(key) {
 		console.warn("marker removed from map")
 		this._mapManager.removeMarker(key)
+	}
+	
+	async getCurrentUser() {
+		return await firebase.auth().currentUser
 	}
 }
 

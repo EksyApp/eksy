@@ -40,12 +40,12 @@ class MapManager {
 	startLocationWatcher() {
 		navigator.geolocation.watchPosition(
 				(position) => {
-					store.dispatch(Actions.updateLocation(position.coords))
-					store.dispatch(Actions.locationKnown(true))
-					this._map.forceUpdate()
+					this._positionChanged(position)
 				},
-				(error) => store.dispatch(Actions.locationKnown(false)),
-				{enableHighAccuracy: true, timeout: 500, maximumAge: 500}
+				(error) => {
+					console.warn(error);
+				},
+				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 2}
 		)
 	}
 
@@ -85,7 +85,12 @@ class MapManager {
 		this._map.animateToCoordinate(position, 1000)
 
 	}
-
+	
+	_positionChanged(position) {
+		store.dispatch(Actions.updateLocation(position.coords))
+		store.dispatch(Actions.locationKnown(true))
+		this._map.forceUpdate()
+	}
 }
 
 export default MapManager

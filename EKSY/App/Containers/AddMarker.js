@@ -11,6 +11,7 @@ import Button from '../Components/Button'
 import Input from '../Components/Input'
 import Label from '../Components/Label'
 import TextInputArea from '../Components/TextInputArea'
+import Dao from '../Dao/Dao'
 
 
 export class AddMarker extends Component {
@@ -18,6 +19,7 @@ export class AddMarker extends Component {
 		super(props)
 
 		this._urlField = null;
+		this.dao = new Dao();
 
 		this.state = {
 			text: '',
@@ -36,7 +38,8 @@ export class AddMarker extends Component {
 			longitude: this.props.currentRegion.longitude,
 			text: this.state.text,
 			title: this.state.title,
-			images: this.state.images
+			images: this.state.images,
+			
 		}
 		// this.mapManager.addMarker(marker)
 		this.props.addNewMarker(marker);
