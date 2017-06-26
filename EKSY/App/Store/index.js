@@ -4,19 +4,29 @@ import reducers from '../Reducers'
 import {createLogger} from 'redux-logger'
 import {AsyncStorage} from 'react-native'
 
-const logger = createLogger({
+export default function configureStore() {
+  return new Promise((resolve, reject) => {
+    try {
+      const logger = createLogger({
 
-});
+      })
 
-const store = createStore(
-  reducers,
-  undefined,
-  compose(
-    applyMiddleware(logger),
-    autoRehydrate()
-  )
-)
+      const store = createStore(
+        reducers,
+        undefined,
+        compose(
+          applyMiddleware(logger),
+          autoRehydrate()
+        )
+      )
 
-persistStore(store, {storage: AsyncStorage})
-
-export default store
+      persistStore(
+        store,
+        {storage: AsyncStorage},
+        () => resolve(store)
+      )
+    } catch (e) {
+      reject(e)
+    }
+  })
+}
