@@ -1,5 +1,5 @@
 # eksy
-Eksy-sovellus
+## Eksy-sovellus
 
 [![Build Status](https://travis-ci.org/EksyApp/eksy.svg?branch=master)](https://travis-ci.org/EksyApp/eksy)
 [![Coverage Status](https://coveralls.io/repos/github/EksyApp/eksy/badge.svg?branch=master)](https://coveralls.io/github/EksyApp/eksy?branch=master)
@@ -15,3 +15,5 @@ Eksy-sovellus
 [Suunnitteludokumentti](https://goo.gl/oFYyb3)
 
 [Vaatimusmäärittely](https://goo.gl/LzoNs1)
+
+[Lisenssi](LICENSE)
