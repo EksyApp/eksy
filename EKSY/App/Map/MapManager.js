@@ -42,10 +42,9 @@ class MapManager {
 				(position) => {
 					this._positionChanged(position)
 				},
-				(error) => {
-					console.warn(error);
-				},
-				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 2}
+				(error) => store.dispatch(Actions.locationKnown(false)),
+				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
+
 		)
 	}
 
