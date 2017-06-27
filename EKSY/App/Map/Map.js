@@ -44,11 +44,7 @@ export default class Map extends Component {
 
 	renderMarkers() {
 		console.log(this.props.markerList)
-		return Object.keys(this.props.markerList).map((key, index) => {
-			if(this.props.markerList.hasOwnProperty(key)) {
-				return <Marker data={this.props.markerList[key]} key={key}/>
-			}
-		})
+		return this.props.markerList.map((marker, index) => <Marker data={marker} key={marker.key} />)
 	}
 
 	renderUserCircle() {

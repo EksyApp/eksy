@@ -31,7 +31,6 @@ export class MapContainer extends Component {
   }
 
   render () {
-    console.log(this.props.markerList)
     return (
       <View style={Styles.container}>
         <Map markerList = {this.props.markerList} currentRegion={this.props.currentRegion} currentLocation={this.props.currentLocation} regionChange={this.props.regionChange} />
@@ -42,7 +41,6 @@ export class MapContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.markers.markerList)
   return {
     currentRegion: state.map.currentRegion,
     currentLocation: state.map.location,
