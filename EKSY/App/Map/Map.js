@@ -48,7 +48,7 @@ export default class Map extends Component {
 
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
-			return <MapView.Circle center={this.props.currentLocation} radius={100} key={'circle'} />
+			return <MapView.Circle center={this.props.currentLocation} radius={100} key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)} />
 		}
 		return null
 	}
