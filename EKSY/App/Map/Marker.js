@@ -1,49 +1,33 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
-import styles from './Styles/MapStyles'
 import PropTypes from 'prop-types'
-import {Text} from 'react-native'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
-import Store from '../Store'
+import configureStore from '../Store'
 
 class Marker extends Component {
   constructor (props) {
     super(props)
+	  this._initStore()
   }
-
-  getPropsAsObject() {
-    return {
-      latitude: this.props.latitude,
-      longitude: this.props.longitude,
-      color: this.props.color,
-      text: this.props.text,
-      title: this.props.title,
-      images: this.props.images
-    }
-  }
+	
+	async _initStore() {
+		this.store = await configureStore()
+	}
+  
 
 	_handlePress(event) {
-		Store.dispatch(ReduxActions.setSelectedMarker(this.getPropsAsObject()));
+		this.store.dispatch(ReduxActions.setSelectedMarker(this.props.data));
 		Actions.markerView()
 	}
 
   render () {
     return (
       <MapView.Marker
-        coordinate={{latitude: this.props.latitude, longitude: this.props.longitude}}
-        pinColor={this.props.color}
+        coordinate={{latitude: this.props.data.latitude, longitude: this.props.data.longitude}}
+        pinColor={this.props.data.color}
         onPress={(event) => {this._handlePress(event)}}
 				>
-        {/*<MapView.Callout*/}
-          {/*tooltip*/}
-          {/*style={styles.callout}*/}
-          {/*calloutOffset={{ x: -8, y: 28 }}*/}
-        {/*>*/}
-          {/*<Callout>*/}
-            {/*<Text>{this.props.text}</Text>*/}
-          {/*</Callout>*/}
-        {/*</MapView.Callout>*/}
       </MapView.Marker>
     )
   }
@@ -52,14 +36,17 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-  latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired,
-  color: PropTypes.string,
-  text: PropTypes.string,
-  title: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.shape({
-    uri: PropTypes.string.isRequired
-  }))
+  data: PropTypes.shape({
+	  latitude: PropTypes.number.isRequired,
+	  longitude: PropTypes.number.isRequired,
+	  color: PropTypes.string,
+	  text: PropTypes.string,
+	  title: PropTypes.string,
+	  images: PropTypes.arrayOf(PropTypes.shape({
+		  uri: PropTypes.string.isRequired
+	  }))
+  }).isRequired
+  
 }
 
 export default Marker

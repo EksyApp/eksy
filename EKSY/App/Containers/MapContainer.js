@@ -10,7 +10,7 @@ import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 
 
-export class MapView extends Component {
+export class MapContainer extends Component {
 
   constructor (props) {
     super(props)
@@ -31,9 +31,10 @@ export class MapView extends Component {
   }
 
   render () {
+    console.log(this.props.markerList)
     return (
       <View style={Styles.container}>
-        <Map currentRegion={this.props.currentRegion} currentLocation={this.props.currentLocation} regionChange={this.props.regionChange} />
+        <Map markerList = {this.props.markerList} currentRegion={this.props.currentRegion} currentLocation={this.props.currentLocation} regionChange={this.props.regionChange} />
         <MenuButton onPress = {() => {this.props.menuButtonPress()}} />
       </View>
     )
@@ -41,9 +42,11 @@ export class MapView extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.markers.markerList)
   return {
     currentRegion: state.map.currentRegion,
-    currentLocation: state.map.location
+    currentLocation: state.map.location,
+    markerList: state.markers.markerList
   }
 }
 
@@ -55,4 +58,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapView)
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goToMap: () => {
-      Actions.mapView()
+      Actions.mapContainer()
       dispatch(ReduxActions.drawerClose())
     },
     goToAddMarker: () => {

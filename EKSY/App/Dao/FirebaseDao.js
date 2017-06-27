@@ -1,6 +1,8 @@
 import firebase from 'firebase'
 import GeoFire from 'geofire'
 import MapManager from '../Map/MapManager'
+import * as Actions from '../Actions'
+import configureStore from '../Store'
 
 class FirebaseDao {
 	
@@ -35,10 +37,10 @@ class FirebaseDao {
 				radius: 0.1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
-				this._addMarkerToMapManager(key)
+				this._setMarkerVisible(key)
 			})
 			this._geofireQuery.on('key_exited', (key) => {
-				this._removeMarkerFromMapManager(key)
+				this._setMarkerHidden(key)
 			})
 		} else {
 			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
@@ -97,16 +99,16 @@ class FirebaseDao {
 		})
 	}
 	
-	_addMarkerToMapManager(key) {
+	_setMarkerVisible(key) {
 		let markerRef = firebase.database().ref("/markers/markers_info/" + key).once('value').then((snapshot) => {
 			console.warn("marker with title " + snapshot.val().title + " added to map")
-			this._mapManager.addMarker(key, snapshot.val());
+			this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
 		})
 	}
 	
-	_removeMarkerFromMapManager(key) {
+	_setMarkerHidden(key) {
 		console.warn("marker removed from map")
-		this._mapManager.removeMarker(key)
+		this.store.dispatch(Actions.setMarkerHidden(key))
 	}
 	
 	async getCurrentUser() {

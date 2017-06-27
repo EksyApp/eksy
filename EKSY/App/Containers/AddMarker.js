@@ -41,7 +41,6 @@ export class AddMarker extends Component {
 			images: this.state.images,
 			
 		}
-		// this.mapManager.addMarker(marker)
 		this.props.addNewMarker(marker);
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)

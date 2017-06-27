@@ -63,7 +63,7 @@ const style = StyleSheet.create({
 
 const mapStateToProps = (state) => {
 	return {
-		marker: state.map.selectedMarker.marker
+		marker: state.markers.selectedMarker
 	}
 }
 

@@ -244,7 +244,7 @@
           <line num="11" count="1" type="stmt"/>
           <line num="15" count="1" type="stmt"/>
         </file>
-        <file name="MapView.js" path="/home/mlyra/projektit/eksy/EKSY/App/Containers/MapView.js">
+        <file name="MapContainer.js" path="/home/mlyra/projektit/eksy/EKSY/App/Containers/MapContainer.js">
           <metrics statements="13" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="5"/>
           <line num="16" count="2" type="stmt"/>
           <line num="18" count="2" type="stmt"/>

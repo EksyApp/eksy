@@ -14,10 +14,7 @@ const initial = {
 export default function(state = initial, action) {
 	switch(action.type) {
 		case MARKER_SELECTED:
-			return {
-				...state,
-				marker: action.marker
-			}
+			return action.marker
 		default:
 			return state
 	}

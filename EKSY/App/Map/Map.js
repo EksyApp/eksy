@@ -43,7 +43,12 @@ export default class Map extends Component {
 	}
 
 	renderMarkers() {
-		return Array.from(this._manager.getMarkers().values()).map((marker, key) => marker)
+		console.log(this.props.markerList)
+		return Object.keys(this.props.markerList).map((key, index) => {
+			if(this.props.markerList.hasOwnProperty(key)) {
+				return <Marker data={this.props.markerList[key]} key={key}/>
+			}
+		})
 	}
 
 	renderUserCircle() {

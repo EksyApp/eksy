@@ -4,5 +4,5 @@ import selectedMarker from './SelectedMarkerReducer'
 import {combineReducers} from 'redux'
 
 export default combineReducers({
-  location, currentRegion, selectedMarker
+  location, currentRegion
 })

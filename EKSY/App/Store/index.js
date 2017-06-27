@@ -22,7 +22,10 @@ export default function configureStore() {
 
       persistStore(
         store,
-        {storage: AsyncStorage},
+        {
+          storage: AsyncStorage,
+          blacklist: ['markers']
+        },
         () => resolve(store)
       )
     } catch (e) {

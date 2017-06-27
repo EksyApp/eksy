@@ -12,3 +12,5 @@ export const LOCATION_KNOWN = "location known"
 
 export const MARKER_SELECTED = "marker selected"
 export const MARKER_ADDED = "marker added"
+export const MARKER_VISIBLE = "marker visible"
+export const MARKER_HIDDEN = "marker hidden"

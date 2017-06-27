@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapView } from '../App/Containers/MapView';
+import { MapView } from '../App/Containers/MapContainer';
 import MapManager from '../App/Map/MapManager';
 import renderer from 'react-test-renderer';
 
