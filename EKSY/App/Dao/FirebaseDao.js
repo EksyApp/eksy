@@ -12,10 +12,20 @@ class FirebaseDao {
 			this._geofire = null
 			this._initGeofire();
 			this._geofireQuery = null;
+			this._initStore()
 			this._mapManager = new MapManager()
 		}
 		return FirebaseDao.instance;
 	}
+	
+	async _initStore() {
+		this.store = await configureStore()
+		// this.store.subscribe(() => this._storeListener())
+	}
+	
+	// _storeListener() {
+	//
+	// }
 	
 	updateLocation(latitude, longitude) {
 		// console.warn("location updated to lat: " + latitude + ", long: " + longitude)
