@@ -20,9 +20,13 @@
   "dependencies": {
     "firebase": "^4.0.0",
     "geofire": "^4.1.2",
+    "mobile-center": "^0.6.0",
+    "mobile-center-analytics": "^0.6.0",
+    "mobile-center-crashes": "^0.6.0",
     "prop-types": "^15.5.10",
     "react": "15.4.1",
     "react-native": "0.42.0",
+    "react-native-code-push": "^1.17.3-beta",
     "react-native-elements": "^0.12.2",
     "react-native-maps": "0.15.2",
     "react-native-router-flux": "3.38.0",
