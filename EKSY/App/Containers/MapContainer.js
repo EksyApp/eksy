@@ -37,10 +37,8 @@ export class MapContainer extends Component {
     return (
 
         <View style={styles.view}>
-
-
           <View style={styles.panelContainer}>
-           <Animated.View style={[styles.panelContainer, {
+           <Animated.View style={[styles.panelContainer,{
              opacity: this._deltaY.interpolate({
                inputRange: [0, Screen.height-100],
                outputRange: [0, 1],
@@ -62,7 +60,7 @@ export class MapContainer extends Component {
              animatedValueY={this._deltaY}>
              <View style={styles.panel}>
              <MarkerCarousel
-              markerList = {this.props.markerList}/>
+              markerList = {this.props.markerList} />
              </View>
            </Interactable.View>
          </View>
