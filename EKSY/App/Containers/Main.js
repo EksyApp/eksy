@@ -4,6 +4,7 @@ import FirebaseConfig from '../includes/FirebaseConfig'
 import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
 import Store from '../Store'
+import SplashScreen from 'react-native-splash-screen'
 
 class Main extends Component {
 
@@ -19,6 +20,10 @@ class Main extends Component {
   async componentWillMount() {
     const store = await Store()
     this.setState({ store })
+  }
+
+  componentDidMount() {
+    SplashScreen.hide()
   }
 
   render () {

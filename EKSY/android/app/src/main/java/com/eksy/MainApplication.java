@@ -3,10 +3,13 @@ package com.eksy;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.wix.interactable.Interactable;
+import com.microsoft.codepush.react.CodePush;
+import com.microsoft.azure.mobile.react.crashes.RNCrashesPackage;
+import com.microsoft.azure.mobile.react.analytics.RNAnalyticsPackage;
+import com.microsoft.azure.mobile.react.mobilecenter.RNMobileCenterPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.airbnb.android.react.maps.MapsPackage;
-
+import com.cboy.rn.splashscreen.SplashScreenReactPackage;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -19,6 +22,12 @@ import java.util.List;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
+
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -28,8 +37,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new Interactable(),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
+            new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
+            new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
+            new RNMobileCenterPackage(MainApplication.this),
             new VectorIconsPackage(),
+            new SplashScreenReactPackage(),
             new MapsPackage()
       );
     }
