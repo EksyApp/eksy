@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import GeoFire from 'geofire'
 import MapManager from '../Map/MapManager'
 import * as Actions from '../Actions'
-import configureStore from '../Store'
+import Store from '../Store'
 
 class FirebaseDao {
 	
@@ -21,7 +21,7 @@ class FirebaseDao {
 	}
 	
 	async _initStore() {
-		this.store = await configureStore()
+		this.store = await Store()
 		// this.store.subscribe(() => this._storeListener())
 	}
 	
@@ -103,12 +103,14 @@ class FirebaseDao {
 		let markerRef = firebase.database().ref("/markers/markers_info/" + key).once('value').then((snapshot) => {
 			console.warn("marker with title " + snapshot.val().title + " added to map")
 			this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
+			this._mapManager._map.forceUpdate()
 		})
 	}
 	
 	_setMarkerHidden(key) {
 		console.warn("marker removed from map")
 		this.store.dispatch(Actions.setMarkerHidden(key))
+		this._mapManager._map.forceUpdate()
 	}
 	
 	async getCurrentUser() {

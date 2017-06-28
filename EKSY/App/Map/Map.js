@@ -9,19 +9,18 @@ import {
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
-import PostOffice from '../lib/PostOffice'
 import * as Actions from '../Actions'
 import Marker from '../Map/Marker'
 import testData from '../includes/data/Sarjakuvat.json'
+import {connect} from 'react-redux'
 
-export default class Map extends Component {
+class Map extends Component {
 
 	constructor(props) {
 		super(props)
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
-		this.po = new PostOffice();
 
 		// testData.features.map((pampyla, index) => {
 		// 	let marker = {
@@ -71,6 +70,7 @@ export default class Map extends Component {
 	}
 
 	render() {
+		console.log(this.props.markerList)
 		return (
 				<View style={styles.container}>
 					{this.renderMapView()}
@@ -80,6 +80,21 @@ export default class Map extends Component {
 
 }
 
+let mapStateToProps = (state) => {
+	return {
+		currentRegion: state.map.currentRegion,
+		currentLocation: state.map.location,
+		markerList: state.markers.markerList.array
+	}
+}
+
+let mapDispatchToProps = (dispatch) => {
+	return {
+		regionChange: (region) => {dispatch(Actions.updateRegion(region))}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map)
 
 // renderPampylat() {
 // 	return testData.features.map((pampyla, index) => {

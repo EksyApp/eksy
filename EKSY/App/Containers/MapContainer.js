@@ -33,7 +33,7 @@ export class MapContainer extends Component {
   render () {
     return (
       <View style={Styles.container}>
-        <Map markerList = {this.props.markerList} currentRegion={this.props.currentRegion} currentLocation={this.props.currentLocation} regionChange={this.props.regionChange} />
+        <Map />
         <MenuButton onPress = {() => {this.props.menuButtonPress()}} />
       </View>
     )
@@ -41,17 +41,14 @@ export class MapContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    currentRegion: state.map.currentRegion,
-    currentLocation: state.map.location,
-    markerList: state.markers.markerList
-  }
+  return {}
+  
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     menuButtonPress: () => {dispatch(Actions.drawerOpen())},
-    regionChange: (region) => {dispatch(Actions.updateRegion(region))}
+    
 
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Actions from '../Actions'
-import configureStore from '../Store'
+import Store from '../Store'
 import Marker from './Marker'
 
 let instance = null
@@ -23,7 +23,7 @@ class MapManager {
 	}
 	
 	async initStore() {
-		this.store = await configureStore()
+		this.store = await Store()
 		this.store.subscribe(() => this.storeListener())
 	}
 	

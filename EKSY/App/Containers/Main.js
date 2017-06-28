@@ -3,7 +3,7 @@ import NavigationRouter from '../Navigation/NavigationRouter'
 import FirebaseConfig from '../includes/FirebaseConfig'
 import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
-import configureStore from '../Store'
+import Store from '../Store'
 
 class Main extends Component {
 
@@ -17,7 +17,7 @@ class Main extends Component {
   }
 
   async componentWillMount() {
-    const store = await configureStore()
+    const store = await Store()
     this.setState({ store })
   }
 
