@@ -1,16 +1,14 @@
 import React from 'react'
-import * as Actions from '../Actions'
-import Store from '../Store'
-import Marker from './Marker'
+import * as Actions from '../../Actions'
+import Store from '../../Store'
 
 let instance = null
 let idCounter = 0
 
 class MapManager {
-	
+
 	constructor() {
 		if (!instance) {
-			this._markers = new Map()
 			this._map = null
 			this._currentLocationMoveRequested = false
 			this._reduxState = null
@@ -21,28 +19,28 @@ class MapManager {
 		}
 		return instance
 	}
-	
+
 	async initStore() {
 		this.store = await Store()
 		this.store.subscribe(() => this.storeListener())
 	}
-	
+
 	static getNextID() {
 		idCounter++
 		return idCounter
 	}
-	
+
 	storeListener() {
 		this._reduxState = this.store.getState()
 		this.handleFlyingToCurrentLocation()
 	}
-	
+
 	handleFlyingToCurrentLocation() {
 		if (this._currentLocationMoveRequested) {
 			this.goToCurrentPosition()
 		}
 	}
-	
+
 	startLocationWatcher() {
 		navigator.geolocation.watchPosition(
 				(position) => {
@@ -54,27 +52,11 @@ class MapManager {
 				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
 		)
 	}
-	
-	addMarker(key, marker) {
-		let markerComponent = <Marker title={marker.title} images={marker.images} latitude={marker.latitude}
-		                              longitude={marker.longitude} text={marker.text} key={MapManager.getNextID()}/>
-		this._markers.set(key, markerComponent)
-		this._map.forceUpdate()
-	}
-	
-	removeMarker(key) {
-		this._markers.delete(key)
-		this._map.forceUpdate()
-	}
-	
-	getMarkers() {
-		return this._markers
-	}
-	
+
 	setMapObject(map) {
 		this._map = map
 	}
-	
+
 	goToCurrentPosition() {
 		if (this._reduxState && this._reduxState.map.location.isKnown) {
 			this._currentLocationMoveRequested = false
@@ -83,7 +65,7 @@ class MapManager {
 			this._currentLocationMoveRequested = true
 		}
 	}
-	
+
 	flyToPosition(latitude, longitude) {
 		let position = {
 			latitude: latitude,
@@ -91,7 +73,7 @@ class MapManager {
 		}
 		this._map.animateToCoordinate(position, 1000)
 	}
-	
+
 }
 
 export default MapManager

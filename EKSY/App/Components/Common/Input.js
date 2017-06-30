@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { FormLabel, FormInput } from 'react-native-elements'
-import * as Theme from '../Theme'
+import * as Theme from '../../Theme'
 
 const Input = ({label, value, onChangeText, placeholder, secureTextEntry}) => {
   return (

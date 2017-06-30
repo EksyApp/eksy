@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import {View, ScrollView, Text, StyleSheet} from 'react-native'
-import Header from "../Components/Header";
+import { Header, Divider, Label, TextArea } from "../Components/Common";
 import PictureList from '../Components/PictureList'
 import * as ReactActions from '../Actions'
 import {connect} from 'react-redux'
-import TextArea from '../Components/TextArea'
 import * as Theme from '../Theme'
-import Divider from '../Components/Divider'
-import Label from '../Components/Label'
 
 export class MarkerView extends Component {
 
@@ -63,7 +60,7 @@ const style = StyleSheet.create({
 
 const mapStateToProps = (state) => {
 	return {
-		marker: state.markers.selectedMarker
+		marker: state.markers.markerSelected
 	}
 }
 

@@ -10,7 +10,7 @@ export const addNewMarker = (marker) => {
 	}
 }
 
-export const setSelectedMarker = (marker) => {
+export const setMarkerSelected = (marker) => {
 	return {
 		type: MARKER_SELECTED,
 		marker: marker

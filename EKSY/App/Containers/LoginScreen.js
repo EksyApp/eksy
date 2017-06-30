@@ -6,9 +6,7 @@ import {
   dismissKeyboard,
 } from 'react-native'
 
-import Header from '../Components/Header'
-import Button from '../Components/Button'
-import Input from '../Components/Input'
+import { Header, Button, Input } from '../Components/Common'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
@@ -33,7 +31,7 @@ export class LoginScreen extends Component {
 
     try {
       await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      
+
       this.props.userCreated()
 
       this.setState({
@@ -52,7 +50,7 @@ export class LoginScreen extends Component {
 
     try {
       await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      
+
       this.setState({
         response: 'Logged In!'
       })

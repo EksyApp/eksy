@@ -1,8 +1,5 @@
-import React, {Component} from 'react'
-//import Styles from './Styles/MenuButtonStyle'
-//import styles from './Styles/LoginScreenStyles'
-import PostOffice from '../lib/PostOffice'
-import {Button, Icon} from 'react-native-elements'
+import React, { Component } from 'react'
+import { Button, Icon } from 'react-native-elements'
 import * as Theme from '../Theme'
 
 class MenuButton extends Component {

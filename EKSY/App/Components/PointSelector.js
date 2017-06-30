@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
-import MapManager from '../Map/MapManager'
+import MapManager from '../Containers/Map/MapManager'
 
 class PointSelector extends Component {
 

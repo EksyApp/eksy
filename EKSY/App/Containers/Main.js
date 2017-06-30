@@ -5,6 +5,7 @@ import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
 import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
+import codePush from 'react-native-code-push'
 
 class Main extends Component {
 
@@ -41,4 +42,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default codePush(Main)

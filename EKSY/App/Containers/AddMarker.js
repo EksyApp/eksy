@@ -1,17 +1,13 @@
 import React, {Component} from 'react'
 import {View, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
 import PointSelector from '../Components/PointSelector'
-import MapManager from '../Map/MapManager'
-import Header from '../Components/Header'
+import MapManager from './Map/MapManager'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
-import Button from '../Components/Button'
-import Input from '../Components/Input'
-import Label from '../Components/Label'
-import TextInputArea from '../Components/TextInputArea'
 import Dao from '../Dao/Dao'
+import { Header, Button, Input, Label, TextInputArea } from '../Components/Common'
 
 
 export class AddMarker extends Component {
@@ -39,14 +35,14 @@ export class AddMarker extends Component {
 			text: this.state.text,
 			title: this.state.title,
 			images: this.state.images,
-			
+
 		}
 		this.props.addNewMarker(marker);
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
 	}
-	
+
 	_addImage() {
 		Image.getSize(this.state.uri, (width, height) => {this._imageUriWorks(width, height)}, (error) => {this._imageUrlError(error)})
 	}

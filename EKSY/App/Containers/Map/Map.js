@@ -9,9 +9,8 @@ import {
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
-import * as Actions from '../Actions'
-import Marker from '../Map/Marker'
-import testData from '../includes/data/Sarjakuvat.json'
+import * as Actions from '../../Actions'
+import Marker from './Marker'
 
 class Map extends Component {
 
@@ -41,7 +40,6 @@ class Map extends Component {
 	}
 
 	renderMarkers() {
-		console.log(this.props.markerList)
 		return this.props.markerList.map((marker, index) => <Marker data={marker} key={marker.key} />)
 	}
 

@@ -1,23 +1,23 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PropTypes from 'prop-types'
-import * as ReduxActions from '../Actions'
+import * as ReduxActions from '../../Actions'
 import {Actions} from 'react-native-router-flux'
-import configureStore from '../Store'
+import configureStore from '../../Store'
 
 class Marker extends Component {
   constructor (props) {
     super(props)
 	  this._initStore()
   }
-	
+
 	async _initStore() {
 		this.store = await configureStore()
 	}
-  
+
 
 	_handlePress(event) {
-		this.store.dispatch(ReduxActions.setSelectedMarker(this.props.data));
+		this.store.dispatch(ReduxActions.setMarkerSelected(this.props.data));
 		Actions.markerView()
 	}
 
@@ -46,7 +46,7 @@ Marker.propTypes = {
 		  uri: PropTypes.string.isRequired
 	  }))
   }).isRequired
-  
+
 }
 
 export default Marker

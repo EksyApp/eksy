@@ -1,7 +1,7 @@
 import markerList from './MarkerListReducer'
-import selectedMarker from './SelectedMarkerReducer'
+import markerSelected from './MarkerSelectedReducer'
 import {combineReducers} from 'redux'
 
 export default combineReducers({
-	markerList, selectedMarker
+	markerList, markerSelected
 })

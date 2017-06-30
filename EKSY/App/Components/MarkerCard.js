@@ -4,8 +4,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import Card from './Card'
-import CardSection from './CardSection'
+import { Card, CardSection } from './Common'
 
 export default class MarkerCard extends Component {
   render() {
@@ -21,7 +20,7 @@ export default class MarkerCard extends Component {
       </CardSection>
 
       <CardSection>
-      
+
       </CardSection>
       </Card>
       </View>

@@ -5,16 +5,16 @@ import {
 	StyleSheet,
 } from 'react-native';
 import {FormLabel, FormInput} from 'react-native-elements'
-import * as Theme from '../Theme'
+import * as Theme from '../../Theme'
 
 class TextInputArea extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.state = {height: 0}
 	}
-	
+
 	render() {
 		return (
 				<View>
@@ -28,15 +28,15 @@ class TextInputArea extends Component {
 							secureTextEntry={this.props.secureTextEntry}
 							inputStyle={[styles.inputStyle, {height: Math.max(45, this.state.height)}]}
 							containerStyle={[styles.containerStyle]}
-					    
+
 					    multiline
 					    onChange={(event) => this.setState({height: event.nativeEvent.contentSize.height})}
 					/>
 				</View>
 		)
 	}
-	
-	
+
+
 }
 
 export default TextInputArea;
