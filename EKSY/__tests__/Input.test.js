@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import Input from '../App/Components/Input';
+import { Input } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 test('input renders correctly', () => {

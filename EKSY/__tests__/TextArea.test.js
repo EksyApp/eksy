@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import TextArea from '../App/Components/TextArea';
+import { TextArea } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 

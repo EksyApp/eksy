@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import Button from '../App/Components/Button';
+import { Button } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 test('button renders correctly', () => {

@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import TextInputArea from '../App/Components/TextInputArea';
+import { TextInputArea } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 

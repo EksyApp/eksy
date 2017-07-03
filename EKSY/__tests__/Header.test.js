@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import Header from '../App/Components/Header';
+import { Header } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 test('header renders correctly with backbutton value true', () => {

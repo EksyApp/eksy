@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import Divider from '../App/Components/Divider';
+import { Divider } from '../App/Components/Common';
 import renderer from 'react-test-renderer';
 
 test('divider renders correctly', () => {

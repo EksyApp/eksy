@@ -1,6 +1,6 @@
 import React from 'react'
 import 'react-native'
-import MapManager from '../App/Map/MapManager'
+import MapManager from '../App/Containers/Map/MapManager'
 
 MapManager.prototype.startLocationWatcher = jest.fn()
 var mapManager = new MapManager()

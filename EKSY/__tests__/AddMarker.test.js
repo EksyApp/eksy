@@ -2,7 +2,7 @@ import React from 'react'
 import '../_mocks_/setup'
 import {shallow} from 'enzyme'
 import {AddMarker} from "../App/Containers/AddMarker";
-import MapManager from "../App/Map/MapManager"
+import MapManager from "../App/Containers/Map/MapManager"
 import renderer from 'react-test-renderer'
 
 MapManager.prototype.startLocationWatcher = jest.fn()
