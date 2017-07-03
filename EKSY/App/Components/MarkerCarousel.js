@@ -27,7 +27,7 @@ export default class MarkerCarousel extends Component {
         <Carousel
           itemWidth={this.itemWidth}
           sliderWidth={this.sliderWidth}
-          enableSnap={false}
+          enableSnap={true}
        />
       </View>
     )

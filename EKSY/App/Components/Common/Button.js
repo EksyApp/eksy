@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types'
 import * as Theme from '../../Theme'
 
-class Button extends Component {
+export class Button extends Component {
   render() {
     return (
       <TouchableOpacity onPress={this.props.onPress} style={styles.buttonStyle}>
@@ -43,4 +43,4 @@ const styles = {
   }
 };
 
-export default Button;
+// export default Button;

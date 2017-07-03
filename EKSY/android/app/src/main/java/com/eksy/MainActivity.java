@@ -2,6 +2,7 @@ package com.eksy;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
+import com.wix.interactable.Interactable;
 import com.cboy.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {

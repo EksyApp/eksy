@@ -42,4 +42,4 @@ class Main extends Component {
   }
 }
 
-export default codePush(Main)
+export default Main

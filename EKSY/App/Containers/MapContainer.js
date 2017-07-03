@@ -36,7 +36,13 @@ export class MapContainer extends Component {
   render () {
     return (
 
-        <View style={styles.view}>
+        <View style={styles.viewContainer}>
+          <Map
+            currentRegion={this.props.currentRegion}
+            currentLocation={this.props.currentLocation}
+            markerList={this.props.markerList}
+            regionChange={this.props.regionChange} />
+            <MenuButton onPress={() => { this.props.menuButtonPress() }} />
           <View style={styles.panelContainer}>
            <Animated.View style={[styles.panelContainer,{
              opacity: this._deltaY.interpolate({
@@ -44,24 +50,19 @@ export class MapContainer extends Component {
                outputRange: [0, 1],
                extrapolateRight: 'clamp'
              })
-           }]}>
-           <Map
-             currentRegion={this.props.currentRegion}
-             currentLocation={this.props.currentLocation}
-             markerList={this.props.markerList}
-             regionChange={this.props.regionChange} />
-           <MenuButton onPress={() => { this.props.menuButtonPress() }} />
-           </Animated.View>
+           }]}
+             pointerEvents="none" />
            <Interactable.View
              verticalOnly={true}
-             snapPoints={[{y: Screen.height-200}, {y: Screen.height-20}]}
-             boundaries={{top: -300}}
+             snapPoints={[{y: Screen.height-200}, {y: Screen.height-100}]}
+             boundaries={{top: 300}}
              initialPosition={{y: Screen.height-20}}
              animatedValueY={this._deltaY}>
-             <View style={styles.panel}>
-             <MarkerCarousel
-              markerList = {this.props.markerList} />
-             </View>
+             <Animated.View style={styles.panel}>
+               <MarkerCarousel
+                markerList = {this.props.markerList}
+                pointerEvents = "none" />
+             </Animated.View>
            </Interactable.View>
          </View>
         </View>
@@ -69,6 +70,8 @@ export class MapContainer extends Component {
   }
 }
 
+// <View style={styles.panel}>
+// </View>
 const styles = StyleSheet.create({
   container: {
     flex: 1
@@ -79,12 +82,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'black',
-  },
-  view: {
     flex: 1
+
+  },
+  viewContainer: {
+    flex: 1,
   },
   panel: {
+    width: Screen.width,
     height: Screen.height + 300,
     padding: 20,
     backgroundColor: '#f7f5eee8',
