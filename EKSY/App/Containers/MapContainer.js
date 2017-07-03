@@ -54,9 +54,9 @@ export class MapContainer extends Component {
              pointerEvents="none" />
            <Interactable.View
              verticalOnly={true}
-             snapPoints={[{y: Screen.height-200}, {y: Screen.height-100}]}
+             snapPoints={[{y: Screen.height-200}, {y: Screen.height+20}]}
              boundaries={{top: 300}}
-             initialPosition={{y: Screen.height-20}}
+             initialPosition={{y: Screen.height+20}}
              animatedValueY={this._deltaY}>
              <Animated.View style={styles.panel}>
                <MarkerCarousel
