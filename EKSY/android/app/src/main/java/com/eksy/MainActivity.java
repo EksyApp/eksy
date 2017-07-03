@@ -2,6 +2,8 @@ package com.eksy;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.wix.interactable.Interactable;
 import com.cboy.rn.splashscreen.SplashScreen;
 
