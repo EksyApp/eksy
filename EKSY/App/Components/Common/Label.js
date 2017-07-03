@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Text, StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
 
-class Label extends Component {
+export class Label extends Component {
 	render() {
 		return(
 				<Text {...this.props} style={[style.text, this.props.style]} />

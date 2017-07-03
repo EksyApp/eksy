@@ -7,7 +7,7 @@ import {
 import {FormLabel, FormInput} from 'react-native-elements'
 import * as Theme from '../../Theme'
 
-class TextInputArea extends Component {
+export class TextInputArea extends Component {
 
 	constructor(props) {
 		super(props)

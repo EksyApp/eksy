@@ -3,7 +3,7 @@ import * as Elements from 'react-native-elements'
 import {StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
 
-class Divider extends Component {
+export class Divider extends Component {
 
 	render() {
 		return(

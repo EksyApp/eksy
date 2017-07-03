@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Text, StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
 
-class TextArea extends Component {
+export class TextArea extends Component {
 
 	render() {
 		return(

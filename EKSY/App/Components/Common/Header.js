@@ -6,7 +6,7 @@ import MenuBackButton from '../MenuBackButton'
 import {PropTypes} from 'prop-types'
 import {Label} from './'
 
-class Header extends Component {
+export class Header extends Component {
 
 	render() {
 		let button = <MenuButton onPress={this.props.menuButtonPress}/>

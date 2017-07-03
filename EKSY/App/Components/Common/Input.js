@@ -7,7 +7,7 @@ import {
 import { FormLabel, FormInput } from 'react-native-elements'
 import * as Theme from '../../Theme'
 
-const Input = ({label, value, onChangeText, placeholder, secureTextEntry}) => {
+export const Input = ({label, value, onChangeText, placeholder, secureTextEntry}) => {
   return (
     <View>
       <FormLabel labelStyle={styles.labelStyle}>{label}</FormLabel>
