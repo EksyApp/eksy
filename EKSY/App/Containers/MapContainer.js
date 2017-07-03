@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
   panel: {
     width: Screen.width,
     height: Screen.height + 300,
+    paddingTop: 30,
     backgroundColor: '#f7f5eee8',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
