@@ -74,7 +74,7 @@ class FirebaseDao {
 		await markerRef.set(marker)
 		this._addGeofireLocation(key, marker.latitude, marker.longitude)
 		this._addMarkerToCurrentUser(key)
-		if(marker.images.length > 0) {
+		if (marker.images.length > 0) {
 			marker.images = await this._uploadImages(key, marker.images)
 			await markerRef.set(marker)
 		}
@@ -129,16 +129,16 @@ class FirebaseDao {
 		})
 	}
 	
-	_setMarkerVisible(key) {
-		let markerRef = firebase.database().ref("/markers/markers_info/" + key).once('value').then((snapshot) => {
-			console.warn("marker with title " + snapshot.val().title + " added to map")
-			this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
-			// this._mapManager._map.forceUpdate()
-		})
+	async _setMarkerVisible(key) {
+		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
+		// console.warn("marker with title " + snapshot.val().title + " added to map")
+		this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
+		// this._mapManager._map.forceUpdate()
+		
 	}
 	
-	_setMarkerHidden(key) {
-		console.warn("marker removed from map")
+	async _setMarkerHidden(key) {
+		// console.warn("marker removed from map")
 		this.store.dispatch(Actions.setMarkerHidden(key))
 		// this._mapManager._map.forceUpdate()
 	}
