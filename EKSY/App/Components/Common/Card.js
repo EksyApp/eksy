@@ -5,8 +5,7 @@ import {
 } from 'react-native';
 
 const Card = (props) => (
-  <View style={styles.container}>
-    {props.children}
+  <View {...props} style={[styles.container, props.style]}>
   </View>
 );
 
@@ -14,6 +13,7 @@ export { Card };
 
 const styles = StyleSheet.create({
   container: {
+	  backgroundColor: '#fff',
     borderWidth:1,
     borderRadius: 2,
     borderColor:'#ddd',

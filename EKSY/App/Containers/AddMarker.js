@@ -156,7 +156,10 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
 	},
-
+	
+	imageContainer: {
+		width: "100%"
+	}
 
 })
 
