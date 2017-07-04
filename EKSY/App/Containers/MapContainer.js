@@ -2,13 +2,12 @@ import React, {Component} from 'react'
 import {PermissionsAndroid} from 'react-native'
 import Map from './Map/Map'
 import MenuButton from '../Components/MenuButton'
-import MapManager from './Map/MapManager'
-import Marker from './Map/Marker'
 import { View, StyleSheet, Dimensions, Animated, Text } from 'react-native'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
 import MarkerCarousel from '../Components/MarkerCarousel'
+import {backgroundColor} from '../Theme'
 
 const Screen = {
   width: Dimensions.get('window').width,
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     width: Screen.width,
     height: Screen.height + 300,
     paddingTop: 30,
-    backgroundColor: '#f7f5eee8',
+    backgroundColor: backgroundColor,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     shadowColor: '#000000',

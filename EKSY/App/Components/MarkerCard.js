@@ -4,7 +4,7 @@ import {
 	Text,
 	StyleSheet,
 	Image,
-	TouchableOpacity
+	TouchableWithoutFeedback
 } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import {Card, CardSection, Label, TextArea} from './Common'
@@ -19,9 +19,9 @@ export default class MarkerCard extends Component {
 	renderWithImage() {
 		return (
 				<Card style={[styles.container, {width: this.props.width}]}>
-					<View style={[styles.imageContainer, {width: this.props.width}]}>
+					<CardSection style={[styles.imageContainer, {width: this.props.width}]}>
 						<Image style={styles.image} source={{uri: this.props.marker.images[0].uri}}/>
-					</View>
+					</CardSection>
 					<View style={styles.infoContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
 					</View>
@@ -53,9 +53,9 @@ export default class MarkerCard extends Component {
 	
 	render() {
 		return(
-				<TouchableOpacity onPress={() => {this.handlePress()}}>
+				<TouchableWithoutFeedback onPress={() => {this.handlePress()}}>
 					{this.renderCard()}
-				</TouchableOpacity>
+				</TouchableWithoutFeedback>
 		)
 	}
 	
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
 	},
 	
 	imageContainer: {
-		height: "70%"
+		height: "70%",
+		padding: 0
 	},
 	
 	image: {
