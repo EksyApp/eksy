@@ -42,7 +42,7 @@ class MapManager {
 	}
 
 	startLocationWatcher() {
-		navigator.geolocation.watchPosition(
+		this.watchID = navigator.geolocation.watchPosition(
 				(position) => {
 					this.store.dispatch(Actions.updateLocation(position.coords))
 					this.store.dispatch(Actions.locationKnown(true))
