@@ -53,7 +53,6 @@ export class AddMarker extends Component {
       title: 'Select image',
       storageOptions: {
         skipBackup: true,
-	      waitUntilSaved: true
       }
     }
 
