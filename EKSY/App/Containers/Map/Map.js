@@ -11,6 +11,7 @@ import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
 import * as Actions from '../../Actions'
 import Marker from './Marker'
+import { accentColor, detailColor } from '../../Theme'
 
 class Map extends Component {
 
@@ -45,8 +46,18 @@ class Map extends Component {
 
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
-			return <MapView.Circle center={this.props.currentLocation} radius={100} key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)} />
+			console.log(detailColor)
+			return
+						<MapView.Circle
+								center={this.props.currentLocation}
+								radius={100}
+								strokeWidth={12}
+								strokeColor={detailColor}
+								fillColor={accentColor}
+								key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)}
+								/>
 		}
+
 		return null
 	}
 

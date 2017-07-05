@@ -27,4 +27,11 @@ export default StyleSheet.create({
   callout: {
     width: 140,
   },
+  circle: {
+    borderRadius: 12,
+    backgroundColor: "rgba(130,4,150, 0.3)",
+    position: "absolute",
+    borderWidth: 1,
+    borderColor: "rgba(130,4,150, 0.5)"
+  }
 });
