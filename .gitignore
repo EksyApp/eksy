@@ -3,3 +3,4 @@
 .idea/*
 gen/*
 coverage/*
+node_modules/
