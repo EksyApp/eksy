@@ -51,6 +51,7 @@ export class AddMarker extends Component {
 	_selectImage () {
     const options = {
       title: 'Select image',
+			noData: true,
       storageOptions: {
         skipBackup: true,
       }
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
 	},
-	
+
 	imageContainer: {
 		width: "100%"
 	}

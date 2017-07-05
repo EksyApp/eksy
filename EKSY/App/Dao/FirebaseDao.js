@@ -12,9 +12,9 @@ window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
 window.Blob = Blob
 
 class FirebaseDao {
-	
+
 	static instance = null;
-	
+
 	constructor() {
 		if (FirebaseDao.instance == null) {
 			FirebaseDao.instance = this;
@@ -26,22 +26,22 @@ class FirebaseDao {
 		}
 		return FirebaseDao.instance;
 	}
-	
+
 	async _initStore() {
 		this.store = await Store()
 		// this.store.subscribe(() => this._storeListener())
 	}
-	
+
 	// _storeListener() {
 	//
 	// }
-	
+
 	updateLocation(latitude, longitude) {
 		// console.warn("location updated to lat: " + latitude + ", long: " + longitude)
 		if (!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
-				radius: 0.1
+				radius: 1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
 				this._setMarkerVisible(key)
@@ -53,19 +53,19 @@ class FirebaseDao {
 			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
 		}
 	}
-	
+
 	_initGeofire() {
 		let reference = firebase.database().ref("/markers/markers_locations")
 		this._geofire = new GeoFire(reference)
 	}
-	
+
 	async addUser() {
 		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
 		reference.set({
 			email: firebase.auth().currentUser.email
 		})
 	}
-	
+
 	async addMarker(marker) {
 		marker = await this._addInfoToMarker(marker)
 		let markers = await firebase.database().ref("/markers/markers_info")
@@ -78,7 +78,7 @@ class FirebaseDao {
 		}
 		markerRef.set(marker)
 	}
-	
+
 	async _addInfoToMarker(marker) {
 		let currentUser = await this.getCurrentUser()
 		marker = {
@@ -93,7 +93,7 @@ class FirebaseDao {
 		}
 		return marker
 	}
-	
+
 	async _uploadImages(key, images) {
 		return await Promise.all(images.map(async (image) => {
 			console.log("uploading " + image.uri)
@@ -102,46 +102,54 @@ class FirebaseDao {
 			return image
 		}))
 	}
-	
+
 	async _uploadImage(key, uri, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
+		console.log("uploadUri" + uploadUri)
 		const imageRef = await firebase.storage().ref('images').child(`${key}`)
+		console.log("imageref" + imageRef)
+		// let CACHE_FILE = null
+		// await fs.slice(uploadUri, CACHE_FILE, 0, 16)
 		const imgData = await fs.readFile(uploadUri, 'base64')
+		console.log("imgData" + imgData)
 		const blob = await Blob.build(imgData, {type: `${mime};BASE64`})
+		console.log("blob" + blob)
+		console.log("imgRef.put")
 		await imageRef.put(blob, {contentType: mime})
+		console.log("blob.close")
 		await blob.close()
 		return await imageRef.getDownloadURL()
 	}
-	
+
 	async _addMarkerToCurrentUser(markerKey) {
 		let currentUser = await this.getCurrentUser()
 		if (currentUser) {
 			let reference = await firebase.database().ref("/users/" + currentUser.uid + '/markers')
 			reference.push(markerKey)
 		}
-		
+
 	}
-	
+
 	async _addGeofireLocation(key, latitude, longitude) {
 		this._geofire.set(key, [latitude, longitude]).catch((error) => {
 			console.error(error)
 		})
 	}
-	
+
 	async _setMarkerVisible(key) {
 		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
 		// console.warn("marker with title " + snapshot.val().title + " added to map")
 		this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
 		// this._mapManager._map.forceUpdate()
-		
+
 	}
-	
+
 	async _setMarkerHidden(key) {
 		// console.warn("marker removed from map")
 		this.store.dispatch(Actions.setMarkerHidden(key))
 		// this._mapManager._map.forceUpdate()
 	}
-	
+
 	async getCurrentUser() {
 		return await firebase.auth().currentUser
 	}
