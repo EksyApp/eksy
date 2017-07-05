@@ -41,7 +41,7 @@ class FirebaseDao {
 		if (!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
-				radius: 1
+				radius: 0.1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
 				this._setMarkerVisible(key)
@@ -105,18 +105,11 @@ class FirebaseDao {
 
 	async _uploadImage(key, uri, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-		console.log("uploadUri" + uploadUri)
 		const imageRef = await firebase.storage().ref('images').child(`${key}`)
-		console.log("imageref" + imageRef)
-		// let CACHE_FILE = null
-		// await fs.slice(uploadUri, CACHE_FILE, 0, 16)
+		// 5.7.2017: only works with react-native-fetch-blob.git#issue-287
 		const imgData = await fs.readFile(uploadUri, 'base64')
-		console.log("imgData" + imgData)
 		const blob = await Blob.build(imgData, {type: `${mime};BASE64`})
-		console.log("blob" + blob)
-		console.log("imgRef.put")
 		await imageRef.put(blob, {contentType: mime})
-		console.log("blob.close")
 		await blob.close()
 		return await imageRef.getDownloadURL()
 	}
