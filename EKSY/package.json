@@ -15,7 +15,8 @@
     "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
     "git-hook": "npm run lint -s && npm test -s",
     "coverage": "jest --coverage",
-    "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android "
   },
   "dependencies": {
     "firebase": "^4.0.0",
