@@ -109,7 +109,7 @@ class FirebaseDao {
 
 	async _uploadImage(key, uri, index, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-		const imageRef = await firebase.storage().ref('images').child(`${key}${index}`)
+		const imageRef = await firebase.storage().ref('images').child("marker" + `${key}` + "-image-" + `${index}`)
 		// 5.7.2017: only works with react-native-fetch-blob.git#issue-287
 		const imgData = await fs.readFile(uploadUri, 'base64')
 		const blob = await Blob.build(imgData, {type: `${mime};BASE64`})
