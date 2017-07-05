@@ -95,7 +95,7 @@ class Picture extends Component {
 
 const style = StyleSheet.create({
 	image: {
-		resizeMode: 'contain'
+		resizeMode: 'contain',
 	}
 })
 

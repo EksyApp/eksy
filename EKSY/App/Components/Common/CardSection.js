@@ -3,11 +3,11 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import {detailColor} from '../../Theme'
 
 const CardSection = (props) => (
-  <View style={styles.container}>
-    {props.children}
-  </View>
+    <View {...props} style={[styles.container, props.style]}>
+    </View>
 );
 
 export { CardSection };
@@ -16,10 +16,9 @@ const styles = StyleSheet.create({
   container: {
     borderBottomWidth: 1,
     padding: 5,
-    backgroundColor: '#fff',
     justifyContent: 'flex-start',
     flexDirection: 'row',
-    borderColor: '#ddd',
+    borderColor: detailColor,
     position: 'relative',
   },
 });

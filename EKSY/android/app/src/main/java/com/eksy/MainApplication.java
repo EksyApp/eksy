@@ -10,6 +10,8 @@ import com.microsoft.azure.mobile.react.mobilecenter.RNMobileCenterPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import com.imagepicker.ImagePickerPackage;
+import com.RNFetchBlob.RNFetchBlobPackage;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -45,7 +47,9 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
             new Interactable(),
-            new MapsPackage()
+            new MapsPackage(),
+            new ImagePickerPackage(),
+            new RNFetchBlobPackage()
       );
     }
   };

@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import {View, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
 import PointSelector from '../Components/PointSelector'
-import MapManager from './Map/MapManager'
+import MapManager from '../Map/MapManager'
+import Header from '../Components/Header'
 import * as ReduxActions from '../Actions'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
+import Button from '../Components/Button'
+import Input from '../Components/Input'
+import Label from '../Components/Label'
+import TextInputArea from '../Components/TextInputArea'
 import Dao from '../Dao/Dao'
-import { Header, Button, Input, Label, TextInputArea } from '../Components/Common'
-import ImagePicker from 'react-native-image-picker'
-import PictureList from '../Components/PictureList'
+
 
 export class AddMarker extends Component {
 	constructor(props) {
@@ -36,39 +39,17 @@ export class AddMarker extends Component {
 			text: this.state.text,
 			title: this.state.title,
 			images: this.state.images,
-
+			
 		}
 		this.props.addNewMarker(marker);
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
 	}
-
+	
 	_addImage() {
 		Image.getSize(this.state.uri, (width, height) => {this._imageUriWorks(width, height)}, (error) => {this._imageUrlError(error)})
 	}
-
-	_selectImage () {
-    const options = {
-      title: 'Select image',
-      storageOptions: {
-        skipBackup: true,
-      }
-    }
-
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('response: ', response)
-
-      if (response.didCancel) {
-        console.log('cancelled')
-      } else if (response.error) {
-        console.log('error ', response.error)
-      } else {
-        this.setState({ uri: response.uri })
-        this._addImage()
-      }
-    })
-  }
 
 	_imageUrlError(error) {
 		this.setState({imageResponse: "URL not valid"});
@@ -78,16 +59,6 @@ export class AddMarker extends Component {
 		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
 		this.setState({uri:'', imageResponse: "Image added!"})
 	}
-
-	renderImageList () {
-    if (this.state.images.length > 0) {
-      return (
-        <PictureList data={this.state.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
-      )
-    }
-
-    return null
-  }
 
 	render() {
 		return (
@@ -103,10 +74,10 @@ export class AddMarker extends Component {
 							<View style={styles.formContainer}>
 								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
 								<TextInputArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
-								{ this.renderImageList() }
+								<Input value={this.state.uri} label="Image URL" onChangeText={(text) => this.setState({uri: text})}/>
 								<Label>{this.state.imageResponse}</Label>
-								<Button onPress={() => this._selectImage()}>
-									Add image...
+								<Button onPress={() => this._addImage()}>
+									Add image
 								</Button>
 
 							</View>
@@ -156,10 +127,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
 	},
-	
-	imageContainer: {
-		width: "100%"
-	}
+
 
 })
 

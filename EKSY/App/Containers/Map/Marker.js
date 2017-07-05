@@ -1,24 +1,18 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PropTypes from 'prop-types'
-import * as ReduxActions from '../../Actions'
 import {Actions} from 'react-native-router-flux'
-import configureStore from '../../Store'
+
 
 class Marker extends Component {
   constructor (props) {
     super(props)
-	  this._initStore()
+
   }
 
-	async _initStore() {
-		this.store = await configureStore()
-	}
-
-
-	_handlePress(event) {
-		this.store.dispatch(ReduxActions.setMarkerSelected(this.props.data));
-		Actions.markerView()
+	_handlePress() {
+		this.props.setMarkerSelected(this.props.data)
+		Actions.markerView();
 	}
 
   render () {
@@ -26,7 +20,7 @@ class Marker extends Component {
       <MapView.Marker
         coordinate={{latitude: this.props.data.latitude, longitude: this.props.data.longitude}}
         pinColor={this.props.data.color}
-        onPress={(event) => {this._handlePress(event)}}
+        onPress={() => {this._handlePress()}}
 				>
       </MapView.Marker>
     )

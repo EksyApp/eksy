@@ -3,10 +3,10 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
+import {frontgroundColor} from '../../Theme'
 
 const Card = (props) => (
-  <View style={styles.container}>
-    {props.children}
+  <View {...props} style={[styles.container, props.style]}>
   </View>
 );
 
@@ -14,6 +14,7 @@ export { Card };
 
 const styles = StyleSheet.create({
   container: {
+	  backgroundColor: frontgroundColor,
     borderWidth:1,
     borderRadius: 2,
     borderColor:'#ddd',
