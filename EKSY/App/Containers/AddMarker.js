@@ -55,7 +55,9 @@ export class AddMarker extends Component {
 			noData: true,
       storageOptions: {
         skipBackup: true,
-      }
+      },
+			maxWidth: 800,
+			maxHeight: 800
     }
 
     ImagePicker.showImagePicker(options, (response) => {
