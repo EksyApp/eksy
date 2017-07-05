@@ -2,10 +2,13 @@ import FirebaseDao from './FirebaseDao'
 
 class Dao {
 
-	// static usedDAO = new FirebaseDao()
+	static usedDAO = null;
 
 	constructor() {
-		return new FirebaseDao();
+		if(Dao.usedDAO == null) {
+			Dao.usedDAO = new FirebaseDao();
+		}
+		return Dao.usedDAO;
 	}
 
 }
