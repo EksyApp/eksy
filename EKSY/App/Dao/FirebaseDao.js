@@ -71,13 +71,12 @@ class FirebaseDao {
 		let markers = await firebase.database().ref("/markers/markers_info")
 		let markerRef = await markers.push()
 		let key = markerRef.key
-		await markerRef.set(marker)
 		this._addGeofireLocation(key, marker.latitude, marker.longitude)
 		this._addMarkerToCurrentUser(key)
 		if (marker.images.length > 0) {
 			marker.images = await this._uploadImages(key, marker.images)
-			await markerRef.set(marker)
 		}
+		markerRef.set(marker)
 	}
 	
 	async _addInfoToMarker(marker) {
