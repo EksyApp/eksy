@@ -68,18 +68,19 @@ class FirebaseDao {
 
 	async addMarker(marker) {
 		marker = await this._addInfoToMarker(marker)
-		
+
 		let markers = await firebase.database().ref("/markers/markers_info")
 		let markerRef = await markers.push()
 		let key = markerRef.key
 		if (marker.images.length > 0) {
 			marker.images = await this._uploadImages(key, marker.images)
+			console.log(marker.images)
 		}
 		await markerRef.set(marker)
 		this._addGeofireLocation(key, marker.latitude, marker.longitude)
 		this._addMarkerToCurrentUser(key)
-		
-		
+
+
 	}
 
 	async _addInfoToMarker(marker) {
@@ -98,17 +99,17 @@ class FirebaseDao {
 	}
 
 	async _uploadImages(key, images) {
-		return await Promise.all(images.map(async (image) => {
+		return await Promise.all(images.map(async (image, index) => {
 			console.log("uploading " + image.uri)
-			let uploadedURL = await this._uploadImage(key, image.uri)
+			let uploadedURL = await this._uploadImage(key, image.uri, index)
 			image.uri = uploadedURL
 			return image
 		}))
 	}
 
-	async _uploadImage(key, uri, mime = 'application/octet-stream') {
+	async _uploadImage(key, uri, index, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-		const imageRef = await firebase.storage().ref('images').child(`${key}`)
+		const imageRef = await firebase.storage().ref('images').child(`${key}${index}`)
 		// 5.7.2017: only works with react-native-fetch-blob.git#issue-287
 		const imgData = await fs.readFile(uploadUri, 'base64')
 		const blob = await Blob.build(imgData, {type: `${mime};BASE64`})

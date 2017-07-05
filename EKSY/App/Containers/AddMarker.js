@@ -45,7 +45,8 @@ export class AddMarker extends Component {
 	}
 
 	_addImage() {
-		Image.getSize(this.state.uri, (width, height) => {this._imageUriWorks(width, height)}, (error) => {this._imageUrlError(error)})
+		const imageUri = this.state.uri
+		Image.getSize(imageUri, (width, height) => {this._imageUriWorks(imageUri, width, height)}, (error) => {this._imageUrlError(error)})
 	}
 
 	_selectImage () {
@@ -75,8 +76,9 @@ export class AddMarker extends Component {
 		this.setState({imageResponse: "URL not valid"});
 	}
 
-	_imageUriWorks(width, height) {
-		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
+	_imageUriWorks(imageUri, width, height) {
+		console.log(imageUri)
+		this.setState({images: [...this.state.images, {uri: imageUri, width: width, height: height}]});
 		this.setState({uri:'', imageResponse: "Image added!"})
 	}
 
