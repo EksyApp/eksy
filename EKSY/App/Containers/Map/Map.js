@@ -78,7 +78,7 @@ class Map extends Component {
 						style={styles.map}
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.handleRegionChange(region)}
-						loadingEnabled
+						/*loadingEnabled*/
 						showsUserLocation
 						showCompass={false}
 				>
