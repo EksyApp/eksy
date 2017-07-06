@@ -3,6 +3,13 @@ import 'react-native'
 import {shallow} from 'enzyme'
 import {SideBar} from '../App/Navigation/SideBar'
 
+jest.mock('react-native-fetch-blob', () => {
+  return {
+    DocumentDir: () => {},
+    polyfill: () => {},
+  }
+});
+
 describe('sidebar', () => {
 
   it('when "Go to map" -button is pressed the function passed to goToMap-prop is executed', () => {

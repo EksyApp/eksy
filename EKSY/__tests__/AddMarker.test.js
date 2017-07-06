@@ -16,6 +16,12 @@ jest.mock('react-native-router-flux', () => ({
 	}
 }))
 
+jest.mock('react-native-fetch-blob', () => {
+  return {
+    DocumentDir: () => {},
+    polyfill: () => {},
+  }
+});
 
 let currentRegion = {
 	latitude: 60.184356,

@@ -16,15 +16,15 @@ const Screen = {
 }
 
 export class MapContainer extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.requestLocationPermission()
-		
+
 		this._deltaY = new Animated.Value(Screen.height - 100);
 	}
-	
+
 	async requestLocationPermission() {
 		try {
 			await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
@@ -32,10 +32,10 @@ export class MapContainer extends Component {
 			console.warn(err)
 		}
 	}
-	
+
 	render() {
 		return (
-				
+
 				<View style={styles.viewContainer}>
 					<Map
 							currentRegion={this.props.currentRegion}
@@ -78,7 +78,7 @@ export class MapContainer extends Component {
 											setMarkerSelected={this.props.setMarkerSelected}
 											pointerEvents="none"/>
 								</View>
-							
+
 							</Animated.View>
 						</Interactable.View>
 					</View>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 		left: 0,
 		right: 0,
 		flex: 1
-		
+
 	},
 	viewContainer: {
 		flex: 1,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 		width: Screen.width,
 		height: Screen.height,
 	},
-	
+
 	panelVisible: {
 		paddingTop: 20,
 		width:"100%",
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
 		shadowRadius: 5,
 		shadowOpacity: 0.4
 	},
-	
+
 	panelHeader: {
 		alignItems: 'center',
 		position: 'relative',
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
 	badgeContainer: {
 		backgroundColor: '#800000',
 		position: 'relative',
-		top: 5,
-		left: 20
+		top: 22,
+		left: 50
 	},
 	badgeText: {
 		color: '#FFFFFF'
