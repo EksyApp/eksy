@@ -4,15 +4,16 @@ import PropTypes from 'prop-types'
 import Picture from './Picture'
 
 class PictureList extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		
 		const datasource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
+
 		this.state = {
 			dataSource: datasource.cloneWithRows(this.props.data)
 		}
-		
+
 	}
 	
 	componentWillReceiveProps(props) {
@@ -21,7 +22,7 @@ class PictureList extends Component {
 			this.setState({dataSource})
 		}
 	}
-	
+
 	render() {
 		return (
 				<ListView

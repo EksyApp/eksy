@@ -11,6 +11,8 @@ import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
 import * as Actions from '../../Actions'
 import Marker from './Marker'
+import { circleStrokeColor, circleFillColor } from '../../Theme'
+import Store from '../../Store'
 
 class Map extends Component {
 
@@ -19,7 +21,6 @@ class Map extends Component {
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
-
 		// testData.features.map((pampyla, index) => {
 		// 	let marker = {
 		// 		longitude: pampyla.geometry.coordinates[0],
@@ -39,14 +40,34 @@ class Map extends Component {
 		this.props.regionChange(region)
 	}
 
+	async componentDidMount() {
+		this.store = await Store()
+		navigator.geolocation.getCurrentPosition(
+			(position) => {
+				this.store.dispatch(Actions.updateLocation(position.coords))
+				this.store.dispatch(Actions.locationKnown(true))
+			},
+			(error) => this.store.dispatch(Actions.locationKnown(false)),
+			{enableHighAccuracy: false, timeout: 500, maximumAge: 1000000, distanceFilter: 3}
+		)
+	}
+
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) => <Marker data={marker} setMarkerSelected={this.props.setMarkerSelected} key={marker.key} />)
 	}
 
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
-			return <MapView.Circle center={this.props.currentLocation} radius={100} key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)} />
+			return <MapView.Circle
+								center={this.props.currentLocation}
+								radius={100}
+								strokeWidth={2}
+								strokeColor={circleStrokeColor}
+								fillColor={circleFillColor}
+								key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)}
+							/>
 		}
+
 		return null
 	}
 
@@ -57,6 +78,7 @@ class Map extends Component {
 						style={styles.map}
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.handleRegionChange(region)}
+						loadingEnabled
 						showsUserLocation
 						showCompass={false}
 				>

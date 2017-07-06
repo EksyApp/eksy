@@ -3,6 +3,7 @@ import {PermissionsAndroid} from 'react-native'
 import Map from './Map/Map'
 import MenuButton from '../Components/MenuButton'
 import { View, StyleSheet, Dimensions, Animated, Text } from 'react-native'
+import { Badge } from 'react-native-elements'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
@@ -59,6 +60,16 @@ export class MapContainer extends Component {
              initialPosition={{y: Screen.height+20}}
              animatedValueY={this._deltaY}>
              <Animated.View style={styles.panel}>
+                <Animated.View style={styles.panelHeader}>
+                    <Animated.View style={styles.panelHandle} />
+                    {this.props.markerList.length > 0 &&
+                      <Badge
+                        value={this.props.markerList.length}
+                        containerStyle={styles.badgeContainer}
+                        textStyle={styles.badgeText}
+                      />
+                    }
+               </Animated.View>
                <MarkerCarousel
                 markerList = {this.props.markerList}
                 setMarkerSelected={this.props.setMarkerSelected}
@@ -101,6 +112,27 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.4
   },
+  panelHeader: {
+    alignItems: 'center',
+    position: 'relative',
+    top: -20
+  },
+  panelHandle: {
+    width: 40,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#00000040',
+    marginBottom: 10
+  },
+  badgeContainer: {
+    backgroundColor: '#800000',
+    position: 'relative',
+    top: -25,
+    left: 15
+  },
+  badgeText: {
+    color: '#FFFFFF'
+  }
 })
 
 const mapStateToProps = (state) => {
