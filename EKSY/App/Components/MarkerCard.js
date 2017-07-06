@@ -3,11 +3,11 @@ import {
 	View,
 	Text,
 	StyleSheet,
-	Image,
 	TouchableWithoutFeedback
 } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 import {Card, CardSection, Label, TextArea} from './Common'
+import Image from 'react-native-fast-image'
 
 export default class MarkerCard extends Component {
 	
@@ -20,7 +20,7 @@ export default class MarkerCard extends Component {
 		return (
 				<Card style={[styles.container, {width: this.props.width}]}>
 					<CardSection style={[styles.imageContainer, {width: this.props.width}]}>
-						<Image style={styles.image} source={{uri: this.props.marker.images[0].uri}}/>
+						<Image resizeMode={Image.resizeMode.cover} style={styles.image} source={{uri: this.props.marker.images[0].uri}}/>
 					</CardSection>
 					<View style={styles.infoContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
 	},
 	
 	image: {
-		resizeMode: "cover",
 		height: "100%",
 		width: "100%"
 	},

@@ -77,9 +77,11 @@ export class AddMarker extends Component {
 	}
 
 	_imageUriWorks(imageUri, width, height) {
-		console.log(imageUri)
-		this.setState({images: [...this.state.images, {uri: imageUri, width: width, height: height}]});
-		this.setState({uri:'', imageResponse: "Image added!"})
+		this.setState({
+			images: [...this.state.images, {uri: imageUri, width: width, height: height}],
+			uri: '',
+			imageResponse: "Image added!"
+		});
 	}
 
 	renderImageList () {
@@ -158,6 +160,10 @@ const styles = StyleSheet.create({
 		width: '100%',
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
+	},
+	
+	listStyle: {
+		padding: 5
 	},
 
 	imageContainer: {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {StyleSheet, TouchableWithoutFeedback, Image, View} from 'react-native'
+import {StyleSheet, TouchableWithoutFeedback, View, Image} from 'react-native'
 import PropTypes from 'prop-types'
-
+import FastImage from 'react-native-fast-image'
 
 
 class Picture extends Component {
@@ -58,17 +58,37 @@ class Picture extends Component {
 		return {wantedWidth, wantedHeight}
 	}
 	
+	_renderImage(imageStyle) {
+		if (this.props.data.uri.startsWith("http")) {
+			return (
+					<FastImage
+							resizeMode={FastImage.resizeMode.cover}
+							source={{uri: this.props.data.uri}}
+							style={imageStyle}
+					/>
+			)
+		} else {
+			return (
+					<Image
+							resizeMode={FastImage.resizeMode.cover}
+							source={{uri: this.props.data.uri}}
+							style={imageStyle}
+					/>
+			)
+		}
+	}
+	
 	render() {
 		
 		let containerStyle = [style.container];
-		if(this.props.containerStyle) {
+		if (this.props.containerStyle) {
 			containerStyle.push(this.props.containerStyle)
 		}
 		containerStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions)
 		
 		
 		let imageStyle = [style.image];
-		if(this.props.imageStyle) {
+		if (this.props.imageStyle) {
 			imageStyle.push(this.props.imageStyle)
 		}
 		imageStyle.push(StyleSheet.create(this.state.wantedDimensions).dimensions);
@@ -81,10 +101,7 @@ class Picture extends Component {
 						}}
 				>
 					<TouchableWithoutFeedback onPress={this.props.onPress}>
-						<Image
-								source={{uri: this.props.data.uri}}
-								style={imageStyle}
-						/>
+						{this._renderImage(imageStyle)}
 					</TouchableWithoutFeedback>
 				
 				</View>
@@ -94,9 +111,7 @@ class Picture extends Component {
 }
 
 const style = StyleSheet.create({
-	image: {
-		resizeMode: 'contain',
-	}
+	image: {}
 })
 
 Picture.propTypes = {

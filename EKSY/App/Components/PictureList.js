@@ -8,11 +8,18 @@ class PictureList extends Component {
 	constructor(props) {
 		super(props)
 		
-		const datasource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1.uri !== r2.uri})
+		const datasource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
 		this.state = {
 			dataSource: datasource.cloneWithRows(this.props.data)
 		}
 		
+	}
+	
+	componentWillReceiveProps(props) {
+		if(props.data !== this.props.data) {
+			const dataSource = this.state.dataSource.cloneWithRows(props.data || []);
+			this.setState({dataSource})
+		}
 	}
 	
 	render() {

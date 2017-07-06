@@ -57,7 +57,7 @@ export class AddMarker extends Component {
 
 	_imageUriWorks(width, height) {
 		this.setState({images: [...this.state.images, {uri: this.state.uri, width: width, height: height}]});
-		this.setState({uri:'', imageResponse: "Image added!"})
+		this.setState({uri:'', imageResponse: "FastImage added!"})
 	}
 
 	render() {

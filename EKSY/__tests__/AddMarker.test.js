@@ -97,9 +97,9 @@ describe("AddMarker", () => {
 		expect(mapManager.getMarkers()[3].props.text).toBe("Some great text")
 	})
 
-	it('Adds a marker with a valid Image', () => {
+	it('Adds a marker with a valid FastImage', () => {
 		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="Image URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
+		addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
 		addMarker.find('Button').first().simulate('press')
 		return new Promise(resolve => setTimeout(resolve, 20)).then(() => {
 			addMarker.find('Button').last().simulate('press')
@@ -117,7 +117,7 @@ describe("AddMarker", () => {
 	//it('Doesnt add an image when URL is invalid', () => {
 	//	return new Promise(resolve => setTimeout(resolve, 50)).then(() => {
 	//		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-	//		addMarker.find('[label="Image URL"]').simulate('changeText', "http://www.google.com")
+	//		addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://www.google.com")
 	//		console.log(addMarker.instance().state)
 	//		addMarker.find('Button').first().simulate('press')
 	//		return new Promise(resolve => setTimeout(resolve, 20)).then(() => {

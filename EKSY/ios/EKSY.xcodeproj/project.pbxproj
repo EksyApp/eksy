@@ -89,9 +89,10 @@
 		1F2F491C54BD4E86A33E3A8B /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CAE9CD8A2C6466984E824F4 /* libCodePush.a */; };
 		4F0CFF1998834AB2B83FF147 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAB57CA5BEC42F6A6CB3AC3 /* libz.tbd */; };
 		BA38AD45EA2E4BFDB21BF5C0 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A345E73358041EEBCFAD9C0 /* libSplashScreen.a */; };
-		E4FFCEBCB889400AB9394A7B /* libInteractable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5BDD7BF02B4813B879CC72 /* libInteractable.a */; };
-		AFA811E1EDB949AFA950841D /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B79DA91D6044057B8E45E59 /* libRNImagePicker.a */; };
-		4E2C6E9123164B2AB9EF57FA /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D024ABFAC6D44E82B2851277 /* libRNFetchBlob.a */; };
+		45242FED46024F309ECB74FB /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54591A130A164AA1819BE649 /* libFastImage.a */; };
+		DE26E5ECD21C46C18E95195A /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D29A11C50D4D4A9799541B /* libRNFetchBlob.a */; };
+		8ABF8522FB8946309E29B46A /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92B419CAB71141CABF437FC7 /* libRNImagePicker.a */; };
+		A52150191D1C44A0875DFC51 /* libInteractable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E36749898A94AC189977CAA /* libInteractable.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,12 +373,14 @@
 		2AAB57CA5BEC42F6A6CB3AC3 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		0888E2205CE44D04ABDF44DD /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		0A345E73358041EEBCFAD9C0 /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		18FE880EBA1943DE96636F74 /* Interactable.xcodeproj */ = {isa = PBXFileReference; name = "Interactable.xcodeproj"; path = "../node_modules/react-native-interactable/ios/Interactable.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		6E5BDD7BF02B4813B879CC72 /* libInteractable.a */ = {isa = PBXFileReference; name = "libInteractable.a"; path = "libInteractable.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		B2456A7F6D5D48719B5D805A /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		0B79DA91D6044057B8E45E59 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		5CA61FAC4441422D88FFC14E /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		D024ABFAC6D44E82B2851277 /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		0BBB8AE4CA824B959ABC0575 /* FastImage.xcodeproj */ = {isa = PBXFileReference; name = "FastImage.xcodeproj"; path = "../node_modules/react-native-fast-image/ios/FastImage.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		54591A130A164AA1819BE649 /* libFastImage.a */ = {isa = PBXFileReference; name = "libFastImage.a"; path = "libFastImage.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B4E8A710528447E8B316A0B8 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		48D29A11C50D4D4A9799541B /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9B3370990CF74A9B8DD93E25 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		92B419CAB71141CABF437FC7 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		2D4C1D756C8D4FFEB0324FB7 /* Interactable.xcodeproj */ = {isa = PBXFileReference; name = "Interactable.xcodeproj"; path = "../node_modules/react-native-interactable/ios/Interactable.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		5E36749898A94AC189977CAA /* libInteractable.a */ = {isa = PBXFileReference; name = "libInteractable.a"; path = "libInteractable.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,9 +415,10 @@
 				1F2F491C54BD4E86A33E3A8B /* libCodePush.a in Frameworks */,
 				4F0CFF1998834AB2B83FF147 /* libz.tbd in Frameworks */,
 				BA38AD45EA2E4BFDB21BF5C0 /* libSplashScreen.a in Frameworks */,
-				E4FFCEBCB889400AB9394A7B /* libInteractable.a in Frameworks */,
-				AFA811E1EDB949AFA950841D /* libRNImagePicker.a in Frameworks */,
-				4E2C6E9123164B2AB9EF57FA /* libRNFetchBlob.a in Frameworks */,
+				45242FED46024F309ECB74FB /* libFastImage.a in Frameworks */,
+				DE26E5ECD21C46C18E95195A /* libRNFetchBlob.a in Frameworks */,
+				8ABF8522FB8946309E29B46A /* libRNImagePicker.a in Frameworks */,
+				A52150191D1C44A0875DFC51 /* libInteractable.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,9 +592,10 @@
 				5625F889B4BA4AB0A48F6297 /* RNCrashes.xcodeproj */,
 				155932410ECE4F1280C00ABD /* CodePush.xcodeproj */,
 				0888E2205CE44D04ABDF44DD /* SplashScreen.xcodeproj */,
-				18FE880EBA1943DE96636F74 /* Interactable.xcodeproj */,
-				B2456A7F6D5D48719B5D805A /* RNImagePicker.xcodeproj */,
-				5CA61FAC4441422D88FFC14E /* RNFetchBlob.xcodeproj */,
+				0BBB8AE4CA824B959ABC0575 /* FastImage.xcodeproj */,
+				B4E8A710528447E8B316A0B8 /* RNFetchBlob.xcodeproj */,
+				9B3370990CF74A9B8DD93E25 /* RNImagePicker.xcodeproj */,
+				2D4C1D756C8D4FFEB0324FB7 /* Interactable.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1230,15 +1235,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1252,6 +1248,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Debug;
@@ -1273,15 +1273,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1295,6 +1286,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Release;
@@ -1326,6 +1321,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Debug;
@@ -1356,6 +1355,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Release;
@@ -1386,15 +1389,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1408,6 +1402,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Debug;
@@ -1438,15 +1436,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1460,6 +1449,10 @@
 					"$(SRCROOT)/../node_modules/react-native-interactable/ios/Interactable",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-fast-image\ios\FastImage/**",
+					"$(SRCROOT)\..\node_modules\react-native-fetch-blob\ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-image-picker\ios",
+					"$(SRCROOT)\..\node_modules\react-native-interactable\ios\Interactable",
 				);
 			};
 			name = Release;
@@ -1485,15 +1478,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1518,15 +1502,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

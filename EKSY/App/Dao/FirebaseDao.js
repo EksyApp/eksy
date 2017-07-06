@@ -41,7 +41,7 @@ class FirebaseDao {
 		if (!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
-				radius: 0.1
+				radius: 1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
 				this._setMarkerVisible(key)
