@@ -6,6 +6,13 @@ import renderer from 'react-test-renderer';
 //
 // rnfbMock();
 
+jest.mock('react-native-fetch-blob', () => {
+    return {
+      DocumentDir: () => {},
+      polyfill: () => {}
+    }
+  })
+
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');
   const MapView = require.requireActual('react-native-maps');
