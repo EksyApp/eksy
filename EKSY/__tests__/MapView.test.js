@@ -1,12 +1,25 @@
 import React from 'react';
 import { MapView } from '../App/Containers/MapContainer';
-import MapManager from '../App/Map/MapManager';
+import MapManager from '../App/Containers/Map/MapManager';
 import renderer from 'react-test-renderer';
 
 MapManager.prototype.startLocationWatcher = jest.fn()
 MapManager.prototype.storeListener = jest.fn()
 MapManager.prototype.goToCurrentPosition = jest.fn()
 MapManager.prototype.flyToPosition = jest.fn()
+
+jest.mock('react-native-fetch-blob', () => {
+    return {
+      DocumentDir: () => {},
+      polyfill: () => {}
+    }
+  })
+
+  jest.mock('react-native-snap-carousel', () => {
+      return {
+        style: {}
+      }
+    })
 
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');

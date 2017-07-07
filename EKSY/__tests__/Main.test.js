@@ -8,6 +8,19 @@ import MapViewMock from '../_mocks_/MapViewMock';
 
 MapManagerMock()
 
+jest.mock('react-native-fetch-blob', () => {
+    return {
+      DocumentDir: () => {},
+      polyfill: () => {}
+    }
+  })
+
+  jest.mock('react-native-snap-carousel', () => {
+      return {
+        style: jest.fn()
+      }
+    })
+
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');
   const MapView = require.requireActual('react-native-maps');

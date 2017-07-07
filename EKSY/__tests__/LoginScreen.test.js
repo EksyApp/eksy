@@ -4,6 +4,13 @@ import { LoginScreen } from '../App/Containers/LoginScreen'
 import {shallow} from 'enzyme'
 import renderer from 'react-test-renderer'
 
+jest.mock('react-native-fetch-blob', () => {
+    return {
+      DocumentDir: () => {},
+      polyfill: () => {}
+    }
+  })
+
 jest.mock('firebase', () => ({
   auth () {
     return {
