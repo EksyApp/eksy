@@ -8,8 +8,8 @@ import SplashScreen from 'react-native-splash-screen'
 import codePush from 'react-native-code-push'
 
 const codePushOptions = {
-  checkFrequency: codePush.checkFrequency.ON_APP_RESUME,
-  minimumBackgroundDuration = 60 * 10
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  minimumBackgroundDuration: 60 * 10
 }
 
 class Main extends Component {
