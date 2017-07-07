@@ -1,5 +1,5 @@
-import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN, MARKER_SELECTED} from './Types'
-
+import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN} from './Types'
+import Dao from '../Dao/Dao'
 
 export const updateRegion = (region) => {
   return {
@@ -9,6 +9,8 @@ export const updateRegion = (region) => {
 }
 
 export const updateLocation = (position) => {
+  let dao = new Dao()
+  dao.updateLocation(position.latitude, position.longitude)
   return {
     type: UPDATE_CURRENT_LOCATION,
     position: position
@@ -22,9 +24,5 @@ export const locationKnown = (isKnown) => {
   }
 }
 
-export const setSelectedMarker = (marker) => {
-  return {
-    type: MARKER_SELECTED,
-    marker: marker
-  }
-}
+
+

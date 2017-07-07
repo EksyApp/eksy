@@ -1,8 +1,9 @@
 import React from 'react'
-import 'react-native'
+import '../_mocks_/setup'
 import {shallow} from 'enzyme'
 import {AddMarker} from "../App/Containers/AddMarker";
-import MapManager from "../App/Map/MapManager";
+import MapManager from "../App/Containers/Map/MapManager"
+import renderer from 'react-test-renderer'
 
 MapManager.prototype.startLocationWatcher = jest.fn()
 MapManager.prototype.storeListener = jest.fn()
@@ -11,10 +12,16 @@ MapManager.prototype.flyToPosition = jest.fn()
 
 jest.mock('react-native-router-flux', () => ({
 	Actions: {
-		mapView: jest.fn()
+		pop: jest.fn()
 	}
 }))
 
+jest.mock('react-native-fetch-blob', () => {
+  return {
+    DocumentDir: () => {},
+    polyfill: () => {},
+  }
+});
 
 let currentRegion = {
 	latitude: 60.184356,
@@ -26,19 +33,45 @@ let currentRegion = {
 // let addMarker = shallow(<AddMarker currentRegion={currentRegion} />);
 let mapManager = new MapManager();
 
+jest.mock('react-native-maps', () => {
+  const React = require.requireActual('react');
+  const MapView = require.requireActual('react-native-maps');
+
+  class MockCallout extends React.Component {
+    render() {
+      return React.createElement('Callout', this.props, this.props.children);
+    }
+  }
+
+  class MockMarker extends React.Component {
+    render() {
+      return React.createElement('Marker', this.props, this.props.children);
+    }
+  }
+
+  class MockMapView extends React.Component {
+    render() {
+      return React.createElement('MapView', this.props, this.props.children);
+    }
+  }
+
+  MockCallout.propTypes = MapView.Callout.propTypes;
+  MockMarker.propTypes = MapView.Marker.propTypes;
+  MockMapView.propTypes = MapView.propTypes;
+  MockMapView.Marker = MockMarker;
+  MockMapView.Callout = MockCallout;
+  return MockMapView;
+});
+
+
 describe("AddMarker", () => {
 
-	beforeEach(() => {
-		// mapManager.getMarkers().length = 0;
-		// addMarker.instance().setState({
-		// 	text: '',
-		// 	title: '',
-		// 	uri: '',
-		// 	images: [],
-		// 	imageResponse: ""
-		// })
-		// addMarker.update()
-	})
+	it('renders correctly', () => {
+	  const tree = renderer.create(
+	    <AddMarker currentRegion={currentRegion}/>
+	  ).toJSON();
+	  expect(tree).toMatchSnapshot();
+	});
 
 	it('Adds a marker without content', () => {
 		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
@@ -70,9 +103,9 @@ describe("AddMarker", () => {
 		expect(mapManager.getMarkers()[3].props.text).toBe("Some great text")
 	})
 
-	it('Adds a marker with a valid Image', () => {
+	it('Adds a marker with a valid FastImage', () => {
 		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="Image URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
+		addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
 		addMarker.find('Button').first().simulate('press')
 		return new Promise(resolve => setTimeout(resolve, 20)).then(() => {
 			addMarker.find('Button').last().simulate('press')
@@ -80,10 +113,17 @@ describe("AddMarker", () => {
 		})
 	})
 
+	it('imageurlerror sets state correctly', () => {
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
+		expect(addMarker.instance().state.imageResponse).toBe("")
+		addMarker.instance()._imageUrlError()
+		expect(addMarker.instance().state.imageResponse).toBe("URL not valid")
+	})
+
 	//it('Doesnt add an image when URL is invalid', () => {
 	//	return new Promise(resolve => setTimeout(resolve, 50)).then(() => {
 	//		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-	//		addMarker.find('[label="Image URL"]').simulate('changeText', "http://www.google.com")
+	//		addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://www.google.com")
 	//		console.log(addMarker.instance().state)
 	//		addMarker.find('Button').first().simulate('press')
 	//		return new Promise(resolve => setTimeout(resolve, 20)).then(() => {

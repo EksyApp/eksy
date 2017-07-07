@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import {Image, ScrollView, Text, View} from 'react-native'
 import {Actions} from 'react-native-router-flux'
 import SideBarLogo from './SideBarLogo'
-import Button from '../Components/Button'
+import { Button } from '../Components/Common'
 import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
 
-class SideBar extends Component {
+export class SideBar extends Component {
 
   render() {
     return (
@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goToMap: () => {
-      Actions.mapView()
+      Actions.mapContainer()
       dispatch(ReduxActions.drawerClose())
     },
     goToAddMarker: () => {

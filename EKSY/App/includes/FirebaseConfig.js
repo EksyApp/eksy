@@ -12,7 +12,6 @@ class FirebaseConfig {
         databaseURL: 'https://eksyapp-1495447025903.firebaseio.com',
         storageBucket: 'eksyapp-1495447025903.appspot.com'
       })
-    } else {
     }
   }
 }

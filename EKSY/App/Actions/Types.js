@@ -1,5 +1,6 @@
 export const LOGIN_SUCCESS = "login success"
 export const LOGIN_ERROR = "login error"
+export const USER_CREATED = "user created"
 
 export const DRAWER_OPEN = "drawer open"
 export const DRAWER_CLOSE = "drawer close"
@@ -10,3 +11,6 @@ export const UPDATE_CURRENT_LOCATION = "update current location"
 export const LOCATION_KNOWN = "location known"
 
 export const MARKER_SELECTED = "marker selected"
+export const MARKER_ADDED = "marker added"
+export const MARKER_VISIBLE = "marker visible"
+export const MARKER_HIDDEN = "marker hidden"

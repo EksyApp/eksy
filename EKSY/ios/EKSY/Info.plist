@@ -90,5 +90,7 @@
       <string>Skia.ttf</string>
       <string>Times New Roman.ttf</string>
     </array>
+    <key>CodePushDeploymentKey</key>
+    <string>deployment-key-here</string>
   </dict>
 </plist>

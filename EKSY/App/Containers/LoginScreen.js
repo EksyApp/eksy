@@ -4,22 +4,12 @@ import {
   View,
   StyleSheet,
   dismissKeyboard,
-  TouchableWithoutFeedback
 } from 'react-native'
 
-import {
-    Grid,
-    Row
-} from 'react-native-elements'
-
-import Header from '../Components/Header'
-import MenuButton from '../Components/MenuButton'
-import Button from '../Components/Button'
-import Input from '../Components/Input'
+import { Header, Button, Input } from '../Components/Common'
 import React, {Component} from 'react'
 import * as firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
-import PostOffice from '../lib/PostOffice'
 import {connect} from 'react-redux'
 import * as Actions from '../Actions'
 import * as Theme from '../Theme'
@@ -34,7 +24,6 @@ export class LoginScreen extends Component {
       response: ''
     }
 
-    this.po = new PostOffice()
   }
 
   async signup () {
@@ -43,11 +32,12 @@ export class LoginScreen extends Component {
     try {
       await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
 
+      this.props.userCreated()
+
       this.setState({
         response: 'account created'
       })
 
-      this.po.getPacket('user').email = this.state.email
     } catch (error) {
       this.setState({
         response: error.toString()
@@ -65,7 +55,6 @@ export class LoginScreen extends Component {
         response: 'Logged In!'
       })
 
-      this.po.getPacket('user').email = this.state.email
     } catch (error) {
       this.setState({
         response: error.toString()
@@ -139,7 +128,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    menuButtonPress: () => { dispatch(Actions.drawerOpen()) }
+    menuButtonPress: () => { dispatch(Actions.drawerOpen()) },
+    userCreated: () => {dispatch(Actions.userCreated())}
   }
 }
 

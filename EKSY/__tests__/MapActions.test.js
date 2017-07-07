@@ -1,6 +1,13 @@
 import * as actions from '../App/Actions/MapActions'
 import * as types from '../App/Actions/Types'
 
+jest.mock('react-native-fetch-blob', () => {
+    return {
+      DocumentDir: () => {},
+      polyfill: () => {}
+    }
+  })
+
 describe('actions', () => {
   it('should create an action to update region', () => {
     const region = {
@@ -15,9 +22,7 @@ describe('actions', () => {
     }
     expect(actions.updateRegion(region)).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action to update location', () => {
     const position = {
       latitude: 37.78825,
@@ -29,9 +34,7 @@ describe('actions', () => {
     }
     expect(actions.updateLocation(position)).toEqual(expectedAction)
   })
-})
 
-describe('actions', () => {
   it('should create an action depending if location is known', () => {
     const isKnown = true
     const expectedAction = {
