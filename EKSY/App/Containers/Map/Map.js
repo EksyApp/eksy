@@ -53,7 +53,12 @@ class Map extends Component {
 	}
 
 	renderMarkers() {
-		return this.props.markerList.map((marker, index) => <Marker data={marker} setMarkerSelected={this.props.setMarkerSelected} key={marker.key} />)
+		return this.props.markerList.map((marker, index) =>
+			<Marker
+				data={marker}
+				setMarkerSelected={this.props.setMarkerSelected}
+				setMarkerViewVisible={this.props.setMarkerViewVisible}
+				key={marker.key} />)
 	}
 
 	renderUserCircle() {

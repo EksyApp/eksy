@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import NavigationRouter from '../Navigation/NavigationRouter'
 import FirebaseConfig from '../includes/FirebaseConfig'
 import {Provider} from 'react-redux'
-import {ActivityIndicator} from 'react-native'
+import {ActivityIndicator, View} from 'react-native'
 import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
 import codePush from 'react-native-code-push'
@@ -35,7 +35,9 @@ class Main extends Component {
   render () {
     if (!this.state.store) {
       return (
-        <ActivityIndicator />
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size='large' />
+        </View>
       )
     }
 

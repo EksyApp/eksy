@@ -9,6 +9,8 @@ import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
 import MarkerCarousel from '../Components/MarkerCarousel'
 import {backgroundColor, detailColor} from '../Theme'
+import Modal from 'react-native-modal'
+import MarkerView from '../Containers/MarkerView'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -42,19 +44,31 @@ export class MapContainer extends Component {
 							currentLocation={this.props.currentLocation}
 							markerList={this.props.markerList}
 							setMarkerSelected={this.props.setMarkerSelected}
+							setMarkerViewVisible={this.props.setMarkerViewVisible}
 							regionChange={this.props.regionChange}/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
 					}}/>
+					<Modal
+						isVisible={this.props.markerViewVisible}
+						animationIn = {'zoomInDown'}
+						animationOut = {'zoomOutUp'}
+						backdropColor = {'black'}
+						backdropOpacity = {0.5}
+						onBackButtonPress = {this.props.setMarkerViewHidden}
+					>
+						<MarkerView />
+					</Modal>
 					<View style={styles.panelContainer}>
 						<Animated.View style={[styles.panelContainer, {
 							opacity: this._deltaY.interpolate({
+								backgroundColor: 'black',
 								inputRange: [0, Screen.height - 100],
 								outputRange: [0, 1],
 								extrapolateRight: 'clamp'
 							})
 						}]}
-						               pointerEvents="none"/>
+						pointerEvents="none"/>
 						<Interactable.View
 								verticalOnly={true}
 								snapPoints={[{y: Screen.height - 220}, {y: Screen.height}]}
@@ -99,8 +113,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		right: 0,
-		flex: 1
-
+		flex: 1,
 	},
 	viewContainer: {
 		flex: 1,
@@ -152,7 +165,8 @@ const mapStateToProps = (state) => {
 	return {
 		currentRegion: state.map.currentRegion,
 		currentLocation: state.map.location,
-		markerList: state.markers.markerList
+		markerList: state.markers.markerList,
+		markerViewVisible: state.ui.markerView.markerViewVisible
 	}
 }
 
@@ -166,6 +180,12 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		setMarkerSelected: (marker) => {
 			dispatch(Actions.setMarkerSelected(marker))
+		},
+		setMarkerViewVisible: () => {
+			dispatch(Actions.setMarkerViewVisible())
+		},
+		setMarkerViewHidden: () => {
+			dispatch(Actions.setMarkerViewHidden())
 		}
 	}
 }

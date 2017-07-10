@@ -14,3 +14,6 @@ export const MARKER_SELECTED = "marker selected"
 export const MARKER_ADDED = "marker added"
 export const MARKER_VISIBLE = "marker visible"
 export const MARKER_HIDDEN = "marker hidden"
+
+export const MARKERVIEW_VISIBLE = "markerview visible"
+export const MARKERVIEW_HIDDEN = "markerview hidden"

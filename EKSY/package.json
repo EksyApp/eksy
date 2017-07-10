@@ -35,6 +35,7 @@
     "react-native-image-picker": "^0.26.3",
     "react-native-interactable": "0.0.9",
     "react-native-maps": "0.15.2",
+    "react-native-modal": "^2.4.0",
     "react-native-router-flux": "3.38.0",
     "react-native-snap-carousel": "2.1.0",
     "react-native-splash-screen": "^2.1.0",
