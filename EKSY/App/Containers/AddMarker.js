@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.frontgroundColor,
 		marginTop: 20
 	},
-	
+
 	listStyle: {
 		padding: 5
 	},

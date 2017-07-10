@@ -3,10 +3,10 @@ import {View, ScrollView, Text, StyleSheet, Dimensions, TouchableWithoutFeedback
 import {Icon} from 'react-native-elements'
 import { Header, Divider, Label, TextArea } from "../Components/Common";
 import PictureList from '../Components/PictureList'
-import {Actions} from 'react-native-router-flux'
 import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
+import Modal from 'react-native-modal'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -30,22 +30,44 @@ export class MarkerView extends Component {
 	}
 
 	render() {
-		return(
-				<View style={style.container}>
-					<ScrollView>
-						<View style={style.title}>
-							<Text>{this.props.marker.title}</Text>
-						</View>
-						<View>
-							<TextArea>
-								{this.props.marker.text}
-							</TextArea>
-						</View>
+		// if (!this.props.marker) {
+		// 	return null
+		// }
 
-						{this._renderImages()}
+//					onModalHide = {this.props.setMarkerViewHidden}
+//					onBackButtonPress = {this.props.setMarkerViewHidden}
 
-					</ScrollView>
-				</View>
+		return (
+				<TouchableWithoutFeedback onPress = {this.props.setMarkerViewHidden}>
+					<Modal
+						isVisible={this.props.markerViewVisible}
+						animationIn = {'slideInUp'}
+						animationOut = {'slideInDown'}
+						animationInTiming = {1000}
+						animationOutTiming = {1000}
+						backdropColor = {'black'}
+						backdropOpacity = {0.5}
+						onModalHide = {() => this.props.setMarkerViewHidden}
+					>
+						<TouchableWithoutFeedback onPress ={() => {}}>
+							<View style={style.container}>
+								<ScrollView>
+									<View style={style.title}>
+										<Text>{this.props.marker.title}</Text>
+									</View>
+									<View>
+										<TextArea>
+											{this.props.marker.text}
+										</TextArea>
+									</View>
+
+									{this._renderImages()}
+
+								</ScrollView>
+							</View>
+						</TouchableWithoutFeedback>
+				</Modal>
+			</TouchableWithoutFeedback>
 		)
 	}
 
@@ -64,16 +86,17 @@ const style = StyleSheet.create({
 		margin: 10
 	},
 
+	modalContainer: {
+		flex: 1,
+	},
+
 	container: {
 		backgroundColor: Theme.backgroundColor,
-		position: 'absolute',
-		top: 10,
-		bottom: 40,
-		left: 0,
-		right: 0,
 		margin: 40,
 		borderRadius: 20,
-		flex: 1
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 
 	closeButton: {
@@ -86,14 +109,14 @@ const style = StyleSheet.create({
 const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
-		visible: state.ui.markerView.markerViewVisible
+		markerViewVisible: state.ui.markerView.markerViewVisible
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		markerViewClose: () => {
-			dispatch(Actions.markerViewClose())
+		setMarkerViewHidden: () => {
+			dispatch(ReduxActions.setMarkerViewHidden())
 		}
 	}
 }

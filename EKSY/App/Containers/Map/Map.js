@@ -4,7 +4,8 @@ import {
 	Text,               // Renders text
 	TouchableOpacity,   // Pressable container
 	View,               // Container component
-	ActivityIndicator
+	ActivityIndicator,
+	Animated
 } from 'react-native'
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
@@ -13,6 +14,7 @@ import * as Actions from '../../Actions'
 import Marker from './Marker'
 import { circleStrokeColor, circleFillColor } from '../../Theme'
 import Store from '../../Store'
+import isEqual from 'lodash/isEqual'
 
 class Map extends Component {
 
@@ -40,16 +42,19 @@ class Map extends Component {
 		this.props.regionChange(region)
 	}
 
-	async componentDidMount() {
-		this.store = await Store()
-		navigator.geolocation.getCurrentPosition(
-			(position) => {
-				this.store.dispatch(Actions.updateLocation(position.coords))
-				this.store.dispatch(Actions.locationKnown(true))
-			},
-			(error) => this.store.dispatch(Actions.locationKnown(false)),
-			{enableHighAccuracy: false, timeout: 500, maximumAge: 1000000, distanceFilter: 3}
-		)
+	async componentWillReceiveProps(nextProps) {
+		if (!isEqual(nextProps, this.props)) {
+			// this.store = await Store()
+			// navigator.geolocation.getCurrentPosition(
+			// 	(position) => {
+			// 		this.store.dispatch(Actions.updateLocation(position.coords))
+			// 		this.store.dispatch(Actions.locationKnown(true))
+			// 		this.animateToCoordinate(position.coords, 100)
+			// 	},
+			// 	(error) => this.store.dispatch(Actions.locationKnown(false)),
+			// 	{enableHighAccuracy: false, timeout: 500, maximumAge: 1000000, distanceFilter: 1}
+			// )
+		}
 	}
 
 	renderMarkers() {
@@ -58,19 +63,33 @@ class Map extends Component {
 				data={marker}
 				setMarkerSelected={this.props.setMarkerSelected}
 				setMarkerViewVisible={this.props.setMarkerViewVisible}
-				key={marker.key} />)
+				key={marker.key}
+			/>)
 	}
 
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
-			return <MapView.Circle
-								center={this.props.currentLocation}
-								radius={100}
-								strokeWidth={2}
-								strokeColor={circleStrokeColor}
-								fillColor={circleFillColor}
-								key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)}
-							/>
+			return (
+					<MapView.Marker key='user' coordinate={this.props.currentLocation} >
+						<Animated.View style={[styles.userMarkerWrap]}>
+							<Animated.View style={[styles.userRing]} />
+							<View style={styles.userMarker} />
+						</Animated.View>
+					</MapView.Marker>
+			)
+			// <MapView.Circle
+			// 					center={this.props.currentLocation}
+			// 					radius={100}
+			// 					strokeWidth={2}
+			// 					strokeColor={circleStrokeColor}
+			// 					fillColor={circleFillColor}
+			// 					key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)}
+			// 				/>
+			// <MapView.Marker
+			// 		key='user'
+			// 		coordinate={this.props.currentLocation}
+			// 		style={{flex: 1}}
+			// >
 		}
 
 		return null
@@ -84,17 +103,18 @@ class Map extends Component {
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.handleRegionChange(region)}
 						/*loadingEnabled*/
-						showsUserLocation
+						/*showsUserLocation*/
+						showsMyLocationButton={true}
+						showsBuildings={true}
 						showCompass={false}
 				>
-					{this.renderMarkers()}
 					{this.renderUserCircle()}
+					{this.renderMarkers()}
 				</MapView>
 		)
 	}
 
 	render() {
-		console.log(this.props.markerList)
 		return (
 				<View style={styles.container}>
 					{this.renderMapView()}

@@ -7,7 +7,7 @@ const initial = {
 export default function(state = initial, action) {
   switch(action.type) {
     case DRAWER_OPEN:
-      return {...state, drawerOpen: true}
+      return {...state, drawerOpen: true, markerViewVisible: false}
     case DRAWER_CLOSE:
       return {...state, drawerOpen: false}
     case DRAWER_TOGGLE:

@@ -2,14 +2,13 @@ import React, {Component} from 'react'
 import {PermissionsAndroid} from 'react-native'
 import Map from './Map/Map'
 import MenuButton from '../Components/MenuButton'
-import {View, StyleSheet, Dimensions, Animated, Text} from 'react-native'
+import {View, StyleSheet, Dimensions, Animated, Text, TouchableWithoutFeedback} from 'react-native'
 import {Badge} from 'react-native-elements'
 import * as Actions from '../Actions'
 import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
 import MarkerCarousel from '../Components/MarkerCarousel'
 import {backgroundColor, detailColor} from '../Theme'
-import Modal from 'react-native-modal'
 import MarkerView from '../Containers/MarkerView'
 
 const Screen = {
@@ -22,22 +21,26 @@ export class MapContainer extends Component {
 	constructor(props) {
 		super(props)
 
-		this.requestLocationPermission()
-
 		this._deltaY = new Animated.Value(Screen.height - 100);
 	}
 
 	async requestLocationPermission() {
 		try {
-			await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+			const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+			if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+				console.log('no permissions granted') // prompt user?
+			}
 		} catch (err) {
 			console.warn(err)
 		}
 	}
 
+	async componentWillMount() {
+		await this.requestLocationPermission()
+	}
+
 	render() {
 		return (
-
 				<View style={styles.viewContainer}>
 					<Map
 							currentRegion={this.props.currentRegion}
@@ -49,22 +52,12 @@ export class MapContainer extends Component {
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
 					}}/>
-					<Modal
-						isVisible={this.props.markerViewVisible}
-						animationIn = {'zoomInDown'}
-						animationOut = {'zoomOutUp'}
-						backdropColor = {'black'}
-						backdropOpacity = {0.5}
-						onBackButtonPress = {this.props.setMarkerViewHidden}
-					>
-						<MarkerView />
-					</Modal>
 					<View style={styles.panelContainer}>
 						<Animated.View style={[styles.panelContainer, {
+							backgroundColor: 'black',
 							opacity: this._deltaY.interpolate({
-								backgroundColor: 'black',
 								inputRange: [0, Screen.height - 100],
-								outputRange: [0, 1],
+								outputRange: [1, 0],
 								extrapolateRight: 'clamp'
 							})
 						}]}
@@ -90,12 +83,15 @@ export class MapContainer extends Component {
 									<MarkerCarousel
 											markerList={this.props.markerList}
 											setMarkerSelected={this.props.setMarkerSelected}
+											setMarkerViewVisible={this.props.setMarkerViewVisible}
 											pointerEvents="none"/>
 								</View>
 
 							</Animated.View>
 						</Interactable.View>
 					</View>
+
+					<MarkerView />
 				</View>
 		)
 	}

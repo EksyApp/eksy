@@ -3570,7 +3570,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8:
+prop-types@15.5.10, prop-types@^15.5.10, prop-types@^15.5.8:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -3666,6 +3666,10 @@ react-dom@15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-native-animatable@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.2.tgz#a873550e6f7cb95f90baf46b9eb15b1ab56425cb"
+
 react-native-code-push@^1.17.3-beta:
   version "1.17.3-beta"
   resolved "https://registry.yarnpkg.com/react-native-code-push/-/react-native-code-push-1.17.3-beta.tgz#c92783f0087dda5e683f96a76ab76108c73b9015"
@@ -3697,6 +3701,10 @@ react-native-experimental-navigation@0.26.x:
     fbjs "^0.8.1"
     react-addons-pure-render-mixin "^15.0.2"
 
+react-native-fast-image@0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-0.0.11.tgz#6165b7c409236186ab5549a49b4a1f46df1e4686"
+
 "react-native-fetch-blob@git://github.com/wkh237/react-native-fetch-blob.git#issue-287":
   version "0.10.6"
   resolved "git://github.com/wkh237/react-native-fetch-blob.git#bb7fec4e2fba503acd54d65e3641547b51c928eb"
@@ -3715,6 +3723,13 @@ react-native-interactable@0.0.9:
 react-native-maps@0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.2.tgz#4f63b9501b25d124f0ef1839529e54a6461c2c49"
+
+react-native-modal@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-2.4.0.tgz#ea9794f5ba9fa21476d337da291ec26930904995"
+  dependencies:
+    prop-types "15.5.10"
+    react-native-animatable "^1.2.0"
 
 react-native-router-flux@3.38.0:
   version "3.38.0"

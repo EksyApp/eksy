@@ -4,13 +4,13 @@ const initial = {
   markerViewVisible: false
 }
 
-export default function(state = initial, action) {
+export default function (state = initial, action) {
   switch (action.type) {
     case MARKERVIEW_VISIBLE:
       return {...state, markerViewVisible: true}
     case MARKERVIEW_HIDDEN:
-      return {...state, markerViewvisible: false}
+      return {...state, markerViewVisible: false}
     default:
-      return state;
+      return state
   }
 }

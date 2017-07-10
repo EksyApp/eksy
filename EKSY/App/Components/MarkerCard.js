@@ -10,12 +10,12 @@ import {Card, CardSection, Label, TextArea} from './Common'
 import Image from 'react-native-fast-image'
 
 export default class MarkerCard extends Component {
-	
+
 	handlePress() {
 		this.props.setMarkerSelected(this.props.marker)
-		Actions.markerView()
+		this.props.setMarkerViewVisible()
 	}
-	
+
 	renderWithImage() {
 		return (
 				<Card style={[styles.container, {width: this.props.width}]}>
@@ -27,22 +27,22 @@ export default class MarkerCard extends Component {
 					</View>
 				</Card>
 		)
-		
+
 	}
-	
+
 	renderWithoutImage() {
 		return (
 				<Card style={[styles.container, {width: this.props.width}]}>
 					<CardSection style={styles.infoContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
 					</CardSection>
-					
+
 					<TextArea>{this.props.marker.text}</TextArea>
-				
+
 				</Card>
 		)
 	}
-	
+
 	renderCard() {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
 			return this.renderWithImage()
@@ -50,7 +50,7 @@ export default class MarkerCard extends Component {
 			return this.renderWithoutImage()
 		}
 	}
-	
+
 	render() {
 		return(
 				<TouchableWithoutFeedback onPress={() => {this.handlePress()}}>
@@ -58,8 +58,8 @@ export default class MarkerCard extends Component {
 				</TouchableWithoutFeedback>
 		)
 	}
-	
-	
+
+
 }
 
 
@@ -67,31 +67,31 @@ const styles = StyleSheet.create({
 	container: {
 		height: 200
 	},
-	
+
 	card: {
 		height: "100%",
-		
+
 	},
-	
+
 	imageContainer: {
 		height: "70%",
 		padding: 0
 	},
-	
+
 	image: {
 		height: "100%",
 		width: "100%"
 	},
-	
+
 	infoContainer: {
 		width: "100%",
 		alignItems: "center",
 		justifyContent: "center",
 		overflow: "scroll"
 	},
-	
+
 	title: {
 		marginTop: 10
 	}
-	
+
 });
