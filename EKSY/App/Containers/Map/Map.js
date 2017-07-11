@@ -35,7 +35,9 @@ class Map extends Component {
 
 
 	animateToCoordinate(position, delay) {
-		this._map.animateToCoordinate(position, delay)
+		if (this._map) {
+			this._map.animateToCoordinate(position, delay)
+		}
 	}
 
 	handleRegionChange(region) {
@@ -70,13 +72,28 @@ class Map extends Component {
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
 			return (
-					<MapView.Marker key='user' coordinate={this.props.currentLocation} >
-						<Animated.View style={[styles.userMarkerWrap]}>
-							<Animated.View style={[styles.userRing]} />
-							<View style={styles.userMarker} />
-						</Animated.View>
-					</MapView.Marker>
+				<Animated.View>
+				<MapView.Circle center={this.props.currentLocation}
+                        radius={100}
+                        strokeWidth={0.5}
+                        strokeColor="rgba(66, 180, 230, 1)"
+                        fillColor="rgba(66, 180, 230, 0.2)"
+                        />
+        <MapView.Circle center={this.props.currentLocation}
+                        radius={2}
+                        strokeWidth={0.5}
+                        strokeColor="rgba(66, 180, 230, 1)"
+                        fillColor="rgba(66, 180, 230, 1)"
+                        />
+				</Animated.View>
 			)
+			// <MapView.Marker key='user' coordinate={this.props.currentLocation} style={{flex: 1}}>
+			// 	<Animated.View style={[styles.userMarkerWrap]}>
+			// 		<Animated.View style={[styles.userRing]} />
+			// 		<View style={styles.userMarker} />
+			// 	</Animated.View>
+			// </MapView.Marker>
+
 			// <MapView.Circle
 			// 					center={this.props.currentLocation}
 			// 					radius={100}
@@ -97,20 +114,21 @@ class Map extends Component {
 
 	renderMapView() {
 		return (
-				<MapView
+				<MapView.Animated
 						ref={(ref) => this._map = ref}
 						style={styles.map}
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.handleRegionChange(region)}
 						/*loadingEnabled*/
 						/*showsUserLocation*/
+						followUserLocation
 						showsMyLocationButton={true}
 						showsBuildings={true}
 						showCompass={false}
 				>
 					{this.renderUserCircle()}
 					{this.renderMarkers()}
-				</MapView>
+				</MapView.Animated>
 		)
 	}
 

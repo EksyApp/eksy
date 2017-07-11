@@ -36,6 +36,8 @@ export class MarkerView extends Component {
 
 //					onModalHide = {this.props.setMarkerViewHidden}
 //					onBackButtonPress = {this.props.setMarkerViewHidden}
+// react-native-modal:
+
 
 		return (
 				<TouchableWithoutFeedback onPress = {this.props.setMarkerViewHidden}>
