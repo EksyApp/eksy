@@ -5,7 +5,8 @@ import {
 	TouchableOpacity,   // Pressable container
 	View,               // Container component
 	ActivityIndicator,
-	Animated
+	Animated,
+	Dimensions
 } from 'react-native'
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
@@ -16,7 +17,16 @@ import { circleStrokeColor, circleFillColor } from '../../Theme'
 import Store from '../../Store'
 import isEqual from 'lodash/isEqual'
 
+const Screen = {
+	width: Dimensions.get('window').width,
+	height: Dimensions.get('window').height - 75
+}
+
 class Map extends Component {
+
+	state = {
+		zoomLevel: (360 * ((Screen.width/256) / this.props.currentRegion.longitudeDelta)) + 1
+	}
 
 	constructor(props) {
 		super(props)
@@ -42,6 +52,8 @@ class Map extends Component {
 
 	handleRegionChange(region) {
 		this.props.regionChange(region)
+		this.setState({...this.state, zoomLevel: (360 * ((Screen.width/256) / region.longitudeDelta)) + 1})
+		console.log(this.state.zoomLevel)
 	}
 
 	async componentWillReceiveProps(nextProps) {
@@ -80,7 +92,7 @@ class Map extends Component {
                         fillColor="rgba(66, 180, 230, 0.2)"
                         />
         <MapView.Circle center={this.props.currentLocation}
-                        radius={2}
+                        radius={300000 / this.state.zoomLevel}
                         strokeWidth={0.5}
                         strokeColor="rgba(66, 180, 230, 1)"
                         fillColor="rgba(66, 180, 230, 1)"

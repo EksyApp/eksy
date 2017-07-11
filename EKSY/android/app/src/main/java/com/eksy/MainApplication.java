@@ -20,6 +20,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
+import com.marianhello.react.BackgroundGeolocationPackage;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,6 +50,7 @@ public class MainApplication extends Application implements ReactApplication {
             new ImagePickerPackage(),
             new RNFetchBlobPackage(),
             new FastImageViewPackage(),
+            new BackgroundGeolocationPackage(),
             new CodePush(null, getApplicationContext(), BuildConfig.DEBUG),
             new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
             new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),

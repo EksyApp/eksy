@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Actions from '../../Actions'
 import Store from '../../Store'
+import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null
 let idCounter = 0
@@ -42,15 +43,46 @@ class MapManager {
 	}
 
 	startLocationWatcher() {
-		this.watchID = navigator.geolocation.watchPosition(
-				(position) => {
-					this.store.dispatch(Actions.updateLocation(position.coords))
-					this.store.dispatch(Actions.locationKnown(true))
-					this._map.forceUpdate()
-				},
-				(error) => this.store.dispatch(Actions.locationKnown(false)),
-				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
-		)
+		BackgroundGeolocation.configure({
+			desiredAccuracy: 10,
+      stationaryRadius: 10,
+      distanceFilter: 10,
+      locationTimeout: 30,
+      debug: false,
+      startOnBoot: false,
+      stopOnTerminate: true,
+      locationProvider: BackgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
+      interval: 10000,
+      fastestInterval: 5000,
+      activitiesInterval: 10000,
+      stopOnStillActivity: true
+		})
+
+		BackgroundGeolocation.on('location', (location) => {
+				this.store.dispatch(Actions.updateLocation(location))
+				this.store.dispatch(Actions.locationKnown(true))
+				this._map.forceUpdate()
+		})
+
+		BackgroundGeolocation.on('stationary', () => {})
+
+		BackgroundGeolocation.on('error', (error) => {
+			console.log('Geolocation error: ' + error)
+			this.store.dispatch(Actions.locationKnown(false))
+		})
+
+		BackgroundGeolocation.start(() => {
+			console.log('BackgroundGeolocation started')
+		})
+		// this.watchID = navigator.geolocation.watchPosition(
+		// 		(position) => {
+		// 			this.store.dispatch(Actions.updateLocation(position.coords))
+		// 			this.store.dispatch(Actions.locationKnown(true))
+		// 			this._map.forceUpdate()
+		// 		},
+		// 		(error) => this.store.dispatch(Actions.locationKnown(false)),
+		// 		{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
+		// )
 	}
 
 	setMapObject(map) {
