@@ -89,9 +89,9 @@ export class MapContainer extends Component {
 
 							</Animated.View>
 						</Interactable.View>
+						<MarkerView />
 					</View>
 
-					<MarkerView />
 				</View>
 		)
 	}
