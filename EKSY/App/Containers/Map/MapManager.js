@@ -43,12 +43,13 @@ class MapManager {
 	}
 
 	startLocationWatcher() {
+		/*
 		BackgroundGeolocation.configure({
 			desiredAccuracy: 10,
       stationaryRadius: 10,
       distanceFilter: 10,
       locationTimeout: 30,
-      debug: true,
+      debug: false,
       startOnBoot: false,
       stopOnTerminate: true,
       locationProvider: BackgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
@@ -74,15 +75,16 @@ class MapManager {
 		BackgroundGeolocation.start(() => {
 			console.log('BackgroundGeolocation started')
 		})
-		// this.watchID = navigator.geolocation.watchPosition(
-		// 		(position) => {
-		// 			this.store.dispatch(Actions.updateLocation(position.coords))
-		// 			this.store.dispatch(Actions.locationKnown(true))
-		// 			this._map.forceUpdate()
-		// 		},
-		// 		(error) => this.store.dispatch(Actions.locationKnown(false)),
-		// 		{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
-		// )
+		*/
+		this.watchID = navigator.geolocation.watchPosition(
+				(position) => {
+					this.store.dispatch(Actions.updateLocation(position.coords))
+					this.store.dispatch(Actions.locationKnown(true))
+					this._map.forceUpdate()
+				},
+				(error) => this.store.dispatch(Actions.locationKnown(false)),
+				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
+		)
 	}
 
 	setMapObject(map) {
