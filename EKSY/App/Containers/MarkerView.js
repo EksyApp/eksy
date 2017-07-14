@@ -118,7 +118,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		setMarkerViewHidden: () => {
-			dispatch(ReduxActions.setMarkerViewHidden())
+			dispatch(ReduxActions.setMarkerViewHidden()).then(() =>
+				dispatch(ReduxActions.disableGestures(true)))
 		}
 	}
 }

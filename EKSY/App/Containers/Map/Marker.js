@@ -12,6 +12,7 @@ class Marker extends Component {
 
 	_handlePress() {
 		this.props.setMarkerSelected(this.props.data)
+    this.props.disableGestures(true)
     this.props.setMarkerViewVisible()
     //Actions.markerView();
 	}

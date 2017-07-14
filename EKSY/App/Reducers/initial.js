@@ -6,7 +6,8 @@ export default {
 
 	ui: {
 		drawer: {
-			drawerOpen: false
+			drawerOpen: false,
+			disableGestures: false
 		},
 		markerView: {
 			markerViewVisible: false

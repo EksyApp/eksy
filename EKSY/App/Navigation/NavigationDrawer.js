@@ -6,7 +6,7 @@ import {SideMenu} from 'react-native-elements'
 import {connect} from 'react-redux'
 
 class NavigationDrawer extends Component {
-	
+
 	render() {
 		const children = this.props.navigationState.children
 		return (
@@ -14,17 +14,19 @@ class NavigationDrawer extends Component {
 						isOpen={this.props.drawerOpen}
 						menu={<SideBar />}
 						onChange={(isOpen) => !isOpen ? this.props.drawerClose() : false}
+						disableGestures={this.props.disableGestures}
 				>
 					<DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate}/>
 				</SideMenu>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = (state) => {
 	return {
-		drawerOpen: state.ui.drawer.drawerOpen
+		drawerOpen: state.ui.drawer.drawerOpen,
+		disableGestures: state.ui.drawer.disableGestures
 	}
 }
 

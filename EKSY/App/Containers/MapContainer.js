@@ -48,6 +48,7 @@ export class MapContainer extends Component {
 							markerList={this.props.markerList}
 							setMarkerSelected={this.props.setMarkerSelected}
 							setMarkerViewVisible={this.props.setMarkerViewVisible}
+							disableGestures={this.props.disableGestures}
 							regionChange={this.props.regionChange}/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
@@ -84,6 +85,7 @@ export class MapContainer extends Component {
 											markerList={this.props.markerList}
 											setMarkerSelected={this.props.setMarkerSelected}
 											setMarkerViewVisible={this.props.setMarkerViewVisible}
+											disableGestures={this.props.disableGestures}
 											pointerEvents="none"/>
 								</View>
 
@@ -182,6 +184,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		setMarkerViewHidden: () => {
 			dispatch(Actions.setMarkerViewHidden())
+		},
+		disableGestures: (value) => {
+			dispatch(Actions.disableGestures(value))
 		}
 	}
 }

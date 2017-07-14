@@ -14,6 +14,7 @@ export default class MarkerCard extends Component {
 	handlePress() {
 		this.props.setMarkerSelected(this.props.marker)
 		this.props.setMarkerViewVisible()
+		this.props.disableGestures(true)
 	}
 
 	renderWithImage() {

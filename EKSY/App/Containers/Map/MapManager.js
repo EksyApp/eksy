@@ -48,7 +48,7 @@ class MapManager {
       stationaryRadius: 10,
       distanceFilter: 10,
       locationTimeout: 30,
-      debug: false,
+      debug: true,
       startOnBoot: false,
       stopOnTerminate: true,
       locationProvider: BackgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,

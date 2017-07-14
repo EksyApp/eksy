@@ -77,6 +77,7 @@ class Map extends Component {
 				data={marker}
 				setMarkerSelected={this.props.setMarkerSelected}
 				setMarkerViewVisible={this.props.setMarkerViewVisible}
+				disableGestures={this.props.disableGestures}
 				key={marker.key}
 			/>)
 	}
