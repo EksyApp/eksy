@@ -24,6 +24,12 @@ jest.mock('react-native-fetch-blob', () => {
     }
   })
 
+  jest.mock('react-native-snap-carousel', () => {
+      return {
+        style: {}
+      }
+    })
+
 test.only('this will be the only test that runs', () => {
   expect(true).toBe(true);
 });

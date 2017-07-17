@@ -26,11 +26,13 @@ export class MarkerView extends Component {
 	_renderImage(image) {
 		if (image.uri.startsWith("http")) {
 			return (
+				<View>
 					<FastImage
 							resizeMode={FastImage.resizeMode.contain}
 							source={{uri: image.uri}}
 							style={{width: '100%', height: '100%'}}
 					/>
+					</View>
 			)
 		} else {
 			return (
@@ -45,16 +47,15 @@ export class MarkerView extends Component {
 	_renderImages() {
 		if(this.props.marker.images && this.props.marker.images.length > 0) {
 			return(
-					<View style={{flex: 1}}>
+					<View style={styles.imageContainer}>
 						<Divider />
-						<Label>Images</Label>
-						<View style={{justifyContent: 'center', alignItems: 'center'}}>
+						<Label style={styles.label}>Images</Label>
+						<View style={styles.carouselContainer}>
 							<Carousel
 									 itemWidth={this.itemWidth}
 									 sliderWidth={this.sliderWidth}
-									 vertical
 									 enableSnap={true}
-									 activeSlideOffset={10}
+									 activeSlideOffset={5}
 							 >
 							 	{
 									this.props.marker.images.map((image, index) => {
@@ -96,22 +97,17 @@ export class MarkerView extends Component {
 						onModalHide = {() => this.props.setMarkerViewHidden}
 					>
 						<TouchableWithoutFeedback onPress ={() => {}}>
-							<View style={style.container}>
-								<ScrollView>
-									<View style={style.title}>
-										<Text>{this.props.marker.title}</Text>
-									</View>
-									<View>
+								<ScrollView contentContainerStyle={styles.container}>
+								<View>
+										<Text style={styles.title}>{this.props.marker.title}</Text>
 										<TextArea>
 											{this.props.marker.text}
 										</TextArea>
-									</View>
-
 									{this._renderImages()}
-
+									</View>
 								</ScrollView>
-							</View>
 						</TouchableWithoutFeedback>
+
 				</Modal>
 			</TouchableWithoutFeedback>
 		)
@@ -119,12 +115,21 @@ export class MarkerView extends Component {
 
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
 	imageContainer: {
-		width: '100%',
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 
 	title: {
+		margin: 10,
+		fontSize: 18,
+		fontWeight: 'bold',
+		textAlign: 'center',
+	},
+
+	label:{
 		margin: 10
 	},
 
@@ -132,13 +137,13 @@ const style = StyleSheet.create({
 		margin: 10
 	},
 
-	modalContainer: {
-		flex: 1,
+	carouselContainer: {
+		justifyContent: 'center',
+		 alignItems: 'center'
 	},
 
 	container: {
 		backgroundColor: Theme.backgroundColor,
-		margin: 40,
 		borderRadius: 20,
 		flex: 1,
 		justifyContent: 'center',
