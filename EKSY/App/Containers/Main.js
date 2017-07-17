@@ -7,7 +7,7 @@ import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
 import codePush from 'react-native-code-push'
 
-import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
+//import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 class Main extends Component {
 

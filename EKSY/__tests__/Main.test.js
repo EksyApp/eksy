@@ -1,10 +1,22 @@
 import React from 'react';
+
+jest.unmock('ScrollView')
+
 import Main from '../App/Containers/Main';
 import 'react-native';
 import renderer from 'react-test-renderer';
-import MapManager from '../App/Map/MapManager';
+import MapManager from '../App/Containers/Map/MapManager';
 import MapManagerMock from '../_mocks_/MapManagerMock';
 import MapViewMock from '../_mocks_/MapViewMock';
+
+jest.mock('react-native-code-push', () => {
+    return jest.fn(() => ({
+        InstallMode: jest.fn(),
+        CheckFrequency: jest.fn(),
+        CodePushComponent: jest.fn(),
+        codePushify: jest.fn()
+    }));
+})
 
 MapManagerMock()
 
@@ -14,12 +26,6 @@ jest.mock('react-native-fetch-blob', () => {
       polyfill: () => {}
     }
   })
-
-  jest.mock('react-native-snap-carousel', () => {
-      return {
-        style: jest.fn()
-      }
-    })
 
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');

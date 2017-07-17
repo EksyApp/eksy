@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`picturelist renders correctly 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 1,
+    }
+  }
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+  style={undefined}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={
+        Array [
+          undefined,
+          Array [
+            Object {
+              "marginTop": 10,
+            },
+            undefined,
+          ],
+          Object {
+            "height": 240,
+            "width": 320,
+          },
+        ]
+      }
+    >
+      <FastImageView
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        onFastImageError={[Function]}
+        onFastImageLoad={[Function]}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        resizeMode="cover"
+        source={
+          Object {
+            "uri": "http://www.catpic.com",
+          }
+        }
+        style={
+          Array [
+            Object {},
+            Object {
+              "height": 240,
+              "width": 320,
+            },
+          ]
+        }
+        testID={undefined}
+      />
+    </View>
+  </View>
+</RCTScrollView>
+`;
