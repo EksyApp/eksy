@@ -4,7 +4,7 @@ import Map from './Map/Map'
 import MenuButton from '../Components/MenuButton'
 import {View, StyleSheet, Dimensions, Animated, Text, TouchableWithoutFeedback} from 'react-native'
 import {Badge} from 'react-native-elements'
-import * as Actions from '../Actions'
+import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
 import MarkerCarousel from '../Components/MarkerCarousel'
@@ -165,22 +165,22 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		menuButtonPress: () => {
-			dispatch(Actions.drawerOpen())
+			dispatch(ReduxActions.drawerOpen())
 		},
 		regionChange: (region) => {
-			dispatch(Actions.updateRegion(region))
+			dispatch(ReduxActions.updateRegion(region))
 		},
 		setMarkerSelected: (marker) => {
-			dispatch(Actions.setMarkerSelected(marker))
+			dispatch(ReduxActions.setMarkerSelected(marker))
 		},
 		setMarkerViewVisible: () => {
-			dispatch(Actions.setMarkerViewVisible())
+			dispatch(ReduxActions.setMarkerViewVisible())
 		},
 		setMarkerViewHidden: () => {
-			dispatch(Actions.setMarkerViewHidden())
+			dispatch(ReduxActions.setMarkerViewHidden())
 		},
 		disableGestures: (value) => {
-			dispatch(Actions.disableGestures(value))
+			dispatch(ReduxActions.disableGestures(value))
 		}
 	}
 }

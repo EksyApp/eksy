@@ -11,7 +11,7 @@ import {
 import MapView from 'react-native-maps'
 import styles from './Styles/MapStyles'
 import MapManager from './MapManager'
-import * as Actions from '../../Actions'
+import * as ReduxActions from '../../Actions'
 import Marker from './Marker'
 import { circleStrokeColor, circleFillColor } from '../../Theme'
 import Store from '../../Store'
@@ -162,13 +162,13 @@ const mapStateToProps = (state) => { 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		setMarkerSelected: (marker) => {
-			dispatch(Actions.setMarkerSelected(marker))
+			dispatch(ReduxActions.setMarkerSelected(marker))
 		},
 		setMarkerViewVisible: () => {
-			dispatch(Actions.setMarkerViewVisible())
+			dispatch(ReduxActions.setMarkerViewVisible())
 		},
 		disableGestures: (value) => {
-			dispatch(Actions.disableGestures(value))
+			dispatch(ReduxActions.disableGestures(value))
 		}
 	}
 }

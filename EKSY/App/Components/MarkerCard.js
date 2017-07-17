@@ -9,6 +9,7 @@ import {Actions} from 'react-native-router-flux'
 import {Card, CardSection, Label, TextArea} from './Common'
 import Image from 'react-native-fast-image'
 import {connect} from 'react-redux'
+import * as ReduxActions from '../Actions'
 
 class MarkerCard extends Component {
 
@@ -71,13 +72,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch => {
 		return {
 			setMarkerSelected: (marker) => {
-				dispatch(Actions.setMarkerSelected(marker))
+				dispatch(ReduxActions.setMarkerSelected(marker))
 			},
 			setMarkerViewVisible: () => {
-				dispatch(Actions.setMarkerViewVisible())
+				dispatch(ReduxActions.setMarkerViewVisible())
 			},
 			disableGestures: (value) => {
-				dispatch(Actions.disableGestures(value))
+				dispatch(ReduxActions.disableGestures(value))
 			}
 		}
 })
