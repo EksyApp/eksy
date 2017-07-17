@@ -16,13 +16,14 @@ import Marker from './Marker'
 import { circleStrokeColor, circleFillColor } from '../../Theme'
 import Store from '../../Store'
 import isEqual from 'lodash/isEqual'
+import {connect} from 'react-redux'
 
 const Screen = {
 	width: Dimensions.get('window').width,
 	height: Dimensions.get('window').height - 75
 }
 
-class Map extends Component {
+export class Map extends Component {
 
 	state = {
 		zoomLevel: (360 * ((Screen.width/256) / this.props.currentRegion.longitudeDelta)) + 1
@@ -152,38 +153,24 @@ class Map extends Component {
 				</View>
 		)
 	}
-
 }
 
+const mapStateToProps = (state) => { 
+	return {}
+}
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setMarkerSelected: (marker) => {
+			dispatch(Actions.setMarkerSelected(marker))
+		},
+		setMarkerViewVisible: () => {
+			dispatch(Actions.setMarkerViewVisible())
+		},
+		disableGestures: (value) => {
+			dispatch(Actions.disableGestures(value))
+		}
+	}
+}
 
-export default Map
-
-// renderPampylat() {
-// 	return testData.features.map((pampyla, index) => {
-// 		console.log(pampyla.properties.gx_media_links)
-// 		return (
-// 				// If showGoodOnly is true, but the character is bad - do not show it
-// 				<MapView.Marker
-// 						coordinate={{
-// 							longitude: pampyla.geometry.coordinates[0],
-// 							latitude: pampyla.geometry.coordinates[1]
-// 						}}
-// 						// Callout offset
-// 						calloutOffset={{x: -8, y: 28}}
-// 						// Greed color for good characters and red for others
-// 						pinColor={'#009688'}
-// 						key={index}
-// 				>
-// 					{/* Callout */}
-// 					<MapView.Callout tooltip style={styles.callout}>
-// 						<Callout
-// 								name={pampyla.properties.Name}
-// 								description={pampyla.properties.description}
-// 								image={pampyla.properties.gx_media_links}
-// 						/>
-// 					</MapView.Callout>
-// 				</MapView.Marker>
-// 		)
-// 	})
-// }
+export default connect(mapStateToProps, mapDispatchToProps)(Map)

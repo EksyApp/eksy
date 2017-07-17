@@ -46,9 +46,6 @@ export class MapContainer extends Component {
 							currentRegion={this.props.currentRegion}
 							currentLocation={this.props.currentLocation}
 							markerList={this.props.markerList}
-							setMarkerSelected={this.props.setMarkerSelected}
-							setMarkerViewVisible={this.props.setMarkerViewVisible}
-							disableGestures={this.props.disableGestures}
 							regionChange={this.props.regionChange}/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
@@ -83,9 +80,6 @@ export class MapContainer extends Component {
 								<View style={styles.panelVisible}>
 									<MarkerCarousel
 											markerList={this.props.markerList}
-											setMarkerSelected={this.props.setMarkerSelected}
-											setMarkerViewVisible={this.props.setMarkerViewVisible}
-											disableGestures={this.props.disableGestures}
 											pointerEvents="none"/>
 								</View>
 
