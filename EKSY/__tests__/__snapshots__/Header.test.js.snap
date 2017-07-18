@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`header renders correctly with backbutton value false 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(226,227,217)",
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    onPress={undefined}
+    style={
+      Array [
+        false,
+        false,
+        false,
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "justifyContent": "center",
+        },
+        Object {
+          "height": 50,
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": 50,
+          "zIndex": 1,
+        },
+      ]
+    }
+    underlayColor="white"
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "black",
+            "fontSize": 35,
+          },
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Object {
+              "color": "rgb(101,114,122)",
+            },
+          ],
+          Object {
+            "fontFamily": "Material Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "rgb(101,114,122)",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
+
+exports[`header renders correctly with backbutton value true 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(226,227,217)",
+      "height": 50,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+        },
+        Array [
+          false,
+          false,
+          false,
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "justifyContent": "center",
+          },
+          Object {
+            "height": 50,
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": 50,
+            "zIndex": 1,
+          },
+        ],
+      ]
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "black",
+            "fontSize": 35,
+          },
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Object {
+              "color": "rgb(101,114,122)",
+            },
+          ],
+          Object {
+            "fontFamily": "Material Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "rgb(101,114,122)",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
