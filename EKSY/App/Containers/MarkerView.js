@@ -8,7 +8,8 @@ import {connect} from 'react-redux'
 import * as Theme from '../Theme'
 //import Modal from 'react-native-modal'
 import FastImage from 'react-native-fast-image'
-import Swiper from 'react-native-swiper'
+// import Swiper from 'react-native-swiper'
+import Swiper from 'react-native-swipe-a-lot'
 
 const Screen = {
   width: Dimensions.get('window').width,
@@ -52,15 +53,11 @@ export class MarkerView extends Component {
           <Label>Images</Label>
           </View>
           <Swiper
-            style={styles.swiper}
-            showsButtons={true}
-						showsPagination
-            width={'100%'}
-            height={'100%'}
+            wrapperStyle={styles.swiper}          
             >
             {this.props.marker.images.map((image, index) => {
               return (
-                <View key={`$image.uri$index`}>
+                <View key={image.uri+index}>
                   { this._renderImage(image) }
                 </View>)
             })
@@ -124,8 +121,10 @@ renderImages: {
   swiper: {
     // width: 300,
     // margin: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+    width:'100%',
+    height: '100%',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 
 titleAndTextWrapper: {
