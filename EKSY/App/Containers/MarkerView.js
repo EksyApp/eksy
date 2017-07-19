@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {View, ScrollView, Image, Text, StyleSheet, Dimensions, TouchableWithoutFeedback} from 'react-native'
+import {View, ScrollView, Image, Text, StyleSheet, Dimensions, TouchableWithoutFeedback, Modal} from 'react-native'
 import {Icon} from 'react-native-elements'
 import { Header, Divider, Label, TextArea } from '../Components/Common'
 import PictureList from '../Components/PictureList'
 import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
-import Modal from 'react-native-modal'
+//import Modal from 'react-native-modal'
 import FastImage from 'react-native-fast-image'
 import Swiper from 'react-native-swiper'
 
@@ -54,6 +54,7 @@ export class MarkerView extends Component {
           <Swiper
             style={styles.swiper}
             showsButtons={true}
+						showsPagination
             width={'100%'}
             height={'100%'}
             >
@@ -84,14 +85,10 @@ export class MarkerView extends Component {
     return (
       <TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
         <Modal
-          isVisible={this.props.markerViewVisible}
-          animationIn={'slideInUp'}
-          animationOut={'slideInDown'}
-          animationInTiming={100}
-          animationOutTiming={100}
-          backdropColor={'black'}
-          backdropOpacity={0.5}
-          onModalHide={() => this.props.setMarkerViewHidden}
+          visible={this.props.markerViewVisible}
+          animationType={'fade'}
+					transparent
+          onRequestClose={this.props.setMarkerViewHidden}
           >
             <View style={styles.content}>
             <View style={styles.titleAndTextWrapper}>
@@ -117,6 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+		margin: 20
   },
 
 renderImages: {
