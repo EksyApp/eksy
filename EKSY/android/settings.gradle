@@ -21,7 +21,5 @@ include ':mobile-center-analytics'
 project(':mobile-center-analytics').projectDir = new File(rootProject.projectDir, '../node_modules/mobile-center-analytics/android')
 include ':mobile-center'
 project(':mobile-center').projectDir = new File(rootProject.projectDir, '../node_modules/mobile-center/android')
-include ':react-native-mauron85-background-geolocation'
-project(':react-native-mauron85-background-geolocation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-mauron85-background-geolocation/android/lib')
 
 include ':app'

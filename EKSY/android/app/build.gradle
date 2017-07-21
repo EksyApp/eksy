@@ -138,7 +138,6 @@ dependencies {
     compile project(':react-native-maps')
     compile project(':react-native-splash-screen')
     compile project(':react-native-fast-image')
-    compile project(':react-native-mauron85-background-geolocation')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
