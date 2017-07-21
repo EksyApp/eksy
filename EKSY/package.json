@@ -16,7 +16,8 @@
     "git-hook": "npm run lint -s && npm test -s",
     "coverage": "jest --coverage",
     "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android "
+    "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android ",
+    "clean:linux": "rm -rf node_modules && npm install && cd android/ && gradle clean && cd .."
   },
   "dependencies": {
     "firebase": "^4.0.0",

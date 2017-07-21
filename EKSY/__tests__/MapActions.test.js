@@ -44,7 +44,7 @@ describe('actions', () => {
     }
     const expectedAction = {
       type: types.UPDATE_CURRENT_LOCATION,
-      position : position
+      position
     }
     expect(actions.updateLocation(position)).toEqual(expectedAction)
   })

@@ -53,7 +53,7 @@ export class MarkerView extends Component {
           <Label>Images</Label>
           </View>
           <Swiper
-            wrapperStyle={styles.swiper}          
+            wrapperStyle={styles.swiper}
             >
             {this.props.marker.images.map((image, index) => {
               return (
