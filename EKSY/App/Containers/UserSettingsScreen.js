@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
+import { Header } from '../Components/Common'
 import { connect } from 'react-redux'
 import * as Theme from '../Theme'
+import { CheckBox } from 'react-native-elements'
+
+state = {
+  violentChecked: false,
+  accessibleChecked: false
+}
 
 export class UserSettingsScreen extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      //state todo
+      // todo state
     }
 
   }
@@ -16,7 +23,22 @@ export class UserSettingsScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text> Hello World </Text>
+        <Header title='Filter Settings' backButton />
+        <View>
+          <Text> todo: username here </Text>
+        </View>
+        <View>
+          <CheckBox
+            title="Show violent content"
+            checked={this.state.violentChecked}
+            onPress={() => {this.setState({violentChecked: !this.state.violentChecked})}}
+          />
+          <CheckBox
+            title="Show only accessible locations"
+            checked={this.state.accessibleChecked}
+            onPress={() => {this.setState({accessibleChecked: !this.state.accessibleChecked})}}
+          />
+        </View>
       </View>
     )
   }
