@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import {PermissionsAndroid} from 'react-native'
 import Map from './Map/Map'
 import MenuButton from '../Components/MenuButton'
-import {View, StyleSheet, Dimensions, Animated, Text} from 'react-native'
+import {View, StyleSheet, Dimensions, Animated, Text, TouchableWithoutFeedback} from 'react-native'
 import {Badge} from 'react-native-elements'
-import * as Actions from '../Actions'
+import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import Interactable from 'react-native-interactable'
 import MarkerCarousel from '../Components/MarkerCarousel'
 import {backgroundColor, detailColor} from '../Theme'
+import MarkerView from '../Containers/MarkerView'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -20,41 +21,49 @@ export class MapContainer extends Component {
 	constructor(props) {
 		super(props)
 
-		this.requestLocationPermission()
-
 		this._deltaY = new Animated.Value(Screen.height - 100);
 	}
 
 	async requestLocationPermission() {
 		try {
-			await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+			const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+			if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+				console.log('no permissions granted') // prompt user?
+			}
 		} catch (err) {
 			console.warn(err)
 		}
 	}
 
+	async componentWillMount() {
+		await this.requestLocationPermission()
+	}
+
 	render() {
 		return (
-
 				<View style={styles.viewContainer}>
 					<Map
 							currentRegion={this.props.currentRegion}
 							currentLocation={this.props.currentLocation}
 							markerList={this.props.markerList}
+							regionChange={this.props.regionChange}
 							setMarkerSelected={this.props.setMarkerSelected}
-							regionChange={this.props.regionChange}/>
+							setMarkerViewVisible={this.props.setMarkerViewVisible}
+							disableGestures={this.props.disableGestures}
+							/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
 					}}/>
 					<View style={styles.panelContainer}>
 						<Animated.View style={[styles.panelContainer, {
+							backgroundColor: 'black',
 							opacity: this._deltaY.interpolate({
 								inputRange: [0, Screen.height - 100],
-								outputRange: [0, 1],
+								outputRange: [1, 0],
 								extrapolateRight: 'clamp'
 							})
 						}]}
-						               pointerEvents="none"/>
+						pointerEvents="none"/>
 						<Interactable.View
 								verticalOnly={true}
 								snapPoints={[{y: Screen.height - 220}, {y: Screen.height}]}
@@ -64,7 +73,7 @@ export class MapContainer extends Component {
 							<Animated.View style={styles.panel}>
 								<Animated.View style={styles.panelHeader}>
 									<Animated.View style={styles.panelHandle}/>
-									{this.props.markerList.length > 0 &&
+									{this.props.markerList && this.props.markerList.length > 0 &&
 									<Badge
 											value={this.props.markerList.length}
 											containerStyle={styles.badgeContainer}
@@ -75,13 +84,14 @@ export class MapContainer extends Component {
 								<View style={styles.panelVisible}>
 									<MarkerCarousel
 											markerList={this.props.markerList}
-											setMarkerSelected={this.props.setMarkerSelected}
 											pointerEvents="none"/>
 								</View>
 
 							</Animated.View>
 						</Interactable.View>
+						<MarkerView />
 					</View>
+
 				</View>
 		)
 	}
@@ -99,8 +109,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		right: 0,
-		flex: 1
-
+		flex: 1,
 	},
 	viewContainer: {
 		flex: 1,
@@ -152,20 +161,30 @@ const mapStateToProps = (state) => {
 	return {
 		currentRegion: state.map.currentRegion,
 		currentLocation: state.map.location,
-		markerList: state.markers.markerList
+		markerList: state.markers.markerList,
+		markerViewVisible: state.ui.markerView.markerViewVisible
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		menuButtonPress: () => {
-			dispatch(Actions.drawerOpen())
+			dispatch(ReduxActions.drawerOpen())
 		},
 		regionChange: (region) => {
-			dispatch(Actions.updateRegion(region))
+			dispatch(ReduxActions.updateRegion(region))
 		},
 		setMarkerSelected: (marker) => {
-			dispatch(Actions.setMarkerSelected(marker))
+			dispatch(ReduxActions.setMarkerSelected(marker))
+		},
+		setMarkerViewVisible: () => {
+			dispatch(ReduxActions.setMarkerViewVisible())
+		},
+		setMarkerViewHidden: () => {
+			dispatch(ReduxActions.setMarkerViewHidden())
+		},
+		disableGestures: (value) => {
+			dispatch(ReduxActions.disableGestures(value))
 		}
 	}
 }

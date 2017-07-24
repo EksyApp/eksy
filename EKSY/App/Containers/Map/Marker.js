@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PropTypes from 'prop-types'
 import {Actions} from 'react-native-router-flux'
-
+import * as ReduxActions from '../../Actions'
 
 class Marker extends Component {
   constructor (props) {
@@ -12,7 +12,9 @@ class Marker extends Component {
 
 	_handlePress() {
 		this.props.setMarkerSelected(this.props.data)
-		Actions.markerView();
+    this.props.disableGestures(true)
+    this.props.setMarkerViewVisible()
+    //Actions.markerView();
 	}
 
   render () {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Router, Scene, Actions} from 'react-native-router-flux'
+import {Router, Scene, Actions, Modal} from 'react-native-router-flux'
+import * as ReduxActions from '../Actions'
 
 import NavigationDrawer from './NavigationDrawer'
 import MapContainer from '../Containers/MapContainer'
@@ -13,7 +14,6 @@ const scenes = Actions.create(
       <Scene key="login" component={LoginScreen} title="Login"/>
       <Scene key="addMarker" component={AddMarker} title="Add a new marker"/>
       <Scene key="mapContainer" component={MapContainer} title="Map" initial={true}/>
-      <Scene key="markerView" component={MarkerView} title="Marker" />
     </Scene>
   </Scene>
 );

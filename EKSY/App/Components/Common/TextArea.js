@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {Text, StyleSheet} from 'react-native'
+import {Text, StyleSheet, ScrollView} from 'react-native'
 import * as Theme from '../../Theme'
 
 export class TextArea extends Component {
 
 	render() {
 		return(
-				<Text {...this.props} style={[style.text, this.props.style]} />
+				<Text {...this.props} style={[style.text, this.props.style]} />		
 		)
 	}
 
