@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Actions from '../../Actions'
 import Store from '../../Store'
-import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
+//import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null
 let idCounter = 0

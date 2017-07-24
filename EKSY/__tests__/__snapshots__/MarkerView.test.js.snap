@@ -36,10 +36,14 @@ exports[`MarkerView renders correctly 1`] = `
   >
     <View
       style={
-        Object {
-          "alignItems": "center",
-          "margin": 10,
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "margin": 10,
+          },
+          false,
+        ]
       }
     >
       <Text
@@ -56,23 +60,84 @@ exports[`MarkerView renders correctly 1`] = `
       >
         test
       </Text>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <RCTScrollView
+        alwaysBounceHorizontal={undefined}
+        alwaysBounceVertical={true}
+        onContentSizeChange={null}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onResponderGrant={[Function]}
+        onResponderReject={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={undefined}
+        onResponderTerminationRequest={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        onScrollShouldSetResponder={[Function]}
+        onStartShouldSetResponder={[Function]}
+        onStartShouldSetResponderCapture={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        sendMomentumEvents={false}
         style={
           Array [
             Object {
-              "color": "rgb(89,85,78)",
-              "fontSize": 18,
-              "margin": 10,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "overflow": "scroll",
             },
             undefined,
           ]
         }
       >
-        text
-      </Text>
+        <View
+          collapsable={false}
+          removeClippedSubviews={undefined}
+          style={
+            Array [
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <View
+            onLayout={[Function]}
+            style={
+              Object {
+                "opacity": 0,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              numberOfLines={null}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "rgb(89,85,78)",
+                      "fontSize": 18,
+                      "margin": 10,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                text
+              </Text>
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
     </View>
   </View>
 </Modal>

@@ -66,6 +66,10 @@ jest.mock('react-native-maps', () => {
 
 describe("AddMarker", () => {
 
+	this.addNewMarkerMock = jest.fn()
+
+	this.addNewMarkerMock.bind(this)
+
 	it('renders correctly', () => {
 	  const tree = renderer.create(
 	    <AddMarker currentRegion={currentRegion}/>
@@ -74,47 +78,75 @@ describe("AddMarker", () => {
 	});
 
 	it('Adds a marker without content', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
 		addMarker.find('Button').last().simulate('press')
-		expect(mapManager.getMarkers()[0].props.latitude).toBe(currentRegion.latitude)
-		expect(mapManager.getMarkers()[0].props.longitude).toBe(currentRegion.longitude)
-	})
-
-	it('Adds a marker with title', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="Title"]').simulate('changeText', "A Nice Title")
-		addMarker.find('Button').last().simulate('press')
-		expect(mapManager.getMarkers()[1].props.title).toBe("A Nice Title")
-	})
-
-	it('Adds a marker with text', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="Text"]').simulate('changeText', "Some great text")
-		addMarker.find('Button').last().simulate('press')
-		expect(mapManager.getMarkers()[2].props.text).toBe("Some great text")
-	})
-
-	it('Adds a marker with a title and text', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="Title"]').simulate('changeText', "A Nice Title")
-		addMarker.find('[label="Text"]').simulate('changeText', "Some great text")
-		addMarker.find('Button').last().simulate('press')
-		expect(mapManager.getMarkers()[3].props.title).toBe("A Nice Title")
-		expect(mapManager.getMarkers()[3].props.text).toBe("Some great text")
-	})
-
-	it('Adds a marker with a valid FastImage', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
-		addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
-		addMarker.find('Button').first().simulate('press')
-		return new Promise(resolve => setTimeout(resolve, 20)).then(() => {
-			addMarker.find('Button').last().simulate('press')
-			expect(mapManager.getMarkers()[4].props.images[0].uri).toBe("http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
+		expect(this.addNewMarkerMock).toBeCalledWith({
+			latitude: currentRegion.latitude,
+			longitude: currentRegion.longitude,
+			text: '',
+			title: '',
+			images: []
 		})
 	})
 
+	it('Adds a marker with title', () => {
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
+		addMarker.find('[label="Title"]').simulate('changeText', "A Nice Title")
+		addMarker.find('Button').last().simulate('press')
+		expect(this.addNewMarkerMock).toBeCalledWith({
+			latitude: currentRegion.latitude,
+			longitude: currentRegion.longitude,
+			text: '',
+			title: 'A Nice Title',
+			images: []
+		})
+	})
+
+	it('Adds a marker with text', () => {
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
+		addMarker.find('[label="Text"]').simulate('changeText', "Some great text")
+		addMarker.find('Button').last().simulate('press')
+		expect(this.addNewMarkerMock).toBeCalledWith({
+			latitude: currentRegion.latitude,
+			longitude: currentRegion.longitude,
+			text: 'Some great text',
+			title: '',
+			images: []
+		})
+	})
+
+	it('Adds a marker with a title and text', () => {
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
+		addMarker.find('[label="Title"]').simulate('changeText', "A Nice Title")
+		addMarker.find('[label="Text"]').simulate('changeText', "Some great text")
+		addMarker.find('Button').last().simulate('press')
+		expect(this.addNewMarkerMock).toBeCalledWith({
+			latitude: currentRegion.latitude,
+			longitude: currentRegion.longitude,
+			text: 'Some great text',
+			title: 'A Nice Title',
+			images: []
+		})
+	})
+
+	// it('Adds a marker with a valid FastImage', () => {
+	// 	let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
+	// 	addMarker.find('[label="FastImage URL"]').simulate('changeText', "http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg")
+	// 	addMarker.find('Button').first().simulate('press')
+	// 	return new Promise(resolve => setTimeout(resolve, 20)).then(() => {
+	// 		addMarker.find('Button').last().simulate('press')
+	// 		expect(this.addNewMarkerMock).toBeCalledWith({
+	// 			latitude: currentRegion.latitude,
+	// 			longitude: currentRegion.longitude,
+	// 			text: '',
+	// 			title: '',
+	// 			images: ["http://static.wixstatic.com/media/88e4c2_dde3ecf82909493f94bb32a60fe1a8c6~mv2.jpg"]
+	// 		})
+	// 	})
+	// })
+
 	it('imageurlerror sets state correctly', () => {
-		let addMarker = shallow(<AddMarker currentRegion={currentRegion}/>);
+		let addMarker = shallow(<AddMarker currentRegion={currentRegion} addNewMarker={this.addNewMarkerMock} />);
 		expect(addMarker.instance().state.imageResponse).toBe("")
 		addMarker.instance()._imageUrlError()
 		expect(addMarker.instance().state.imageResponse).toBe("URL not valid")
