@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactNative from '../_mocks_/setup'
 import {shallow} from 'enzyme'
 import {AddMarker} from "../App/Containers/AddMarker";
 import MapManager from "../App/Containers/Map/MapManager"
@@ -14,6 +13,25 @@ jest.mock('react-native-router-flux', () => ({
 	Actions: {
 		pop: jest.fn()
 	}
+}))
+
+jest.mock('react-native-maps', () => ({
+	AnimatedRegion () {
+		return {}
+	}
+}))
+
+jest.mock('firebase', () => ({
+  initializeApp () {
+    return {}
+  },
+  database () {
+    return {
+      ref() {
+        return {}
+      }
+    }
+  },
 }))
 
 jest.mock('react-native-fetch-blob', () => {

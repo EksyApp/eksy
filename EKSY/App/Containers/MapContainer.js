@@ -46,7 +46,11 @@ export class MapContainer extends Component {
 							currentRegion={this.props.currentRegion}
 							currentLocation={this.props.currentLocation}
 							markerList={this.props.markerList}
-							regionChange={this.props.regionChange}/>
+							regionChange={this.props.regionChange}
+							setMarkerSelected={this.props.setMarkerSelected}
+							setMarkerViewVisible={this.props.setMarkerViewVisible}
+							disableGestures={this.props.disableGestures}
+							/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
 					}}/>
@@ -69,7 +73,7 @@ export class MapContainer extends Component {
 							<Animated.View style={styles.panel}>
 								<Animated.View style={styles.panelHeader}>
 									<Animated.View style={styles.panelHandle}/>
-									{this.props.markerList.length > 0 &&
+									{this.props.markerList && this.props.markerList.length > 0 &&
 									<Badge
 											value={this.props.markerList.length}
 											containerStyle={styles.badgeContainer}

@@ -25,23 +25,17 @@ const Screen = {
 
 export class Map extends Component {
 
-	state = {
-		zoomLevel: (360 * ((Screen.width/256) / this.props.currentRegion.longitudeDelta)) + 1
-	}
+
 
 	constructor(props) {
 		super(props)
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
-		// testData.features.map((pampyla, index) => {
-		// 	let marker = {
-		// 		longitude: pampyla.geometry.coordinates[0],
-		// 		latitude: pampyla.geometry.coordinates[1],
-		// 		text: pampyla.properties.description
-		// 	}
-		// 	this._manager.addMarker(marker)
-		// })
+
+		this.state = {
+			zoomLevel: (360 * ((Screen.width/256) / this.props.currentRegion.longitudeDelta)) + 1
+		}
 	}
 
 
@@ -155,22 +149,4 @@ export class Map extends Component {
 	}
 }
 
-const mapStateToProps = (state) => { 
-	return {}
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		setMarkerSelected: (marker) => {
-			dispatch(ReduxActions.setMarkerSelected(marker))
-		},
-		setMarkerViewVisible: () => {
-			dispatch(ReduxActions.setMarkerViewVisible())
-		},
-		disableGestures: (value) => {
-			dispatch(ReduxActions.disableGestures(value))
-		}
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Map)
+export default Map
