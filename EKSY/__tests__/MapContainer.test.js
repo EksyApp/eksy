@@ -17,7 +17,7 @@ jest.mock('react-native-fetch-blob', () => {
       DocumentDir: () => {},
       polyfill: () => {}
     }
-  })
+})
 
   jest.mock('react-native-snap-carousel', () => {
     const React = require.requireActual('react');
