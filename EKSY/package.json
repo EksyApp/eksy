@@ -17,7 +17,7 @@
     "coverage": "jest --coverage",
     "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android ",
-    "clean:linux": "rm -rf node_modules && npm install && cd android/ && gradle clean && cd .."
+    "clean:linux": "rm -rf node_modules package-lock.json yarn.lock && npm install && cd android/ && gradle clean && cd .. && rnpm link"
   },
   "dependencies": {
     "firebase": "^4.0.0",
@@ -42,6 +42,7 @@
     "react-native-snap-carousel": "2.1.0",
     "react-native-splash-screen": "^2.1.0",
     "react-native-vector-icons": "4.1.1",
+    "react-native-view-more-text": "^1.1.2",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",

@@ -6,10 +6,12 @@ import PictureList from '../Components/PictureList'
 import * as ReduxActions from '../Actions'
 import {connect} from 'react-redux'
 import * as Theme from '../Theme'
-//import Modal from 'react-native-modal'
+// import Modal from 'react-native-modal'
 import FastImage from 'react-native-fast-image'
 // import Swiper from 'react-native-swiper'
 import Swiper from 'react-native-swipe-a-lot'
+import { ViewMoreText } from '../Components/Common'
+// import ViewMoreText from "react-native-view-more-text"
 
 const Screen = {
   width: Dimensions.get('window').width,
@@ -22,15 +24,32 @@ export class MarkerView extends Component {
     super(props)
     this.itemWidth = (0.85 * Screen.width * 2) / 3
     this.sliderWidth = 0.85 * Screen.width
+    this.state = {
+      isCollapsed: true
+    }
   }
+
+_setCollapsed = () => {
+  console.log(this.state.isCollapsed + " staten tila ");
+  if(!this.state.isCollapsed){
+  this.setState({isCollapsed: true})
+}
+}
+
+_setExpanded = () => {
+  console.log(this.state.isCollapsed + " staten tila ");
+    if(this.state.isCollapsed){
+  this.setState({isCollapsed: false})
+}
+}
 
   _renderImage (image) {
     if (image.uri.startsWith('http')) {
       return (
-          <FastImage
-            resizeMode={FastImage.resizeMode.contain}
-            source={{uri: image.uri}}
-            style={{width: '100%', height: '100%'}}
+        <FastImage
+          resizeMode={FastImage.resizeMode.contain}
+          source={{uri: image.uri}}
+          style={{width: '100%', height: '100%'}}
         />
       )
     } else {
@@ -39,7 +58,6 @@ export class MarkerView extends Component {
           resizeMode={FastImage.resizeMode.contain}
           source={{uri: image.uri}}
         />
-
       )
     }
   }
@@ -47,17 +65,17 @@ export class MarkerView extends Component {
   _renderImages () {
     if (this.props.marker.images && this.props.marker.images.length > 0) {
       return (
-        <View style={styles.renderImages}>
-        <View style = {styles.labelWrapper}>
-          <Divider />
-          <Label>Images</Label>
+        <View style={[!this.state.isCollapsed && styles.renderImagesCollapsed, this.state.isCollapsed && styles.renderImagesExpanded]}>
+          <View style={styles.labelWrapper}>
+            <Divider />
+            <Label>Images</Label>
           </View>
           <Swiper
             wrapperStyle={styles.swiper}
             >
             {this.props.marker.images.map((image, index) => {
               return (
-                <View key={image.uri+index}>
+                <View key={image.uri + index}>
                   { this._renderImage(image) }
                 </View>)
             })
@@ -70,37 +88,37 @@ export class MarkerView extends Component {
     }
   }
 
+
   render () {
-    // if (!this.props.marker) {
-    // 	return null
-    // }
-
-    //					onModalHide = {this.props.setMarkerViewHidden}
-    //					onBackButtonPress = {this.props.setMarkerViewHidden}
-    // react-native-modal:
-
     return (
       <TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
         <Modal
           visible={this.props.markerViewVisible}
           animationType={'fade'}
-					transparent
+          transparent
           onRequestClose={this.props.setMarkerViewHidden}
           >
-            <View style={styles.content}>
-            <View style={styles.titleAndTextWrapper}>
+          <View style={styles.content}>
+            <View style={[this.state.isCollapsed && styles.titleAndTextWrapperCollapsed, !this.state.isCollapsed && styles.titleAndTextWrapperExpanded]}>
               <Text style={styles.title}>{this.props.marker.title}</Text>
-              <TextArea>
-                {this.props.marker.text}
-              </TextArea>
-              </View>
-              {this._renderImages()}
+              <ScrollView>
+                <ViewMoreText
+                  numberOfLines={1}
+                  afterCollapse={this._setCollapsed}
+                  afterExpand={this._setExpanded}
+                >
+                  <TextArea>
+                    {this.props.marker.text}
+                  </TextArea>
+                </ViewMoreText>
+              </ScrollView>
             </View>
+            {this._renderImages()}
+          </View>
         </Modal>
       </TouchableWithoutFeedback>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -111,34 +129,45 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-		margin: 20
+    margin: 20
   },
 
-renderImages: {
-  flex:1,
-  justifyContent: 'center',
-},
+  renderImagesCollapsed: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  renderImagesExpanded: {
+    flex: 6,
+    justifyContent: 'center'
+  },
+
+  titleAndTextWrapperCollapsed: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 10
+  },
+
+  titleAndTextWrapperExpanded: {
+    flex: 0,
+    alignItems: 'center',
+    margin: 10
+  },
+
   swiper: {
     // width: 300,
     // margin: 20,
-    width:'100%',
-    height: '100%',
+    width: '100%',
+    height: '100%'
     // justifyContent: 'center',
     // alignItems: 'center',
   },
 
-titleAndTextWrapper: {
-  alignItems: 'center',
-  margin: 10
-},
-
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: Theme.accentColor,
+    color: Theme.accentColor
     // textAlign: 'center'
   },
-
 
   labelWrapper: {
     padding: 10
@@ -157,7 +186,7 @@ titleAndTextWrapper: {
 const mapStateToProps = (state) => {
   return {
     marker: state.markers.markerSelected,
-    markerViewVisible: state.ui.markerView.markerViewVisible
+    markerViewVisible: state.ui.markerView.markerViewVisible,
   }
 }
 
