@@ -22,6 +22,9 @@ export default class MarkerCarousel extends Component {
 	renderCards() {
 		return this.props.markerList.map((marker, index) => {
 			return <MarkerCard
+					setMarkerSelected={this.props.setMarkerSelected}
+					setMarkerViewVisible={this.props.setMarkerViewVisible}
+					disableGestures={this.props.disableGestures}
 					width={this.itemWidth}
 					marker={marker}
 					key={index}

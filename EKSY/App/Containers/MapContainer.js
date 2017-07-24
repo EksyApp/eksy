@@ -83,6 +83,9 @@ export class MapContainer extends Component {
 								</Animated.View>
 								<View style={styles.panelVisible}>
 									<MarkerCarousel
+											setMarkerSelected={this.props.setMarkerSelected}
+											setMarkerViewVisible={this.props.setMarkerViewVisible}
+											disableGestures={this.props.disableGestures}
 											markerList={this.props.markerList}
 											pointerEvents="none"/>
 								</View>
@@ -97,8 +100,6 @@ export class MapContainer extends Component {
 	}
 }
 
-// <View style={styles.panel}>
-// </View>
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
