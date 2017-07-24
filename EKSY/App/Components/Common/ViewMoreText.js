@@ -71,7 +71,7 @@ resetData(){
 
   renderViewMore(){
     return (
-      <Text onPress={() => {console.log(this ," <- lokin tila");this.onPressMore()}}>
+      <Text onPress={() => {this.onPressMore()}}>
         View More
       </Text>
     )

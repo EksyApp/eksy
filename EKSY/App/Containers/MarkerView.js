@@ -30,14 +30,12 @@ export class MarkerView extends Component {
   }
 
 _setCollapsed = () => {
-  console.log(this.state.isCollapsed + " staten tila ");
   if(!this.state.isCollapsed){
   this.setState({isCollapsed: true})
 }
 }
 
 _setExpanded = () => {
-  console.log(this.state.isCollapsed + " staten tila ");
     if(this.state.isCollapsed){
   this.setState({isCollapsed: false})
 }
