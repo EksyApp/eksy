@@ -18,16 +18,3 @@ class FirebaseConfig {
 
 export default FirebaseConfig
 
-// async logout() {
-//
-//     try {
-//
-//         await firebase.auth().signOut();
-//
-//         // Navigate to login view
-//
-//     } catch (error) {
-//         console.log(error);
-//     }
-//
-// }
