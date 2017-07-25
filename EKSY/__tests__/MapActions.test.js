@@ -1,12 +1,34 @@
 import * as actions from '../App/Actions/MapActions'
 import * as types from '../App/Actions/Types'
+import MapManager from '../App/Containers/Map/MapManager'
+import FirebaseDao from '../App/Dao/FirebaseDao'
+
+MapManager.prototype.startLocationWatcher = jest.fn()
+MapManager.prototype.storeListener = jest.fn()
+MapManager.prototype.goToCurrentPosition = jest.fn()
+MapManager.prototype.flyToPosition = jest.fn()
+
+FirebaseDao.prototype.updateLocation = jest.fn()
 
 jest.mock('react-native-fetch-blob', () => {
+  return {
+    DocumentDir: () => {},
+    polyfill: () => {}
+  }
+})
+
+jest.mock('firebase', () => ({
+  initializeApp () {
+    return {}
+  },
+  database () {
     return {
-      DocumentDir: () => {},
-      polyfill: () => {}
+      ref() {
+        return {}
+      }
     }
-  })
+  },
+}))
 
 describe('actions', () => {
   it('should create an action to update region', () => {

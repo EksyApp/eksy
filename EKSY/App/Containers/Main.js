@@ -7,15 +7,12 @@ import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
 import codePush from 'react-native-code-push'
 
-const codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  minimumBackgroundDuration: 60 * 10
-}
+//import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 class Main extends Component {
 
   state = {
-    store: null
+    store: null,
   }
 
   constructor (props) {
@@ -35,7 +32,7 @@ class Main extends Component {
   render () {
     if (!this.state.store) {
       return (
-        <ActivityIndicator />
+        <ActivityIndicator size='large' style={{justifyContent: 'center', flexDirection: 'row', alignItems: 'center', flex: 1}}/>
       )
     }
 
@@ -47,4 +44,4 @@ class Main extends Component {
   }
 }
 
-export default codePush(codePushOptions)(Main)
+export default codePush(Main)

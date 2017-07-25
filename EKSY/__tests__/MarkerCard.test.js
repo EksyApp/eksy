@@ -1,9 +1,6 @@
-import 'react-native';
+// import 'react-native';
 import React from 'react';
-
-jest.unmock('ScrollView')
-
-import {MarkerView} from '../App/Containers/MarkerView';
+import MarkerCard from '../App/Components/MarkerCard';
 import renderer from 'react-test-renderer';
 
 jest.mock('react-native-fetch-blob', () => {
@@ -11,12 +8,11 @@ jest.mock('react-native-fetch-blob', () => {
       DocumentDir: () => {},
       polyfill: () => {}
     }
-  })
+})
 
-test('MarkerView renders correctly', () => {
-
+test('MarkerCard renders correctly', () => {
   const tree = renderer.create(
-    <MarkerView marker={{title: 'test', text: 'text'}}/>
+    <MarkerCard marker={{title: '', text: ''}} width={100} />
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

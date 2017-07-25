@@ -1,244 +1,144 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MarkerView renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "backgroundColor": "rgb(243,244,229)",
-      "flex": 1,
-    }
-  }
+<Modal
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  animationType="fade"
+  hardwareAccelerated={false}
+  hitSlop={undefined}
+  onLayout={undefined}
+  onRequestClose={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={undefined}
+  testID={undefined}
+  transparent={true}
+  visible={true}
 >
   <View
     style={
       Object {
-        "backgroundColor": "rgb(226,227,217)",
-        "height": 50,
+        "alignItems": "center",
+        "backgroundColor": "rgb(243,244,229)",
+        "borderRadius": 20,
+        "flex": 1,
         "justifyContent": "center",
+        "margin": 20,
       }
     }
   >
     <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Array [
           Object {
-            "backgroundColor": "transparent",
+            "alignItems": "center",
+            "flex": 1,
+            "margin": 10,
           },
-          Array [
-            false,
-            false,
-            false,
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "justifyContent": "center",
-            },
-            Object {
-              "height": 50,
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": 50,
-              "zIndex": 1,
-            },
-          ],
+          false,
         ]
       }
-      testID={undefined}
-      tvParallaxProperties={undefined}
     >
       <Text
         accessible={true}
-        allowFontScaling={false}
+        allowFontScaling={true}
         ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "rgb(101,114,122)",
+            "fontSize": 22,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        test
+      </Text>
+      <RCTScrollView
+        alwaysBounceHorizontal={undefined}
+        alwaysBounceVertical={true}
+        onContentSizeChange={null}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onResponderGrant={[Function]}
+        onResponderReject={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={undefined}
+        onResponderTerminationRequest={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        onScrollShouldSetResponder={[Function]}
+        onStartShouldSetResponder={[Function]}
+        onStartShouldSetResponderCapture={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        sendMomentumEvents={false}
         style={
           Array [
             Object {
-              "color": "black",
-              "fontSize": 35,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "overflow": "scroll",
             },
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              Object {
-                "color": "rgb(101,114,122)",
-              },
-            ],
-            Object {
-              "fontFamily": "Material Icons",
-              "fontStyle": "normal",
-              "fontWeight": "normal",
-            },
+            undefined,
           ]
         }
       >
-        
-      </Text>
-    </View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-      style={
-        Array [
-          Object {
-            "color": "rgb(101,114,122)",
-            "fontSize": 20,
-            "fontWeight": "bold",
-            "textAlign": "center",
-          },
-          undefined,
-        ]
-      }
-    >
-      test
-    </Text>
-  </View>
-  <RCTScrollView>
-    <View>
-      <View>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": "rgb(89,85,78)",
-                "fontSize": 18,
-                "margin": 10,
-              },
-              undefined,
-            ]
-          }
-        >
-          moar test
-        </Text>
-      </View>
-      <View>
         <View
+          collapsable={false}
+          removeClippedSubviews={undefined}
           style={
             Array [
-              Object {
-                "backgroundColor": "#e1e8ee",
-                "height": 1,
-              },
-              Array [
-                Object {
-                  "backgroundColor": "rgb(112,112,112)",
-                  "height": 1,
-                  "margin": 3,
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                },
-                undefined,
-              ],
-            ]
-          }
-        />
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": "rgb(101,114,122)",
-                "fontSize": 20,
-                "fontWeight": "bold",
-                "textAlign": "center",
-              },
+              undefined,
               undefined,
             ]
           }
         >
-          Images
-        </Text>
-        <RCTScrollView
-          dataSource={
-            ListViewDataSource {
-              "items": 1,
-            }
-          }
-          renderRow={[Function]}
-          renderScrollComponent={[Function]}
-          style={
-            Object {
-              "margin": 10,
-            }
-          }
-        >
-          <View>
-            <View
-              onLayout={[Function]}
-              style={
-                Array [
-                  undefined,
-                  Array [
-                    Object {
-                      "marginTop": 10,
-                    },
-                    Object {
-                      "width": "100%",
-                    },
-                  ],
-                  Object {
-                    "height": 10,
-                    "width": "100%",
-                  },
-                ]
+          <View
+            onLayout={[Function]}
+            style={
+              Object {
+                "opacity": 0,
               }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              numberOfLines={null}
             >
-              <Image
-                accessibilityComponentType={undefined}
-                accessibilityLabel={undefined}
-                accessibilityTraits={undefined}
+              <Text
                 accessible={true}
-                hitSlop={undefined}
-                onLayout={undefined}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                resizeMode="cover"
-                source={
-                  Object {
-                    "uri": "test",
-                  }
-                }
+                allowFontScaling={true}
+                ellipsizeMode="tail"
                 style={
                   Array [
-                    Object {},
                     Object {
-                      "height": 10,
-                      "width": "100%",
+                      "color": "rgb(89,85,78)",
+                      "fontSize": 18,
+                      "margin": 10,
                     },
+                    undefined,
                   ]
                 }
-                testID={undefined}
-              />
-            </View>
+              >
+                text
+              </Text>
+            </Text>
           </View>
-        </RCTScrollView>
-      </View>
+        </View>
+      </RCTScrollView>
     </View>
-  </RCTScrollView>
-</View>
+  </View>
+</Modal>
 `;

@@ -8,10 +8,10 @@ class PointSelector extends Component {
     super(props)
 
     this.state = {
-      markerLocation: new MapView.AnimatedRegion({
+      markerLocation:{
         latitude: this.props.currentRegion.latitude,
         longitude: this.props.currentRegion.longitude
-      })
+      }
     }
   }
 
@@ -28,7 +28,7 @@ class PointSelector extends Component {
         initialRegion = {this.props.currentRegion}
         onRegionChange = {(region) => this._handleChange(region)}
       >
-        <MapView.Marker.Animated coordinate={this.state.markerLocation}/>
+        <MapView.Marker coordinate={this.state.markerLocation}/>
       </MapView>
     )
   }

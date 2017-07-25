@@ -18,18 +18,20 @@ export default class MarkerCarousel extends Component {
 		this.itemWidth = (Screen.width*2)/3;
 		this.sliderWidth = Screen.width
 	}
-	
+
 	renderCards() {
 		return this.props.markerList.map((marker, index) => {
 			return <MarkerCard
 					setMarkerSelected={this.props.setMarkerSelected}
+					setMarkerViewVisible={this.props.setMarkerViewVisible}
+					disableGestures={this.props.disableGestures}
 					width={this.itemWidth}
 					marker={marker}
 					key={index}
 			/>
 		})
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
