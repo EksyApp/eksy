@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {CheckBox} from './Common/index'
 import {ListView} from 'react-native'
 
-export default class CheckboxList extends Component {
+export default class CheckBoxList extends Component {
 	
 	constructor(props) {
 		super(props)
