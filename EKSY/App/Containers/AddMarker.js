@@ -10,6 +10,8 @@ import Dao from '../Dao/Dao'
 import { Header, Button, Input, Label, TextInputArea } from '../Components/Common'
 import ImagePicker from 'react-native-image-picker'
 import PictureList from '../Components/PictureList'
+import Filters from '../Data/Filters'
+import CheckBoxList from '../Components/CheckBoxList'
 
 export class AddMarker extends Component {
 	constructor(props) {
@@ -17,15 +19,22 @@ export class AddMarker extends Component {
 
 		this._urlField = null;
 		this.dao = new Dao();
+		this.filters = Filters.mainFilters;
 
 		this.state = {
 			text: '',
 			title: '',
 			uri: '',
 			images: [],
-			imageResponse: ""
+			imageResponse: "",
+			filters: [...this.filters.map((filter) => filter.name)]
 		}
 
+		for (let filter of this.filters) {
+			filter.checked = true
+		}
+
+		console.log(this)
 		this.mapManager = new MapManager()
 	}
 
@@ -36,7 +45,7 @@ export class AddMarker extends Component {
 			text: this.state.text,
 			title: this.state.title,
 			images: this.state.images,
-
+			filters: this.state.filters
 		}
 		this.props.addNewMarker(marker);
 		Keyboard.dismiss()
@@ -86,7 +95,16 @@ export class AddMarker extends Component {
 		});
 	}
 
-	renderImageList () {
+	//
+	handleCheckBoxListPress(name, checked) {
+		if (checked) {
+			this.setState({filters: [...this.state.filters, name]})
+		} else {
+			this.setState({filters: this.state.filters.filter((filter) => name !== filter)})
+		}
+	}
+
+	renderImageList() {
     if (this.state.images.length > 0) {
       return (
         <PictureList data={this.state.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
@@ -115,7 +133,10 @@ export class AddMarker extends Component {
 								<Button onPress={() => this._selectImage()}>
 									Add image...
 								</Button>
-
+								<CheckBoxList
+									data={this.filters}
+									onPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
+								/>
 							</View>
 							<View style={styles.buttonContainer}>
 
