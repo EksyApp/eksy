@@ -1,5 +1,4 @@
 import React from 'react'
-import 'react-native'
 import { FilterSettingsContainer } from '../App/Containers/Settings/FilterSettingsContainer'
 import {shallow} from 'enzyme'
 import renderer from 'react-test-renderer'

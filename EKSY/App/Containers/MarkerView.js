@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
 		fontSize: 22,
 		fontWeight: 'bold',
 		color: Theme.accentColor
-		// textAlign: 'center'
 	},
 	
 	labelWrapper: {

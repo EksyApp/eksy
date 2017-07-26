@@ -1,4 +1,3 @@
-import 'react-native';
 import React from 'react';
 import CheckBoxList from  '../App/Components/CheckBoxList';
 import renderer from 'react-test-renderer';

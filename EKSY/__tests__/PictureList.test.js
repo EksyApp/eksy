@@ -1,4 +1,3 @@
-import 'react-native';
 import React from 'react';
 import PictureList from '../App/Components/PictureList';
 import renderer from 'react-test-renderer';
