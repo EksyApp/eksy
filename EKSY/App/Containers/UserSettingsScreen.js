@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native'
 import { Header } from '../Components/Common'
 import { connect } from 'react-redux'
 import * as Theme from '../Theme'
-import { CheckBox } from 'react-native-elements'
+import FilterSettingsContainer from "./Settings/FilterSettingsContainer";
 
 state = {
   violentChecked: false,
@@ -27,18 +27,7 @@ export class UserSettingsScreen extends Component {
         <View>
           <Text> todo: username here </Text>
         </View>
-        <View>
-          <CheckBox
-            title="Show violent content"
-            checked={this.state.violentChecked}
-            onPress={() => {this.setState({violentChecked: !this.state.violentChecked})}}
-          />
-          <CheckBox
-            title="Show only accessible locations"
-            checked={this.state.accessibleChecked}
-            onPress={() => {this.setState({accessibleChecked: !this.state.accessibleChecked})}}
-          />
-        </View>
+        <FilterSettingsContainer/>
       </View>
     )
   }

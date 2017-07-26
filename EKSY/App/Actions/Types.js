@@ -18,3 +18,6 @@ export const MARKER_HIDDEN = "marker hidden"
 
 export const MARKERVIEW_VISIBLE = "markerview visible"
 export const MARKERVIEW_HIDDEN = "markerview hidden"
+
+export const FILTER_ADDED = "filter added"
+export const FILTER_REMOVED = "filter removed"

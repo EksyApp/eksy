@@ -36,7 +36,6 @@ function configureStore() {
         {
           storage: AsyncStorage,
           blacklist: ['markers', 'ui'],
-          whitelist: ['map']
         },
         () => {
           resolve(storeInst)
