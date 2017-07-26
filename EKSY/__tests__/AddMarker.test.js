@@ -3,6 +3,7 @@ import {shallow} from 'enzyme'
 import {AddMarker} from "../App/Containers/AddMarker";
 import MapManager from "../App/Containers/Map/MapManager"
 import renderer from 'react-test-renderer'
+import Filters from '../App/Data/Filters'
 
 MapManager.prototype.startLocationWatcher = jest.fn()
 MapManager.prototype.storeListener = jest.fn()
@@ -103,7 +104,8 @@ describe("AddMarker", () => {
 			longitude: currentRegion.longitude,
 			text: '',
 			title: '',
-			images: []
+			images: [],
+			filters: Filters.mainFilters.map((filter) => filter.name)
 		})
 	})
 
@@ -116,7 +118,8 @@ describe("AddMarker", () => {
 			longitude: currentRegion.longitude,
 			text: '',
 			title: 'A Nice Title',
-			images: []
+			images: [],
+			filters: Filters.mainFilters.map((filter) => filter.name)
 		})
 	})
 
@@ -129,7 +132,8 @@ describe("AddMarker", () => {
 			longitude: currentRegion.longitude,
 			text: 'Some great text',
 			title: '',
-			images: []
+			images: [],
+			filters: Filters.mainFilters.map((filter) => filter.name)
 		})
 	})
 
@@ -143,7 +147,8 @@ describe("AddMarker", () => {
 			longitude: currentRegion.longitude,
 			text: 'Some great text',
 			title: 'A Nice Title',
-			images: []
+			images: [],
+			filters: Filters.mainFilters.map((filter) => filter.name)
 		})
 	})
 
