@@ -63,8 +63,8 @@ export class MarkerView extends Component {
 							style={[!this.state.isCollapsed && styles.renderImagesCollapsed, this.state.isCollapsed && styles.renderImagesExpanded]}>
 						<View style={styles.labelWrapper}>
 							<Divider />
-							<Label>Images</Label>
 						</View>
+						
 						<Swiper
 								wrapperStyle={styles.swiper}
 						>
@@ -132,7 +132,8 @@ const styles = StyleSheet.create({
 	},
 	renderImagesExpanded: {
 		flex: 5,
-		justifyContent: 'center'
+		justifyContent: 'center',
+		margin: 5
 	},
 	
 	titleAndTextWrapperCollapsed: {
