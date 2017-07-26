@@ -22,14 +22,14 @@ describe('sidebar', () => {
   it('when "Add a marker" -button is pressed the function passed to goToAddMarker-prop is executed', () => {
     let goToAddMarkerMock = jest.fn()
     let sideBar = shallow(<SideBar goToAddMarker={goToAddMarkerMock}/>)
-    sideBar.find('Button').at(1).simulate('press')
+    sideBar.find('Button').at(2).simulate('press')
     expect(goToAddMarkerMock.mock.calls.length).toBe(1)
   })
 
   it('when "Login" -button is pressed the function passed to goToLoginScreen-prop is executed', () => {
     let goToLoginScreenMock = jest.fn()
     let sideBar = shallow(<SideBar goToLoginScreen={goToLoginScreenMock}/>)
-    sideBar.find('Button').at(2).simulate('press')
+    sideBar.find('Button').at(3).simulate('press')
     expect(goToLoginScreenMock.mock.calls.length).toBe(1)
   })
 })

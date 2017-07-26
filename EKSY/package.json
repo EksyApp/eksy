@@ -16,11 +16,12 @@
     "git-hook": "npm run lint -s && npm test -s",
     "coverage": "jest --coverage",
     "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android ",
+    "full:clean:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. ",
+    "clean:windows": "cd android/ && gradlew clean && cd .. ",
     "clean:linux": "rm -rf node_modules package-lock.json yarn.lock && npm install && cd android/ && gradle clean && cd .. && rnpm link"
   },
   "dependencies": {
-    "firebase": "^4.0.0",
+    "firebase": "^4.1.5",
     "geofire": "^4.1.2",
     "mobile-center": "^0.6.0",
     "mobile-center-analytics": "^0.6.0",

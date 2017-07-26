@@ -19,6 +19,9 @@ export class SideBar extends Component {
           <Button onPress={this.props.goToMap}>
             Go to map
           </Button>
+          <Button onPress={this.props.goToUserSettings}>
+            Settings
+          </Button>
           <Button onPress={this.props.goToAddMarker}>
             Add a marker
           </Button>
@@ -57,6 +60,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     goToMap: () => {
       Actions.mapContainer()
+      dispatch(ReduxActions.drawerClose())
+    },
+    goToUserSettings: () => {
+      Actions.userSettings()
       dispatch(ReduxActions.drawerClose())
     },
     goToAddMarker: () => {

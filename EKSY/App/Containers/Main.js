@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import NavigationRouter from '../Navigation/NavigationRouter'
-import FirebaseConfig from '../includes/FirebaseConfig'
+import FirebaseConfig from '../Dao/FirebaseConfig'
 import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
 import Store from '../Store'

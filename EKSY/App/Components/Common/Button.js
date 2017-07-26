@@ -42,5 +42,3 @@ const styles = {
     marginTop: 5
   }
 };
-
-// export default Button;
