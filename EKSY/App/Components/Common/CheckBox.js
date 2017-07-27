@@ -15,6 +15,10 @@ export class CheckBox extends Component {
 		
 	}
 	
+	componentWillReceiveProps(props) {
+		this.setState({checked: props.checked !== null ? props.checked : false})
+	}
+	
 	_handlePress() {
 		this.setState({checked: !this.state.checked})
 		this.props.onPress(this.props.name, !this.state.checked);

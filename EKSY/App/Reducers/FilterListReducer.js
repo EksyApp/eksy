@@ -1,6 +1,7 @@
 import {FILTER_ADDED, FILTER_REMOVED} from '../Actions/Types'
+import Filters from '../Data/Filters'
 
-const initial = []
+const initial = [...Filters.mainFilters.map((filter) => filter.name )]
 
 export default function (state = initial, action) {
 	switch (action.type) {
@@ -8,7 +9,7 @@ export default function (state = initial, action) {
 			return [...state, action.filter]
 		case FILTER_REMOVED:
 			return state.filter(filter => {
-				filter !== action.filter
+				return filter !== action.filter
 			})
 		default:
 			return state

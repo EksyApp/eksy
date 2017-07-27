@@ -474,7 +474,7 @@ exports[`AddMarker renders correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "green",
+                          "color": "#bfbfbf",
                           "fontSize": 24,
                         },
                         undefined,
@@ -486,7 +486,7 @@ exports[`AddMarker renders correctly 1`] = `
                       ]
                     }
                   >
-                    
+                    
                   </Text>
                   <Text
                     accessible={true}
@@ -522,7 +522,7 @@ exports[`AddMarker renders correctly 1`] = `
                       ]
                     }
                   >
-                    Show violent content
+                    Has violent content
                   </Text>
                 </View>
               </View>
@@ -577,7 +577,7 @@ exports[`AddMarker renders correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "green",
+                          "color": "#bfbfbf",
                           "fontSize": 24,
                         },
                         undefined,
@@ -589,7 +589,7 @@ exports[`AddMarker renders correctly 1`] = `
                       ]
                     }
                   >
-                    
+                    
                   </Text>
                   <Text
                     accessible={true}
@@ -625,7 +625,7 @@ exports[`AddMarker renders correctly 1`] = `
                       ]
                     }
                   >
-                    Show accessible content
+                    Has non-accessible content
                   </Text>
                 </View>
               </View>

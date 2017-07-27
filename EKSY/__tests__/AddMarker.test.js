@@ -105,7 +105,7 @@ describe("AddMarker", () => {
 			text: '',
 			title: '',
 			images: [],
-			filters: Filters.mainFilters.map((filter) => filter.name)
+			filters: []
 		})
 	})
 
@@ -119,7 +119,7 @@ describe("AddMarker", () => {
 			text: '',
 			title: 'A Nice Title',
 			images: [],
-			filters: Filters.mainFilters.map((filter) => filter.name)
+			filters: []
 		})
 	})
 
@@ -133,7 +133,7 @@ describe("AddMarker", () => {
 			text: 'Some great text',
 			title: '',
 			images: [],
-			filters: Filters.mainFilters.map((filter) => filter.name)
+			filters: []
 		})
 	})
 
@@ -148,7 +148,7 @@ describe("AddMarker", () => {
 			text: 'Some great text',
 			title: 'A Nice Title',
 			images: [],
-			filters: Filters.mainFilters.map((filter) => filter.name)
+			filters: []
 		})
 	})
 

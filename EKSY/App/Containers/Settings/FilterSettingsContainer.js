@@ -8,7 +8,7 @@ export class FilterSettingsContainer extends Component {
 	
 	constructor(props) {
 		super(props)
-		this.filters = Filters.mainFilters;
+		this.filters = [...Filters.mainFilters];
 		this.setCheckedStatuses(this.props);
 	}
 	
