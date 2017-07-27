@@ -1,10 +1,10 @@
 import firebase from 'firebase'
 import GeoFire from 'geofire'
-import MapManager from '../Containers/Map/MapManager'
 import * as Actions from '../Actions'
 import Store from '../Store'
 import {Platform} from 'react-native'
 import RNFetchBlob from 'react-native-fetch-blob'
+import Filterer from './Filterer'
 
 const Blob = RNFetchBlob.polyfill.Blob
 const fs = RNFetchBlob.fs
@@ -22,7 +22,7 @@ class FirebaseDao {
 			this._initGeofire();
 			this._geofireQuery = null;
 			this._initStore()
-			this._mapManager = new MapManager()
+			this.filterer = new Filterer();
 		}
 		return FirebaseDao.instance;
 	}
@@ -135,16 +135,14 @@ class FirebaseDao {
 
 	async _setMarkerVisible(key) {
 		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
-		// console.warn("marker with title " + snapshot.val().title + " added to map")
-		this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
-		// this._mapManager._map.forceUpdate()
+		this.filterer.addMarker({...snapshot.val(), key})
+		// this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
 
 	}
 
 	async _setMarkerHidden(key) {
-		// console.warn("marker removed from map")
-		this.store.dispatch(Actions.setMarkerHidden(key))
-		// this._mapManager._map.forceUpdate()
+		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
+		this.filterer.removeMarker({...snapshot.val(), key})
 	}
 
 	async getCurrentUser() {

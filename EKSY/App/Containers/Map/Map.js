@@ -69,6 +69,7 @@ export default class Map extends Component {
 						key={marker.key}
 				/>)
 	}
+	
 
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {

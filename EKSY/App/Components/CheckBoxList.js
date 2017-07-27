@@ -27,7 +27,12 @@ export default class CheckBoxList extends Component {
 				<ListView
 						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
-						renderRow = {(checkbox) => <CheckBox checked={checkbox.checked} name={checkbox.name} title={checkbox.stateDescription} onPress={(name, checked) => {this.props.onPress(name,checked)}} />}
+						renderRow = {(checkbox) => <CheckBox
+								checked={checkbox.checked}
+								name={checkbox.name}
+								title={this.props.titleKey ? checkbox[this.props.titleKey] : checkbox.stateDescription}
+								onPress={(name, checked) => {this.props.onPress(name,checked)}}
+						/>}
 				/>
 		)
 	}

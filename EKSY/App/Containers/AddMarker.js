@@ -19,7 +19,7 @@ export class AddMarker extends Component {
 
 		this._urlField = null;
 		this.dao = new Dao();
-		this.filters = Filters.mainFilters;
+		this.filters = [...Filters.mainFilters];
 
 		this.state = {
 			text: '',
@@ -27,11 +27,11 @@ export class AddMarker extends Component {
 			uri: '',
 			images: [],
 			imageResponse: "",
-			filters: [...this.filters.map((filter) => filter.name)]
+			filters: []
 		}
-
+		
 		for (let filter of this.filters) {
-			filter.checked = true
+			filter.checked = false
 		}
 
 		console.log(this)
@@ -136,6 +136,7 @@ export class AddMarker extends Component {
 								<CheckBoxList
 									data={this.filters}
 									onPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
+								  titleKey="addingDescription"
 								/>
 							</View>
 							<View style={styles.buttonContainer}>

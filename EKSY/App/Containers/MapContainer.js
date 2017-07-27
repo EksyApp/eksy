@@ -50,6 +50,7 @@ export class MapContainer extends Component {
 							setMarkerSelected={this.props.setMarkerSelected}
 							setMarkerViewVisible={this.props.setMarkerViewVisible}
 							disableGestures={this.props.disableGestures}
+					    filters={this.props.filters}
 							/>
 					<MenuButton onPress={() => {
 						this.props.menuButtonPress()
@@ -163,7 +164,8 @@ const mapStateToProps = (state) => {
 		currentRegion: state.map.currentRegion,
 		currentLocation: state.map.location,
 		markerList: state.markers.markerList,
-		markerViewVisible: state.ui.markerView.markerViewVisible
+		markerViewVisible: state.ui.markerView.markerViewVisible,
+		filters: state.filters
 	}
 }
 
