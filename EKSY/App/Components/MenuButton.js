@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements'
 import * as Theme from '../Theme'
 
 class MenuButton extends Component {
 
   render() {
     return(
-      <Icon onPress={this.props.onPress} name="menu" iconStyle={style.iconStyle} containerStyle={style.buttonStyle} size={35} />
+      <Icon onPress={this.props.onPress} name="menu" iconStyle={styles.iconStyle} containerStyle={styles.buttonStyle} size={35} />
     )
   }
 }
 
-const style = {
+const styles = {
   buttonStyle: {
     position: "absolute",
     top: 0,
