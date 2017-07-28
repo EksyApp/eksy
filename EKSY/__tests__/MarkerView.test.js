@@ -1,4 +1,3 @@
-import 'react-native';
 import React from 'react';
 
 jest.unmock('ScrollView')
