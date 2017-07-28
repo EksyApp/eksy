@@ -14,8 +14,6 @@ jest.mock('react-native-code-push', () => {
     }));
 })
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
 
 jest.mock('react-native-fetch-blob', () => {
     return {

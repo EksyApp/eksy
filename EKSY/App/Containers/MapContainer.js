@@ -52,9 +52,7 @@ export class MapContainer extends Component {
 							disableGestures={this.props.disableGestures}
 					    filters={this.props.filters}
 							/>
-					<MenuButton onPress={() => {
-						this.props.menuButtonPress()
-					}}/>
+					
 					<View style={styles.panelContainer}>
 						<Animated.View style={[styles.panelContainer, {
 							backgroundColor: 'black',
@@ -95,7 +93,11 @@ export class MapContainer extends Component {
 						</Interactable.View>
 						<MarkerView />
 					</View>
-
+					
+					<MenuButton onPress={() => {
+						this.props.menuButtonPress()
+					}}/>
+					
 				</View>
 		)
 	}

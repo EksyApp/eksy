@@ -10,15 +10,6 @@ jest.mock('react-native-fetch-blob', () => {
 	}
 })
 
-// jest.mock('firebase', () => ({
-// 	auth () {
-// 		return {
-// 			createUserWithEmailAndPassword: jest.fn(),
-// 			signInWithEmailAndPassword: jest.fn()
-// 		}
-// 	}
-// }))
-
 describe('FilterSettingsContainer', () => {
 	
 	
