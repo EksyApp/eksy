@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import {Router, Scene, Actions, Modal} from 'react-native-router-flux'
 import * as ReduxActions from '../Actions'
 
-import NavigationDrawer from './NavigationDrawer'
-import MapContainer from '../Containers/MapContainer'
-import LoginScreen from '../Containers/LoginScreen'
-import AddMarker from '../Containers/AddMarker'
-import MarkerView from '../Containers/MarkerView'
-import UserSettingsScreen from '../Containers/UserSettingsScreen'
+import NavigationDrawer from '../Containers/SideBar/NavigationDrawer'
+import MapContainer from '../Containers/MainView/MainViewContainer'
+import LoginScreen from '../Containers/Auth/LoginScreenContainer'
+import AddMarker from '../Containers/AddMarker/AddMarkerContainer'
+import MarkerView from '../Containers/MainView/MarkerViewContainer'
+import UserSettingsScreen from '../Containers/Settings/UserSettingsScreen'
 
 const scenes = Actions.create(
   <Scene key="drawer" component={NavigationDrawer} open={false} >

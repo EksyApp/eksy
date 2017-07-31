@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Icon} from 'react-native-elements'
-import * as Theme from '../Theme'
+import * as Theme from '../../Theme/index'
 import {Actions} from 'react-native-router-flux'
 
 class MenuBackButton extends Component {

@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import MenuBackButton from '../App/Components/MenuBackButton';
+import MenuBackButton from '../App/Components/Common/MenuBackButton';
 import renderer from 'react-test-renderer';
 import {shallow} from 'enzyme'
 

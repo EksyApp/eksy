@@ -1,6 +1,6 @@
 import React from 'react'
-import * as Actions from '../../Actions'
-import Store from '../../Store'
+import * as Actions from '../Actions/index'
+import Store from '../Store/index'
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null

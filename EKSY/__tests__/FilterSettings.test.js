@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import FilterSettings from  '../App/Components/FilterSettings';
+import FilterSettings from '../App/Components/Settings/FilterSettings';
 import renderer from 'react-test-renderer';
 
 test('FilterSettings renders correctly', () => {

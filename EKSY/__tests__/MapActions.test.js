@@ -1,6 +1,6 @@
 import * as actions from '../App/Actions/MapActions'
 import * as types from '../App/Actions/Types'
-import MapManager from '../App/Containers/Map/MapManager'
+import MapManager from '../App/Utils/MapManager'
 import FirebaseDao from '../App/Dao/FirebaseDao'
 
 MapManager.prototype.startLocationWatcher = jest.fn()

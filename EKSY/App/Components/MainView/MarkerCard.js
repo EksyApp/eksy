@@ -6,7 +6,7 @@ import {
 	TouchableWithoutFeedback
 } from 'react-native';
 import {Actions} from 'react-native-router-flux'
-import {Card, CardSection, Label, TextArea} from './Common'
+import {Card, CardSection, Label, TextArea} from '../Common/index'
 import Image from 'react-native-fast-image'
 
 export default class MarkerCard extends Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import PictureList from '../App/Components/PictureList';
+import PictureList from '../App/Components/Common/PictureList';
 import renderer from 'react-test-renderer';
 
 test('picturelist renders correctly', () => {

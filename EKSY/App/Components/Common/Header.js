@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import * as Theme from '../../Theme'
 import {StyleSheet, View} from 'react-native'
-import MenuButton from '../MenuButton'
-import MenuBackButton from '../MenuBackButton'
+import MenuButton from './MenuButton'
+import MenuBackButton from './MenuBackButton'
 import {PropTypes} from 'prop-types'
 import {Label} from './'
 

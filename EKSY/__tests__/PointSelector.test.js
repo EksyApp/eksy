@@ -1,6 +1,6 @@
 import ReactNative, { StyleSheet } from 'react-native';
 import React from 'react';
-import PointSelector from '../App/Components/PointSelector';
+import PointSelector from '../App/Components/AddMarker/PointSelector';
 import renderer from 'react-test-renderer';
 // import rnfbMock from '../_mocks_/react-native-fetch-blob-mock'
 //

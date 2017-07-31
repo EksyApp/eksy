@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {CheckBox} from './Common/index'
+import {CheckBox} from './index'
 import {ListView} from 'react-native'
 
 export default class CheckBoxList extends Component {

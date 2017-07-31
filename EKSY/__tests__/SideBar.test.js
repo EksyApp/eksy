@@ -1,7 +1,7 @@
 import React from 'react'
 import 'react-native'
 import {shallow} from 'enzyme'
-import {SideBar} from '../App/Navigation/SideBar'
+import {SideBar} from '../App/Containers/SideBar/SideBar'
 
 jest.mock('react-native-fetch-blob', () => {
   return {

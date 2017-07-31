@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {View} from 'react-native'
-import CheckBoxList from "./CheckBoxList";
-import Divider from "./Common/Divider";
-import Label from "./Common/Label";
+import CheckBoxList from "../Common/CheckBoxList";
+import Divider from "../Common/Divider";
+import Label from "../Common/Label";
 
 export default class FilterSettings extends Component {
 	

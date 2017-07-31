@@ -1,6 +1,6 @@
 // import 'react-native';
 import React from 'react';
-import MarkerCard from '../App/Components/MarkerCard';
+import MarkerCard from '../App/Components/MainView/MarkerCard';
 import renderer from 'react-test-renderer';
 
 jest.mock('react-native-fetch-blob', () => {

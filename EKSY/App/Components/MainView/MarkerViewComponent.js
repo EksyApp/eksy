@@ -1,12 +1,10 @@
-import React, {Component} from "react";
-import {Dimensions, Image, Modal, ScrollView, StyleSheet, TouchableWithoutFeedback, View} from "react-native";
-import {Divider, Label} from "../Components/Common";
-import * as ReduxActions from "../Actions";
-import {connect} from "react-redux";
-import * as Theme from "../Theme";
+import React, {Component} from 'react'
+import {Image, Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions } from 'react-native'
+import Label from "../Common/Label";
+import ViewMoreText from "../Common/ViewMoreText";
+import * as Theme from "../../Theme/Colors";
+import Divider from "../Common/Divider";
 import FastImage from "react-native-fast-image";
-import Swiper from "react-native-swipe-a-lot";
-import ViewMoreText from "../Components/Common/ViewMoreText";
 
 
 const Screen = {
@@ -14,7 +12,8 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
-export class MarkerView extends Component {
+class MarkerViewComponent extends Component {
+	
 	
 	constructor(props) {
 		super(props)
@@ -83,7 +82,6 @@ export class MarkerView extends Component {
 		}
 	}
 	
-	
 	render() {
 		return (
 				<TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
@@ -114,6 +112,7 @@ export class MarkerView extends Component {
 		)
 	}
 }
+
 
 const styles = StyleSheet.create({
 	
@@ -177,20 +176,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-const mapStateToProps = (state) => {
-	return {
-		marker: state.markers.markerSelected,
-		markerViewVisible: state.ui.markerView.markerViewVisible,
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		setMarkerViewHidden: () => {
-			dispatch(ReduxActions.setMarkerViewHidden())
-			dispatch(ReduxActions.disableGestures(false))
-		}
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MarkerView)
+export default MarkerViewComponent

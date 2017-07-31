@@ -1,6 +1,6 @@
 import React from 'react';
-import { MapContainer } from '../App/Containers/MapContainer';
-import MapManager from '../App/Containers/Map/MapManager';
+import { MainViewContainer } from '../App/Containers/MainView/MainViewContainer';
+import MapManager from '../App/Utils/MapManager';
 import renderer from 'react-test-renderer';
 
 MapManager.prototype.startLocationWatcher = jest.fn()
@@ -70,10 +70,10 @@ jest.mock('react-native-maps', () => {
   return MockMapView;
 });
 
-describe('MapContainer renders correctly', () => {
+describe('MainViewContainer renders correctly', () => {
  it('renders correctly', () => {
    const rendered = renderer.create(
-     <MapContainer currentRegion={{latitudeDelta:1}} currentLocation={{isKnown:false}} markerList={[]} />
+     <MainViewContainer currentRegion={{latitudeDelta:1}} currentLocation={{isKnown:false}} markerList={[]} />
    );
    expect(rendered.toJSON()).toMatchSnapshot();
  });

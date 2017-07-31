@@ -9,7 +9,7 @@ import {
 	Dimensions
 } from 'react-native'
 import MapView from 'react-native-maps'
-import MapManager from './MapManager'
+import MapManager from '../../Utils/MapManager'
 import Marker from './Marker'
 import isEqual from 'lodash/isEqual'
 import {connect} from 'react-redux'
@@ -19,7 +19,7 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
-export default class Map extends Component {
+export default class MapComponent extends Component {
 
 	constructor(props) {
 		super(props)

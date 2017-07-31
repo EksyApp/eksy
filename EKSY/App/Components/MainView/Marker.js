@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PropTypes from 'prop-types'
 import {Actions} from 'react-native-router-flux'
-import * as ReduxActions from '../../Actions'
+import * as ReduxActions from '../../Actions/index'
 
 class Marker extends Component {
   constructor (props) {

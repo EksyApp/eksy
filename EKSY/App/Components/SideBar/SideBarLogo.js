@@ -5,7 +5,7 @@ class SideBarLogo extends Component {
 
   render() {
     return(
-      <Image source={require('../Images/logoPlaceHolder.png')}/>
+      <Image source={require('../../Images/logoPlaceHolder.png')}/>
     )
   }
 }

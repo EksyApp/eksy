@@ -1,19 +1,15 @@
 import React, {Component} from 'react'
-import {View, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
-import PointSelector from '../Components/PointSelector'
-import MapManager from './Map/MapManager'
-import * as ReduxActions from '../Actions'
+import {Keyboard, Image} from 'react-native'
+import MapManager from '../../Utils/MapManager'
+import * as ReduxActions from '../../Actions/index'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
-import * as Theme from '../Theme'
-import Dao from '../Dao/Dao'
-import { Header, Button, Input, Label, TextInputArea } from '../Components/Common'
+import Dao from '../../Dao/Dao'
 import ImagePicker from 'react-native-image-picker'
-import PictureList from '../Components/PictureList'
-import Filters from '../Data/Filters'
-import CheckBoxList from '../Components/CheckBoxList'
+import Filters from '../../Data/Filters'
+import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
 
-export class AddMarker extends Component {
+export class AddMarkerContainer extends Component {
 	constructor(props) {
 		super(props)
 
@@ -103,54 +99,22 @@ export class AddMarker extends Component {
 			this.setState({filters: this.state.filters.filter((filter) => name !== filter)})
 		}
 	}
-
-	renderImageList() {
-    if (this.state.images.length > 0) {
-      return (
-        <PictureList data={this.state.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
-      )
-    }
-
-    return null
-  }
+	
 
 	render() {
 		return (
-				<View style={styles.container}>
-					<Header title='Add Marker' backButton/>
-					<View style={styles.container}>
-						<View style={styles.mapContainer}>
-							<PointSelector onChange={(region) => {
-								this.props.regionChange(region)
-							}} currentRegion={this.props.currentRegion} style={styles.map}/>
-						</View>
-						<ScrollView>
-							<View style={styles.formContainer}>
-								<Input label="Title" onChangeText={(text) => this.setState({title: text})}/>
-								<TextInputArea label="Text" onChangeText={(text) => this.setState({text: text})}/>
-								{ this.renderImageList() }
-								<Label>{this.state.imageResponse}</Label>
-								<Button onPress={() => this._selectImage()}>
-									Add image...
-								</Button>
-								<CheckBoxList
-									data={this.filters}
-									onPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
-								  titleKey="addingDescription"
-								/>
-							</View>
-							<View style={styles.buttonContainer}>
-
-								<Button onPress={() => {
-									this.addNewMarker()
-								}}>
-									Add marker
-								</Button>
-							</View>
-						</ScrollView>
-
-					</View>
-				</View>
+				<AddMarkerComponent
+					images={this.state.images}
+					regionChange={this.props.regionChange}
+					currentRegion={this.props.currentRegion}
+					onTitleChange={(text) => {this.setState({title: text})}}
+					onTextChange={(text) => {this.setState({text: text})}}
+					imageResponse={this.state.imageResponse}
+					addImageButtonClick={() => {this._selectImage()}}
+					filters={this.filters}
+					handleCheckBoxListPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
+					addNewMarkerButtonClick={() => {this.addNewMarker()}}
+				/>
 		)
 	}
 
@@ -158,43 +122,7 @@ export class AddMarker extends Component {
 
 }
 
-const styles = StyleSheet.create({
-	container: {
-		backgroundColor: Theme.backgroundColor,
-		flex: 1
-	},
 
-	mapContainer: {
-		height: '50%',
-		width: '100%'
-	},
-
-	buttonContainer: {
-		marginTop: 10,
-		marginBottom:20
-	},
-
-	map: {
-		...StyleSheet.absoluteFillObject
-	},
-
-	textArea: {
-		flex: 1,
-		textAlignVertical: 'top',
-		width: '100%',
-		backgroundColor: Theme.frontgroundColor,
-		marginTop: 20
-	},
-
-	listStyle: {
-		padding: 5
-	},
-
-	imageContainer: {
-		width: "100%"
-	}
-
-})
 
 const mapStateToProps = (state) => {
 	return {
@@ -216,4 +144,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddMarker)
+export default connect(mapStateToProps, mapDispatchToProps)(AddMarkerContainer)

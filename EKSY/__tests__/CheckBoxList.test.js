@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBoxList from  '../App/Components/CheckBoxList';
+import CheckBoxList from '../App/Components/Common/CheckBoxList';
 import renderer from 'react-test-renderer';
 
 test('CheckBoxList renders correctly', () => {

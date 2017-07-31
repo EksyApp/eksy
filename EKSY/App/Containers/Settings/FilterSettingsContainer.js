@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Filters from '../../Data/Filters'
 import * as ReduxActions from '../../Actions'
 import {connect} from 'react-redux'
-import FilterSettings from "../../Components/FilterSettings";
+import FilterSettings from "../../Components/Settings/FilterSettings";
 
 export class FilterSettingsContainer extends Component {
 	

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { Header } from '../Components/Common'
+import { Header } from '../../Components/Common/index'
 import { connect } from 'react-redux'
-import * as Theme from '../Theme'
-import FilterSettingsContainer from "./Settings/FilterSettingsContainer";
+import * as Theme from '../../Theme/index'
+import FilterSettingsContainer from "./FilterSettingsContainer";
 
 state = {
   violentChecked: false,
