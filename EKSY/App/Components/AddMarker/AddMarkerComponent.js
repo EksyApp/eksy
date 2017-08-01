@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import PictureList from '../Common/PictureList'
-import {View, StyleSheet, Keyboard, ScrollView, Image} from 'react-native'
+import {View, StyleSheet, ScrollView} from 'react-native'
 import PointSelector from '../../Components/AddMarker/PointSelector'
 import * as Theme from '../../Theme/index'
 import { Header, Button, Input, Label, TextInputArea } from '../../Components/Common/index'
 import CheckBoxList from '../../Components/Common/CheckBoxList'
 import ImagePicker from "../Common/ImagePicker";
+import CompactPictureList from "../Common/CompactPictureList";
 
 class AddMarkerComponent extends Component {
 	
@@ -21,7 +22,7 @@ class AddMarkerComponent extends Component {
 	renderImageList() {
 		if (this.props.images && this.props.images.length > 0) {
 			return (
-					<PictureList data={this.props.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
+					<CompactPictureList data={this.props.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
 			)
 		}
 		
