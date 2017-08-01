@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Marker renders correctly 1`] = `
+<AIRMapMarker
+  coordinate={
+    Object {
+      "latitude": 1,
+      "longitude": 1,
+    }
+  }
+  image={undefined}
+  onPress={[Function]}
+  pinColor={undefined}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "position": "absolute",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

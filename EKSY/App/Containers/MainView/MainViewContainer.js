@@ -33,11 +33,6 @@ export class MainViewContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		currentRegion: state.map.currentRegion,
-		currentLocation: state.map.location,
-		markerList: state.markers.markerList,
-		markerViewVisible: state.ui.markerView.markerViewVisible,
-		filters: state.filters
 	}
 }
 
@@ -45,21 +40,6 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		menuButtonPress: () => {
 			dispatch(ReduxActions.drawerOpen())
-		},
-		regionChange: (region) => {
-			dispatch(ReduxActions.updateRegion(region))
-		},
-		setMarkerSelected: (marker) => {
-			dispatch(ReduxActions.setMarkerSelected(marker))
-		},
-		setMarkerViewVisible: () => {
-			dispatch(ReduxActions.setMarkerViewVisible())
-		},
-		setMarkerViewHidden: () => {
-			dispatch(ReduxActions.setMarkerViewHidden())
-		},
-		disableGestures: (value) => {
-			dispatch(ReduxActions.disableGestures(value))
 		}
 	}
 }

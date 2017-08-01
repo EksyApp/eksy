@@ -1,29 +1,35 @@
 import React, {Component} from 'react'
-import {View, Animated} from 'react-native'
+import {View, Animated, StyleSheet, Dimensions} from 'react-native'
 import {Badge} from "react-native-elements";
 import MarkerCarousel from "./MarkerCarousel";
 import Interactable from 'react-native-interactable'
 import * as Theme from "../../Theme/Colors";
 
+const Screen = {
+	width: Dimensions.get('window').width,
+	height: Dimensions.get('window').height - 75
+}
+
 class BottomSheetComponent extends Component {
 	
-	constructor (props){
+	constructor(props) {
 		super(props)
 		this._deltaY = new Animated.Value(Screen.height - 100);
 	}
 	
 	render() {
 		return (
-				<View>
-					<Animated.View style={[styles.panelContainer, {
-						backgroundColor: 'black',
-						opacity: this._deltaY.interpolate({
-							inputRange: [0, Screen.height - 100],
-							outputRange: [1, 0],
-							extrapolateRight: 'clamp'
-						})
-					}]}
-					               pointerEvents="none"/>
+				<View style={styles.container}>
+					<Animated.View
+							style={[styles.container, {
+								backgroundColor: 'black',
+								opacity: this._deltaY.interpolate({
+									inputRange: [0, Screen.height - 100],
+									outputRange: [1, 0],
+									extrapolateRight: 'clamp'
+								})
+							}]}
+							pointerEvents="none"/>
 					<Interactable.View
 							verticalOnly={true}
 							snapPoints={[{y: Screen.height - 220}, {y: Screen.height}]}
@@ -58,10 +64,8 @@ class BottomSheetComponent extends Component {
 }
 
 const styles = StyleSheet.create({
+	
 	container: {
-		flex: 1
-	},
-	panelContainer: {
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
 	
 	panelVisible: {
 		paddingTop: 20,
-		width:"100%",
+		width: "100%",
 		height: Screen.height,
 		backgroundColor: Theme.backgroundColor,
 		borderTopLeftRadius: 20,

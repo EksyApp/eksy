@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import {Image, Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions } from 'react-native'
+import {Image, Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet } from 'react-native'
 import Label from "../Common/Label";
 import ViewMoreText from "../Common/ViewMoreText";
 import * as Theme from "../../Theme/Colors";
 import Divider from "../Common/Divider";
 import FastImage from "react-native-fast-image";
+import Swiper from "react-native-swipe-a-lot";
 
 
 const Screen = {

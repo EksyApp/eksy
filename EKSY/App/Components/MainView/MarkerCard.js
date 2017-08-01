@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {
 	View,
-	Text,
 	StyleSheet,
 	TouchableWithoutFeedback
 } from 'react-native';
-import {Actions} from 'react-native-router-flux'
 import {Card, CardSection, Label, TextArea} from '../Common/index'
 import Image from 'react-native-fast-image'
 
@@ -64,15 +62,12 @@ export default class MarkerCard extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		height: 200
-	},
-
-	card: {
-		height: "100%",
-
+		height: 200,
+		marginLeft: 0,
 	},
 
 	imageContainer: {
+		width: "100%",
 		height: "70%",
 		padding: 0
 	},

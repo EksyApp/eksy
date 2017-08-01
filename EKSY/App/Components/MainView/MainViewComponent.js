@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MenuButton from '../../Components/Common/MenuButton'
-import {View} from 'react-native'
+import {View, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 import MarkerViewContainer from "../../Containers/MainView/MarkerViewContainer";
 import BottomSheetContainer from "../../Containers/MainView/BottomSheetContainer";
@@ -11,9 +11,9 @@ class MainViewComponent extends Component {
 	
 	render() {
 		return (
-				<View>
+				<View style={styles.container}>
 					<MapContainer />
-					<View style={styles.panelContainer}>
+					<View style={styles.container}>
 						<BottomSheetContainer />
 						<MarkerViewContainer/>
 					</View>
@@ -25,13 +25,12 @@ class MainViewComponent extends Component {
 
 
 const styles = StyleSheet.create({
-	panelContainer: {
+	container: {
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
 		left: 0,
 		right: 0,
-		flex: 1,
 	}
 })
 

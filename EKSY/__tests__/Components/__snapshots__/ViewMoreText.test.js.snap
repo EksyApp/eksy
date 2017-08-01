@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ViewMoreText renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    Object {
+      "opacity": 0,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    numberOfLines={null}
+    style={
+      Array [
+        Object {
+          "color": "rgb(89,85,78)",
+          "fontSize": 18,
+          "margin": 10,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

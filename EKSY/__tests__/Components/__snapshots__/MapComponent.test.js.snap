@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapComponent renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <MapView
+    followUserLocation={true}
+    initialRegion={
+      Object {
+        "latitude": 1,
+        "latitudeDelta": 1,
+        "longitude": 1,
+      }
+    }
+    onRegionChange={[Function]}
+    showCompass={false}
+    showsBuildings={true}
+    showsMyLocationButton={true}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  />
+</View>
+`;

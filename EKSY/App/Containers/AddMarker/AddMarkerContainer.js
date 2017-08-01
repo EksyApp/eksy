@@ -12,8 +12,7 @@ import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
 export class AddMarkerContainer extends Component {
 	constructor(props) {
 		super(props)
-
-		this._urlField = null;
+		
 		this.dao = new Dao();
 		this.filters = [...Filters.mainFilters];
 
@@ -22,7 +21,6 @@ export class AddMarkerContainer extends Component {
 			title: '',
 			uri: '',
 			images: [],
-			imageResponse: "",
 			filters: []
 		}
 		
@@ -48,50 +46,8 @@ export class AddMarkerContainer extends Component {
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
 	}
-
-	_addImage() {
-		const imageUri = this.state.uri
-		Image.getSize(imageUri, (width, height) => {this._imageUriWorks(imageUri, width, height)}, (error) => {this._imageUrlError(error)})
-	}
-
-	_selectImage () {
-    const options = {
-      title: 'Select image',
-			noData: true,
-      storageOptions: {
-        skipBackup: true,
-      },
-			maxWidth: 800,
-			maxHeight: 800
-    }
-
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('response: ', response)
-
-      if (response.didCancel) {
-        console.log('cancelled')
-      } else if (response.error) {
-        console.log('error ', response.error)
-      } else {
-        this.setState({ uri: response.uri })
-        this._addImage()
-      }
-    })
-  }
-
-	_imageUrlError(error) {
-		this.setState({imageResponse: "URL not valid"});
-	}
-
-	_imageUriWorks(imageUri, width, height) {
-		this.setState({
-			images: [...this.state.images, {uri: imageUri, width: width, height: height}],
-			uri: '',
-			imageResponse: "Image added!"
-		});
-	}
-
-	//
+	
+	
 	handleCheckBoxListPress(name, checked) {
 		if (checked) {
 			this.setState({filters: [...this.state.filters, name]})
@@ -109,8 +65,7 @@ export class AddMarkerContainer extends Component {
 					currentRegion={this.props.currentRegion}
 					onTitleChange={(text) => {this.setState({title: text})}}
 					onTextChange={(text) => {this.setState({text: text})}}
-					imageResponse={this.state.imageResponse}
-					addImageButtonClick={() => {this._selectImage()}}
+					onNewImage={(image) => this.setState({images: [...this.state.images, image]})}
 					filters={this.filters}
 					handleCheckBoxListPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
 					addNewMarkerButtonClick={() => {this.addNewMarker()}}
@@ -118,10 +73,8 @@ export class AddMarkerContainer extends Component {
 		)
 	}
 
-
-
+	
 }
-
 
 
 const mapStateToProps = (state) => {

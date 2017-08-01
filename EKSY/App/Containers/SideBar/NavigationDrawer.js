@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SideBar from './SideBar'
+import SideBar from './SideBarContainer'
 import {DefaultRenderer} from 'react-native-router-flux'
 import * as Actions from '../../Actions/index'
 import {SideMenu} from 'react-native-elements'

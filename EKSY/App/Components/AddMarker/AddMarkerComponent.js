@@ -5,16 +5,21 @@ import PointSelector from '../../Components/AddMarker/PointSelector'
 import * as Theme from '../../Theme/index'
 import { Header, Button, Input, Label, TextInputArea } from '../../Components/Common/index'
 import CheckBoxList from '../../Components/Common/CheckBoxList'
+import ImagePicker from "../Common/ImagePicker";
 
 class AddMarkerComponent extends Component {
 	
 	constructor(props) {
 		super(props)
 		
+		this.state = {
+			imageResponse: ""
+		}
+		
 	}
 	
 	renderImageList() {
-		if (this.props.images.length > 0) {
+		if (this.props.images && this.props.images.length > 0) {
 			return (
 					<PictureList data={this.props.images} listStyle={styles.listStyle} imageContainerStyle={styles.imageContainer} />
 			)
@@ -38,10 +43,16 @@ class AddMarkerComponent extends Component {
 								<Input label="Title" onChangeText={(text) => this.props.onTitleChange(text)}/>
 								<TextInputArea label="Text" onChangeText={(text) => this.props.onTextChange(text)}/>
 								{ this.renderImageList() }
-								<Label>{this.props.imageResponse}</Label>
-								<Button onPress={() => this.props.addImageButtonClick()}>
-									Add image...
-								</Button>
+								<Label>{this.state.imageResponse}</Label>
+								<ImagePicker
+										buttonText="Add image"
+										onNewImage={(image) => {
+											this.setState({imageResponse: "Image added!"})
+											this.props.onNewImage(image)
+										}}
+								    onPickerError={(error) => this.setState({imageResponse: error.message})}
+										onUriError={(error) => this.setState({imageResponse: error.message})}
+								/>
 								<CheckBoxList
 										data={this.props.filters}
 										onPress={(name, checked) => {this.props.handleCheckBoxListPress(name, checked)}}
