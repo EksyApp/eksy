@@ -60,7 +60,7 @@ class FirebaseDao {
 	async addUser() {
 		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
 		reference.set({
-			email: firebase.auth().currentUser.email
+		
 		})
 	}
 

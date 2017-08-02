@@ -22,25 +22,7 @@ export class LoginContainer extends Component {
 		}
 
 	}
-
-	async signup () {
-		DismissKeyboard()
-
-		try {
-			await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-
-			this.props.userCreated()
-
-			this.setState({
-				response: 'account created'
-			})
-
-		} catch (error) {
-			this.setState({
-				response: error.toString()
-			})
-		}
-	}
+	
 
 	async login () {
 		DismissKeyboard()
@@ -51,6 +33,7 @@ export class LoginContainer extends Component {
 			this.setState({
 				response: 'Logged In!'
 			})
+			this.props.userLoggedIn(firebase.auth().currentUser)
 
 		} catch (error) {
 			console.warn(error)
@@ -80,7 +63,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		menuButtonPress: () => { dispatch(Actions.drawerOpen()) },
-		userCreated: () => {dispatch(Actions.userCreated())}
+		userCreated: () => {dispatch(Actions.userCreated())},
+		userLoggedIn: (user) => {dispatch(Actions.userLoggedIn(user))}
 	}
 }
 

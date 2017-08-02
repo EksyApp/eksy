@@ -13,6 +13,7 @@ export class SideBarContainer extends Component {
           goToUserSettings={this.props.goToUserSettings}
           goToAddMarker={this.props.goToAddMarker}
           goToLoginScreen={this.props.goToLoginScreen}
+          user={this.props.user}
       />
     )
   }
@@ -20,7 +21,7 @@ export class SideBarContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    user: state.auth.user
   }
 }
 

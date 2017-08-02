@@ -34,6 +34,7 @@ export class SignUpContainer extends Component {
 			this.setState({
 				response: 'account created'
 			})
+			this.props.userLoggedIn(firebase.auth().currentUser)
 		} catch (error) {
 			this.setState({
 				response: error.toString()
@@ -62,7 +63,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		userCreated: () => {dispatch(ReduxActions.userCreated())}
+		userCreated: () => {dispatch(ReduxActions.userCreated())},
+		userLoggedIn: (user) => {dispatch(ReduxActions.userLoggedIn(user))}
 	}
 }
 

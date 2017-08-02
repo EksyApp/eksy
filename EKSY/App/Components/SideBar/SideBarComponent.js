@@ -1,10 +1,31 @@
 import React, {Component} from 'react'
 import {View} from 'react-native'
 import SideBarLogo from '../../Components/SideBar/SideBarLogo'
-import { Button } from '../../Components/Common/index'
+import {Button} from '../../Components/Common/index'
 import * as Theme from '../../Theme/index'
+import firebase from 'firebase'
 
 export default class SideBarComponent extends Component {
+	
+	renderLoginButton() {
+		if (!this.props.user) {
+			return (
+					<Button onPress={this.props.goToLoginScreen}>
+						Login
+					</Button>
+			)
+		}
+	}
+	
+	renderAddMarkerButton() {
+		if (this.props.user) {
+			return (
+					<Button onPress={this.props.goToAddMarker}>
+						Add a marker
+					</Button>
+			)
+		}
+	}
 	
 	render() {
 		return (
@@ -19,12 +40,8 @@ export default class SideBarComponent extends Component {
 						<Button onPress={this.props.goToUserSettings}>
 							Settings
 						</Button>
-						<Button onPress={this.props.goToAddMarker}>
-							Add a marker
-						</Button>
-						<Button onPress={this.props.goToLoginScreen}>
-							Login
-						</Button>
+						{this.renderAddMarkerButton()}
+						{this.renderLoginButton()}
 					</View>
 				</View>
 		)

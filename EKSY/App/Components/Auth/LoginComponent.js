@@ -21,7 +21,6 @@ class LoginComponent extends Component {
 									placeholder='Email'
 									keyboardType="email-address"
 									returnKeyType="next"
-									autofocus
 							/>
 						</View>
 						<View>

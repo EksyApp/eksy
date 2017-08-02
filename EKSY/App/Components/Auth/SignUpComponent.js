@@ -7,7 +7,7 @@ import Message from "../Common/Message";
 import Button from "../Common/Button";
 
 export default class SignUpComponent extends Component {
-
+	
 	render() {
 		return (
 				<View style={styles.container}>
@@ -20,7 +20,6 @@ export default class SignUpComponent extends Component {
 									placeholder='Email'
 									keyboardType="email-address"
 									returnKeyType="next"
-									autofocus
 							/>
 						</View>
 						<View>
@@ -65,7 +64,7 @@ export default class SignUpComponent extends Component {
 				</View>
 		)
 	}
-
+	
 }
 
 const styles = StyleSheet.create({
@@ -73,24 +72,24 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor,
 	},
-
+	
 	bottomMargin: {
 		marginBottom: 30
 	},
-
+	
 	section: {
 		marginTop: 20
 	},
-
+	
 	responseText: {
 		textAlign: 'center',
 		width: '100%',
 		fontSize: 18,
 		color: Theme.fontColor
 	},
-
+	
 	response: {
 		marginTop: 20
 	}
-
+	
 })

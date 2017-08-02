@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from "react-native";
 import Header from "../Common/Header";
 import FilterSettingsContainer from "../../Containers/Settings/FilterSettingsContainer";
 import * as Theme from "../../Theme";
+import ProfileContainer from "../../Containers/Settings/ProfileContainer";
 
 
 export default class SettingsComponent extends Component {
@@ -11,9 +12,7 @@ export default class SettingsComponent extends Component {
 		return (
 				<View style={styles.container}>
 					<Header title='Filter Settings' backButton />
-					<View>
-						<Text> todo: username here </Text>
-					</View>
+					<ProfileContainer/>
 					<FilterSettingsContainer/>
 				</View>
 		)
