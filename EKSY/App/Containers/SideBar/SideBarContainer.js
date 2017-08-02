@@ -10,7 +10,7 @@ export class SideBarContainer extends Component {
     return (
       <SideBarComponent
           goToMap={this.props.goToMap}
-          goUserSettings={this.props.goToUserSettings}
+          goToUserSettings={this.props.goToUserSettings}
           goToAddMarker={this.props.goToAddMarker}
           goToLoginScreen={this.props.goToLoginScreen}
       />

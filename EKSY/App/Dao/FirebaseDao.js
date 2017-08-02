@@ -136,7 +136,7 @@ class FirebaseDao {
 	async _setMarkerVisible(key) {
 		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
 		this.filterer.addMarker({...snapshot.val(), key})
-		// this.store.dispatch(Actions.setMarkerVisible({...snapshot.val(), key}))
+		// this.store.dispatch(ReduxActions.setMarkerVisible({...snapshot.val(), key}))
 
 	}
 

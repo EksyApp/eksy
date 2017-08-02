@@ -6,8 +6,8 @@ import {Image} from 'react-native'
 export default class ImagePicker extends Component {
 	
 	render() {
-		return(
-				<Button onPress={() => this._buttonClick()} >
+		return (
+				<Button onPress={() => this._buttonClick()}>
 					{this.props.buttonText}
 				</Button>
 		)
@@ -39,7 +39,11 @@ export default class ImagePicker extends Component {
 	}
 	
 	_addImage(uri) {
-		Image.getSize(uri, (width, height) => {this._imageUriWorks(uri, width, height)}, (error) => {this._imageUriError(error)})
+		Image.getSize(uri, (width, height) => {
+			this._imageUriWorks(uri, width, height)
+		}, (error) => {
+			this._imageUriError(error)
+		})
 	}
 	
 	_imageUriWorks(uri, width, height) {
@@ -47,6 +51,6 @@ export default class ImagePicker extends Component {
 	}
 	
 	_imageUriError(error) {
-		this.props.onUriError !== null ? this.props.onUriError(error): false;
+		this.props.onUriError !== null ? this.props.onUriError(error) : false;
 	}
 }

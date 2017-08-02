@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
-import {Image, ScrollView, Text, View} from 'react-native'
-import {Actions} from 'react-native-router-flux'
+import {View} from 'react-native'
 import SideBarLogo from '../../Components/SideBar/SideBarLogo'
 import { Button } from '../../Components/Common/index'
-import * as ReduxActions from '../../Actions/index'
-import {connect} from 'react-redux'
 import * as Theme from '../../Theme/index'
 
 export default class SideBarComponent extends Component {

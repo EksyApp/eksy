@@ -14,7 +14,6 @@ class MapManager {
 			this._currentLocationMoveRequested = false
 			this._reduxState = null
 			this.initStore()
-			// this.store.subscribe(() => this._storeListener())
 			this.startLocationWatcher()
 			instance = this
 		}
@@ -60,8 +59,8 @@ class MapManager {
 		})
 
 		BackgroundGeolocation.on('location', (location) => {
-				this.store.dispatch(Actions.updateLocation(location))
-				this.store.dispatch(Actions.locationKnown(true))
+				this.store.dispatch(ReduxActions.updateLocation(location))
+				this.store.dispatch(ReduxActions.locationKnown(true))
 				this._map.forceUpdate()
 		})
 
@@ -69,7 +68,7 @@ class MapManager {
 
 		BackgroundGeolocation.on('error', (error) => {
 			console.log('Geolocation error: ' + error)
-			this.store.dispatch(Actions.locationKnown(false))
+			this.store.dispatch(ReduxActions.locationKnown(false))
 		})
 
 		BackgroundGeolocation.start(() => {

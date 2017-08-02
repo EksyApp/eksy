@@ -8,16 +8,17 @@ import * as firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
 import {connect} from 'react-redux'
 import * as Actions from '../../Actions/index'
-import LoginScreenComponent from "../../Components/Auth/LoginScreenComponent";
+import LoginComponent from "../../Components/Auth/LoginComponent";
 
-export class LoginScreenContainer extends Component {
+export class LoginContainer extends Component {
 	constructor (props) {
 		super(props)
 		
 		this.state = {
 			email: '',
 			password: '',
-			response: ''
+			response: '',
+			remembered: false
 		}
 		
 	}
@@ -60,12 +61,12 @@ export class LoginScreenContainer extends Component {
 	
 	render () {
 		return (
-        <LoginScreenComponent
+        <LoginComponent
             onEmailChange = {(email) => {this.setState({email: email})}}
             onPasswordChange = {(password) => {this.setState({password: password})}}
             onLoginClick = {() => {this.login()}}
-            onSignupClick = {() => {this.signup()}}
             response = {this.state.response}
+            onRememberChange={(checked) => {this.setState({remembered: checked})}}
         />
 		)
 	}
@@ -83,4 +84,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreenContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

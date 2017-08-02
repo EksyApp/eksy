@@ -3,10 +3,11 @@ import PictureList from '../Common/PictureList'
 import {View, StyleSheet, ScrollView} from 'react-native'
 import PointSelector from '../../Components/AddMarker/PointSelector'
 import * as Theme from '../../Theme/index'
-import { Header, Button, Input, Label, TextInputArea } from '../../Components/Common/index'
+import { Header, Button, Label, TextInputArea } from '../../Components/Common/index'
 import CheckBoxList from '../../Components/Common/CheckBoxList'
 import ImagePicker from "../Common/ImagePicker";
 import CompactPictureList from "../Common/CompactPictureList";
+import Input from "../Common/Input";
 
 class AddMarkerComponent extends Component {
 	

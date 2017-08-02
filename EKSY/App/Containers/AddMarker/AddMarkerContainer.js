@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import {Keyboard, Image} from 'react-native'
+import {Keyboard} from 'react-native'
 import MapManager from '../../Utils/MapManager'
 import * as ReduxActions from '../../Actions/index'
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
 import Dao from '../../Dao/Dao'
-import ImagePicker from 'react-native-image-picker'
 import Filters from '../../Data/Filters'
 import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
 
@@ -63,7 +62,7 @@ export class AddMarkerContainer extends Component {
 					images={this.state.images}
 					regionChange={this.props.regionChange}
 					currentRegion={this.props.currentRegion}
-					onTitleChange={(text) => {this.setState({title: text})}}
+					onTitleChange={(title) => {this.setState({title: title})}}
 					onTextChange={(text) => {this.setState({text: text})}}
 					onNewImage={(image) => this.setState({images: [...this.state.images, image]})}
 					filters={this.filters}

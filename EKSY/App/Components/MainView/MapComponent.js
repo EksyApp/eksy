@@ -20,45 +20,44 @@ const Screen = {
 }
 
 export default class MapComponent extends Component {
-
+	
 	constructor(props) {
 		super(props)
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
-
+		
 		this.state = {
-			zoomLevel: (360 * ((Screen.width/256) / this.props.currentRegion.longitudeDelta)) + 1
+			zoomLevel: (360 * ((Screen.width / 256) / this.props.currentRegion.longitudeDelta)) + 1
 		}
 	}
-
+	
 	animateToCoordinate(position, delay) {
 		if (this._map) {
 			this._map._component.animateToCoordinate(position, delay)
 		}
 	}
-
+	
 	handleRegionChange(region) {
 		this.props.regionChange(region)
-		this.setState({...this.state, zoomLevel: (360 * ((Screen.width/256) / region.longitudeDelta)) + 1})
-		console.log(this.state.zoomLevel)
+		this.setState({...this.state, zoomLevel: (360 * ((Screen.width / 256) / region.longitudeDelta)) + 1})
 	}
-
+	
 	async componentWillReceiveProps(nextProps) {
 		if (!isEqual(nextProps, this.props)) {
 			// this.store = await Store()
 			// navigator.geolocation.getCurrentPosition(
 			// 	(position) => {
-			// 		this.store.dispatch(Actions.updateLocation(position.coords))
-			// 		this.store.dispatch(Actions.locationKnown(true))
+			// 		this.store.dispatch(ReduxActions.updateLocation(position.coords))
+			// 		this.store.dispatch(ReduxActions.locationKnown(true))
 			// 		this.animateToCoordinate(position.coords, 100)
 			// 	},
-			// 	(error) => this.store.dispatch(Actions.locationKnown(false)),
+			// 	(error) => this.store.dispatch(ReduxActions.locationKnown(false)),
 			// 	{enableHighAccuracy: false, timeout: 500, maximumAge: 1000000, distanceFilter: 1}
 			// )
 		}
 	}
-
+	
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) =>
 				<Marker
@@ -70,7 +69,7 @@ export default class MapComponent extends Component {
 				/>)
 	}
 	
-
+	
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
 			return (
@@ -95,7 +94,7 @@ export default class MapComponent extends Component {
 			// 		<View style={styles.userMarker} />
 			// 	</Animated.View>
 			// </MapView.Marker>
-
+			
 			// <MapView.Circle
 			// 					center={this.props.currentLocation}
 			// 					radius={100}
@@ -110,10 +109,10 @@ export default class MapComponent extends Component {
 			// 		style={{flex: 1}}
 			// >
 		}
-
+		
 		return null
 	}
-
+	
 	renderMapView() {
 		return (
 				<MapView.Animated
@@ -133,7 +132,7 @@ export default class MapComponent extends Component {
 				</MapView.Animated>
 		)
 	}
-
+	
 	render() {
 		return (
 				<View style={styles.container}>
@@ -146,12 +145,12 @@ export default class MapComponent extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,                            // Take up the whole screen
-		justifyContent: 'flex-end',         // Arrange button at the bottom
-		alignItems: 'center',               // Center button horizontally
+		flex: 1,
+		justifyContent: 'flex-end',
+		alignItems: 'center',
 	},
 	map: {
-		position:'absolute',
+		position: 'absolute',
 		top: 0,
 		bottom: 0,
 		left: 0,
