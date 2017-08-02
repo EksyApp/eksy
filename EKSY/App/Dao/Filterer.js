@@ -2,12 +2,12 @@ import Store from '../Store'
 import * as ReduxActions from '../Actions'
 
 
-// Handles filtering visible markers based on filters set in the settings
+// handles filtering visible markers based on filters set in the settings
 export default class Filterer {
-	
+
 	// singleton
 	static instance = null
-	
+
 	constructor() {
 		if(Filterer.instance === null) {
 			this.filteredMarkers = []
@@ -15,17 +15,17 @@ export default class Filterer {
 			this._initStore()
 			Filterer.instance = this;
 		}
-		
+
 		return Filterer.instance;
 	}
-	
+
 	async _initStore() {
 		this.store = await Store()
 		this.state = this.store.getState()
 		this.filtersLength = this.state.filters.length
 		this.store.subscribe(() => {this._storeListener()})
 	}
-	
+
 	_storeListener() {
 		this.state = this.store.getState()
 		// this.filtersLength is used to check if filter list has changed and how, as only actions are adding or removing
@@ -39,7 +39,7 @@ export default class Filterer {
 			}
 		}
 	}
-	
+
 	// checks if marker should be filtered out,
 	// marker is filtered out if it has a filter that is not active.
 	_markerIsFilteredOut(marker) {
@@ -52,7 +52,7 @@ export default class Filterer {
 		}
 		return false;
 	}
-	
+
 	// this is called when a active filter gets deactivated.
 	// It loops through the visible markers and removes any that no longer should be visible.
 	// it saves hidden markkers to this.filteredMarkers list
@@ -65,8 +65,8 @@ export default class Filterer {
 			}
 		}
 	}
-	
-	
+
+
 	_handleAddedFilter() {
 		for (let i = 0; i < this.filteredMarkers.length; i++) {
 			if(!this._markerIsFilteredOut(this.filteredMarkers[i])) {
@@ -76,7 +76,7 @@ export default class Filterer {
 			}
 		}
 	}
-	
+
 	// this is called by the dao when new marker is in the range.
 	// It checks if it should be filtered or not.
 	addMarker(marker) {
@@ -86,7 +86,7 @@ export default class Filterer {
 			this.store.dispatch(ReduxActions.setMarkerVisible(marker));
 		}
 	}
-	
+
 	removeMarker(marker) {
 		if(this._markerIsFilteredOut(marker)) {
 			this.filteredMarkers = this.filteredMarkers.filter((filtered) => filtered.key !== marker.key)
@@ -94,5 +94,5 @@ export default class Filterer {
 			this.store.dispatch(ReduxActions.setMarkerHidden(marker.key))
 		}
 	}
-	
+
 }

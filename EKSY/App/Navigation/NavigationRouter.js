@@ -7,6 +7,7 @@ import AddMarker from '../Containers/AddMarker/AddMarkerContainer'
 import SettingsContainer from '../Containers/Settings/SettingsContainer'
 import SignUpContainer from "../Containers/Auth/SignUpContainer";
 
+// defines all routes in the app
 const scenes = Actions.create(
   <Scene key="drawer" component={NavigationDrawer} open={false} >
     <Scene key="root" hideNavBar = {true} >
@@ -19,6 +20,7 @@ const scenes = Actions.create(
   </Scene>
 );
 
+// handles routing with scenes
 class NavigationRouter extends Component {
 
   render() {

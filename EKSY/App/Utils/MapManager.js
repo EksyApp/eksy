@@ -4,14 +4,13 @@ import Store from '../Store/index'
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null
-let idCounter = 0
 
+// used to give commands to the Google Map
 class MapManager {
 
 	constructor() {
 		if (!instance) {
 			this._map = null
-			this._currentLocationMoveRequested = false
 			this._reduxState = null
 			this.initStore()
 			this.startLocationWatcher()
@@ -25,20 +24,8 @@ class MapManager {
 		this.store.subscribe(() => this.storeListener())
 	}
 
-	static getNextID() {
-		idCounter++
-		return idCounter
-	}
-
 	storeListener() {
 		this._reduxState = this.store.getState()
-		this.handleFlyingToCurrentLocation()
-	}
-
-	handleFlyingToCurrentLocation() {
-		if (this._currentLocationMoveRequested) {
-			this.goToCurrentPosition()
-		}
 	}
 
 	startLocationWatcher() {
@@ -91,12 +78,7 @@ class MapManager {
 	}
 
 	goToCurrentPosition() {
-		if (this._reduxState && this._reduxState.map.location.isKnown) {
-			this._currentLocationMoveRequested = false
-			this.flyToPosition(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
-		} else {
-			this._currentLocationMoveRequested = true
-		}
+		this.flyToPosition(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
 	}
 
 	flyToPosition(latitude, longitude) {
