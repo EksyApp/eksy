@@ -3,7 +3,7 @@ import {View, Animated, StyleSheet, Dimensions} from 'react-native'
 import {Badge} from "react-native-elements";
 import MarkerCarousel from "./MarkerCarousel";
 import Interactable from 'react-native-interactable'
-import * as Theme from "../../Theme/Colors";
+import * as Theme from "../../../Theme";
 
 const Screen = {
 	width: Dimensions.get('window').width,

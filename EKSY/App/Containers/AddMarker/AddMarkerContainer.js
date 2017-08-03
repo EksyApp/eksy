@@ -19,7 +19,6 @@ export class AddMarkerContainer extends Component {
 			region: this.props.currentRegion,
 			text: '',
 			title: '',
-			uri: '',
 			images: [],
 			filters: []
 		}
@@ -40,7 +39,7 @@ export class AddMarkerContainer extends Component {
 			images: this.state.images,
 			filters: this.state.filters
 		}
-		this.props.addNewMarker(marker);
+		this.dao.addMarker(marker)
 		Keyboard.dismiss()
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
@@ -91,9 +90,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addNewMarker: (marker) => {
-			dispatch(ReduxActions.addNewMarker(marker))
-		}
 	}
 }
 

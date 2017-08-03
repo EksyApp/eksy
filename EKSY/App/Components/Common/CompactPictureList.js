@@ -33,12 +33,14 @@ export default class CompactPictureList extends Component {
 	
 	_makeGroups(data, itemsPerGroup) {
 		let groups = []
-		for (var i = 0; i < data.length; i += itemsPerGroup) {
-			let group = []
-			for (var j = i; j < Math.min(data.length, i+itemsPerGroup); j++) {
-				group.push(data[j])
+		if(data) {
+			for (var i = 0; i < data.length; i += itemsPerGroup) {
+				let group = []
+				for (var j = i; j < Math.min(data.length, i+itemsPerGroup); j++) {
+					group.push(data[j])
+				}
+				groups.push(group)
 			}
-			groups.push(group)
 		}
 		return groups
 	}

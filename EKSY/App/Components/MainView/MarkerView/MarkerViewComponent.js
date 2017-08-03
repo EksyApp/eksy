@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
-import {Image, Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet } from 'react-native'
-import Label from "../Common/Label";
-import ViewMoreText from "../Common/ViewMoreText";
-import * as Theme from "../../Theme/Colors";
-import Divider from "../Common/Divider";
-import FastImage from "react-native-fast-image";
-import Swiper from "react-native-swipe-a-lot";
+import {Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet } from 'react-native'
+import Label from "../../Common/Label";
+import ViewMoreText from "../../Common/ViewMoreText";
+import * as Theme from "../../../Theme/Colors";
+import Divider from "../../Common/Divider";
+import Picture from "../../Common/Picture";
+import {Actions} from 'react-native-router-flux'
+import PictureSwiper from "../../Common/PictureSwiper";
 
 
 const Screen = {
@@ -36,25 +37,7 @@ class MarkerViewComponent extends Component {
 			this.setState({isCollapsed: false})
 		}
 	}
-	
-	_renderImage(image) {
-		if (image.uri.startsWith('http')) {
-			return (
-					<FastImage
-							resizeMode={FastImage.resizeMode.contain}
-							source={{uri: image.uri}}
-							style={{width: '100%', height: '100%'}}
-					/>
-			)
-		} else {
-			return (
-					<Image
-							resizeMode={FastImage.resizeMode.contain}
-							source={{uri: image.uri}}
-					/>
-			)
-		}
-	}
+
 	
 	_renderImages() {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
@@ -65,22 +48,43 @@ class MarkerViewComponent extends Component {
 							<Divider />
 						</View>
 						
-						<Swiper
-								wrapperStyle={styles.swiper}
-						>
-							{this.props.marker.images.map((image, index) => {
-								return (
-										<View key={image.uri + index}>
-											{ this._renderImage(image) }
-										</View>)
-							})
-							}
-						</Swiper>
+						<PictureSwiper images={this.props.marker.images} />
 					</View>
 			)
 		} else {
 			return null
 		}
+	}
+	
+	_renderText() {
+		return(
+				<View
+						style={this.state.isCollapsed ? styles.titleAndTextWrapperCollapsed : styles.titleAndTextWrapperExpanded}
+				>
+					<View style={styles.titleContainer}>
+						<Label style={styles.title}>{this.props.marker.title}</Label>
+						<Picture
+								data={{width: 96, height: 96}}
+								source={require('../../../Images/EditIcon.png')}
+						    containerStyle={styles.editIcon}
+						    onPress={() => {
+						    	Actions.editMarker()
+							    this.props.setMarkerViewHidden()
+						    }}
+						/>
+					</View>
+					
+					<ScrollView>
+						<ViewMoreText
+								numberOfLines={1}
+								afterCollapse={this._setCollapsed}
+								afterExpand={this._setExpanded}
+						>
+							{this.props.marker.text}
+						</ViewMoreText>
+					</ScrollView>
+				</View>
+		)
 	}
 	
 	render() {
@@ -93,19 +97,7 @@ class MarkerViewComponent extends Component {
 							onRequestClose={this.props.setMarkerViewHidden}
 					>
 						<View style={styles.content}>
-							<View
-									style={[this.state.isCollapsed && styles.titleAndTextWrapperCollapsed, !this.state.isCollapsed && styles.titleAndTextWrapperExpanded]}>
-								<Label style={styles.title}>{this.props.marker.title}</Label>
-								<ScrollView>
-									<ViewMoreText
-											numberOfLines={1}
-											afterCollapse={this._setCollapsed}
-											afterExpand={this._setExpanded}
-									>
-										{this.props.marker.text}
-									</ViewMoreText>
-								</ScrollView>
-							</View>
+							{this._renderText()}
 							{this._renderImages()}
 						</View>
 					</Modal>
@@ -174,6 +166,17 @@ const styles = StyleSheet.create({
 	closeButton: {
 		position: 'absolute',
 		left: Screen.width - 120
+	},
+	
+	editIcon: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
+		width: 30
+	},
+	
+	titleContainer: {
+		width: '100%'
 	}
 })
 

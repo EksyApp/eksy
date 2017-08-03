@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MarkerViewComponent from "../../App/Components/MainView/MarkerViewComponent";
+import MarkerViewComponent from "../../App/Components/MainView/MarkerView/MarkerViewComponent";
 
 test('MarkerViewComponent renders correctly', () => {
 	const tree = renderer.create(

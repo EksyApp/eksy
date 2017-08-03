@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import * as ReduxActions from "../../Actions/index";
+import * as ReduxActions from "../../../Actions/index";
 import {connect} from "react-redux";
-import MarkerViewComponent from "../../Components/MainView/MarkerViewComponent";
+import MarkerViewComponent from "../../../Components/MainView/MarkerView/MarkerViewComponent";
 
 
 

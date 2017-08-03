@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import * as ReduxActions from "../../Actions/";
-import MapComponent from "../../Components/MainView/MapComponent";
+import * as ReduxActions from "../../../Actions/index";
+import MapComponent from "../../../Components/MainView/Map/MapComponent";
 import {connect} from "react-redux";
 
 export class MapContainer extends Component {

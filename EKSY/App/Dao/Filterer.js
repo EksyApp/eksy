@@ -87,12 +87,10 @@ export default class Filterer {
 		}
 	}
 
-	removeMarker(marker) {
-		if(this._markerIsFilteredOut(marker)) {
-			this.filteredMarkers = this.filteredMarkers.filter((filtered) => filtered.key !== marker.key)
-		} else {
-			this.store.dispatch(ReduxActions.setMarkerHidden(marker.key))
-		}
+	removeMarker(key) {
+			this.filteredMarkers = this.filteredMarkers.filter((filtered) => filtered.key !== key)
+			this.store.dispatch(ReduxActions.setMarkerHidden(key))
+		
 	}
 
 }

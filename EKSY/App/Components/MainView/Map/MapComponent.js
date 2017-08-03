@@ -9,7 +9,7 @@ import {
 	Dimensions
 } from 'react-native'
 import MapView from 'react-native-maps'
-import MapManager from '../../Utils/MapManager'
+import MapManager from '../../../Utils/MapManager'
 import Marker from './Marker'
 import isEqual from 'lodash/isEqual'
 import {connect} from 'react-redux'

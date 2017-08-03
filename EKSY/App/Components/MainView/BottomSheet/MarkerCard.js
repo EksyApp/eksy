@@ -4,7 +4,7 @@ import {
 	StyleSheet,
 	TouchableWithoutFeedback
 } from 'react-native';
-import {Card, CardSection, Label, TextArea} from '../Common/index'
+import {Card, CardSection, Label, TextArea} from '../../Common/index'
 import Image from 'react-native-fast-image'
 
 export default class MarkerCard extends Component {

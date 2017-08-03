@@ -14,12 +14,14 @@ export class TextInputArea extends Component {
 
 		this.state = {height: 0}
 	}
-
+	
+	
 	render() {
 		return (
 				<View>
 					<FormLabel labelStyle={styles.labelStyle}>{this.props.label}</FormLabel>
 					<FormInput
+							ref = {(input) => this._input  = input}
 							underlineColorAndroid='transparent'
 							placeholder={this.props.label}
 							{...this.props}

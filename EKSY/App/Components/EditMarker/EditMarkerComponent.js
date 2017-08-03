@@ -1,26 +1,25 @@
-import React, {Component} from "react";
-import {ScrollView, StyleSheet, View} from "react-native";
-import * as Theme from "../../Theme/index";
-import {Button, Header} from "../../Components/Common/index";
-import MarkerForm from "./MarkerForm";
+import React, {Component} from 'react'
+import Header from "../Common/Header";
+import MarkerForm from "../AddMarker/MarkerForm";
+import Button from "../Common/Button";
+import {ScrollView, View, StyleSheet} from "react-native";
+import * as Theme from "../../Theme";
 
-class AddMarkerComponent extends Component {
-	
-	
+export default class EditMarkerComponent extends Component {
 	
 	render() {
-		return (
+		return(
 				<View style={styles.container}>
-					<Header title='Add Marker' backButton/>
+					<Header title='Edit Marker' backButton/>
 					<ScrollView>
 						<MarkerForm
 								initialRegion={this.props.initialRegion}
 								onRegionChange={this.props.onRegionChange}
 								
-								initialTitle=""
+								initialTitle={this.props.initialTitle}
 								onTitleChange={this.props.onTitleChange}
 								
-								initialText=""
+								initialText={this.props.initialText}
 								onTextChange={this.props.onTextChange}
 								
 								images={this.props.images}
@@ -30,15 +29,16 @@ class AddMarkerComponent extends Component {
 								onFilterChange={this.props.onFilterChange}
 						/>
 						<View style={styles.buttonContainer}>
-							<Button onPress={() => {
-								this.props.onAddMarkerClick()
-							}}>
-								Add marker
+							<Button onPress={() => {this.props.onSaveClick()}}>
+								Save changes
+							</Button>
+							<Button onPress={() => {this.props.onDeleteClick()}}>
+								Delete marker
 							</Button>
 						</View>
+						
 					</ScrollView>
-				</View >
-		
+				</View>
 		)
 	}
 	
@@ -56,6 +56,3 @@ const styles = StyleSheet.create({
 	},
 	
 })
-
-export default AddMarkerComponent
-

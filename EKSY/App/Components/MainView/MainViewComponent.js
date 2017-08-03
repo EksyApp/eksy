@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import MenuButton from '../../Components/Common/MenuButton'
 import {View, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
-import MarkerViewContainer from "../../Containers/MainView/MarkerViewContainer";
-import BottomSheetContainer from "../../Containers/MainView/BottomSheetContainer";
-import MapContainer from "../../Containers/MainView/MapContainer";
+import MarkerViewContainer from "../../Containers/MainView/MarkerView/MarkerViewContainer";
+import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSheetContainer";
+import MapContainer from "../../Containers/MainView/Map/MapContainer";
 
 
 class MainViewComponent extends Component {

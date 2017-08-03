@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MarkerCarousel from "../../App/Components/MainView/MarkerCarousel";
+import MarkerCarousel from "../../App/Components/MainView/BottomSheet/MarkerCarousel";
 
 jest.mock('react-native-snap-carousel', () => {
 	const React = require.requireActual('react');

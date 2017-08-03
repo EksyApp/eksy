@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import BottomSheetComponent from "../../Components/MainView/BottomSheetComponent";
+import BottomSheetComponent from "../../../Components/MainView/BottomSheet/BottomSheetComponent";
 import {connect} from "react-redux";
-import * as ReduxActions from "../../Actions";
+import * as ReduxActions from "../../../Actions/index";
 
 class BottomSheetContainer extends Component {
 	

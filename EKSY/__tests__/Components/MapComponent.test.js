@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MapComponent from "../../App/Components/MainView/MapComponent";
+import MapComponent from "../../App/Components/MainView/Map/MapComponent";
 import MapManager from "../../App/Utils/MapManager";
 
 jest.mock('react-native-fetch-blob', () => {
