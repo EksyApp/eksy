@@ -16,6 +16,7 @@ export class AddMarkerContainer extends Component {
 		this.filters = [...Filters.mainFilters];
 
 		this.state = {
+			region: this.props.currentRegion,
 			text: '',
 			title: '',
 			uri: '',
@@ -27,14 +28,13 @@ export class AddMarkerContainer extends Component {
 			filter.checked = false
 		}
 
-		console.log(this)
 		this.mapManager = new MapManager()
 	}
 
 	addNewMarker() {
 		let marker = {
-			latitude: this.props.currentRegion.latitude,
-			longitude: this.props.currentRegion.longitude,
+			latitude: this.state.region.latitude,
+			longitude: this.state.region.longitude,
 			text: this.state.text,
 			title: this.state.title,
 			images: this.state.images,
@@ -47,7 +47,7 @@ export class AddMarkerContainer extends Component {
 	}
 	
 	
-	handleCheckBoxListPress(name, checked) {
+	onFilterChange(name, checked) {
 		if (checked) {
 			this.setState({filters: [...this.state.filters, name]})
 		} else {
@@ -59,15 +59,22 @@ export class AddMarkerContainer extends Component {
 	render() {
 		return (
 				<AddMarkerComponent
-					images={this.state.images}
-					regionChange={this.props.regionChange}
-					currentRegion={this.props.currentRegion}
-					onTitleChange={(title) => {this.setState({title: title})}}
-					onTextChange={(text) => {this.setState({text: text})}}
-					onNewImage={(image) => this.setState({images: [...this.state.images, image]})}
-					filters={this.filters}
-					handleCheckBoxListPress={(name, checked) => {this.handleCheckBoxListPress(name, checked)}}
-					addNewMarkerButtonClick={() => {this.addNewMarker()}}
+						
+						initialRegion={this.props.currentRegion}
+						onRegionChange={(region) => this.setState({region: region})}
+						
+						onTitleChange={(title) => {this.setState({title: title})}}
+						
+						onTextChange={(text) => {this.setState({text: text})}}
+						
+						images={this.state.images}
+						onNewImage={(image) => this.setState({images: [...this.state.images, image]})}
+						
+						filters={this.filters}
+						onFilterChange={(name, checked) => {this.onFilterChange(name, checked)}}
+						
+						onAddMarkerClick={() => {this.addNewMarker()}}
+				  
 				/>
 		)
 	}
@@ -84,12 +91,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		menuButtonPress: () => {
-			dispatch(ReduxActions.drawerOpen())
-		},
-		regionChange: (region) => {
-			dispatch(ReduxActions.updateRegion(region))
-		},
 		addNewMarker: (marker) => {
 			dispatch(ReduxActions.addNewMarker(marker))
 		}

@@ -10,8 +10,8 @@ class PointSelector extends Component {
 		
 		this.state = {
 			markerLocation: {
-				latitude: this.props.currentRegion.latitude,
-				longitude: this.props.currentRegion.longitude
+				latitude: this.props.initialRegion.latitude,
+				longitude: this.props.initialRegion.longitude
 			}
 		}
 	}
@@ -34,7 +34,7 @@ class PointSelector extends Component {
 		return (
 				<MapView
 						style={this.props.style}
-						initialRegion={this.props.currentRegion}
+						initialRegion={this.props.initialRegion}
 						onRegionChange={(region) => this._handleChange(region)}
 						onRegionChangeComplete={(region) => this._handleChangeComplete(region)}
 				>

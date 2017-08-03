@@ -24,14 +24,14 @@ export default class ImagePicker extends Component {
 			maxHeight: 800
 		}
 		
-		options = this.props.options !== null ? this.props.options : options
+		options = this.props.options != null ? this.props.options : options
 		
 		Picker.showImagePicker(options, (response) => {
 			
 			if (response.didCancel) {
-				this.props.onPickerCancelled !== null ? this.props.onPickerCancelled() : false;
+				this.props.onPickerCancelled != null ? this.props.onPickerCancelled() : false;
 			} else if (response.error) {
-				this.props.onPickerError !== null ? this.props.onPickerError(response.error) : false
+				this.props.onPickerError != null ? this.props.onPickerError(response.error) : false
 			} else {
 				this._addImage(response.uri)
 			}

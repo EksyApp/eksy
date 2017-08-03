@@ -14,6 +14,7 @@ export default class Input extends Component {
 					<FormLabel labelStyle={styles.labelStyle}>{this.props.label}</FormLabel>
 					<FormInput
 							underlineColorAndroid='transparent'
+							placeholder={this.props.label}
 							{...this.props}
 							inputStyle={styles.inputStyle}
 							containerStyle={styles.containerStyle}

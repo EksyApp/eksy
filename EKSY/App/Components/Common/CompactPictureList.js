@@ -9,7 +9,9 @@ export default class CompactPictureList extends Component {
 	constructor(props) {
 		super(props)
 		
-		
+		if(this.props.data == null) {
+			this.props.data = []
+		}
 		
 		const datasource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
 		
@@ -21,6 +23,9 @@ export default class CompactPictureList extends Component {
 	
 	componentWillReceiveProps(props) {
 		if(props.data !== this.props.data) {
+			if(this.props.data == null) {
+				this.props.data = []
+			}
 			const dataSource = this.state.dataSource.cloneWithRows(this._makeGroups(props.data, imagesPerRow) || []);
 			this.setState({dataSource})
 		}

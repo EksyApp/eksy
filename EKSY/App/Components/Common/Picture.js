@@ -34,7 +34,6 @@ class Picture extends Component {
 			},
 		}
 		
-		
 	}
 	
 	_viewOnLayout(event) {
@@ -84,7 +83,7 @@ class Picture extends Component {
 					<TouchableWithoutFeedback onPress={this.props.onPress}>
 						<Image
 								resizeMode={FastImage.resizeMode.cover}
-								source={{uri: this.props.data.uri}}
+								source={this.props.source != null ? this.props.source : {uri: this.props.data.uri}}
 								style={imageStyle}
 						/>
 					</TouchableWithoutFeedback>
@@ -101,7 +100,9 @@ const style = StyleSheet.create({
 
 Picture.propTypes = {
 	data: PropTypes.shape({
-		uri: PropTypes.string.isRequired
+		width: PropTypes.number.isRequired,
+		height: PropTypes.number.isRequired,
+		uri: PropTypes.string
 	}),
 	key: PropTypes.any,
 	onPress: PropTypes.func
