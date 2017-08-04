@@ -21,8 +21,8 @@ export class EditMarkerContainer extends Component {
 			},
 			text: this.props.selectedMarker.text,
 			title: this.props.selectedMarker.title,
-			images: this.props.selectedMarker.images,
-			filters: this.props.selectedMarker.filters
+			images: this.props.selectedMarker.images ? this.props.selectedMarker.images : [] ,
+			filters: this.props.selectedMarker.filters ? this.props.selectedMarker.filters : []
 		}
 		
 		if(this.state.filters) {
