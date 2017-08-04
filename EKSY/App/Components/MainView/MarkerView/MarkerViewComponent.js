@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet } from 'react-native'
+import {Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet} from 'react-native'
 import Label from "../../Common/Label";
 import ViewMoreText from "../../Common/ViewMoreText";
 import * as Theme from "../../../Theme/Colors";
@@ -7,7 +7,8 @@ import Divider from "../../Common/Divider";
 import Picture from "../../Common/Picture";
 import {Actions} from 'react-native-router-flux'
 import PictureSwiper from "../../Common/PictureSwiper";
-import { Icon } from 'react-native-elements'
+import {Icon} from 'react-native-elements'
+import TextArea from "../../Common/TextArea";
 
 
 const Screen = {
@@ -38,7 +39,7 @@ class MarkerViewComponent extends Component {
 			this.setState({isCollapsed: false})
 		}
 	}
-
+	
 	
 	_renderImages() {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
@@ -46,10 +47,10 @@ class MarkerViewComponent extends Component {
 					<View
 							style={[!this.state.isCollapsed && styles.renderImagesCollapsed, this.state.isCollapsed && styles.renderImagesExpanded]}>
 						<View style={styles.labelWrapper}>
-							<Divider />
+							<Divider/>
 						</View>
 						
-						<PictureSwiper data={this.props.marker.images} />
+						<PictureSwiper data={this.props.marker.images}/>
 					</View>
 			)
 		} else {
@@ -58,31 +59,53 @@ class MarkerViewComponent extends Component {
 	}
 	
 	_renderText() {
-		return(
+		if (this.props.marker.images && this.props.marker.images.length > 0) {
+			return (<ViewMoreText
+							numberOfLines={1}
+							afterCollapse={this._setCollapsed}
+							afterExpand={this._setExpanded}
+					>
+						{this.props.marker.text}
+					</ViewMoreText>
+			)
+		} else {
+			return (
+					<TextArea>
+								{this.props.marker.text}
+					</TextArea>
+			)
+		}
+		
+	}
+	
+	_renderEditingIcon() {
+		if (this.props.user && this.props.marker && this.props.marker.creationInfo && this.props.user.uid === this.props.marker.creationInfo.user) {
+			return(
+					<Icon
+							name="edit"
+							size={25}
+							containerStyle={styles.editIcon}
+							onPress={() => {
+								Actions.editMarker()
+								this.props.setMarkerViewHidden()
+							}}
+					/>
+			)
+		}
+	}
+	
+	_renderTitleAndText() {
+		return (
 				<View
 						style={this.state.isCollapsed ? styles.titleAndTextWrapperCollapsed : styles.titleAndTextWrapperExpanded}
 				>
 					<View style={styles.titleContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
-						<Icon
-								name="edit"
-								size={35}
-						    containerStyle={styles.editIcon}
-						    onPress={() => {
-						    	Actions.editMarker()
-							    this.props.setMarkerViewHidden()
-						    }}
-						/>
+						{this._renderEditingIcon()}
 					</View>
 					
 					<ScrollView>
-						<ViewMoreText
-								numberOfLines={1}
-								afterCollapse={this._setCollapsed}
-								afterExpand={this._setExpanded}
-						>
-							{this.props.marker.text}
-						</ViewMoreText>
+						{this._renderText()}
 					</ScrollView>
 				</View>
 		)
@@ -98,7 +121,7 @@ class MarkerViewComponent extends Component {
 							onRequestClose={this.props.setMarkerViewHidden}
 					>
 						<View style={styles.content}>
-							{this._renderText()}
+							{this._renderTitleAndText()}
 							{this._renderImages()}
 						</View>
 					</Modal>
@@ -173,7 +196,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		top: 0,
 		right: 0,
-		width: 30
+		
 	},
 	
 	titleContainer: {

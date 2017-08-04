@@ -13,6 +13,7 @@ export class MarkerViewContainer extends Component {
 				marker = {this.props.marker}
 				markerViewVisible = {this.props.markerViewVisible}
 				setMarkerViewHidden = {this.props.setMarkerViewHidden}
+				user = {this.props.user}
 				/>
 		)
 	}
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
 		markerViewVisible: state.ui.markerView.markerViewVisible,
+		user: state.auth.user
 	}
 }
 

@@ -99,7 +99,7 @@ class FirebaseDao {
 		// loops through images with map
 		return await Promise.all(images.map(async (image, index) => {
 			if(!image.uri.startsWith('http')) {
-				image.uri = await this._uploadImage(key, image, index)
+				await this._uploadImage(key, image, index)
 			}
 			return image
 		}))
