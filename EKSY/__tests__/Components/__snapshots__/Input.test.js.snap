@@ -63,10 +63,7 @@ exports[`input renders correctly 1`] = `
     }
   >
     <TextInput
-      autoCorrect={false}
-      onChangeText={undefined}
       placeholder={undefined}
-      secureTextEntry={undefined}
       selectionColor="#86939e"
       style={
         Array [
@@ -83,7 +80,6 @@ exports[`input renders correctly 1`] = `
         ]
       }
       underlineColorAndroid="transparent"
-      value={undefined}
     />
   </View>
 </View>

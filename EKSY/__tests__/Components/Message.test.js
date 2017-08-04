@@ -1,11 +1,11 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import LoginScreenComponent from "../../App/Components/Auth/LoginComponent";
+import Message from "../../App/Components/Common/Message";
 
-test('LoginComponent renders correctly', () => {
+test('Message renders correctly', () => {
 	const tree = renderer.create(
-			<LoginComponent />
+			<Message />
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });

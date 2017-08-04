@@ -14,6 +14,10 @@ jest.mock('../../App/Containers/Settings/FilterSettingsContainer', () => {
 	return require('react-native').View
 })
 
+jest.mock('../../App/Containers/Settings/ProfileContainer', () => {
+	return require('react-native').View
+})
+
 test('SettingsComponent renders correctly', () => {
 	const tree = renderer.create(
 			<SettingsComponent />

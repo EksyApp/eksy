@@ -1,7 +1,6 @@
-import 'react-native';
 import React from 'react';
+import EditMarkerComponent from '../../App/Components/EditMarker/EditMarkerComponent';
 import renderer from 'react-test-renderer';
-import AddMarkerComponent from "../../App/Components/AddMarker/AddMarkerComponent";
 
 jest.mock('react-native-maps', () => {
 	const React = require.requireActual('react');
@@ -40,12 +39,32 @@ jest.mock('react-native-maps', () => {
 	return MockMapView;
 });
 
-test('AddMarkerComponent renders correctly', () => {
+test('EditMarkerComponent renders correctly', () => {
 	const tree = renderer.create(
-			<AddMarkerComponent
-				initialRegion={{latitude: 1, longitude: 1}}
-			  filters={[]}
+			<EditMarkerComponent
+					initialRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}
+					onRegionChange={() => {}}
+					
+					initialTitle=""
+					onTitleChange={() => {}}
+					
+					initialText=""
+					onTextChange={() => {}}
+					
+					images={[]}
+					onNewImage={() => {}}
+					
+					filters={[]}
+					onFilterChange={() => {}}
+					
+					onSaveClick={() => {
+					
+					}}
+					onDeleteClick={() => {
+					
+					}}
 			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });
+

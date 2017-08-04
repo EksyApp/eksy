@@ -7,6 +7,7 @@ import Divider from "../../Common/Divider";
 import Picture from "../../Common/Picture";
 import {Actions} from 'react-native-router-flux'
 import PictureSwiper from "../../Common/PictureSwiper";
+import { Icon } from 'react-native-elements'
 
 
 const Screen = {
@@ -48,7 +49,7 @@ class MarkerViewComponent extends Component {
 							<Divider />
 						</View>
 						
-						<PictureSwiper images={this.props.marker.images} />
+						<PictureSwiper data={this.props.marker.images} />
 					</View>
 			)
 		} else {
@@ -63,9 +64,9 @@ class MarkerViewComponent extends Component {
 				>
 					<View style={styles.titleContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
-						<Picture
-								data={{width: 96, height: 96}}
-								source={require('../../../Images/EditIcon.png')}
+						<Icon
+								name="edit"
+								size={35}
 						    containerStyle={styles.editIcon}
 						    onPress={() => {
 						    	Actions.editMarker()

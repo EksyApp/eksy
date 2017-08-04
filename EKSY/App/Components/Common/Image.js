@@ -5,7 +5,7 @@ const OrgImage = require('react-native').Image
 export default class Image extends Component {
 	
 	render() {
-		if(this.props.source.uri && this.props.source.uri.startsWith("http")) {
+		if(this.props.source && this.props.source.uri && this.props.source.uri.startsWith("http")) {
 			return(
 					<FastImage {...this.props}/>
 			)

@@ -17,7 +17,9 @@ exports[`FilterSettingsComponent renders correctly 1`] = `
             "marginLeft": 10,
             "marginRight": 10,
           },
-          undefined,
+          Object {
+            "marginTop": 30,
+          },
         ],
       ]
     }

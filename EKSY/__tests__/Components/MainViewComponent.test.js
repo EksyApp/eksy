@@ -24,15 +24,15 @@ jest.mock('react-native-snap-carousel', () => {
 	return MockCarousel
 })
 
-jest.mock('../../App/Containers/MainView/MapContainer', () => {
+jest.mock('../../App/Containers/MainView/Map/MapContainer', () => {
 	return require('react-native').View
 })
 
-jest.mock('../../App/Containers/MainView/BottomSheetContainer', () => {
+jest.mock('../../App/Containers/MainView/BottomSheet/BottomSheetContainer', () => {
 	return require('react-native').View
 })
 
-jest.mock('../../App/Containers/MainView/MarkerViewContainer', () => {
+jest.mock('../../App/Containers/MainView/MarkerView/MarkerViewContainer', () => {
 	return require('react-native').View
 })
 

@@ -109,15 +109,7 @@ exports[`SettingsComponent renders correctly 1`] = `
       Filter Settings
     </Text>
   </View>
-  <View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-       todo: username here 
-    </Text>
-  </View>
+  <View />
   <View />
 </View>
 `;

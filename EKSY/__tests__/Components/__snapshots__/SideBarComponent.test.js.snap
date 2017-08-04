@@ -13,9 +13,49 @@ exports[`SideBarComponent renders correctly 1`] = `
   <View
     style={Object {}}
   >
-    <Image
-      source={1}
-    />
+    <View
+      onLayout={[Function]}
+      style={
+        Array [
+          undefined,
+          Object {
+            "marginBottom": 20,
+            "width": "100%",
+          },
+          Object {
+            "height": 54,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        resizeMode="cover"
+        source={1}
+        style={
+          Array [
+            Object {},
+            Object {
+              "height": 54,
+              "width": "100%",
+            },
+          ]
+        }
+        testID={undefined}
+      />
+    </View>
   </View>
   <View
     style={
@@ -47,6 +87,7 @@ exports[`SideBarComponent renders correctly 1`] = `
           "borderRadius": 5,
           "borderWidth": 1,
           "height": 40,
+          "marginBottom": 15,
           "marginLeft": 5,
           "marginRight": 5,
           "marginTop": 5,
@@ -96,6 +137,7 @@ exports[`SideBarComponent renders correctly 1`] = `
           "borderRadius": 5,
           "borderWidth": 1,
           "height": 40,
+          "marginBottom": 15,
           "marginLeft": 5,
           "marginRight": 5,
           "marginTop": 5,
@@ -145,55 +187,7 @@ exports[`SideBarComponent renders correctly 1`] = `
           "borderRadius": 5,
           "borderWidth": 1,
           "height": 40,
-          "marginLeft": 5,
-          "marginRight": 5,
-          "marginTop": 5,
-          "opacity": 1,
-        }
-      }
-      testID={undefined}
-      tvParallaxProperties={undefined}
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "alignSelf": "center",
-            "color": "rgb(101,114,122)",
-            "fontSize": 16,
-            "fontWeight": "600",
-            "paddingBottom": 10,
-            "paddingTop": 10,
-          }
-        }
-      >
-        Add a marker
-      </Text>
-    </View>
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignSelf": "stretch",
-          "backgroundColor": "rgb(230,232,227)",
-          "borderColor": "rgb(101,114,122)",
-          "borderRadius": 5,
-          "borderWidth": 1,
-          "height": 40,
+          "marginBottom": 15,
           "marginLeft": 5,
           "marginRight": 5,
           "marginTop": 5,

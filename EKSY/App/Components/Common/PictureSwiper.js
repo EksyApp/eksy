@@ -9,7 +9,7 @@ export default class PictureSwiper extends Component {
 	render() {
 		return (
 				<Swiper wrapperStyle={[styles.swiper, this.props.style]}>
-					{this.props.images.map((image, index) => {
+					{this.props.data.map((image, index) => {
 						return (
 								<View key={image.uri + index}>
 									<Image

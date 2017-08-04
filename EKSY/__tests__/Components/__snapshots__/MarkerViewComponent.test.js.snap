@@ -36,38 +36,111 @@ exports[`MarkerViewComponent renders correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-            "margin": 10,
-          },
-          false,
-        ]
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "margin": 10,
+        }
       }
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <View
         style={
-          Array [
-            Object {
-              "color": "rgb(101,114,122)",
-              "fontSize": 20,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            Object {
-              "color": "rgb(101,114,122)",
-              "fontSize": 22,
-              "fontWeight": "bold",
-            },
-          ]
+          Object {
+            "width": "100%",
+          }
         }
       >
-        Hieno marker
-      </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "rgb(101,114,122)",
+                "fontSize": 20,
+                "fontWeight": "bold",
+                "textAlign": "center",
+              },
+              Object {
+                "color": "rgb(101,114,122)",
+                "fontSize": 22,
+                "fontWeight": "bold",
+              },
+            ]
+          }
+        >
+          Hieno marker
+        </Text>
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          hasTVPreferredFocus={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Array [
+                false,
+                false,
+                false,
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
+                },
+                Object {
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 30,
+                },
+              ],
+            ]
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 35,
+                },
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  undefined,
+                ],
+                Object {
+                  "fontFamily": "Material Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
       <RCTScrollView>
         <View>
           <View

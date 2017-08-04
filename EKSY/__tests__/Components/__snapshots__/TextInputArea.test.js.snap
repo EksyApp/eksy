@@ -60,17 +60,15 @@ exports[`TextInputArea renders correctly 1`] = `
             "backgroundColor": "rgb(226,227,217)",
             "margin": 10,
           },
+          undefined,
         ],
       ]
     }
   >
     <TextInput
-      autoCorrect={undefined}
       multiline={true}
       onChange={[Function]}
-      onChangeText={undefined}
       placeholder={undefined}
-      secureTextEntry={undefined}
       selectionColor="#86939e"
       style={
         Array [
@@ -85,6 +83,7 @@ exports[`TextInputArea renders correctly 1`] = `
               "color": "rgb(89,85,78)",
               "fontSize": 18,
             },
+            undefined,
             Object {
               "height": 45,
             },
@@ -92,7 +91,6 @@ exports[`TextInputArea renders correctly 1`] = `
         ]
       }
       underlineColorAndroid="transparent"
-      value={undefined}
     />
   </View>
 </View>
