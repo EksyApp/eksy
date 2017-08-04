@@ -72,106 +72,26 @@ exports[`MarkerViewComponent renders correctly 1`] = `
         >
           Hieno marker
         </Text>
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
-          accessible={true}
-          hasTVPreferredFocus={undefined}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-              },
-              Array [
-                false,
-                false,
-                false,
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "justifyContent": "center",
-                },
-                Object {
-                  "position": "absolute",
-                  "right": 0,
-                  "top": 0,
-                  "width": 30,
-                },
-              ],
-            ]
-          }
-          testID={undefined}
-          tvParallaxProperties={undefined}
-        >
+      </View>
+      <RCTScrollView>
+        <View>
           <Text
             accessible={true}
-            allowFontScaling={false}
+            allowFontScaling={true}
             ellipsizeMode="tail"
             style={
               Array [
                 Object {
-                  "color": "black",
-                  "fontSize": 35,
+                  "color": "rgb(89,85,78)",
+                  "fontSize": 18,
+                  "margin": 10,
                 },
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                  },
-                  undefined,
-                ],
-                Object {
-                  "fontFamily": "Material Icons",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
+                undefined,
               ]
             }
           >
-            
+            Hieno tarina
           </Text>
-        </View>
-      </View>
-      <RCTScrollView>
-        <View>
-          <View
-            onLayout={[Function]}
-            style={
-              Object {
-                "opacity": 0,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              afterCollapse={[Function]}
-              afterExpand={[Function]}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={null}
-              style={
-                Array [
-                  Object {
-                    "color": "rgb(89,85,78)",
-                    "fontSize": 18,
-                    "margin": 10,
-                  },
-                  undefined,
-                ]
-              }
-            >
-              Hieno tarina
-            </Text>
-          </View>
         </View>
       </RCTScrollView>
     </View>

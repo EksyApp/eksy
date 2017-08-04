@@ -78,6 +78,22 @@ class MarkerViewComponent extends Component {
 		
 	}
 	
+	_renderEditingIcon() {
+		if (this.props.user && this.props.marker && this.props.marker.creationInfo && this.props.user.uid === this.props.marker.creationInfo.user) {
+			return(
+					<Icon
+							name="edit"
+							size={25}
+							containerStyle={styles.editIcon}
+							onPress={() => {
+								Actions.editMarker()
+								this.props.setMarkerViewHidden()
+							}}
+					/>
+			)
+		}
+	}
+	
 	_renderTitleAndText() {
 		return (
 				<View
@@ -85,15 +101,7 @@ class MarkerViewComponent extends Component {
 				>
 					<View style={styles.titleContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
-						<Icon
-								name="edit"
-								size={25}
-								containerStyle={styles.editIcon}
-								onPress={() => {
-									Actions.editMarker()
-									this.props.setMarkerViewHidden()
-								}}
-						/>
+						{this._renderEditingIcon()}
 					</View>
 					
 					<ScrollView>

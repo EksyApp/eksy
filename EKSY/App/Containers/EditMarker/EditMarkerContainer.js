@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import EditMarkerComponent from "../../Components/EditMarker/EditMarkerComponent";
+import {Alert} from 'react-native'
 import Dao from "../../Dao/Dao";
 import Filters from "../../Data/Filters";
 import {Actions} from 'react-native-router-flux'
@@ -60,8 +61,18 @@ export class EditMarkerContainer extends Component {
 	}
 	
 	deleteMarker() {
-		this.dao.removeMarker(this.props.selectedMarker)
-		Actions.pop()
+		Alert.alert(
+				'Delete marker',
+				'Are you sure you want to delete the marker?',
+				[
+					{text: 'No', onPress: () => {}},
+					{text: 'Yes', onPress: () => {
+						this.dao.removeMarker(this.props.selectedMarker)
+						Actions.pop()
+					}}
+				]
+		)
+		
 	}
 	
 	render() {
