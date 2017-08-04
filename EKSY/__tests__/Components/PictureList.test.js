@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 test('picturelist renders correctly', () => {
   const tree = renderer.create(
-    <PictureList data = {[{width: 320, height: 240, uri: 'http://www.catpic.com'}]}/>
+    <PictureList data = {[]}/>
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });
