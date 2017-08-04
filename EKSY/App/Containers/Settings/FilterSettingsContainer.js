@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Filters from '../../Data/Filters'
 import * as ReduxActions from '../../Actions'
 import {connect} from 'react-redux'
-import FilterSettings from "../../Components/FilterSettings";
+import FilterSettingsComponent from "../../Components/Settings/FilterSettingsComponent";
 
 export class FilterSettingsContainer extends Component {
 	
@@ -32,7 +32,7 @@ export class FilterSettingsContainer extends Component {
 	
 	render() {
 		return(
-				<FilterSettings data={this.filters} onPress={(name, checked) => {this._handlePress(name, checked)}}/>
+				<FilterSettingsComponent data={this.filters} onPress={(name, checked) => {this._handlePress(name, checked)}}/>
 		)
 	}
 	

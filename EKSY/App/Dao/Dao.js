@@ -10,7 +10,7 @@ class Dao {
 		}
 		return Dao.usedDAO;
 	}
-
+	
 }
 
 export default Dao

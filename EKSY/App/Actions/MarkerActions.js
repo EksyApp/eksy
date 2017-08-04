@@ -1,14 +1,5 @@
-import {MARKER_ADDED, MARKER_SELECTED, MARKER_VISIBLE, MARKER_HIDDEN, FILTER_ADDED, FILTER_REMOVED} from './Types'
-import Dao from '../Dao/Dao'
+import {MARKER_SELECTED, MARKER_VISIBLE, MARKER_HIDDEN, FILTER_ADDED, FILTER_REMOVED} from './Types'
 
-export const addNewMarker = (marker) => {
-	let dao = new Dao()
-	dao.addMarker(marker)
-	return {
-		type: MARKER_ADDED,
-		marker: marker
-	}
-}
 
 export const setMarkerSelected = (marker) => {
 	return {

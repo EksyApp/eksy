@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkerCarousel renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    enableSnap={true}
+    itemWidth={500}
+    sliderWidth={750}
+  />
+</View>
+`;

@@ -7,7 +7,8 @@ const initial = {
 		color: "",
 		text: "",
 		title: "",
-		images: []
+		images: [],
+		filters: []
 	}
 }
 

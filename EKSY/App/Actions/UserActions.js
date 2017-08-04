@@ -1,4 +1,4 @@
-import {USER_CREATED} from './Types'
+import {LOGIN, USER_CREATED} from './Types'
 import Dao from '../Dao/Dao'
 
 export const userCreated = () => {
@@ -6,5 +6,18 @@ export const userCreated = () => {
 	dao.addUser()
 	return {
 		type: USER_CREATED,
+	}
+}
+
+export const userLoggedIn = (user) => {
+	return {
+		type: LOGIN,
+		user: user
+	}
+}
+
+export const userSignedOut = () => {
+	return {
+		type: LOGIN,
 	}
 }

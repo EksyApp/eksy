@@ -14,23 +14,25 @@ export class TextInputArea extends Component {
 
 		this.state = {height: 0}
 	}
-
+	
+	
 	render() {
 		return (
 				<View>
 					<FormLabel labelStyle={styles.labelStyle}>{this.props.label}</FormLabel>
 					<FormInput
-							value={this.props.value}
-							onChangeText={this.props.onChangeText}
+							ref = {(input) => this._input  = input}
 							underlineColorAndroid='transparent'
-							autoCorrect={this.props.autoCorrect}
-							placeholder={this.props.placeholder}
-							secureTextEntry={this.props.secureTextEntry}
-							inputStyle={[styles.inputStyle, {height: Math.max(45, this.state.height)}]}
-							containerStyle={[styles.containerStyle]}
+							placeholder={this.props.label}
+							{...this.props}
+							inputStyle={[styles.inputStyle, this.props.inputStyle, {height: Math.max(45, this.state.height)}]}
+							containerStyle={[styles.containerStyle, this.props.containerStyle]}
 
 					    multiline
-					    onChange={(event) => this.setState({height: event.nativeEvent.contentSize.height})}
+					    onChange={(event) => {
+					    	this.setState({height: event.nativeEvent.contentSize.height})
+						    this.props.onChange != null ? this.props.onChange(event) : false
+					    }}
 					/>
 				</View>
 		)
