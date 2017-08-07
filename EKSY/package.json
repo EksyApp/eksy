@@ -75,13 +75,17 @@
     "testPathIgnorePatterns": [
       "App/Images",
       "node_modules",
-      "App/lib",
+      "App/Data",
+      "App/Store",
+      "App/Theme",
       "App/includes"
     ],
     "coveragePathIgnorePatterns": [
       "App/Images",
       "node_modules",
-      "App/lib",
+      "App/Data",
+      "App/Store",
+      "App/Theme",
       "App/includes"
     ]
   }
