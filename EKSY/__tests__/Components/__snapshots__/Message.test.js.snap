@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message renders correctly 1`] = `
+<Text
+  accessible={true}
+  allowFontScaling={true}
+  ellipsizeMode="tail"
+  style={
+    Array [
+      Object {
+        "color": "rgb(89,85,78)",
+        "fontSize": 18,
+        "textAlign": "center",
+        "width": "100%",
+      },
+      undefined,
+    ]
+  }
+/>
+`;

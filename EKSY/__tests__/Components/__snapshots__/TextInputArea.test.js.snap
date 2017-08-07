@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInputArea renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 1,
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 15,
+            },
+            Object {
+              "color": "rgb(101,114,122)",
+              "fontSize": 20,
+            },
+            undefined,
+          ],
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderBottomColor": "#bdc6cf",
+          "borderBottomWidth": 1,
+          "marginLeft": 20,
+          "marginRight": 20,
+        },
+        Array [
+          Object {
+            "backgroundColor": "rgb(226,227,217)",
+            "margin": 10,
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    <TextInput
+      multiline={true}
+      onChange={[Function]}
+      placeholder={undefined}
+      selectionColor="#86939e"
+      style={
+        Array [
+          Object {
+            "color": "#86939e",
+            "fontSize": 17.5,
+            "height": 36,
+            "width": 750,
+          },
+          Array [
+            Object {
+              "color": "rgb(89,85,78)",
+              "fontSize": 18,
+            },
+            undefined,
+            Object {
+              "height": 45,
+            },
+          ],
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+</View>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`picturelist renders correctly 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 0,
+    }
+  }
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+  style={undefined}
+>
+  <View />
+</RCTScrollView>
+`;

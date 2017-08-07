@@ -39,8 +39,9 @@ const styles = {
     borderColor: Theme.accentColor,
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 5
+    marginTop: 5,
+    marginBottom: 15
   }
 };
 
-// export default Button;
+export default Button

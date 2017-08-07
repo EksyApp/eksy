@@ -1,4 +1,4 @@
-import MapManager from '../App/Map/MapManager';
+import MapManager from '../App/Utils/MapManager';
 
 export default MapManagerMock = () => {
   MapManager.prototype.startLocationWatcher = jest.fn()

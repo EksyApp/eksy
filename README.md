@@ -20,4 +20,6 @@ Sovellus on toteutettu React-nativella. Se toimii toistaiseksi vain sellaisissa 
 
 [Vaatimusmäärittely](https://goo.gl/LzoNs1)
 
+[Arkkitehtuuridokumentti](https://drive.google.com/open?id=1MkSI6UdJo2KNHohv3ef9ym2W6n7OzVb3rv0yaz3nDZQ)
+
 [Lisenssi](LICENSE)

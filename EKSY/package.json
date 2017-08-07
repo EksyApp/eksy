@@ -16,10 +16,12 @@
     "git-hook": "npm run lint -s && npm test -s",
     "coverage": "jest --coverage",
     "coverageToCoveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "full:clean:run:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. && react-native run-android "
+    "full:clean:windows": "rm -rf node_modules/ && npm cache clean && npm install && cd android/ && gradlew clean && cd .. ",
+    "clean:windows": "cd android/ && gradlew clean && cd .. ",
+    "clean:linux": "rm -rf node_modules package-lock.json yarn.lock && npm install && cd android/ && gradle clean && cd .. && rnpm link"
   },
   "dependencies": {
-    "firebase": "^4.0.0",
+    "firebase": "^4.1.5",
     "geofire": "^4.1.2",
     "mobile-center": "^0.6.0",
     "mobile-center-analytics": "^0.6.0",
@@ -30,15 +32,19 @@
     "react-native": "0.42.0",
     "react-native-code-push": "^1.17.3-beta",
     "react-native-elements": "^0.12.2",
+    "react-native-expandable-view": "^0.1.4",
     "react-native-fast-image": "0.0.11",
-    "react-native-fetch-blob": "git://github.com/wkh237/react-native-fetch-blob.git#issue-287",
+    "react-native-fetch-blob": "^0.10.6",
     "react-native-image-picker": "^0.26.3",
     "react-native-interactable": "0.0.9",
     "react-native-maps": "0.15.2",
+    "react-native-modal": "^2.4.0",
+    "react-native-parallax-view": "^2.0.6",
     "react-native-router-flux": "3.38.0",
     "react-native-snap-carousel": "2.1.0",
     "react-native-splash-screen": "^2.1.0",
     "react-native-vector-icons": "4.1.1",
+    "react-native-view-more-text": "^1.1.2",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
@@ -54,6 +60,7 @@
     "jest-enzyme": "^3.0.0",
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
+    "react-native-swipe-a-lot": "^0.2.1",
     "react-test-renderer": "15.4.1",
     "redux-mock-store": "^1.2.3"
   },
@@ -68,13 +75,17 @@
     "testPathIgnorePatterns": [
       "App/Images",
       "node_modules",
-      "App/lib",
+      "App/Data",
+      "App/Store",
+      "App/Theme",
       "App/includes"
     ],
     "coveragePathIgnorePatterns": [
       "App/Images",
       "node_modules",
-      "App/lib",
+      "App/Data",
+      "App/Store",
+      "App/Theme",
       "App/includes"
     ]
   }

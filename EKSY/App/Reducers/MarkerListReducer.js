@@ -8,7 +8,7 @@ export default function (state = initial, action) {
 			return [...state, action.marker]
 		case MARKER_HIDDEN:
 			return state.filter(marker => {
-				marker.key !== action.key
+				return marker.key !== action.key
 			})
 		default:
 			return state
