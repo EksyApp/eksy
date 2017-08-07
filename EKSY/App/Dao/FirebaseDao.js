@@ -85,9 +85,9 @@ class FirebaseDao {
 		marker = {
 			...marker,
 			creationInfo: {
-				createdAt: new Date().toUTCString(),
+				createdAt: new Date().getTime(),
 			},
-			verified: false
+			status: 0
 		}
 		if (currentUser) {
 			marker = {...marker, creationInfo: {...marker.creationInfo, user: currentUser.uid}}
@@ -150,7 +150,7 @@ class FirebaseDao {
 	
 	async updateMarker(marker) {
 		if(marker.key) {
-			marker.editInfo = {lastEdited: new Date().toUTCString()}
+			marker.editInfo = {lastEdited: new Date().getTime()}
 			if (marker.images.length > 0) {
 				marker.images = await this._uploadImages(marker.key, marker.images)
 			}
