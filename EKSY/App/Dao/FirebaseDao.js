@@ -13,9 +13,9 @@ window.Blob = Blob
 
 // used to access the firebase database
 class FirebaseDao {
-	
+
 	static instance = null;
-	
+
 	constructor() {
 		if (FirebaseDao.instance == null) {
 			FirebaseDao.instance = this;
@@ -27,11 +27,11 @@ class FirebaseDao {
 		}
 		return FirebaseDao.instance;
 	}
-	
+
 	async _initStore() {
 		this.store = await Store()
 	}
-	
+
 	// creates the region of visible markers
 	updateLocation(latitude, longitude) {
 		// creates a new query if undefined
@@ -51,22 +51,22 @@ class FirebaseDao {
 			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
 		}
 	}
-	
+
 	_initGeofire() {
 		let reference = firebase.database().ref("/markers/markers_locations")
 		this._geofire = new GeoFire(reference)
 	}
-	
+
 	async addUser() {
 		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
 		reference.set({
 			admin: false
 		})
 	}
-	
+
 	async addMarker(marker) {
 		marker = await this._addInfoToMarker(marker)
-		
+
 		let markers = await firebase.database().ref("/markers/markers_info")
 		let markerRef = await markers.push()
 		let key = markerRef.key
@@ -76,10 +76,10 @@ class FirebaseDao {
 		await markerRef.set(marker)
 		this._setGeofireLocation(key, marker.latitude, marker.longitude)
 		this._addMarkerToCurrentUser(key)
-		
-		
+
+
 	}
-	
+
 	async _addInfoToMarker(marker) {
 		let currentUser = await this.getCurrentUser()
 		marker = {
@@ -88,14 +88,14 @@ class FirebaseDao {
 				createdAt: new Date().getTime(),
 			},
 			status: 0,
-			
+
 		}
 		if (currentUser) {
 			marker = {...marker, creationInfo: {...marker.creationInfo, user: currentUser.uid}}
 		}
 		return marker
 	}
-	
+
 	async _uploadImages(key, images) {
 		// loops through images with map
 		return await Promise.all(images.map(async (image, index) => {
@@ -105,7 +105,7 @@ class FirebaseDao {
 			return image
 		}))
 	}
-	
+
 	// uploads image data to firebase based on the image uri
 	async _uploadImage(key, image, index, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri
@@ -118,37 +118,37 @@ class FirebaseDao {
 		image.uri = await imageRef.getDownloadURL()
 		image.fullPath = await imageRef.fullPath
 	}
-	
+
 	async _addMarkerToCurrentUser(markerKey) {
 		let currentUser = await this.getCurrentUser()
 		if (currentUser) {
 			let reference = await firebase.database().ref("/users/" + currentUser.uid + '/markers')
 			reference.push(markerKey)
 		}
-		
+
 	}
-	
+
 	async _setGeofireLocation(key, latitude, longitude) {
 		this._geofire.set(key, [latitude, longitude]).catch((error) => {
 			console.error(error)
 		})
 	}
-	
+
 	// passes the marker to the Filterer class
 	async _setMarkerVisible(key) {
 		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
 		this.filterer.addMarker({...snapshot.val(), key})
 	}
-	
+
 	// passes the marker to the Filterer class
 	async _setMarkerHidden(key) {
 		this.filterer.removeMarker(key)
 	}
-	
+
 	async getCurrentUser() {
 		return await firebase.auth().currentUser
 	}
-	
+
 	async updateMarker(marker) {
 		if (marker.key) {
 			marker.editInfo = {lastEdited: new Date().getTime()}
@@ -162,13 +162,13 @@ class FirebaseDao {
 			this.addMarker(marker)
 		}
 	}
-	
+
 	async removeImage(image) {
 		if (image.fullPath) {
 			await firebase.storage().ref(image.fullPath).delete()
 		}
 	}
-	
+
 	async removeImages(images) {
 		if (images) {
 			for (let image of images) {
@@ -176,14 +176,14 @@ class FirebaseDao {
 			}
 		}
 	}
-	
+
 	async removeMarker(marker) {
 		await this.removeImages(marker.images)
 		let markerRef = await firebase.database().ref("/markers/markers_info/" + marker.key)
 		await markerRef.remove()
 		this._geofire.remove(marker.key)
 	}
-	
+
 	async getUserObject() {
 		let firebaseUser = await this.getCurrentUser();
 		if(firebaseUser == null) {
@@ -196,6 +196,17 @@ class FirebaseDao {
 		} else {
 			return {firebaseUser}
 		}
+	}
+
+	async getPendingMarkers() {
+		let snapshotList = await firebase.database().ref("/markers/markers_info/").once("value")
+		let pending = []
+		snapshotList.forEach((item) => {
+			if (item.val().status === 0) {
+				pending.push({...item.val(), key: item.key})
+			}
+		})
+		return pending
 	}
 }
 

@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(ReduxActions.drawerClose())
     },
     goToAdminTools: () => {
-      Actions.adminTools()
+      Actions.adminTools()      
       dispatch(ReduxActions.drawerClose())
     }
   }

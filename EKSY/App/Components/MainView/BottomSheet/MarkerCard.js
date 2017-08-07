@@ -9,12 +9,6 @@ import Image from 'react-native-fast-image'
 
 export default class MarkerCard extends Component {
 
-	handlePress() {
-		this.props.setMarkerSelected(this.props.marker)
-		this.props.setMarkerViewVisible()
-		this.props.disableGestures(true)
-	}
-
 	renderWithImage() {
 		return (
 				<Card style={[styles.container, {width: this.props.width}]}>
@@ -52,7 +46,7 @@ export default class MarkerCard extends Component {
 
 	render() {
 		return(
-				<TouchableWithoutFeedback onPress={() => {this.handlePress()}}>
+				<TouchableWithoutFeedback onPress={() => {this.props.onPress(this.props.marker)}}>
 					{this.renderCard()}
 				</TouchableWithoutFeedback>
 		)

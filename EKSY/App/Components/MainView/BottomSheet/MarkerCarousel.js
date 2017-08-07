@@ -19,9 +19,18 @@ export default class MarkerCarousel extends Component {
 		this.sliderWidth = Screen.width
 	}
 
+	handlePress(marker) {
+		this.props.setMarkerSelected(marker)
+		this.props.setMarkerViewVisible()
+		this.props.disableGestures(true)
+	}
+
 	renderCards() {
 		return this.props.markerList.map((marker, index) => {
 			return <MarkerCard
+					onPress={(marker) => {
+						this.handlePress(marker)
+					}}
 					setMarkerSelected={this.props.setMarkerSelected}
 					setMarkerViewVisible={this.props.setMarkerViewVisible}
 					disableGestures={this.props.disableGestures}
