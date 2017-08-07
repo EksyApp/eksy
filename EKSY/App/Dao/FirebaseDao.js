@@ -79,7 +79,7 @@ class FirebaseDao {
 	async addUser() {
 		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
 		reference.set({
-		
+
 		})
 	}
 
@@ -166,7 +166,7 @@ class FirebaseDao {
 	async getCurrentUser() {
 		return await firebase.auth().currentUser
 	}
-	
+
 	async updateMarker(marker) {
 		if(marker.key) {
 			marker.editInfo = {lastEdited: new Date().toUTCString()}
@@ -180,13 +180,13 @@ class FirebaseDao {
 			this.addMarker(marker)
 		}
 	}
-	
+
 	async removeImage(image) {
 		if(image.fullPath) {
 			await firebase.storage().ref(image.fullPath).delete()
 		}
 	}
-	
+
 	async removeImages(images) {
 		if(images) {
 			for (let image of images) {
@@ -194,7 +194,7 @@ class FirebaseDao {
 			}
 		}
 	}
-	
+
 	async removeMarker(marker) {
 		await this.removeImages(marker.images)
 		let markerRef = await firebase.database().ref("/markers/markers_info/" + marker.key)
