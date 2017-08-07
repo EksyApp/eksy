@@ -13,6 +13,7 @@ export class SideBarContainer extends Component {
           goToUserSettings={this.props.goToUserSettings}
           goToAddMarker={this.props.goToAddMarker}
           goToLoginScreen={this.props.goToLoginScreen}
+          goToAdminTools={this.props.goToAdminTools}
           user={this.props.user}
       />
     )
@@ -43,6 +44,10 @@ const mapDispatchToProps = (dispatch) => {
       Actions.login()
       dispatch(ReduxActions.drawerClose())
     },
+    goToAdminTools: () => {
+      Actions.adminTools()
+      dispatch(ReduxActions.drawerClose())
+    }
   }
 }
 

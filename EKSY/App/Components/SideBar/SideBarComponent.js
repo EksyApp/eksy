@@ -6,7 +6,7 @@ import * as Theme from '../../Theme/index'
 import firebase from 'firebase'
 
 export default class SideBarComponent extends Component {
-	
+
 	renderLoginButton() {
 		if (!this.props.user) {
 			return (
@@ -16,7 +16,7 @@ export default class SideBarComponent extends Component {
 			)
 		}
 	}
-	
+
 	renderAddMarkerButton() {
 		if (this.props.user) {
 			return (
@@ -26,7 +26,7 @@ export default class SideBarComponent extends Component {
 			)
 		}
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.menubarStyle}>
@@ -39,6 +39,9 @@ export default class SideBarComponent extends Component {
 						</Button>
 						<Button onPress={this.props.goToUserSettings}>
 							Settings
+						</Button>
+						<Button onPress={this.props.goToAdminTools}>
+							Admin
 						</Button>
 						{this.renderAddMarkerButton()}
 						{this.renderLoginButton()}
