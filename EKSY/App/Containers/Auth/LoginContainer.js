@@ -29,7 +29,6 @@ export class LoginContainer extends Component {
 
 	async login () {
 		DismissKeyboard()
-		console.log(firebase)
 		try {
 
 			await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)

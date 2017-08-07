@@ -3,6 +3,7 @@ import {PermissionsAndroid} from 'react-native'
 import * as ReduxActions from '../../Actions/index'
 import {connect} from 'react-redux'
 import MainViewComponent from "../../Components/MainView/MainViewComponent";
+import Dao from "../../Dao/Dao";
 
 
 export class MainViewContainer extends Component {
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		menuButtonPress: () => {
 			dispatch(ReduxActions.drawerOpen())
-		}
+		},
 	}
 }
 
