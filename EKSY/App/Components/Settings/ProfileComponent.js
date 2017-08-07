@@ -10,7 +10,7 @@ export default class ProfileComponent extends Component {
 	renderUserInfo() {
 		if (this.props.user) {
 			return (
-					<Message>{this.props.user.displayName}</Message>
+					<Message>{this.props.user.firebaseUser.displayName}</Message>
 			)
 		}
 	}

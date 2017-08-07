@@ -60,7 +60,7 @@ class FirebaseDao {
 	async addUser() {
 		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
 		reference.set({
-		
+			admin: false
 		})
 	}
 
@@ -87,7 +87,8 @@ class FirebaseDao {
 			creationInfo: {
 				createdAt: new Date().getTime(),
 			},
-			status: 0
+			status: 0,
+			
 		}
 		if (currentUser) {
 			marker = {...marker, creationInfo: {...marker.creationInfo, user: currentUser.uid}}
@@ -181,6 +182,14 @@ class FirebaseDao {
 		let markerRef = await firebase.database().ref("/markers/markers_info/" + marker.key)
 		await markerRef.remove()
 		this._geofire.remove(marker.key)
+	}
+	
+	async getUserObject(uid) {
+		if(uid == null) {
+			uid = await this.getCurrentUser().uid
+		}
+		let snapshot = await firebase.database().ref("/users/" + uid).once('value')
+		return {...snapshot.val(), firebaseUser: await this.getCurrentUser()}
 	}
 }
 

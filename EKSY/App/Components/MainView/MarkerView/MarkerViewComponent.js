@@ -79,7 +79,7 @@ class MarkerViewComponent extends Component {
 	}
 	
 	_renderEditingIcon() {
-		if (this.props.user && this.props.marker && this.props.marker.creationInfo && this.props.user.uid === this.props.marker.creationInfo.user) {
+		if (this.props.user && this.props.marker && this.props.marker.creationInfo && this.props.user.firebaseUser.uid === this.props.marker.creationInfo.user) {
 			return(
 					<Icon
 							name="edit"

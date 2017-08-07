@@ -9,6 +9,7 @@ import DismissKeyboard from 'dismissKeyboard'
 import {connect} from 'react-redux'
 import * as Actions from '../../Actions/index'
 import LoginComponent from "../../Components/Auth/LoginComponent";
+import Dao from "../../Dao/Dao";
 
 export class LoginContainer extends Component {
 	constructor (props) {
@@ -20,6 +21,8 @@ export class LoginContainer extends Component {
 			response: '',
 			remembered: false
 		}
+		
+		this.dao = new Dao()
 
 	}
 	
@@ -33,7 +36,8 @@ export class LoginContainer extends Component {
 			this.setState({
 				response: 'Logged In!'
 			})
-			this.props.userLoggedIn(firebase.auth().currentUser)
+			
+			this.props.userLoggedIn(await this.dao.getUserObject(null));
 
 		} catch (error) {
 			console.warn(error)

@@ -4,6 +4,7 @@ import DismissKeyboard from 'dismissKeyboard'
 import * as ReduxActions from "../../Actions";
 import SignUpComponent from "../../Components/Auth/SignUpComponent";
 import firebase from 'firebase'
+import Dao from "../../Dao/Dao";
 
 export class SignUpContainer extends Component {
 
@@ -17,6 +18,8 @@ export class SignUpContainer extends Component {
 			confirmPassword: '',
 			response: ''
 		}
+		
+		this.dao = new Dao();
 	}
 
 	async signup () {
@@ -34,7 +37,7 @@ export class SignUpContainer extends Component {
 			this.setState({
 				response: 'account created'
 			})
-			this.props.userLoggedIn(firebase.auth().currentUser)
+			this.props.userLoggedIn(await this.dao.getUserObject(null))
 		} catch (error) {
 			this.setState({
 				response: error.toString()
