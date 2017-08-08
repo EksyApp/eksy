@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Actions from '../Actions/index'
 import Store from '../Store/index'
+import Dao from "../Dao/Dao";
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null
@@ -12,8 +13,8 @@ class MapManager {
 		if (!instance) {
 			this._map = null
 			this._reduxState = null
+			this.dao = new Dao()
 			this.initStore()
-			this.startLocationWatcher()
 			instance = this
 		}
 		return instance
@@ -22,6 +23,7 @@ class MapManager {
 	async initStore() {
 		this.store = await Store()
 		this.store.subscribe(() => this.storeListener())
+		this.startLocationWatcher()
 	}
 
 	storeListener() {
@@ -29,41 +31,15 @@ class MapManager {
 	}
 
 	startLocationWatcher() {
-		/*
-		BackgroundGeolocation.configure({
-			desiredAccuracy: 10,
-      stationaryRadius: 10,
-      distanceFilter: 10,
-      locationTimeout: 30,
-      debug: false,
-      startOnBoot: false,
-      stopOnTerminate: true,
-      locationProvider: BackgroundGeolocation.provider.ANDROID_ACTIVITY_PROVIDER,
-      interval: 10000,
-      fastestInterval: 5000,
-      activitiesInterval: 10000,
-      stopOnStillActivity: true
-		})
-
-		BackgroundGeolocation.on('location', (location) => {
-				this.store.dispatch(ReduxActions.updateLocation(location))
-				this.store.dispatch(ReduxActions.locationKnown(true))
-				this._map.forceUpdate()
-		})
-
-		BackgroundGeolocation.on('stationary', () => {})
-
-		BackgroundGeolocation.on('error', (error) => {
-			console.log('Geolocation error: ' + error)
-			this.store.dispatch(ReduxActions.locationKnown(false))
-		})
-
-		BackgroundGeolocation.start(() => {
-			console.log('BackgroundGeolocation started')
-		})
-		*/
+		this._reduxState = this.store.getState()
+		
+		if(this._reduxState.map.location.isKnown && this._reduxState.map.location.latitude != null) {
+			this.dao.updateLocation(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
+		}
+		
 		this.watchID = navigator.geolocation.watchPosition(
 				(position) => {
+					this.dao.updateLocation(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
 					this.store.dispatch(Actions.updateLocation(position.coords))
 					this.store.dispatch(Actions.locationKnown(true))
 					this._map.forceUpdate()

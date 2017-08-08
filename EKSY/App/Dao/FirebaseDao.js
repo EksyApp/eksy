@@ -41,15 +41,36 @@ class FirebaseDao {
 				radius: 0.1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
-				this._setMarkerVisible(key)
+				this._handleEnteredMarker(key)
 			})
 			this._geofireQuery.on('key_exited', (key) => {
-				this._setMarkerHidden(key)
+				this._handleExitingMarker(key)
 			})
 		} else {
 			// otherwise only updates the query
 			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
 		}
+	}
+	
+	async _handleEnteredMarker(key) {
+		let markerRef = await firebase.database().ref("/markers/markers_info/" + key)
+		markerRef.on('value', (snapshot) => {this._handleUpdatedMarker(snapshot, key)})
+	}
+	
+	async _handleUpdatedMarker(snapshot, key) {
+		if(snapshot.val() != null) {
+			await this._setMarkerHidden(key)
+			this._setMarkerVisible({...snapshot.val(), key})
+		} else {
+			this._handleExitingMarker(key)
+		}
+		
+	}
+	
+	async _handleExitingMarker(key) {
+		let markerRef = await firebase.database().ref("/markers/markers_info/" + key)
+		await markerRef.off('value')
+		this._setMarkerHidden(key)
 	}
 
 	_initGeofire() {
@@ -135,9 +156,8 @@ class FirebaseDao {
 	}
 
 	// passes the marker to the Filterer class
-	async _setMarkerVisible(key) {
-		let snapshot = await firebase.database().ref("/markers/markers_info/" + key).once('value')
-		this.filterer.addMarker({...snapshot.val(), key})
+	async _setMarkerVisible(marker) {
+		this.filterer.addMarker(marker)
 	}
 
 	// passes the marker to the Filterer class
@@ -208,6 +228,8 @@ class FirebaseDao {
 		})
 		return pending
 	}
+	
+	
 }
 
 export default FirebaseDao
