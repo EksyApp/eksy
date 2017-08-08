@@ -37,6 +37,7 @@ export default class MarkerCardList extends Component {
             width={Screen.width-10}
             marker={marker}
             onPress={this.props.onPress}
+            style={this.props.style}
           />
         )
         }}

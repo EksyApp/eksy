@@ -8,6 +8,7 @@ import SettingsContainer from '../Containers/Settings/SettingsContainer'
 import SignUpContainer from "../Containers/Auth/SignUpContainer"
 import EditMarkerContainer from '../Containers/EditMarker/EditMarkerContainer'
 import AdminToolsContainer from '../Containers/Admin/AdminToolsContainer'
+import AdminMarkerViewContainer from "../Containers/Admin/AdminMarkerViewContainer";
 
 // defines all routes in the app
 const scenes = Actions.create(
@@ -17,6 +18,7 @@ const scenes = Actions.create(
       <Scene key="addMarker" component={AddMarker} title="Add a new marker"/>
       <Scene key="userSettings" component={SettingsContainer} title="User settings"/>
       <Scene key="adminTools" component={AdminToolsContainer} title="Admin"/>
+      <Scene key="adminMarkerView" component={AdminMarkerViewContainer} title="Admin Markerview" />
       <Scene key="mainViewContainer" component={MainViewContainer} title="Map" initial={true}/>
       <Scene key="signUp" component={SignUpContainer} title="Sign up"/>
       <Scene key="editMarker" component={EditMarkerContainer} title="Edit marker" />

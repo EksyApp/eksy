@@ -1,11 +1,11 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MarkerViewComponent from "../../App/Components/MainView/MarkerView/MarkerViewComponent";
+import MarkerViewComponent from "../../App/Components/MainView/MarkerModal/MarkerModalComponent";
 
-test('MarkerViewComponent renders correctly', () => {
+test('MarkerModalComponent renders correctly', () => {
 	const tree = renderer.create(
-			<MarkerViewComponent
+			<MarkerModalComponent
 					marker={{
 						title: "Hieno marker",
 						text: "Hieno tarina",

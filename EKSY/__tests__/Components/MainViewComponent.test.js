@@ -32,7 +32,7 @@ jest.mock('../../App/Containers/MainView/BottomSheet/BottomSheetContainer', () =
 	return require('react-native').View
 })
 
-jest.mock('../../App/Containers/MainView/MarkerView/MarkerViewContainer', () => {
+jest.mock('../../App/Containers/MainView/MarkerModal/MarkerModalContainer', () => {
 	return require('react-native').View
 })
 

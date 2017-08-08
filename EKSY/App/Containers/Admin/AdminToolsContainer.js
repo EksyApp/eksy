@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AdminToolsComponent from "../../Components/Admin/AdminToolsComponent";
 import Dao from "../../Dao/Dao"
-
+import * as ReduxActions from "../../Actions";
+import {Actions} from 'react-native-router-flux'
 
 export class AdminToolsContainer extends Component {
 
@@ -16,7 +17,7 @@ export class AdminToolsContainer extends Component {
   }
 
   componentWillMount() {
-    this.getMarkers()
+    this.refresh()
   }
 
   refresh() {
@@ -26,7 +27,15 @@ export class AdminToolsContainer extends Component {
 
   async getMarkers() {
     let markers = await this.dao.getPendingMarkers()
+	  markers.sort((a,b) => {
+		  return markerTimeCompare(a, b);
+	  })
     this.setState({loading: false, pendingMarkers: markers})
+  }
+  
+  handlePress(marker) {
+    this.props.setMarkerSelected(marker)
+    Actions.adminMarkerView()
   }
 
   render () {
@@ -35,10 +44,27 @@ export class AdminToolsContainer extends Component {
           loading={this.state.loading}
           pendingMarkers={this.state.pendingMarkers}
           onRefresh={() => {this.refresh()}}
+          onCardClick={(marker) => {this.handlePress(marker)}}
       />
     )
   }
 }
+
+let markerTimeCompare = function (a, b) {
+	let aTime
+	let bTime
+	if (a.editInfo) {
+		aTime = a.editInfo.lastEdited
+	} else {
+		aTime = a.creationInfo.createdAt
+	}
+	if (b.editInfo) {
+		bTime = b.editInfo.lastEdited
+	} else {
+		bTime = b.creationInfo.createdAt
+	}
+	return aTime - bTime
+};
 
 
 const mapStateToProps = (state) => {
@@ -46,7 +72,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+	  setMarkerSelected: (marker) => {
+		  dispatch(ReduxActions.setMarkerSelected(marker))
+	  }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminToolsContainer)

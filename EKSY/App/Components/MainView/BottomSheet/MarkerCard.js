@@ -11,7 +11,7 @@ export default class MarkerCard extends Component {
 
 	renderWithImage() {
 		return (
-				<Card style={[styles.container, {width: this.props.width}]}>
+				<Card style={[styles.container, {width: this.props.width}, this.props.style]}>
 					<CardSection style={[styles.imageContainer, {width: this.props.width}]}>
 						<Image resizeMode={Image.resizeMode.cover} style={styles.image} source={{uri: this.props.marker.images[0].uri}}/>
 					</CardSection>
@@ -25,7 +25,7 @@ export default class MarkerCard extends Component {
 
 	renderWithoutImage() {
 		return (
-				<Card style={[styles.container, {width: this.props.width}]}>
+				<Card style={[styles.container, {width: this.props.width}, this.props.style]}>
 					<CardSection style={styles.infoContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
 					</CardSection>
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
 	container: {
 		height: 200,
 		marginLeft: 0,
+		width: '100%'
 	},
 
 	imageContainer: {

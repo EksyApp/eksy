@@ -1,28 +1,19 @@
 import React, {Component} from 'react'
-import {Modal, ScrollView, TouchableWithoutFeedback, View, Dimensions, StyleSheet} from 'react-native'
-import Label from "../../Common/Label";
-import ViewMoreText from "../../Common/ViewMoreText";
-import * as Theme from "../../../Theme/Colors";
+import * as Theme from "../../../Theme";
+import {ScrollView, View, StyleSheet} from "react-native";
 import Divider from "../../Common/Divider";
-import Picture from "../../Common/Picture";
+import ViewMoreText from "../../Common/ViewMoreText";
+import TextArea from "../../Common/TextArea";
 import {Actions} from 'react-native-router-flux'
 import PictureSwiper from "../../Common/PictureSwiper";
-import {Icon} from 'react-native-elements'
-import TextArea from "../../Common/TextArea";
+import Label from "../../Common/Label";
+import {Icon} from "react-native-elements";
 
 
-const Screen = {
-	width: Dimensions.get('window').width,
-	height: Dimensions.get('window').height - 75
-}
-
-class MarkerViewComponent extends Component {
-	
+export default class MarkerView extends Component {
 	
 	constructor(props) {
 		super(props)
-		this.itemWidth = (0.85 * Screen.width * 2) / 3
-		this.sliderWidth = 0.85 * Screen.width
 		this.state = {
 			isCollapsed: true
 		}
@@ -45,7 +36,7 @@ class MarkerViewComponent extends Component {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
 			return (
 					<View
-							style={[!this.state.isCollapsed && styles.renderImagesCollapsed, this.state.isCollapsed && styles.renderImagesExpanded]}>
+							style={[!this.state.isCollapsed && styles.imagesCollapsed, this.state.isCollapsed && styles.imagesExpanded]}>
 						<View style={styles.labelWrapper}>
 							<Divider/>
 						</View>
@@ -79,16 +70,21 @@ class MarkerViewComponent extends Component {
 	}
 	
 	_renderEditingIcon() {
-		if (this.props.user && this.props.marker && this.props.marker.creationInfo && this.props.user.firebaseUser.uid === this.props.marker.creationInfo.user) {
-			return(
+		if (
+				this.props.user
+				&& this.props.marker
+				&& this.props.marker.creationInfo
+				&& (
+						this.props.user.firebaseUser.uid === this.props.marker.creationInfo.user
+						|| this.props.user.admin
+				)
+		) {
+			return (
 					<Icon
 							name="edit"
 							size={25}
 							containerStyle={styles.editIcon}
-							onPress={() => {
-								Actions.editMarker()
-								this.props.setMarkerViewHidden()
-							}}
+							onPress={this.props.onEditClick}
 					/>
 			)
 		}
@@ -113,53 +109,44 @@ class MarkerViewComponent extends Component {
 	
 	render() {
 		return (
-				<TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
-					<Modal
-							visible={this.props.markerViewVisible}
-							animationType={'fade'}
-							transparent
-							onRequestClose={this.props.setMarkerViewHidden}
-					>
-						<View style={styles.content}>
-							{this._renderTitleAndText()}
-							{this._renderImages()}
-						</View>
-					</Modal>
-				</TouchableWithoutFeedback>
+				<View style={styles.content}>
+					{this._renderTitleAndText()}
+					{this._renderImages()}
+				</View>
 		)
 	}
+	
 }
-
 
 const styles = StyleSheet.create({
 	
 	content: {
 		backgroundColor: Theme.backgroundColor,
-		flex: 1,
-		justifyContent: 'center',
+		justifyContent: 'flex-start',
 		alignItems: 'center',
 		borderRadius: 20,
-		margin: 20
+		margin: 20,
+		flex: 1
 	},
 	
-	renderImagesCollapsed: {
-		flex: 1,
-		justifyContent: 'center'
+	imagesCollapsed: {
+		justifyContent: 'center',
+		height: 0
 	},
-	renderImagesExpanded: {
-		flex: 5,
+	imagesExpanded: {
+		flex: 1,
 		justifyContent: 'center',
 		margin: 5
 	},
 	
 	titleAndTextWrapperCollapsed: {
-		flex: 1,
 		alignItems: 'center',
-		margin: 10
+		margin: 10,
+		height: 100
 	},
 	
 	titleAndTextWrapperExpanded: {
-		// flex: 0,
+		flex: 1,
 		alignItems: 'center',
 		margin: 10,
 	},
@@ -187,11 +174,6 @@ const styles = StyleSheet.create({
 		margin: 10
 	},
 	
-	closeButton: {
-		position: 'absolute',
-		left: Screen.width - 120
-	},
-	
 	editIcon: {
 		position: 'absolute',
 		top: 0,
@@ -203,5 +185,3 @@ const styles = StyleSheet.create({
 		width: '100%'
 	}
 })
-
-export default MarkerViewComponent

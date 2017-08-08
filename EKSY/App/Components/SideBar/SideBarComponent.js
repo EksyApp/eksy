@@ -50,9 +50,9 @@ export default class SideBarComponent extends Component {
 						<Button onPress={this.props.goToUserSettings}>
 							Settings
 						</Button>
-						{this.renderAdminButton()}
 						{this.renderAddMarkerButton()}
 						{this.renderLoginButton()}
+						{this.renderAdminButton()}
 					</View>
 				</View>
 		)

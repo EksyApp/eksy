@@ -172,6 +172,7 @@ class FirebaseDao {
 	async updateMarker(marker) {
 		if (marker.key) {
 			marker.editInfo = {lastEdited: new Date().getTime()}
+			marker.status = 0
 			if (marker.images.length > 0) {
 				marker.images = await this._uploadImages(marker.key, marker.images)
 			}
@@ -229,6 +230,15 @@ class FirebaseDao {
 		return pending
 	}
 	
+	async setMarkerStatus(key, status) {
+		let statusRef = await firebase.database().ref("/markers/markers_info/" + key + '/status')
+		statusRef.set(status)
+	}
+	
+	async markerIsAlwaysVisible(marker) {
+		let user = await this.getUserObject()
+		return user != null && (user.admin || user.firebaseUser.uid === marker.creationInfo.user)
+	}
 	
 }
 

@@ -4,20 +4,19 @@ import Header from "../Common/Header";
 import * as Theme from "../../Theme";
 import Message from '../Common/Message'
 import MarkerCardList from '../Common/MarkerCardList'
+import Label from "../Common/Label";
+import Button from "../Common/Button";
 
 
 export default class AdminToolsComponent extends Component {
 
-
-  handlePress(marker) {
-
-  }
+	
 
   renderList() {
     if(this.props.loading) {
       return(<Message>Loading</Message>)
     } else {
-      return(<MarkerCardList data={this.props.pendingMarkers} onPress={(marker) => {this.handlePress(marker)}} />)
+      return(<MarkerCardList data={this.props.pendingMarkers} onPress={this.props.onCardClick} style={styles.card} />)
     }
   }
 
@@ -25,6 +24,10 @@ export default class AdminToolsComponent extends Component {
 		return (
 				<View style={styles.container}>
 					<Header title='Admin Tools' backButton />
+					<Label>Confirm markers</Label>
+					<Button onPress={this.props.onRefresh}>
+						Refersh
+					</Button>
           {this.renderList()}
 				</View>
 		)
@@ -36,5 +39,10 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Theme.backgroundColor,
+	},
+	
+	card: {
+		width: '95%',
+		alignSelf: 'center'
 	}
 })

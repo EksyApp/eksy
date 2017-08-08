@@ -1,19 +1,19 @@
 import React, {Component} from "react";
 import * as ReduxActions from "../../../Actions/index";
 import {connect} from "react-redux";
-import MarkerViewComponent from "../../../Components/MainView/MarkerView/MarkerViewComponent";
+import MarkerModalComponent from "../../../Components/MainView/MarkerModal/MarkerModalComponent";
 
 
 
-export class MarkerViewContainer extends Component {
+export class MarkerModalContainer extends Component {
 	
 	render() {
 		return (
-				<MarkerViewComponent
-				marker = {this.props.marker}
-				markerViewVisible = {this.props.markerViewVisible}
-				setMarkerViewHidden = {this.props.setMarkerViewHidden}
-				user = {this.props.user}
+				<MarkerModalComponent
+					marker = {this.props.marker}
+					markerViewVisible = {this.props.markerViewVisible}
+					setMarkerViewHidden = {this.props.setMarkerViewHidden}
+					user = {this.props.user}
 				/>
 		)
 	}
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MarkerViewContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MarkerModalContainer)

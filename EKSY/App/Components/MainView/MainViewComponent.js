@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import MenuButton from '../../Components/Common/MenuButton'
 import {View, StyleSheet} from 'react-native'
-import {connect} from 'react-redux'
-import MarkerViewContainer from "../../Containers/MainView/MarkerView/MarkerViewContainer";
+import MarkerModalContainer from "../../Containers/MainView/MarkerModal/MarkerModalContainer";
 import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSheetContainer";
 import MapContainer from "../../Containers/MainView/Map/MapContainer";
 
@@ -15,7 +14,7 @@ class MainViewComponent extends Component {
 					<MapContainer />
 					<View style={styles.container}>
 						<BottomSheetContainer />
-						<MarkerViewContainer/>
+						<MarkerModalContainer/>
 					</View>
 					<MenuButton onPress={() => {this.props.menuButtonPress()}}/>
 				</View>
