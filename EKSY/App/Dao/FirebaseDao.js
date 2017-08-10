@@ -13,32 +13,33 @@ window.Blob = Blob
 
 // used to access the firebase database
 class FirebaseDao {
-
-	static instance = null;
-
+	
+	static instance = null
+	
 	constructor() {
 		if (FirebaseDao.instance == null) {
-			FirebaseDao.instance = this;
+			FirebaseDao.instance = this
 			this._geofire = null
-			this._initGeofire();
-			this._geofireQuery = null;
+			this._initGeofire()
+			this._geofireQuery = null
 			this._initStore()
-			this.filterer = new Filterer();
+			this.filterer = new Filterer()
+			this.selectedMarkerKey = null
 		}
-		return FirebaseDao.instance;
+		return FirebaseDao.instance
 	}
-
+	
 	async _initStore() {
 		this.store = await Store()
 	}
-
+	
 	// creates the region of visible markers
 	updateLocation(latitude, longitude) {
 		// creates a new query if undefined
 		if (!this._geofireQuery) {
 			this._geofireQuery = this._geofire.query({
 				center: [latitude, longitude],
-				radius: 0.1
+				radius: this.store ? this.store.getState().map.radius : 0.1
 			})
 			this._geofireQuery.on('key_entered', (key) => {
 				this._handleEnteredMarker(key)
@@ -48,19 +49,24 @@ class FirebaseDao {
 			})
 		} else {
 			// otherwise only updates the query
-			this._geofireQuery.updateCriteria({center: [latitude, longitude]})
+			this._geofireQuery.updateCriteria({
+				center: [latitude, longitude],
+				radius: this.store ? this.store.getState().map.radius : 0.1
+			})
 		}
 	}
 	
 	async _handleEnteredMarker(key) {
-		let markerRef = await firebase.database().ref("/markers/markers_info/" + key)
-		markerRef.on('value', (snapshot) => {this._handleUpdatedMarker(snapshot, key)})
+		let markerRef = await firebase.database().ref('/markers/markers_info/' + key)
+		markerRef.on('value', this._handleUpdatedMarker, this)
 	}
 	
-	async _handleUpdatedMarker(snapshot, key) {
-		if(snapshot.val() != null) {
+	async _handleUpdatedMarker(snapshot) {
+		let key = snapshot.key
+		if (snapshot.val() != null) {
 			await this._setMarkerHidden(key)
-			this._setMarkerVisible({...snapshot.val(), key})
+			let marker = {...snapshot.val(), key}
+			this._setMarkerVisible(marker)
 		} else {
 			this._handleExitingMarker(key)
 		}
@@ -68,27 +74,27 @@ class FirebaseDao {
 	}
 	
 	async _handleExitingMarker(key) {
-		let markerRef = await firebase.database().ref("/markers/markers_info/" + key)
-		await markerRef.off('value')
+		let markerRef = await firebase.database().ref('/markers/markers_info/' + key)
+		await markerRef.off('value', this._handleUpdatedMarker, this)
 		this._setMarkerHidden(key)
 	}
-
+	
 	_initGeofire() {
-		let reference = firebase.database().ref("/markers/markers_locations")
+		let reference = firebase.database().ref('/markers/markers_locations')
 		this._geofire = new GeoFire(reference)
 	}
-
+	
 	async addUser() {
-		let reference = await firebase.database().ref("/users/" + firebase.auth().currentUser.uid)
+		let reference = await firebase.database().ref('/users/' + firebase.auth().currentUser.uid)
 		reference.set({
 			admin: false
 		})
 	}
-
+	
 	async addMarker(marker) {
 		marker = await this._addInfoToMarker(marker)
-
-		let markers = await firebase.database().ref("/markers/markers_info")
+		
+		let markers = await firebase.database().ref('/markers/markers_info')
 		let markerRef = await markers.push()
 		let key = markerRef.key
 		if (marker.images.length > 0) {
@@ -97,10 +103,10 @@ class FirebaseDao {
 		await markerRef.set(marker)
 		this._setGeofireLocation(key, marker.latitude, marker.longitude)
 		this._addMarkerToCurrentUser(key)
-
-
+		
+		
 	}
-
+	
 	async _addInfoToMarker(marker) {
 		let currentUser = await this.getCurrentUser()
 		marker = {
@@ -109,14 +115,14 @@ class FirebaseDao {
 				createdAt: new Date().getTime(),
 			},
 			status: 0,
-
+			
 		}
 		if (currentUser) {
 			marker = {...marker, creationInfo: {...marker.creationInfo, user: currentUser.uid}}
 		}
 		return marker
 	}
-
+	
 	async _uploadImages(key, images) {
 		// loops through images with map
 		return await Promise.all(images.map(async (image, index) => {
@@ -126,11 +132,11 @@ class FirebaseDao {
 			return image
 		}))
 	}
-
+	
 	// uploads image data to firebase based on the image uri
 	async _uploadImage(key, image, index, mime = 'application/octet-stream') {
 		const uploadUri = Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri
-		const imageRef = await firebase.storage().ref('images').child("marker" + `${key}` + "-image-" + `${index}`)
+		const imageRef = await firebase.storage().ref('images').child('marker' + `${key}` + '-image-' + `${index}`)
 		// 5.7.2017: only works with react-native-fetch-blob.git#issue-287
 		const imgData = await fs.readFile(uploadUri, 'base64')
 		const blob = await Blob.build(imgData, {type: `${mime};BASE64`})
@@ -139,36 +145,48 @@ class FirebaseDao {
 		image.uri = await imageRef.getDownloadURL()
 		image.fullPath = await imageRef.fullPath
 	}
-
+	
 	async _addMarkerToCurrentUser(markerKey) {
 		let currentUser = await this.getCurrentUser()
 		if (currentUser) {
-			let reference = await firebase.database().ref("/users/" + currentUser.uid + '/markers')
-			reference.push(markerKey)
+			let reference = await firebase.database().ref('/users/' + currentUser.uid + '/markers/' + markerKey)
+			reference.set(true)
 		}
-
+		
 	}
-
+	
 	async _setGeofireLocation(key, latitude, longitude) {
 		this._geofire.set(key, [latitude, longitude]).catch((error) => {
 			console.error(error)
 		})
 	}
-
+	
 	// passes the marker to the Filterer class
 	async _setMarkerVisible(marker) {
 		this.filterer.addMarker(marker)
 	}
-
+	
 	// passes the marker to the Filterer class
 	async _setMarkerHidden(key) {
 		this.filterer.removeMarker(key)
 	}
-
+	
 	async getCurrentUser() {
-		return await firebase.auth().currentUser
+		let user = await firebase.auth().currentUser
+		if (user != null) {
+			console.log("user != null")
+			console.log(user)
+			return user
+		}
+		if (this.store.getState().auth.user) {
+			console.log("user")
+			return this.store.getState().auth.user.firebaseUser
+		}
+		console.log("null")
+		return null
+		
 	}
-
+	
 	async updateMarker(marker) {
 		if (marker.key) {
 			marker.editInfo = {lastEdited: new Date().getTime()}
@@ -176,20 +194,20 @@ class FirebaseDao {
 			if (marker.images.length > 0) {
 				marker.images = await this._uploadImages(marker.key, marker.images)
 			}
-			let markerRef = await firebase.database().ref("/markers/markers_info/" + marker.key)
+			let markerRef = await firebase.database().ref('/markers/markers_info/' + marker.key)
 			await markerRef.set(marker)
 			await this._setGeofireLocation(marker.key, marker.latitude, marker.longitude)
 		} else {
 			this.addMarker(marker)
 		}
 	}
-
+	
 	async removeImage(image) {
 		if (image.fullPath) {
 			await firebase.storage().ref(image.fullPath).delete()
 		}
 	}
-
+	
 	async removeImages(images) {
 		if (images) {
 			for (let image of images) {
@@ -197,30 +215,32 @@ class FirebaseDao {
 			}
 		}
 	}
-
+	
 	async removeMarker(marker) {
 		await this.removeImages(marker.images)
-		let markerRef = await firebase.database().ref("/markers/markers_info/" + marker.key)
+		let markerRef = await firebase.database().ref('/markers/markers_info/' + marker.key)
 		await markerRef.remove()
+		let userRef = await firebase.database().ref('/users/' + marker.creationInfo.user + '/markers/' + marker.key)
+		userRef.remove()
 		this._geofire.remove(marker.key)
 	}
-
+	
 	async getUserObject() {
-		let firebaseUser = await this.getCurrentUser();
-		if(firebaseUser == null) {
+		let firebaseUser = await this.getCurrentUser()
+		if (firebaseUser == null) {
 			return null
 		}
 		let uid = firebaseUser.uid
-		let snapshot = await firebase.database().ref("/users/" + uid).once('value')
+		let snapshot = await firebase.database().ref('/users/' + uid).once('value')
 		if (snapshot.val() != null) {
 			return {...snapshot.val(), firebaseUser}
 		} else {
 			return {firebaseUser}
 		}
 	}
-
+	
 	async getPendingMarkers() {
-		let snapshotList = await firebase.database().ref("/markers/markers_info/").once("value")
+		let snapshotList = await firebase.database().ref('/markers/markers_info/').once('value')
 		let pending = []
 		snapshotList.forEach((item) => {
 			if (item.val().status === 0) {
@@ -231,13 +251,48 @@ class FirebaseDao {
 	}
 	
 	async setMarkerStatus(key, status) {
-		let statusRef = await firebase.database().ref("/markers/markers_info/" + key + '/status')
+		let statusRef = await firebase.database().ref('/markers/markers_info/' + key + '/status')
 		statusRef.set(status)
 	}
 	
-	async markerIsAlwaysVisible(marker) {
-		let user = await this.getUserObject()
-		return user != null && (user.admin || user.firebaseUser.uid === marker.creationInfo.user)
+	
+	async listenAsSelectedMarker(key) {
+		if (this.selectedMarkerKey) {
+			let oldRef = await firebase.database().ref('/markers/markers_info/' + this.selectedMarkerKey)
+			oldRef.off('value', this.updateSelectedMarker, this)
+		}
+		if (key) {
+			this.selectedMarkerKey = key
+			let newRef = await firebase.database().ref('/markers/markers_info/' + key)
+			newRef.on('value', this.updateSelectedMarker, this)
+		} else {
+			this.selectedMarkerKey = null
+		}
+	}
+	
+	async updateSelectedMarker(snapshot) {
+		let key = snapshot.key
+		if (snapshot.val() != null) {
+			let marker = {...snapshot.val(), key}
+			this.store.dispatch(Actions.setMarkerSelected(marker))
+		}
+	}
+	
+	async getUserMarkers() {
+		let user = await this.getCurrentUser()
+		let uid = user.uid
+		console.log(uid)
+		let MarkersRef = await firebase.database().ref('/users/' + uid + '/markers').once('value')
+		let markerKeys = []
+		await MarkersRef.forEach((markerRef) => {
+			markerKeys.push(markerRef.key)
+		})
+		
+		return await Promise.all(markerKeys.map(async (key) => {
+			let markerRef = await firebase.database().ref('/markers/markers_info/' + key).once('value')
+			return {...markerRef.val(), key}
+		}))
+		
 	}
 	
 }

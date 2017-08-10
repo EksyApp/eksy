@@ -1,4 +1,4 @@
-import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN} from './Types'
+import {UPDATE_CURRENT_REGION, UPDATE_CURRENT_LOCATION, LOCATION_KNOWN, UPDATE_RADIUS} from './Types'
 import Dao from '../Dao/Dao'
 
 export const updateRegion = (region) => {
@@ -21,6 +21,13 @@ export const locationKnown = (isKnown) => {
   return {
     type: LOCATION_KNOWN,
     isKnown: isKnown
+  }
+}
+
+export const updateRadius = (radius) => {
+  return{
+    type: UPDATE_RADIUS,
+    radius: radius
   }
 }
 

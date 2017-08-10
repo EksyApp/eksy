@@ -2,6 +2,7 @@ import React from 'react'
 import * as Actions from '../Actions/index'
 import Store from '../Store/index'
 import Dao from "../Dao/Dao";
+import {PermissionsAndroid} from 'react-native'
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
 let instance = null
@@ -30,23 +31,34 @@ class MapManager {
 		this._reduxState = this.store.getState()
 	}
 
-	startLocationWatcher() {
+	async startLocationWatcher() {
 		this._reduxState = this.store.getState()
 		
 		if(this._reduxState.map.location.isKnown && this._reduxState.map.location.latitude != null) {
 			this.dao.updateLocation(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
 		}
 		
-		this.watchID = navigator.geolocation.watchPosition(
-				(position) => {
-					this.dao.updateLocation(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
-					this.store.dispatch(Actions.updateLocation(position.coords))
-					this.store.dispatch(Actions.locationKnown(true))
-					this._map.forceUpdate()
-				},
-				(error) => this.store.dispatch(Actions.locationKnown(false)),
-				{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
-		)
+		try {
+			const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+			if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+				this.watchID = navigator.geolocation.watchPosition(
+						(position) => {
+							this.dao.updateLocation(this._reduxState.map.location.latitude, this._reduxState.map.location.longitude)
+							this.store.dispatch(Actions.updateLocation(position.coords))
+							this.store.dispatch(Actions.locationKnown(true))
+							this._map.forceUpdate()
+						},
+						(error) => this.store.dispatch(Actions.locationKnown(false)),
+						{enableHighAccuracy: false, timeout: 500, maximumAge: 0, distanceFilter: 3}
+				)
+			} else {
+				this.store.dispatch(Actions.locationKnown(false))
+			}
+		} catch (err) {
+			this.store.dispatch(Actions.locationKnown(false))
+		}
+		
+		
 	}
 
 	setMapObject(map) {

@@ -65,6 +65,7 @@ export default class CompactPictureList extends Component {
 						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
 						renderRow = {(data) => this.renderImageRow(data)}
+						enableEmptySections={true}
 				/>
 		)
 	}

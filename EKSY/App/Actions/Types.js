@@ -10,6 +10,7 @@ export const DISABLE_GESTURES = "disable gestures"
 export const UPDATE_CURRENT_REGION = "update current region"
 export const UPDATE_CURRENT_LOCATION = "update current location"
 export const LOCATION_KNOWN = "location known"
+export const UPDATE_RADIUS = "update radius"
 
 export const MARKER_SELECTED = "marker selected"
 export const MARKER_ADDED = "marker added"

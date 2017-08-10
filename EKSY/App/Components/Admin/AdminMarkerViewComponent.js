@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import MarkerView from "../MainView/MarkerModal/MarkerView";
 import Header from "../Common/Header";
 import {View, StyleSheet, ScrollView} from "react-native";
 import {Actions} from 'react-native-router-flux'
 import * as Theme from "../../Theme";
 import Button from "../Common/Button";
+import MarkerView from "../Common/MarkerView";
 
 export default class AdminMarkerViewComponent extends Component {
 	
@@ -13,21 +13,18 @@ export default class AdminMarkerViewComponent extends Component {
 				<View style={styles.container}>
 					<Header title="Confirm Marker" backButton />
 					<ScrollView style={styles.container}>
-						<View style={styles.markerViewContainer}>
-							<MarkerView
-									marker={this.props.marker}
-									user={this.props.user}
-									onEditClick={() => {
-										Actions.editMarker()
-									}}
-							/>
-						</View>
-						
+						<MarkerView
+								marker={this.props.marker}
+								currentRegion={this.props.currentRegion}
+						/>
 						<Button onPress={this.props.onAcceptClick}>
 							Accept
 						</Button>
 						<Button onPress={this.props.onRejectClick}>
 							Reject
+						</Button>
+						<Button onPress={this.props.onEditClick}>
+							Edit
 						</Button>
 					</ScrollView>
 					
@@ -41,9 +38,5 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Theme.backgroundColor
-	},
-	
-	markerViewContainer: {
-		height: 600
 	}
 })

@@ -41,6 +41,7 @@ export default class MarkerCardList extends Component {
           />
         )
         }}
+        enableEmptySections={true}
       />
 
     )
