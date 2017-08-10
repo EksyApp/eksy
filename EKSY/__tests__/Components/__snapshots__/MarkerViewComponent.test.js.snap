@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MarkerViewComponent renders correctly 1`] = `
+exports[`MarkerModalComponent renders correctly 1`] = `
 <Modal
   accessibilityComponentType={undefined}
   accessibilityLabel={undefined}
@@ -29,7 +29,7 @@ exports[`MarkerViewComponent renders correctly 1`] = `
         "backgroundColor": "rgb(243,244,229)",
         "borderRadius": 20,
         "flex": 1,
-        "justifyContent": "center",
+        "justifyContent": "flex-start",
         "margin": 20,
       }
     }
@@ -38,7 +38,7 @@ exports[`MarkerViewComponent renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "flex": 1,
+          "height": 100,
           "margin": 10,
         }
       }

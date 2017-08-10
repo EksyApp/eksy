@@ -37,10 +37,12 @@ exports[`MarkerCard renders correctly 1`] = `
         Object {
           "height": 200,
           "marginLeft": 0,
+          "width": "100%",
         },
         Object {
           "width": 100,
         },
+        undefined,
       ],
     ]
   }
