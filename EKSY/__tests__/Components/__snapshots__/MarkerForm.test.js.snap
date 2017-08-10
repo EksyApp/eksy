@@ -298,6 +298,7 @@ exports[`MarkerForm renders correctly 1`] = `
           "items": 0,
         }
       }
+      enableEmptySections={true}
       renderRow={[Function]}
       renderScrollComponent={[Function]}
       style={undefined}
@@ -310,6 +311,7 @@ exports[`MarkerForm renders correctly 1`] = `
           "items": 0,
         }
       }
+      enableEmptySections={true}
       renderRow={[Function]}
       renderScrollComponent={[Function]}
       style={undefined}

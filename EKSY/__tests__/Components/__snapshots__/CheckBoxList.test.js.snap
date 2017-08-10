@@ -7,6 +7,7 @@ exports[`CheckBoxList renders correctly 1`] = `
       "items": 1,
     }
   }
+  enableEmptySections={true}
   renderRow={[Function]}
   renderScrollComponent={[Function]}
   style={undefined}
