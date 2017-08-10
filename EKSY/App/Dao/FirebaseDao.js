@@ -10,6 +10,25 @@ const Blob = RNFetchBlob.polyfill.Blob
 const fs = RNFetchBlob.fs
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
 window.Blob = Blob
+const Fetch = RNFetchBlob.polyfill.Fetch
+// replace built-in fetch
+// copy-paste from original docs AS IS, binaryContentTypes obviously foo
+window.fetch = new Fetch({
+    // enable this option so that the response data conversion handled automatically
+    auto : true,
+    // when receiving response data, the module will match its Content-Type header
+    // with strings in this array. If it contains any one of string in this array,
+    // the response body will be considered as binary data and the data will be stored
+    // in file system instead of in memory.
+    // By default, it only store response data to file system when Content-Type
+    // contains string `application/octet`.
+    binaryContentTypes : [
+        'image/',
+        'video/',
+        'audio/',
+        'foo/',
+    ]
+}).build()
 
 // used to access the firebase database
 class FirebaseDao {
@@ -192,7 +211,7 @@ class FirebaseDao {
 		return null
 		
 	}
-	
+
 	async updateMarker(marker) {
 		if (marker.key) {
 			marker.editInfo = {lastEdited: new Date().getTime()}
@@ -207,13 +226,13 @@ class FirebaseDao {
 			this.addMarker(marker)
 		}
 	}
-	
+
 	async removeImage(image) {
 		if (image.fullPath) {
 			await firebase.storage().ref(image.fullPath).delete()
 		}
 	}
-	
+
 	async removeImages(images) {
 		if (images) {
 			for (let image of images) {
@@ -221,7 +240,7 @@ class FirebaseDao {
 			}
 		}
 	}
-	
+
 	async removeMarker(marker) {
 		await this.removeImages(marker.images)
 		let markerRef = await firebase.database().ref('/markers/markers_info/' + marker.key)
