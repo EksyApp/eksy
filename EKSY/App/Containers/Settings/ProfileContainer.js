@@ -3,6 +3,7 @@ import ProfileComponent from "../../Components/Settings/ProfileComponent";
 import {connect} from "react-redux";
 import firebase from 'firebase'
 import * as ReduxActions from "../../Actions";
+import {Actions} from 'react-native-router-flux'
 
 export class ProfileContainer extends Component {
 	
@@ -19,6 +20,7 @@ export class ProfileContainer extends Component {
 						onSignoutClick={() => {
 							this.signout()
 						}}
+						onMarkersClick = {() => Actions.usersMarkers()}
 				/>
 		)
 	}

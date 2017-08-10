@@ -18,9 +18,7 @@ export default class ProfileComponent extends Component {
 	renderProfileActionButton() {
 		if (this.props.user) {
 			return (
-					<Button onPress={() => {
-						this.props.onSignoutClick()
-					}}>
+					<Button onPress={() => {this.props.onSignoutClick()}}>
 						Signout
 					</Button>
 			)
@@ -31,14 +29,26 @@ export default class ProfileComponent extends Component {
 		}
 	}
 	
+	renderShowMarkersButton() {
+		if (this.props.user) {
+			return (
+					<Button onPress={() => {this.props.onMarkersClick()}}>
+						Markers
+					</Button>
+			)
+		}
+	}
+	
 	render() {
 		return (
 				<View>
 					<Label>Profile</Label>
 					{this.renderUserInfo()}
+					{this.renderShowMarkersButton()}
 					{this.renderProfileActionButton()}
 				</View>
 		)
 	}
+	
 	
 }

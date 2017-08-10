@@ -33,6 +33,7 @@ export default class CheckBoxList extends Component {
 								title={this.props.titleKey ? checkbox[this.props.titleKey] : checkbox.stateDescription}
 								onPress={(name, checked) => {this.props.onPress(name,checked)}}
 						/>}
+						enableEmptySections={true}
 				/>
 		)
 	}

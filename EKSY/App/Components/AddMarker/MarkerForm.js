@@ -55,7 +55,7 @@ export default class MarkerForm extends Component {
 							<CheckBoxList
 									data={this.props.filters}
 									onPress={(name, checked) => {this.props.onFilterChange(name, checked)}}
-									titleKey={this.props.checkboxTitleKey}
+									titleKey="addingDescription"
 							/>
 						</View>
 				</View>

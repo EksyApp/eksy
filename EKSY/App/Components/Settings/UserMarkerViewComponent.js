@@ -1,33 +1,26 @@
 import React, {Component} from 'react'
+import {ScrollView, View, StyleSheet} from "react-native";
 import Header from "../Common/Header";
-import {View, StyleSheet, ScrollView} from "react-native";
-import {Actions} from 'react-native-router-flux'
-import * as Theme from "../../Theme";
-import Button from "../Common/Button";
 import MarkerView from "../Common/MarkerView";
+import Button from "../Common/Button";
+import * as Theme from "../../Theme";
 
-export default class AdminMarkerViewComponent extends Component {
+export default class UserMarkerViewComponent extends Component {
 	
 	render() {
 		return(
 				<View style={styles.container}>
-					<Header title="Confirm Marker" backButton />
+					<Header title="Your marker" backButton />
 					<ScrollView style={styles.container}>
 						<MarkerView
 								marker={this.props.marker}
 								currentRegion={this.props.currentRegion}
 						/>
-						<Button onPress={this.props.onAcceptClick}>
-							Accept
-						</Button>
-						<Button onPress={this.props.onRejectClick}>
-							Reject
-						</Button>
 						<Button onPress={this.props.onEditClick}>
 							Edit
 						</Button>
 					</ScrollView>
-					
+				
 				</View>
 		)
 	}

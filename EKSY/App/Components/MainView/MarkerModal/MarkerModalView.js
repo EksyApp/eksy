@@ -4,13 +4,12 @@ import {ScrollView, View, StyleSheet} from "react-native";
 import Divider from "../../Common/Divider";
 import ViewMoreText from "../../Common/ViewMoreText";
 import TextArea from "../../Common/TextArea";
-import {Actions} from 'react-native-router-flux'
 import PictureSwiper from "../../Common/PictureSwiper";
 import Label from "../../Common/Label";
 import {Icon} from "react-native-elements";
 
 
-export default class MarkerView extends Component {
+export default class MarkerModalView extends Component {
 	
 	constructor(props) {
 		super(props)

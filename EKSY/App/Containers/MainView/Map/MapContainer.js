@@ -15,6 +15,7 @@ export class MapContainer extends Component {
 						setMarkerViewVisible={this.props.setMarkerViewVisible}
 						disableGestures={this.props.disableGestures}
 						currentLocation={this.props.currentLocation}
+						radius={this.props.radius}
 				/>
 		)
 	}
@@ -26,6 +27,7 @@ const mapStateToProps = (state) => {
 		currentRegion: state.map.currentRegion,
 		currentLocation: state.map.location,
 		markerList: state.markers.markerList,
+		radius: state.map.radius
 	}
 }
 

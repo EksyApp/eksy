@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import AdminMarkerViewComponent from "../../Components/Admin/AdminMarkerViewComponent";
 import {connect} from "react-redux";
-import * as ReduxActions from "../../Actions/index";
 import Dao from "../../Dao/Dao";
+import {Actions} from 'react-native-router-flux'
 
 export class AdminMarkerViewContainer extends Component {
 	
@@ -13,22 +13,29 @@ export class AdminMarkerViewContainer extends Component {
 	
 	handleAccept() {
 		this.dao.setMarkerStatus(this.props.marker.key, 1)
+		Actions.pop()
 	}
 	
 	handleReject() {
 		this.dao.setMarkerStatus(this.props.marker.key, -1)
+		Actions.pop()
 	}
 	
+	handleEdit() {
+		Actions.editMarker()
+	}
 	render() {
 		return (
 				<AdminMarkerViewComponent
 						marker={this.props.marker}
-						user={this.props.user}
+						currentRegion={this.props.currentRegion}
 						onAcceptClick={() => this.handleAccept()}
 						onRejectClick={() => this.handleReject()}
+						onEditClick={() => this.handleEdit()}
 				/>
 		)
 	}
+	
 	
 	
 }
@@ -37,7 +44,8 @@ export class AdminMarkerViewContainer extends Component {
 const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
-		user: state.auth.user
+		user: state.auth.user,
+		currentRegion: state.map.currentRegion
 	}
 }
 

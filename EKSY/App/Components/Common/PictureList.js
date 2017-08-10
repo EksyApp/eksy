@@ -29,6 +29,7 @@ class PictureList extends Component {
 						style = {this.props.listStyle}
 						dataSource={this.state.dataSource}
 				    renderRow = {(picture) => <Picture imageStyle={this.props.imageStyle} containerStyle={[style.imageContainer, this.props.imageContainerStyle]} data={picture} />}
+						enableEmptySections={true}
 				/>
 		)
 	}

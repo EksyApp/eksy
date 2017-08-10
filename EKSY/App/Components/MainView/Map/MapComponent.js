@@ -75,7 +75,7 @@ export default class MapComponent extends Component {
 			return (
 					<Animated.View>
 						<MapView.Circle center={this.props.currentLocation}
-						                radius={100}
+						                radius={this.props.radius*1000}
 						                strokeWidth={0.5}
 						                strokeColor="rgba(66, 180, 230, 1)"
 						                fillColor="rgba(66, 180, 230, 0.2)"
