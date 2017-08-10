@@ -9,6 +9,8 @@ import codePush from 'react-native-code-push'
 
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME }
+
 class Main extends Component {
 
   state = {
@@ -44,4 +46,4 @@ class Main extends Component {
   }
 }
 
-export default codePush(Main)
+export default codePush(codePushOptions)(Main)
