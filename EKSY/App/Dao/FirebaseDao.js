@@ -66,11 +66,18 @@ class FirebaseDao {
 		if (snapshot.val() != null) {
 			await this._setMarkerHidden(key)
 			let marker = {...snapshot.val(), key}
-			this._setMarkerVisible(marker)
+			if(await this._markerCanBeDisplayed(marker)) {
+				this._setMarkerVisible(marker)
+			}
 		} else {
 			this._handleExitingMarker(key)
 		}
 		
+	}
+	
+	async _markerCanBeDisplayed(marker) {
+		let user = await this.getUserObject()
+		return marker.status === 1 || (user && (user.admin || marker.creationInfo.user === user.firebaseUser.uid))
 	}
 	
 	async _handleExitingMarker(key) {
@@ -174,8 +181,7 @@ class FirebaseDao {
 	async getCurrentUser() {
 		let user = await firebase.auth().currentUser
 		if (user != null) {
-			console.log("user != null")
-			console.log(user)
+
 			return user
 		}
 		if (this.store.getState().auth.user) {
