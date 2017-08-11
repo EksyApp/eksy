@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import {View} from 'react-native'
+import {View, Text} from 'react-native'
 import SideBarLogo from '../../Components/SideBar/SideBarLogo'
 import {Button} from '../../Components/Common/index'
 import * as Theme from '../../Theme/index'
 import firebase from 'firebase'
 
 export default class SideBarComponent extends Component {
-	
+
 	renderLoginButton() {
 		if (!this.props.user) {
 			return (
@@ -16,7 +16,7 @@ export default class SideBarComponent extends Component {
 			)
 		}
 	}
-	
+
 	renderAddMarkerButton() {
 		if (this.props.user) {
 			return (
@@ -26,7 +26,7 @@ export default class SideBarComponent extends Component {
 			)
 		}
 	}
-	
+
 	renderAdminButton() {
 		if (this.props.user && this.props.user.admin) {
 			return (
@@ -36,7 +36,7 @@ export default class SideBarComponent extends Component {
 			)
 		}
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.menubarStyle}>
@@ -54,6 +54,7 @@ export default class SideBarComponent extends Component {
 						{this.renderLoginButton()}
 						{this.renderAdminButton()}
 					</View>
+					{__DEV__ && <Text style={{flex: 1, marginLeft: 20, fontSize: 12}}>debug version</Text>}
 				</View>
 		)
 	}

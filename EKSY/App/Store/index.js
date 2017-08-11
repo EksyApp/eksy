@@ -26,7 +26,7 @@ function configureStore() {
         reducers,
         undefined,
         compose(
-          applyMiddleware(logger),
+          applyMiddleware(__DEV__ && logger),
           autoRehydrate()
         )
       )
