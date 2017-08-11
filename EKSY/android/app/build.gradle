@@ -118,6 +118,7 @@ android {
     }
     buildTypes {
         debug {
+            applicationIdSuffix ".debug"
             buildConfigField "String", "CODEPUSH_KEY", '""'
         }
         releaseStaging {

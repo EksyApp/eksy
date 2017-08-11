@@ -1,0 +1,9 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">ClWH_d9F-kKZOnkCxI15b0ZBkmyy615ea5ad-9e61-4e33-8df9-98285bcf804a</string>
+    <string moduleConfig="true" name="mobileCenterCrashes_whenToSendCrashes">ALWAYS_SEND</string>
+    <string moduleConfig="true" name="mobileCenterAnalytics_whenToEnableAnalytics">ALWAYS_SEND</string>
+    <string name="app_name">EKSY-debug</string>
+    <string name="account_type">com.eksy.account</string>
+    <string name="content_authority">com.eksy.authority</string>
+
+</resources>
