@@ -1,4 +1,4 @@
-import 'react-native'
+  import 'react-native'
 
 export default jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');

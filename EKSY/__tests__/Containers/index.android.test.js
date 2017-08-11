@@ -1,18 +1,23 @@
 import 'react-native';
-import React from 'react';
-
+// import React from 'react';
 jest.unmock('ScrollView')
 
-import Index from '../../index.android.js';
 
 jest.mock('react-native-code-push', () => {
-    return jest.fn(() => ({
-        InstallMode: jest.fn(),
-        CheckFrequency: jest.fn(),
-        CodePushComponent: jest.fn(),
-        codePushify: jest.fn()
-    }));
+    function MockCodePush(options = {}) {
+      return jest.fn()
+    }
+
+    Object.assign(MockCodePush, {
+      CheckFrequency: {
+        ON_APP_RESUME: null
+      }
+    })
+
+    return MockCodePush
 })
+
+import Index from '../../index.android.js';
 
 // Note: test renderer must be required after react-native.
 import renderer from 'react-test-renderer';

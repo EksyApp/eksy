@@ -5,11 +5,11 @@ import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
 import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
-import codePush from 'react-native-code-push'
+import CodePush from 'react-native-code-push'
 
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
-let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME }
+let codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME }
 
 class Main extends Component {
 
@@ -46,4 +46,4 @@ class Main extends Component {
   }
 }
 
-export default codePush(codePushOptions)(Main)
+export default CodePush(codePushOptions)(Main)

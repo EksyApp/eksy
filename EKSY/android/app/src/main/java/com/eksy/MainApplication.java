@@ -29,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
+    private CodePush CodePush;
+    
     @Override
     protected String getJSBundleFile() {
       return CodePush.getJSBundleFile();
@@ -55,7 +57,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
             new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
             new RNMobileCenterPackage(MainApplication.this)
-
       );
     }
   };

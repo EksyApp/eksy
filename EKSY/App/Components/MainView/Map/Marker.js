@@ -17,11 +17,19 @@ class Marker extends Component {
     //ReduxActions.markerView();
 	}
 
+  _markerColor(status) {
+    switch (status) {
+      case 0: return '#FFFF00'
+      case 1: return '#00FF00'
+    }
+    return '#FF0000'
+  }
+
   render () {
     return (
       <MapView.Marker
         coordinate={{latitude: this.props.data.latitude, longitude: this.props.data.longitude}}
-        pinColor={this.props.data.color}
+        pinColor={this._markerColor(this.props.data.status)}
         onPress={() => {this._handlePress()}}
 				>
       </MapView.Marker>
