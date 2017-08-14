@@ -3,7 +3,7 @@ import * as Theme from '../../Theme'
 import {StyleSheet, View} from 'react-native'
 import MenuButton from './MenuButton'
 import MenuBackButton from './MenuBackButton'
-import {PropTypes} from 'prop-types'
+import PropTypes from 'prop-types'
 import {Label} from './'
 
 export class Header extends Component {

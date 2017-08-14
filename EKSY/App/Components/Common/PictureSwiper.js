@@ -5,11 +5,13 @@ import Image from "./Image";
 import FastImage from 'react-native-fast-image'
 
 export default class PictureSwiper extends Component {
-	
+
 	render() {
+
 		return (
-				<Swiper wrapperStyle={[styles.swiper, this.props.style]}>
+			<Swiper wrapperStyle={wrapperStyle.swiper}>
 					{this.props.data.map((image, index) => {
+						console.log(image)
 						return (
 								<View key={image.uri + index}>
 									<Image
@@ -20,18 +22,20 @@ export default class PictureSwiper extends Component {
 								</View>
 						)
 					})}
-				</Swiper>
+			</Swiper>
 		)
 	}
-	
+
 }
 
-const styles = StyleSheet.create({
+const wrapperStyle = {
 	swiper: {
 		height: '100%',
 		width: '100%'
-	},
-	
+	}
+}
+
+const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: '100%'
