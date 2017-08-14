@@ -21,7 +21,15 @@ jest.mock('react-native-fetch-blob', () => {
       },
     },
     wrap: () => {},
-    polyfill: () => {},
+		polyfill: {
+			Fetch: class Fetch {
+				constructor(params) {
+
+				}
+
+				build = jest.fn()
+			}
+		},
     JSONStream: () => {}
 	}
 })

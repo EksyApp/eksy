@@ -11,12 +11,20 @@ MapManager.prototype.flyToPosition = jest.fn()
 FirebaseDao.prototype.updateLocation = jest.fn()
 
 jest.mock('react-native-fetch-blob', () => {
-  return {
-    DocumentDir: () => {},
-    polyfill: () => {}
-  }
-})
+    return {
+      DocumentDir: () => {},
+      polyfill: {
+        Fetch: class Fetch {
+          constructor(params) {
 
+          }
+
+          build = jest.fn()
+        }
+      }
+    }
+  })
+  
 jest.mock('firebase', () => ({
   initializeApp () {
     return {}
