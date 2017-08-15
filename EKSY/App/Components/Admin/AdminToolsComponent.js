@@ -11,16 +11,7 @@ import Divider from "../Common/Divider";
 
 
 export default class AdminToolsComponent extends Component {
-
 	
-
-  renderList() {
-    if(this.props.loading) {
-      return(<Message>Loading</Message>)
-    } else {
-      return(<MarkerCardList data={this.props.userMarkers} onPress={this.props.onCardClick} style={styles.card} />)
-    }
-  }
 
 	render () {
 		return (

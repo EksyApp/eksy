@@ -6,19 +6,19 @@ import {Actions} from 'react-native-router-flux'
 
 export class AdminToolsContainer extends Component {
 	
+	
 	handleRadius(radius) {
 		radius = parseInt(radius)
 		radius = radius/1000
-		if(!isNaN(radius) && radius !== 0) {
+		if(!isNaN(radius) && radius > 0) {
 			this.props.updateRadius(radius)
-		} else {
-			this.props.updateRadius(0.1)
 		}
 	}
 	
 	confirmClick() {
 		Actions.adminConfirmMarkers()
 	}
+	
 	
   render () {
     return (
