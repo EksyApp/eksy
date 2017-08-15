@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
 	imagesExpanded: {
 		flex: 1,
 		justifyContent: 'center',
-		margin: 5
+		margin: 5,
+		width: '100%'
 	},
 	
 	titleAndTextWrapperCollapsed: {
