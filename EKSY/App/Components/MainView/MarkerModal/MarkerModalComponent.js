@@ -21,6 +21,10 @@ export default class MarkerModalComponent extends Component {
 						    	Actions.editMarker()
 							    this.props.setMarkerViewHidden()
 						    }}
+								onAddClick={() => {
+									Actions.addToRoute()
+									this.props.setMarkerViewHidden()
+								}}
 						/>
 					</Modal>
 				</TouchableWithoutFeedback>
