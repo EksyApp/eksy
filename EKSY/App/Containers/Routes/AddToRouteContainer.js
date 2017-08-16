@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import AddToRouteComponent from '../../Components/Routes/AddToRouteComponent'
+import {Actions} from 'react-native-router-flux'
 
 export class AddToRouteContainer extends Component {
 	
 	handleCreateClick() {
-	
+		Actions.createRoute()
 	}
 	
 	render() {
