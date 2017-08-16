@@ -10,7 +10,7 @@ const Card = (props) => (
   </View>
 );
 
-export { Card };
+export default Card;
 
 const styles = StyleSheet.create({
   container: {

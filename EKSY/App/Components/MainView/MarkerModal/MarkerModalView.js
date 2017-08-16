@@ -82,7 +82,7 @@ export default class MarkerModalView extends Component {
 					<Icon
 							name="edit"
 							size={25}
-							containerStyle={styles.editIcon}
+							containerStyle = {styles.icon}
 							onPress={this.props.onEditClick}
 					/>
 			)
@@ -96,7 +96,16 @@ export default class MarkerModalView extends Component {
 				>
 					<View style={styles.titleContainer}>
 						<Label style={styles.title}>{this.props.marker.title}</Label>
-						{this._renderEditingIcon()}
+						<View style={styles.iconHolder}>
+							{this._renderEditingIcon()}
+							<Icon
+									name="playlist-add"
+									size={25}
+									containerStyle={styles.icon}
+									onPress={this.props.onAddClick}
+							/>
+						</View>
+						
 					</View>
 					
 					<ScrollView>
@@ -173,14 +182,20 @@ const styles = StyleSheet.create({
 		margin: 10
 	},
 	
-	editIcon: {
-		position: 'absolute',
-		top: 0,
-		right: 0,
-		
+	icon: {
+		marginLeft: 5
 	},
 	
 	titleContainer: {
 		width: '100%'
+	},
+	
+	iconHolder: {
+		width: '100%',
+		height: 25,
+		flexDirection: 'row-reverse',
+		position: 'absolute',
+		top:0,
+		left: 0
 	}
 })
