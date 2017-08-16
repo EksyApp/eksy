@@ -22,7 +22,15 @@ jest.mock('react-native-code-push', () => {
 jest.mock('react-native-fetch-blob', () => {
   return {
     DocumentDir: () => {},
-    polyfill: () => {}
+    polyfill: {
+      Fetch: class Fetch {
+        constructor(params) {
+
+        }
+
+        build = jest.fn()
+      }
+    }
   }
 })
 

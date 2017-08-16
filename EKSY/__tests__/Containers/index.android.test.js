@@ -25,7 +25,15 @@ import renderer from 'react-test-renderer';
 jest.mock('react-native-fetch-blob', () => {
     return {
       DocumentDir: () => {},
-      polyfill: () => {}
+      polyfill: {
+        Fetch: class Fetch {
+          constructor(params) {
+
+          }
+
+          build = jest.fn()
+        }
+      }
     }
   })
 
