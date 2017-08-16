@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {ListView, View} from 'react-native'
+import {ListView, View, StyleSheet} from 'react-native'
 import Card from '../Common/Card'
 import {Icon} from 'react-native-elements'
 import Label from '../Common/Label'
@@ -9,7 +9,7 @@ export default class EditableMarkerList extends Component {
 	constructor(props) {
 		super(props)
 		
-		this.datasource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
+		this.dataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
 		
 		this.state = {
 			markers: this.props.markers
@@ -31,14 +31,16 @@ export default class EditableMarkerList extends Component {
 	
 	swapRows(index, change) {
 		let markers = this.state.markers
-		let row = markers[index]
-		markers[index] = markers[index+change]
-		markers[index+change] = row
-		this.setState({markers}, () => this.props.onChange(this.state.markers))
+		if(index+change >= 0 && index+change < markers.length) {
+			let row = markers[index]
+			markers[index] = markers[index+change]
+			markers[index+change] = row
+			this.setState({markers}, () => this.props.onChange(this.state.markers))
+		}
 	}
 	
 	render() {
-		this.datasource = this.datasource.cloneWithRows(this.state.markers || [])
+		this.dataSource = this.dataSource.cloneWithRows(this.state.markers || [])
 		return(
 				<ListView
 						dataSource={this.dataSource}
@@ -64,18 +66,18 @@ class Row extends Component {
 
 	render() {
 		return(
-				<Card>
-					<View>
+				<Card style={styles.rowContainer}>
+					<View style={styles.endIconContainer}>
 						<Icon
 								name="delete"
 								size={35}
 								onPress={() => this.props.onRowDelete(this.props.index)}
 						/>
 					</View>
-					<View>
+					<View style={styles.titleContainer}>
 						<Label>{this.props.marker.title}</Label>
 					</View>
-					<View>
+					<View style={styles.endIconContainer}>
 						<View>
 							<Icon
 									name="keyboard-arrow-up"
@@ -97,3 +99,24 @@ class Row extends Component {
 	
 }
 
+const styles = StyleSheet.create({
+	rowContainer: {
+		width: '98%',
+		flexDirection: 'row',
+		minHeight: 80,
+		justifyContent: 'center',
+		marginBottom: 20
+	},
+	
+	endIconContainer: {
+		width: 35,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	
+	titleContainer: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	}
+})
