@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {ListView, Dimensions} from 'react-native'
 import MarkerCard from '../MainView/BottomSheet/MarkerCard'
+import PropTypes from 'prop-types';
+import {MarkersShape} from "../../Utils/PropTypeShapes";
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -46,5 +48,10 @@ export default class MarkerCardList extends Component {
 
     )
   }
+}
 
+MarkerCardList.PropTypes = {
+	data: MarkersShape,
+	onPress: PropTypes.func,
+	style: PropTypes.object
 }

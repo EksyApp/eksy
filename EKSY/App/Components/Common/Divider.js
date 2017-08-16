@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import * as Elements from 'react-native-elements'
 import {StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types';
 
 export class Divider extends Component {
 
@@ -22,5 +23,9 @@ const style = StyleSheet.create({
 		backgroundColor: Theme.detailColor
 	}
 })
+
+Divider.PropTypes = {
+	style: PropTypes.object
+}
 
 export default Divider

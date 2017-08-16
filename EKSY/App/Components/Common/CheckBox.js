@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
 const BasicCheckBox = require('react-native-elements').CheckBox
-
+import PropTypes from 'prop-types';
 
 export class CheckBox extends Component {
 
@@ -50,3 +50,10 @@ const style = StyleSheet.create({
 		color: Theme.fontColor
 	}
 })
+
+CheckBox.PropTypes = {
+	checked: PropTypes.bool,
+	name: PropTypes.string,
+	containerStyle: PropTypes.object,
+	textStyle: PropTypes.object
+}

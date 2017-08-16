@@ -5,6 +5,8 @@ import {Actions} from 'react-native-router-flux'
 import * as Theme from "../../Theme";
 import Button from "../Common/Button";
 import MarkerView from "../Common/MarkerView";
+import PropTypes from 'prop-types';
+import { RegionShape, MarkerShape } from '../../Utils/PropTypeShapes'
 
 export default class AdminMarkerViewComponent extends Component {
 	
@@ -27,7 +29,7 @@ export default class AdminMarkerViewComponent extends Component {
 							Edit
 						</Button>
 					</ScrollView>
-					
+				
 				</View>
 		)
 	}
@@ -40,3 +42,12 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor
 	}
 })
+
+AdminMarkerViewComponent.propTypes = {
+	marker: MarkerShape,
+	currentRegion: RegionShape,
+	
+	onAcceptClick:PropTypes.func,
+	onRejectClick:PropTypes.func,
+	onEditClick:PropTypes.func,
+}

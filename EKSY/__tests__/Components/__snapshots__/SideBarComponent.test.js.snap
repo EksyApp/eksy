@@ -216,5 +216,19 @@ exports[`SideBarComponent renders correctly 1`] = `
       </Text>
     </View>
   </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "flex": 1,
+        "fontSize": 12,
+        "marginLeft": 20,
+      }
+    }
+  >
+    debug version
+  </Text>
 </View>
 `;

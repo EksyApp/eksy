@@ -5,6 +5,7 @@ import * as Theme from "../../Theme";
 import Input from "../Common/Input";
 import Message from "../Common/Message";
 import Button from "../Common/Button";
+import PropTypes from 'prop-types';
 
 export default class SignUpComponent extends Component {
 	
@@ -93,3 +94,13 @@ const styles = StyleSheet.create({
 	}
 	
 })
+
+
+SignUpComponent.propTypes = {
+	onPasswordChange: PropTypes.func,
+	onConfirmPasswordChange: PropTypes.func,
+	onUsernameChange: PropTypes.func,
+	onEmailChange: PropTypes.func,
+	onSignupClick: PropTypes.func,
+	response: PropTypes.string,
+}

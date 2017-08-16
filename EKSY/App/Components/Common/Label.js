@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Text, StyleSheet} from 'react-native'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types';
 
 export class Label extends Component {
 	render() {
@@ -20,3 +21,7 @@ const style = StyleSheet.create({
 })
 
 export default Label
+
+Label.PropTypes = {
+	style: PropTypes.object
+}
