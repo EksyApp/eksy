@@ -22,4 +22,4 @@ script:
 
 after_success:
 - npm run coverageToCoveralls
-- bash .travis/codepush.sh
+- bash ../.travis/codepush.sh
