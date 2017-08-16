@@ -18,7 +18,7 @@ export default class EditableMarkerList extends Component {
 	}
 	
 	componentWillReceiveProps(props) {
-		if(props.data !== this.props.data) {
+		if(props.markers !== this.props.markers) {
 			let markers = props.markers
 			this.setState({markers})
 		}
