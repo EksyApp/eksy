@@ -6,12 +6,12 @@ import {
 import {detailColor} from '../../Theme'
 import {StyleShape} from '../../Utils/PropTypeShapes'
 
-const CardSection = (props) => (
+export const CardSection = (props) => (
     <View {...props} style={[styles.container, props.style]}>
     </View>
 );
 
-export { CardSection };
+export default CardSection;
 
 const styles = StyleSheet.create({
   container: {
