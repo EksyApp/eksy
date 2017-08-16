@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import * as ReduxActions from "../../../Actions/index";
 import {connect} from "react-redux";
 import MarkerModalComponent from "../../../Components/MainView/MarkerModal/MarkerModalComponent";
-
+import PropTypes from 'prop-types'
+import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
 
 export class MarkerModalContainer extends Component {
@@ -17,6 +18,13 @@ export class MarkerModalContainer extends Component {
 				/>
 		)
 	}
+}
+
+MarkerModalContainer.propTypes = {
+	marker: MarkerShape,
+	markerViewVisible: PropTypes.bool,
+	setMarkerViewHidden: PropTypes.func,
+	user: UserShape
 }
 
 const mapStateToProps = (state) => {

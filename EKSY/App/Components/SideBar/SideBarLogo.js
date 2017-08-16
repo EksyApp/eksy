@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, StyleSheet} from "react-native";
+import {StyleSheet} from "react-native";
 import Picture from "../Common/Picture";
 
 class SideBarLogo extends Component {

@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import firebase from 'firebase'
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
+import {UserShape} from "../../Utils/PropTypeShapes";
 
 export class ProfileContainer extends Component {
 	
@@ -25,6 +27,11 @@ export class ProfileContainer extends Component {
 		)
 	}
 	
+}
+
+ProfileContainer.propTypes  = {
+	userSignedOut: PropTypes.func,
+	user: UserShape
 }
 
 const mapStateToProps = (state) => {

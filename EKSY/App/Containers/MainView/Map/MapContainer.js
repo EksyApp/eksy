@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import * as ReduxActions from "../../../Actions/index";
 import MapComponent from "../../../Components/MainView/Map/MapComponent";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types'
+import {LocationShape, MarkersShape, RegionShape} from "../../../Utils/PropTypeShapes";
 
 export class MapContainer extends Component {
 	
@@ -20,6 +22,17 @@ export class MapContainer extends Component {
 		)
 	}
 	
+}
+
+MapContainer.propTypes = {
+	currentRegion: RegionShape,
+	regionChange: PropTypes.func,
+	markerList: MarkersShape,
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+	currentLocation: LocationShape,
+	radius: PropTypes.number
 }
 
 const mapStateToProps = (state) => {

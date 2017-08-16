@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
 import * as Actions from '../../Actions/index'
 import LoginComponent from "../../Components/Auth/LoginComponent";
 import Dao from "../../Dao/Dao";
+import PropTypes from 'prop-types'
 
 export class LoginContainer extends Component {
 	constructor (props) {
@@ -58,6 +59,9 @@ export class LoginContainer extends Component {
 	}
 }
 
+LoginContainer.propTypes = {
+	userLoggedIn: PropTypes.func
+}
 
 const mapStateToProps = (state) => {
 	return {}
