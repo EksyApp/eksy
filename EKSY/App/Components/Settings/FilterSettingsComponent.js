@@ -3,6 +3,8 @@ import {View, StyleSheet} from 'react-native'
 import CheckBoxList from "../Common/CheckBoxList";
 import Divider from "../Common/Divider";
 import Label from "../Common/Label";
+import PropTypes from 'prop-types'
+import {FiltersShape} from "../../Utils/PropTypeShapes";
 
 export default class FilterSettingsComponent extends Component {
 	
@@ -23,3 +25,8 @@ const styles = StyleSheet.create({
 		marginTop: 30
 	}
 })
+
+FilterSettingsComponent.propTypes = {
+	data: FiltersShape,
+	onPress: PropTypes.func
+}

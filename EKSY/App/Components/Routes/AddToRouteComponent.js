@@ -12,7 +12,7 @@ export default class AddToRouteComponent extends Component {
 				<View style={styles.container}>
 					<Header backButton title="Add to route"/>
 					<View style={styles.container}>
-						<Button onPress={() => this.props.onCreateClick}>
+						<Button onPress={this.props.onCreateClick}>
 							Create a new route
 						</Button>
 					</View>
