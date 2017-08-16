@@ -29,7 +29,7 @@ NavigationDrawer.propTypes = {
 	drawerClose: PropTypes.func,
 	drawerOpen: PropTypes.bool,
 	disableGestures: PropTypes.bool,
-	onNavigate: PropTypes.bool
+	onNavigate: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
