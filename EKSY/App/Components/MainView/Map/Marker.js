@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
-import PropTypes from 'prop-types'
-import {Actions} from 'react-native-router-flux'
-import * as ReduxActions from '../../../Actions/index'
-import {ImagesShape} from "../../../Utils/PropTypeShapes";
+import { MarkerShape } from "../../../Utils/PropTypeShapes";
 
 class Marker extends Component {
 	constructor (props) {
@@ -41,13 +38,7 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-	data: PropTypes.shape({
-		latitude: PropTypes.number.isRequired,
-		longitude: PropTypes.number.isRequired,
-		color: PropTypes.string,
-		text: PropTypes.string,
-		title: PropTypes.string,
-		images: ImagesShape
-	}
-	
-	export default Marker
+	data: MarkerShape
+}
+
+export default Marker

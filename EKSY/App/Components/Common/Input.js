@@ -43,5 +43,5 @@ const styles = StyleSheet.create({
 });
 
 Input.propTypes = {
-	label: PropTypes.object,
+	label: PropTypes.string,
 }

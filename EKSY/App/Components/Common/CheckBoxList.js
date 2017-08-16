@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {CheckBox} from './index'
 import {ListView} from 'react-native'
 import PropTypes from 'prop-types';
-import {FilterShape, StyleShape} from '../../Utils/PropTypeShapes'
+import {FiltersShape, StyleShape} from '../../Utils/PropTypeShapes'
 
 export default class CheckBoxList extends Component {
 	
@@ -43,7 +43,7 @@ export default class CheckBoxList extends Component {
 }
 
 CheckBoxList.propTypes = {
-	data: FilterShape,
+	data: FiltersShape,
 	listStyle: StyleShape,
 	titleKey: PropTypes.string,
 	onPress: PropTypes.func,
