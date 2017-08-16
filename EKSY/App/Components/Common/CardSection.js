@@ -5,12 +5,12 @@ import {
 } from 'react-native';
 import {detailColor} from '../../Theme'
 
-const CardSection = (props) => (
+export const CardSection = (props) => (
     <View {...props} style={[styles.container, props.style]}>
     </View>
 );
 
-export { CardSection };
+export default CardSection;
 
 const styles = StyleSheet.create({
   container: {
