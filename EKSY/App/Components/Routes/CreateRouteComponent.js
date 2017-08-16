@@ -14,15 +14,15 @@ export default class CreateRouteComponent extends Component {
 					<View>
 						<RouteForm
 								initialTitle=""
-								onTitleChange={this.onTitleChange}
+								onTitleChange={this.props.onTitleChange}
 								
 								initialText=""
-								onTextChange={this.onTextChange}
+								onTextChange={this.props.onTextChange}
 								
 								markers={this.props.markers}
 								onMarkerListChange={this.props.onMarkerListChange}
 						/>
-						<Button onPress={this.onCreateClick}>
+						<Button onPress={this.props.onCreateClick}>
 							Create
 						</Button>
 					</View>

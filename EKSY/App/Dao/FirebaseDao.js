@@ -325,8 +325,10 @@ class FirebaseDao {
 		route.creator = user.uid
 		route.markers = route.markers.map((marker) => marker.key)
 		let routesRef = await firebase.database().ref('/routes')
-		let key = routesRef.push(route)
-		let user
+		let routeRef = await routesRef.push(route)
+		let key = routeRef.key
+		await firebase.database().ref('/users/' + user.uid + '/routes/' + key).set(true)
+		await firebase.database().ref('markers/markers_info/' + route.markers[0] + '/routes/' + key).set(true)
 	}
 
 }
