@@ -1,17 +1,15 @@
 language: android
-
 before_install:
 - nvm install 7
 - node --version
 - cd EKSY/
-
 install:
 - npm install
 - npm install -g code-push-cli
-
 android:
   components:
   - build-tools-23.0.1
+  - build-tools-23.0.3
   - build-tools-25.0.3
   - android-23
   - android-25
@@ -19,10 +17,20 @@ android:
   - extra-google-google_play_services
   - extra-google-m2repository
   - addon-google_apis-google-19
-
 script:
 - npm test
-
 after_success:
 - npm run coverageToCoveralls
-- bash ../.travis/codepush.sh
+- bash ../.travis/assembleRelease.sh
+- bash ../.travis/set_tags.sh
+
+deploy:
+  provider: releases
+  api_key:
+    secure: TzslTjMzi5fS+juTqisXU49SssgvQb4AfjrhQ8k5LO2Ne0nb1nVXiljOUdU4EL8FuJ9fjJnsY/j+05EHiUHcjerrA+hHvSpW6CljvoNuTNEf9vsCutEwFsioZvlQTlkr5x9CG0Ft2OBtEgO7xz1vj2DdT4ljsJnzYgy8GBk0yQ9GHqYtGJpJvewKUnFLiYxQ3Q+F49IUPMZP3450KkXaVFjS3JDNIYY20r6vuWK6EMPY24TF1MpYD0rYyp0sc/WMWiVsTf7qZkxpMiwjbsDG64yKOS/7B0fv9ojPxf5qCUepMp4eNnxq1VMiwZsGM28C6kCty0AG3udA7RUIinWOmd/ogRVDPqyYJKfq+wUJiNHsOFxl9Zkgn8trVLrfD8i5C6rvt8r0teUherQJ4itfBhCWCE+X1QpX5e1OmhSRn0vZv2c4e+xdYXiVBSn4W1BGHwNzECh6bMnxt+P0KydthVfNIAjL8uEdKpBLjfpPFqq2wFe52ViBuekKfpPKjkm3HLFreMzs3pGxyQIzSDZtwjNj4Rp7k8XFFcX3Y3FBmcQ8rERb379TViFAhLPBfNxRWTjFyWX/73NjbYSk05aGWh2fFyApUKPB3UfakPcA5stTpY2t8lZ5YAUZDBUlwugFsfk6Rmdek+qSgFGwOQIljGw6hKD35+D98gyoTNQ50WU=
+  file: $TRAVIS_BUILD_DIR/EKSY/android/app/build/outputs/apk/app-release*.apk
+  file_glob: true
+  skip_cleanup: true
+  on:
+    branch: master
+    repo: EksyApp/eksy
