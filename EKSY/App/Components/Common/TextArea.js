@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Text, StyleSheet, ScrollView} from 'react-native'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types';
 
 export class TextArea extends Component {
 
@@ -19,5 +20,9 @@ const style = StyleSheet.create({
 		margin: 10,
 	}
 })
+
+TextArea.PropTypes = {
+	style: PropTypes.object
+}
 
 export default TextArea

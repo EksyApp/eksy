@@ -6,7 +6,8 @@ import Message from '../Common/Message'
 import MarkerCardList from '../Common/MarkerCardList'
 import Label from "../Common/Label";
 import Button from "../Common/Button";
-
+import PropTypes from 'prop-types';
+import { MarkersShape } from '../../Utils/PropTypeShapes'
 
 export default class ConfirmMarkersComponent extends Component {
 	
@@ -46,3 +47,11 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+
+ConfirmMarkersComponent.propTypes = {
+	loading: PropTypes.bool,
+	pendingMarkers: MarkersShape,
+	onCardClick: PropTypes.func,
+	onRefresh: PropTypes.func
+}

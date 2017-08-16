@@ -6,6 +6,7 @@ import Input from "../Common/Input";
 import Message from "../Common/Message";
 import {Actions} from 'react-native-router-flux'
 import {CheckBox} from "../Common/CheckBox";
+import PropTypes from 'prop-types';
 
 class LoginComponent extends Component {
 
@@ -69,5 +70,13 @@ const styles = StyleSheet.create({
 	},
 
 })
+
+
+LoginComponent.propTypes = {
+	onPasswordChange: PropTypes.func,
+	onEmailChange: PropTypes.func,
+	onLoginClick: PropTypes.func,
+	response: PropTypes.string,
+}
 
 export default LoginComponent

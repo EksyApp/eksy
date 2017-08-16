@@ -5,6 +5,8 @@ import Label from "./Label";
 import TextArea from "./TextArea";
 import PictureSwiper from "./PictureSwiper";
 import Message from "./Message";
+import PropTypes from 'prop-types';
+import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
 export default class MarkerView extends Component {
 	
@@ -50,3 +52,8 @@ const styles = StyleSheet.create({
 		marginTop: 30
 	}
 })
+
+MarkerView.PropTypes = {
+	marker: MarkerShape,
+	currentRegion: RegionShape
+}

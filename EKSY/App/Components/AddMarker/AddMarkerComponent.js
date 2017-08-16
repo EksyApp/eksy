@@ -3,10 +3,15 @@ import {ScrollView, StyleSheet, View} from "react-native";
 import * as Theme from "../../Theme/index";
 import {Button, Header} from "../../Components/Common/index";
 import MarkerForm from "./MarkerForm";
+import PropTypes from 'prop-types';
+import { RegionShape, ImagesShape, FiltersShape } from '../../Utils/PropTypeShapes'
+
+
+/* Component shows form for new marker addition.
+	Gets props from AddMarkerContainer.
+ */
 
 class AddMarkerComponent extends Component {
-	
-	
 	
 	render() {
 		return (
@@ -56,6 +61,18 @@ const styles = StyleSheet.create({
 	},
 	
 })
+
+AddMarkerComponent.propTypes = {
+	initialRegion: RegionShape,
+	onRegionChange:PropTypes.func,
+	onTitleChange:PropTypes.func,
+	onTextChange:PropTypes.func,
+	images: ImagesShape,
+	onNewImage: PropTypes.func,
+	filters: FiltersShape,
+	onFilterChange:PropTypes.func,
+	onAddMarkerClick:PropTypes.func
+}
 
 export default AddMarkerComponent
 
