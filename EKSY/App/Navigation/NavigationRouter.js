@@ -31,7 +31,7 @@ const scenes = Actions.create(
 	    <Scene key="usersMarkers" component={UserMarkersContainer} title="Your markers" />
 	    <Scene key="userMarkerView" component={UserMarkerViewContainer} title="Your Marker" />
       <Scene key="addToRoute" component={AddToRouteContainer} title="Add to route"/>
-      <Scene key="CreateRoute" component={CreateRouteContainer} title="Create route" />
+      <Scene key="createRoute" component={CreateRouteContainer} title="Create route" />
     </Scene>
   </Scene>
 );

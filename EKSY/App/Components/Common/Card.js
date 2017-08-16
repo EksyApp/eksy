@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import {frontgroundColor} from '../../Theme'
 
-const Card = (props) => (
+export const Card = (props) => (
   <View {...props} style={[styles.container, props.style]}>
   </View>
 );

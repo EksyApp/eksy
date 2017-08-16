@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import CreateRouteComponent from '../../Components/Routes/CreateRouteComponent'
 import {connect} from 'react-redux'
+import Dao from '../../Dao/Dao'
 
 export class CreateRouteContainer extends Component {
 	
@@ -15,7 +16,12 @@ export class CreateRouteContainer extends Component {
 	}
 	
 	createRoute() {
-	
+		let route = {
+			title: this.state.title,
+			text: this.state.text,
+			markers: this.state.markers
+		}
+		new Dao().addNewRoute(route)
 	}
 	
 	render() {

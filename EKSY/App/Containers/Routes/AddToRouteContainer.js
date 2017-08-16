@@ -12,7 +12,7 @@ export class AddToRouteContainer extends Component {
 	render() {
 		return (
 				<AddToRouteComponent
-						onCreateClick={this.handleCreateClick()}
+						onCreateClick={() => this.handleCreateClick()}
 				/>
 		)
 	}
