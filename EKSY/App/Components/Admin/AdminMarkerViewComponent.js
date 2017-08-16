@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
 AdminMarkerViewComponent.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape,
-	
 	onAcceptClick:PropTypes.func,
 	onRejectClick:PropTypes.func,
 	onEditClick:PropTypes.func,

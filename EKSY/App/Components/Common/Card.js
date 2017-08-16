@@ -4,6 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {frontgroundColor} from '../../Theme'
+import {StyleShape} from '../../Utils/PropTypeShapes'
 
 const Card = (props) => (
   <View {...props} style={[styles.container, props.style]}>
@@ -28,3 +29,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+Card.propTypes  = {
+	style: StyleShape
+}

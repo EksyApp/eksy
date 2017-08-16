@@ -13,6 +13,8 @@ import MapManager from '../../../Utils/MapManager'
 import Marker from './Marker'
 import isEqual from 'lodash/isEqual'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+import {LocationShape, MarkersShape, RegionShape} from "../../../Utils/PropTypeShapes";
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -177,3 +179,13 @@ const styles = StyleSheet.create({
 		borderColor: "rgba(130,4,150, 0.5)"
 	}
 });
+
+MapComponent.propTypes = {
+	currentRegion: RegionShape,
+	currentLocation: LocationShape,
+	radius: PropTypes.number,
+	markerList: MarkersShape,
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+}

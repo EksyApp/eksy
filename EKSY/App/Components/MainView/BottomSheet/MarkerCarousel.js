@@ -6,6 +6,8 @@ import {
 } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import MarkerCard from './MarkerCard'
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../../Utils/PropTypeShapes";
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -61,3 +63,10 @@ const styles = StyleSheet.create({
 		flex: 1
 	}
 })
+
+MarkerCarousel.propTypes = {
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+	markerList: MarkersShape,
+}

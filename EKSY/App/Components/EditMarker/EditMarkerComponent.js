@@ -4,6 +4,8 @@ import MarkerForm from "../AddMarker/MarkerForm";
 import Button from "../Common/Button";
 import {ScrollView, View, StyleSheet} from "react-native";
 import * as Theme from "../../Theme";
+import PropTypes from 'prop-types'
+import {FiltersShape, ImagesShape, RegionShape} from '../../Utils/PropTypeShapes'
 
 export default class EditMarkerComponent extends Component {
 	
@@ -56,3 +58,18 @@ const styles = StyleSheet.create({
 	},
 	
 })
+
+EditMarkerComponent.propTypes = {
+	initialRegion:RegionShape,
+	onRegionChange: PropTypes.func,
+	initialTitle: PropTypes.string,
+	initialText: PropTypes.string,
+	onTitleChange: PropTypes.func,
+	onTextChange: PropTypes.func,
+	images:ImagesShape,
+	onNewImage: PropTypes.func,
+	filters: FiltersShape,
+	onFilterChange: PropTypes.func,
+	onSaveClick: PropTypes.func,
+	onDeleteClick: PropTypes.func,
+}

@@ -4,6 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {detailColor} from '../../Theme'
+import {StyleShape} from '../../Utils/PropTypeShapes'
 
 const CardSection = (props) => (
     <View {...props} style={[styles.container, props.style]}>
@@ -22,3 +23,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
 });
+
+CardSection.propTypes = {
+  style: StyleShape
+}

@@ -3,6 +3,8 @@ import {ListView, View} from 'react-native'
 import Card from '../Common/Card'
 import {Icon} from 'react-native-elements'
 import Label from '../Common/Label'
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../Utils/PropTypeShapes";
 
 export default class EditableMarkerList extends Component {
 	
@@ -94,6 +96,11 @@ class Row extends Component {
 				</Card>
 		)
 	}
-	
 }
 
+EditableMarkerList.propTypes = {
+	markers: MarkersShape,
+	data: ,
+	onChange: PropTypes.func,
+	
+}

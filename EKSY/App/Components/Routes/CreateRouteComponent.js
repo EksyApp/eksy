@@ -4,6 +4,8 @@ import * as Theme from '../../Theme'
 import Header from '../Common/Header'
 import RouteForm from './RouteForm'
 import Button from '../Common/Button'
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../Utils/PropTypeShapes";
 
 export default class CreateRouteComponent extends Component {
 	
@@ -38,3 +40,8 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor
 	}
 })
+
+CreateRouteComponent.propTypes= {
+	markers: MarkersShape,
+	onMarkerListChange: PropTypes.func
+}

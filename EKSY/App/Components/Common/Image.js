@@ -18,4 +18,4 @@ export default class Image extends Component {
 	}
 }
 
-Image.PropTypes = OrgImage.PropTypes
+Image.propTypes = OrgImage.PropTypes

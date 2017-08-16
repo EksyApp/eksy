@@ -4,7 +4,7 @@ import {View, StyleSheet} from "react-native";
 import Image from "./Image";
 import FastImage from 'react-native-fast-image'
 import PropTypes from 'prop-types';
-import {ImagesShape} from "../../Utils/PropTypeShapes";
+import {ImagesShape, StyleShape} from "../../Utils/PropTypeShapes";
 
 export default class PictureSwiper extends Component {
 	
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-PictureSwiper.PropTypes = {
-	style: PropTypes.object,
+PictureSwiper.propTypes = {
+	style: StyleShape,
 	data: ImagesShape
 }

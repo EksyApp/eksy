@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {ListView, View, StyleSheet} from 'react-native'
 import Image from "./Image";
 import PropTypes from 'prop-types';
-import { FilterShape } from '../../Utils/PropTypeShapes'
+import {FilterShape, StyleShape} from '../../Utils/PropTypeShapes'
 
 const imagesPerRow = 4
 
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-CompactPictureList.PropTypes = {
+CompactPictureList.propTypes = {
 	data: FilterShape,
-	listStyle: PropTypes.object,
+	listStyle: StyleShape
 }
