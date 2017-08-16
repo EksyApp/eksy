@@ -62,4 +62,4 @@ export const RouteShape = PropTypes.shape({
 
 export const MarkersShape = PropTypes.arrayOf(MarkerShape)
 
-export const StyleShape = PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)])
+export const StyleShape = PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object),PropTypes.number, PropTypes.arrayOf(PropTypes.number) ])
