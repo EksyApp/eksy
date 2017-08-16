@@ -13,6 +13,7 @@ import ConfirmMarkersContainer from "../Containers/Admin/ConfirmMarkersContainer
 import UserMarkersContainer from "../Containers/Settings/UserMarkersContainer";
 import UserMarkerViewContainer from "../Containers/Settings/UserMarkerViewContainer";
 import AddToRouteContainer from '../Containers/Routes/AddToRouteContainer'
+import CreateRouteContainer from '../Containers/Routes/CreateRouteContainer'
 
 // defines all routes in the app
 const scenes = Actions.create(
@@ -30,6 +31,7 @@ const scenes = Actions.create(
 	    <Scene key="usersMarkers" component={UserMarkersContainer} title="Your markers" />
 	    <Scene key="userMarkerView" component={UserMarkerViewContainer} title="Your Marker" />
       <Scene key="addToRoute" component={AddToRouteContainer} title="Add to route"/>
+      <Scene key="CreateRoute" component={CreateRouteContainer} title="Create route" />
     </Scene>
   </Scene>
 );
