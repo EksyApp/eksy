@@ -1,16 +1,14 @@
 import React, {Component} from 'react'
-import {Text, View, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
 import Header from "../Common/Header";
 import * as Theme from "../../Theme";
 import Message from '../Common/Message'
 import MarkerCardList from '../Common/MarkerCardList'
-import Label from "../Common/Label";
 import Button from "../Common/Button";
-
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../Utils/PropTypeShapes";
 
 export default class UserMarkersComponent extends Component {
-	
-	
 	
 	renderList() {
 		if(this.props.loading) {
@@ -25,7 +23,7 @@ export default class UserMarkersComponent extends Component {
 				<View style={styles.container}>
 					<Header title='Your markers' backButton />
 					<Button onPress={this.props.onRefresh}>
-						Refersh
+						Refresh
 					</Button>
 					{this.renderList()}
 				</View>
@@ -45,3 +43,10 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+UserMarkersComponent.propTypes = {
+	loading: PropTypes.bool,
+	userMarkers: MarkersShape,
+	onCardClick: PropTypes.func,
+	onRefresh: PropTypes.func
+}

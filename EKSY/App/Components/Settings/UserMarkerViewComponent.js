@@ -4,6 +4,8 @@ import Header from "../Common/Header";
 import MarkerView from "../Common/MarkerView";
 import Button from "../Common/Button";
 import * as Theme from "../../Theme";
+import PropTypes from 'prop-types'
+import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
 export default class UserMarkerViewComponent extends Component {
 	
@@ -33,3 +35,9 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor
 	}
 })
+
+UserMarkerViewComponent = {
+	marker: MarkerShape,
+	currentRegion: RegionShape,
+	onEditClick: PropTypes.func
+}

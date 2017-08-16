@@ -6,7 +6,7 @@ import {
 import {frontgroundColor} from '../../Theme'
 import {StyleShape} from '../../Utils/PropTypeShapes'
 
-const Card = (props) => (
+export const Card = (props) => (
   <View {...props} style={[styles.container, props.style]}>
   </View>
 );

@@ -3,6 +3,8 @@ import {View} from 'react-native'
 import Input from '../Common/Input'
 import TextInputArea from '../Common/TextInputArea'
 import EditableMarkerList from './EditableMarkerList'
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../Utils/PropTypeShapes";
 
 export default class RouteForm extends Component {
 	
@@ -26,5 +28,13 @@ export default class RouteForm extends Component {
 				</View>
 		)
 	}
-	
+}
+
+RouteForm.propTypes = {
+	initialTitle: PropTypes.string,
+	initialText: PropTypes.string,
+	onTitleChange: PropTypes.func,
+	onTextChange: PropTypes.func,
+	markers: MarkersShape,
+	onMarkerListChange: PropTypes.func
 }

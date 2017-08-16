@@ -319,6 +319,15 @@ class FirebaseDao {
 		}))
 
 	}
+	
+	async addNewRoute(route) {
+		let user = await this.getCurrentUser()
+		route.creator = user.uid
+		route.markers = route.markers.map((marker) => marker.key)
+		let routesRef = await firebase.database().ref('/routes')
+		let key = routesRef.push(route)
+		let user
+	}
 
 }
 
