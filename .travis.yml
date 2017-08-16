@@ -7,7 +7,7 @@ before_install:
 
 install:
 - npm install
-
+- npm install -g code-push-cli
 
 android:
   components:
@@ -21,6 +21,6 @@ android:
 script:
 - npm test
 
-after_success: 
+after_success:
 - npm run coverageToCoveralls
-
+- bash ../.travis/codepush.sh
