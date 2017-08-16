@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 import {Card, CardSection, Label, TextArea} from '../../Common/index'
 import Image from 'react-native-fast-image'
+import PropTypes from 'prop-types'
+import {MarkerShape, StyleShape} from "../../../Utils/PropTypeShapes";
 
 export default class MarkerCard extends Component {
 
@@ -84,3 +86,10 @@ const styles = StyleSheet.create({
 	}
 
 });
+
+MarkerCard.propTypes = {
+	width: PropTypes.number,
+	style: StyleShape,
+	marker: MarkerShape,
+	onPress: PropTypes.func
+}

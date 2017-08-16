@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-MarkerView.PropTypes = {
+MarkerView.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape
 }

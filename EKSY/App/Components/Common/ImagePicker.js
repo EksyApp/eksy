@@ -56,7 +56,7 @@ export default class ImagePicker extends Component {
 	}
 }
 
-ImagePicker.PropTypes = {
+ImagePicker.propTypes = {
 	buttonText: PropTypes.string,
 	options: PropTypes.object,
 	onPickerCancelled: PropTypes.func,

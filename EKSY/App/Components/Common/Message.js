@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Text, StyleSheet, ScrollView} from 'react-native'
 import * as Theme from '../../Theme'
 import PropTypes from 'prop-types';
+import {StyleShape} from "../../Utils/PropTypeShapes";
 
 export class Message extends Component {
 	
@@ -23,8 +24,8 @@ const style = StyleSheet.create({
 })
 
 
-Message.PropTypes = {
-style : PropTypes.object
+Message.propTypes = {
+style : StyleShape
 }
 
 export default Message

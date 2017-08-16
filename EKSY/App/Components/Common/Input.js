@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
 	}
 });
 
-Input.PropTypes = {
+Input.propTypes = {
 	label: PropTypes.object,
 }

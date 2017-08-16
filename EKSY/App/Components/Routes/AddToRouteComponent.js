@@ -3,6 +3,7 @@ import Header from '../Common/Header'
 import {View, StyleSheet} from 'react-native'
 import Button from '../Common/Button'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types'
 
 export default class AddToRouteComponent extends Component {
 	
@@ -27,3 +28,7 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor
 	}
 })
+
+AddToRouteComponent.propTypes = {
+	onCreateClick: PropTypes.func
+}

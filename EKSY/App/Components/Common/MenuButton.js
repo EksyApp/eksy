@@ -27,7 +27,7 @@ const styles = {
   }
 }
 
-MenuButton.PropTypes = {
+MenuButton.propTypes = {
   onPress: PropTypes.func
 }
 

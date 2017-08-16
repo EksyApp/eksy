@@ -4,7 +4,7 @@ import {View, StyleSheet} from 'react-native'
 import MarkerModalContainer from "../../Containers/MainView/MarkerModal/MarkerModalContainer";
 import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSheetContainer";
 import MapContainer from "../../Containers/MainView/Map/MapContainer";
-
+import PropTypes from 'prop-types'
 
 class MainViewComponent extends Component {
 	
@@ -33,4 +33,8 @@ const styles = StyleSheet.create({
 	}
 })
 
+
+MainViewComponent.propTypes = {
+	menuButtonPress: PropTypes.func
+}
 export default MainViewComponent

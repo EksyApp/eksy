@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import PropTypes from 'prop-types';
-import { RegionShape } from "../../Utils/PropTypeShapes";
+import {RegionShape, StyleShape} from "../../Utils/PropTypeShapes";
 
 class PointSelector extends Component {
 	
@@ -47,9 +47,9 @@ class PointSelector extends Component {
 	
 }
 
-PointSelector.PropTypes = {
+PointSelector.propTypes = {
 	onChange: PropTypes.func,
-	style: PropTypes.object,
+	style: StyleShape,
 	initialRegion: RegionShape
 }
 

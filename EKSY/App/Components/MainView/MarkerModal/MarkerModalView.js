@@ -7,7 +7,8 @@ import TextArea from "../../Common/TextArea";
 import PictureSwiper from "../../Common/PictureSwiper";
 import Label from "../../Common/Label";
 import {Icon} from "react-native-elements";
-
+import PropTypes from 'prop-types'
+import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
 export default class MarkerModalView extends Component {
 	
@@ -199,3 +200,10 @@ const styles = StyleSheet.create({
 		left: 0
 	}
 })
+
+MarkerModalView.propTypes = {
+	marker: MarkerShape,
+	user: UserShape,
+	onEditClick: PropTypes.func,
+	onAddClick: PropTypes.func
+}

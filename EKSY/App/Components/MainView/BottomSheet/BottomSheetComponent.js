@@ -4,6 +4,8 @@ import {Badge} from "react-native-elements";
 import MarkerCarousel from "./MarkerCarousel";
 import Interactable from 'react-native-interactable'
 import * as Theme from "../../../Theme";
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../../Utils/PropTypeShapes";
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -118,5 +120,12 @@ const styles = StyleSheet.create({
 		color: '#FFFFFF'
 	}
 })
+
+BottomSheetComponent.propTypes = {
+	markerList: MarkersShape,
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+}
 
 export default BottomSheetComponent

@@ -7,6 +7,11 @@ export const RegionShape = PropTypes.shape({
 	longitudeDelta: PropTypes.number
 })
 
+export const LocationShape = PropTypes.shape({
+	latitude: PropTypes.number,
+	longitude: PropTypes.number,
+})
+
 export const ImagesShape = PropTypes.arrayOf(PropTypes.shape({
 	uri: PropTypes.string,
 	width: PropTypes.number,
@@ -41,6 +46,12 @@ export const MarkerShape = PropTypes.shape({
 	title: PropTypes.string
 })
 
-
+export const UserShape = PropTypes.shape({
+	admin: PropTypes.bool,
+	markers: PropTypes.object,
+	firebaseUser: PropTypes.object
+})
 
 export const MarkersShape = PropTypes.arrayOf(MarkerShape)
+
+export const StyleShape = PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)])
