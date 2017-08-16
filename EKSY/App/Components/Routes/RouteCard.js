@@ -4,6 +4,8 @@ import {TouchableWithoutFeedback} from 'react-native'
 import CardSection from '../Common/CardSection'
 import Label from '../Common/Label'
 import TextArea from '../Common/TextArea'
+import PropTypes from 'prop-types'
+import {RouteShape, StyleShape} from "../../Utils/PropTypeShapes";
 
 export default class RouteCard extends Component {
 	
@@ -40,5 +42,11 @@ const styles = StyleSheet.create({
 	title: {
 		marginTop: 10
 	}
-	
 });
+
+RouteCard.propTypes = {
+	onPress: PropTypes.func,
+	route: RouteShape,
+	width: PropTypes.number,
+	style: StyleShape,
+}

@@ -43,13 +43,21 @@ export const MarkerShape = PropTypes.shape({
 	longitude:PropTypes.number,
 	status:PropTypes.number,
 	text: PropTypes.string ,
-	title: PropTypes.string
+	title: PropTypes.string,
+	routes: PropTypes.object
 })
 
 export const UserShape = PropTypes.shape({
 	admin: PropTypes.bool,
 	markers: PropTypes.object,
-	firebaseUser: PropTypes.object
+	firebaseUser: PropTypes.object,
+	routes: PropTypes.object
+})
+
+export const RouteShape = PropTypes.shape({
+	title: PropTypes.string,
+	text: PropTypes.string,
+	markers: PropTypes.object
 })
 
 export const MarkersShape = PropTypes.arrayOf(MarkerShape)
