@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import CreateRouteComponent from '../../Components/Routes/CreateRouteComponent'
 import {connect} from 'react-redux'
 import Dao from '../../Dao/Dao'
+import {Actions} from 'react-native-router-flux'
 
 export class CreateRouteContainer extends Component {
 	
@@ -22,6 +23,7 @@ export class CreateRouteContainer extends Component {
 			markers: this.state.markers
 		}
 		new Dao().addNewRoute(route)
+		Actions.pop(2)
 	}
 	
 	render() {
