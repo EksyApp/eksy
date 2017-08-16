@@ -5,6 +5,7 @@ import * as ReduxActions from "../../Actions";
 import SignUpComponent from "../../Components/Auth/SignUpComponent";
 import firebase from 'firebase'
 import Dao from "../../Dao/Dao";
+import PropTypes from 'prop-types'
 
 export class SignUpContainer extends Component {
 
@@ -58,6 +59,11 @@ export class SignUpContainer extends Component {
 		)
 	}
 
+}
+
+SignUpContainer.propTypes = {
+	userCreated: PropTypes.func,
+	userLoggedIn: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

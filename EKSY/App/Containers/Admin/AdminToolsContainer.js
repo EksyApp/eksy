@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import AdminToolsComponent from "../../Components/Admin/AdminToolsComponent";
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
 
 export class AdminToolsContainer extends Component {
 	
@@ -29,9 +30,11 @@ export class AdminToolsContainer extends Component {
       />
     )
   }
-	
-	
-	
+}
+
+AdminToolsContainer.propTypes = {
+	updateRadius: PropTypes.func,
+	radius: PropTypes.number
 }
 
 const mapStateToProps = (state) => {

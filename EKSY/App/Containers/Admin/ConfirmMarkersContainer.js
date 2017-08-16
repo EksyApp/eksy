@@ -4,6 +4,7 @@ import Dao from "../../Dao/Dao"
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 import ConfirmMarkersComponent from "../../Components/Admin/ConfirmMarkersComponent";
+import PropTypes from 'prop-types'
 
 export class ConfirmMarkersContainer extends Component {
 	
@@ -66,6 +67,10 @@ let markerTimeCompare = function (a, b) {
 	return aTime - bTime
 };
 
+
+ConfirmMarkersContainer.propTypes = {
+	setMarkerSelected: PropTypes.func
+}
 
 const mapStateToProps = (state) => {
 	return {}

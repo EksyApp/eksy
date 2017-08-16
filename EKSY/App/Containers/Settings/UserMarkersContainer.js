@@ -4,6 +4,7 @@ import Dao from "../../Dao/Dao"
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 import UserMarkersComponent from "../../Components/Settings/UserMarkersComponent";
+import PropTypes from 'prop-types'
 
 export class UserMarkersContainer extends Component {
 	
@@ -47,6 +48,9 @@ export class UserMarkersContainer extends Component {
 	}
 }
 
+UserMarkersContainer.propTypes = {
+	setMarkerSelected: PropTypes.func,
+}
 
 const mapStateToProps = (state) => {
 	return {}

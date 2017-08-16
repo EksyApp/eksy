@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import CreateRouteComponent from '../../Components/Routes/CreateRouteComponent'
 import {connect} from 'react-redux'
 import Dao from '../../Dao/Dao'
+import {MarkerShape} from "../../Utils/PropTypeShapes";
 
 export class CreateRouteContainer extends Component {
 	
@@ -41,6 +42,10 @@ export class CreateRouteContainer extends Component {
 	}
 	
 	
+}
+
+CreateRouteContainer.propTypes = {
+	marker: MarkerShape,
 }
 
 const mapStateToProps = (state) => {

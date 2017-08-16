@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import {PermissionsAndroid} from 'react-native'
 import * as ReduxActions from '../../Actions/index'
 import {connect} from 'react-redux'
 import MainViewComponent from "../../Components/MainView/MainViewComponent";
-
+import PropTypes from 'prop-types'
 
 export class MainViewContainer extends Component {
 	
@@ -14,6 +13,10 @@ export class MainViewContainer extends Component {
 				/>
 		)
 	}
+}
+
+MainViewContainer.propTypes = {
+	menuButtonPress: PropTypes.func
 }
 
 const mapStateToProps = (state) => {

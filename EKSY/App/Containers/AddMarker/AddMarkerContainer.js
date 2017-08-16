@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import Dao from '../../Dao/Dao'
 import Filters from '../../Data/Filters'
 import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
+import {RegionShape} from "../../Utils/PropTypeShapes";
 
 export class AddMarkerContainer extends Component {
 	constructor(props) {
@@ -77,10 +78,11 @@ export class AddMarkerContainer extends Component {
 				/>
 		)
 	}
-
-	
 }
 
+AddMarkerContainer.propTypes = {
+	currentRegion: RegionShape,
+}
 
 const mapStateToProps = (state) => {
 	return {
