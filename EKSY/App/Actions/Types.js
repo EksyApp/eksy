@@ -22,3 +22,5 @@ export const MARKERVIEW_HIDDEN = "markerview hidden"
 
 export const FILTER_ADDED = "filter added"
 export const FILTER_REMOVED = "filter removed"
+
+export const ROUTE_SELECTED = "route selected"

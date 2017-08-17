@@ -47,6 +47,7 @@ export default class EditableMarkerList extends Component {
 				<ListView
 						dataSource={this.dataSource}
 						renderRow = {(marker, sectionID, rowID) => {
+							console.log(rowID)
 							return(
 									<Row
 											marker={marker}
