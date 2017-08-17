@@ -90,6 +90,19 @@ export default class MarkerModalView extends Component {
 		}
 	}
 	
+	_renderAddToRouteIcon() {
+		if (this.props.user) {
+			return (
+					<Icon
+							name="playlist-add"
+							size={25}
+							containerStyle={styles.icon}
+							onPress={this.props.onAddClick}
+					/>
+			)
+		}
+	}
+	
 	_renderTitleAndText() {
 		return (
 				<View
@@ -99,12 +112,7 @@ export default class MarkerModalView extends Component {
 						<Label style={styles.title}>{this.props.marker.title}</Label>
 						<View style={styles.iconHolder}>
 							{this._renderEditingIcon()}
-							<Icon
-									name="playlist-add"
-									size={25}
-									containerStyle={styles.icon}
-									onPress={this.props.onAddClick}
-							/>
+							{this._renderAddToRouteIcon()}
 						</View>
 						
 					</View>

@@ -24,12 +24,13 @@ export class CreateRouteContainer extends Component {
 			markers: this.state.markers
 		}
 		new Dao().addNewRoute(route)
-		Actions.pop(2)
+		Actions.pop()
 	}
 	
 	render() {
 		return(
 				<CreateRouteComponent
+						currentRegion={this.props.currentRegion}
 						
 						onTitleChange={(title) => this.setState({title})}
 						
@@ -53,7 +54,7 @@ CreateRouteContainer.propTypes = {
 const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
-		user: state.auth.user
+		currentRegion: state.map.currentRegion
 	}
 }
 

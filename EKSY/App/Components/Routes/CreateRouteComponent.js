@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View, StyleSheet, ScrollView} from 'react-native'
 import * as Theme from '../../Theme'
 import Header from '../Common/Header'
 import RouteForm from './RouteForm'
@@ -13,8 +13,10 @@ export default class CreateRouteComponent extends Component {
 		return(
 				<View style={styles.container}>
 					<Header backButton title="Create a route"/>
-					<View>
+					<ScrollView style={styles.container}>
 						<RouteForm
+								initialRegion={this.props.currentRegion}
+								
 								initialTitle=""
 								onTitleChange={this.props.onTitleChange}
 								
@@ -27,7 +29,7 @@ export default class CreateRouteComponent extends Component {
 						<Button onPress={this.props.onCreateClick}>
 							Create
 						</Button>
-					</View>
+					</ScrollView>
 				</View>
 		)
 	}
