@@ -47,6 +47,8 @@ exports[`ImagePicker renders correctly 1`] = `
         "paddingTop": 10,
       }
     }
-  />
+  >
+    
+  </Text>
 </View>
 `;
