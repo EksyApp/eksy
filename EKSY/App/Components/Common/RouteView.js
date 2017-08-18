@@ -5,6 +5,8 @@ import Label from './Label'
 import TextArea from './TextArea'
 import Divider from './Divider'
 import MarkerCardList from './MarkerCardList'
+import PropTypes from 'prop-types'
+import {RegionShape, RouteShape} from "../../Utils/PropTypeShapes";
 
 export default class RouteView extends Component {
 	
@@ -46,3 +48,9 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+RouteView.propTypes = {
+	initialRegion: RegionShape,
+	route: RouteShape,
+	onMarkerClick: PropTypes.func,
+}
