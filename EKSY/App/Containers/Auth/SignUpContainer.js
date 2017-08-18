@@ -6,6 +6,7 @@ import SignUpComponent from "../../Components/Auth/SignUpComponent";
 import firebase from 'firebase'
 import Dao from "../../Dao/Dao";
 
+//Renders the view for sign up and holds it's logic
 export class SignUpContainer extends Component {
 
 	constructor(props) {
@@ -18,7 +19,7 @@ export class SignUpContainer extends Component {
 			confirmPassword: '',
 			response: ''
 		}
-		
+
 		this.dao = new Dao();
 	}
 

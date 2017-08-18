@@ -5,13 +5,16 @@ import firebase from 'firebase'
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 
+//Renders the view for user tool's list and holds it's logic
+//Upper part of user setting view
+//Paths (buttons) to user's markers, routes and signout
 export class ProfileContainer extends Component {
-	
+
 	async signout() {
 		await firebase.auth().signOut()
 		this.props.userSignedOut()
 	}
-	
+
 	render() {
 		console.log(this)
 		return (
@@ -24,7 +27,7 @@ export class ProfileContainer extends Component {
 				/>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = (state) => {

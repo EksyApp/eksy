@@ -3,8 +3,10 @@ import UserMarkerViewComponent from "../../Components/Settings/UserMarkerViewCom
 import {Actions} from 'react-native-router-flux'
 import {connect} from "react-redux";
 
+//Renders the user's marker view and holds its logic
+//Edit button takes to edit marker view
 export class UserMarkerViewContainer extends Component {
-	
+
 	render() {
 		return(
 				<UserMarkerViewComponent
@@ -14,7 +16,7 @@ export class UserMarkerViewContainer extends Component {
 				/>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = (state) => {
