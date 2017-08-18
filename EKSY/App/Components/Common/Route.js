@@ -16,9 +16,9 @@ export default class Route extends Component {
 							longitude: this.props.markers[0].longitude
 						}}
 				>
-					{this.props.markers.map((marker) => {
+					{this.props.markers.map((marker, index) => {
 						return(
-								<MapView.Marker coordinate={{latitude: marker.latitude, longitude: marker.longitude}}/>
+								<MapView.Marker key={index} coordinate={{latitude: marker.latitude, longitude: marker.longitude}}/>
 						)
 					})}
 					
