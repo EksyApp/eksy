@@ -5,9 +5,9 @@ import MarkerModalComponent from "../../../Components/MainView/MarkerModal/Marke
 import PropTypes from 'prop-types'
 import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
-
+//Renders the marker's modal and handles it's logic
 export class MarkerModalContainer extends Component {
-	
+
 	render() {
 		return (
 				<MarkerModalComponent

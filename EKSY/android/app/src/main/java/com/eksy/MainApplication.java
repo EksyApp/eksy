@@ -1,4 +1,4 @@
-package com.eksy;
+package com.eksyapp;
 
 import android.app.Application;
 

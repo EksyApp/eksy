@@ -5,8 +5,9 @@ import * as ReduxActions from "../../../Actions/index";
 import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
 
+//Renders the drawable bottomsheet and handles it's logic 
 class BottomSheetContainer extends Component {
-	
+
 	render() {
 		return (
 			<BottomSheetComponent
@@ -17,7 +18,7 @@ class BottomSheetContainer extends Component {
 			/>
 		)
 	}
-	
+
 }
 
 BottomSheetContainer.propTypes = {

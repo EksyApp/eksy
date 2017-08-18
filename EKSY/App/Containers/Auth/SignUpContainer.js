@@ -7,11 +7,12 @@ import firebase from 'firebase'
 import Dao from "../../Dao/Dao";
 import PropTypes from 'prop-types'
 
+//Renders the view for sign up and holds it's logic
 export class SignUpContainer extends Component {
-
+	
 	constructor(props) {
 		super(props)
-
+		
 		this.state = {
 			email: '',
 			username: '',
@@ -22,10 +23,10 @@ export class SignUpContainer extends Component {
 		
 		this.dao = new Dao();
 	}
-
+	
 	async signup () {
 		DismissKeyboard()
-
+		
 		try {
 			if (this.state.password !== this.state.confirmPassword) {
 				throw 'Passwords don\'t match'
@@ -38,14 +39,16 @@ export class SignUpContainer extends Component {
 			this.setState({
 				response: 'account created'
 			})
-			this.props.userLoggedIn(await this.dao.getUserObject(null))
+			await this.dao.userLoggedIn()
+			
+			setTimeout(() => {Actions.pop()}, 1000)
 		} catch (error) {
 			this.setState({
 				response: error.toString()
 			})
 		}
 	}
-
+	
 	render() {
 		return (
 				<SignUpComponent
@@ -58,7 +61,7 @@ export class SignUpContainer extends Component {
 				/>
 		)
 	}
-
+	
 }
 
 SignUpContainer.propTypes = {

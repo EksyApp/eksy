@@ -6,6 +6,7 @@ import {SideMenu} from 'react-native-elements'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
+//to manage sidebars visibility (hidden/display)
 class NavigationDrawer extends Component {
 	
 	render() {

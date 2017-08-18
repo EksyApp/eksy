@@ -6,8 +6,12 @@ import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSh
 import MapContainer from "../../Containers/MainView/Map/MapContainer";
 import PropTypes from 'prop-types'
 
+//Renders the main View
+//Map view (MapComponent) holds marker tags (Marker)
+//Drawable bottom sheet (BottomSheetComponent) holds marker carousel (MarkerCarousel) 
+
 class MainViewComponent extends Component {
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
@@ -38,3 +42,4 @@ MainViewComponent.propTypes = {
 	menuButtonPress: PropTypes.func
 }
 export default MainViewComponent
+

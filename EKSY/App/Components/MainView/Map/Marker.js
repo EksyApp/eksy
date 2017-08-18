@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import { MarkerShape } from "../../../Utils/PropTypeShapes";
 
+//Renders the marker tags on Map
+//When marker tag is pressed opens marker view modal (MarkerModal)
 class Marker extends Component {
 	constructor (props) {
 		super(props)

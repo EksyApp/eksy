@@ -5,8 +5,9 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types'
 import {LocationShape, MarkersShape, RegionShape} from "../../../Utils/PropTypeShapes";
 
+//Renders the map and handles it's logic
 export class MapContainer extends Component {
-	
+
 	render() {
 		return (
 				<MapComponent
@@ -21,7 +22,7 @@ export class MapContainer extends Component {
 				/>
 		)
 	}
-	
+
 }
 
 MapContainer.propTypes = {
