@@ -1,24 +1,25 @@
 import React, {Component} from 'react'
-import UserMarkerViewComponent from "../../Components/Settings/UserMarkerViewComponent";
+import MarkerViewComponent from "../../Components/Settings/MarkerViewComponent";
 import {Actions} from 'react-native-router-flux'
 import {connect} from "react-redux";
 import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
-export class UserMarkerViewContainer extends Component {
+export class MarkerViewContainer extends Component {
 	
 	render() {
 		return(
-				<UserMarkerViewComponent
+				<MarkerViewComponent
 						marker={this.props.marker}
 						currentRegion={this.props.currentRegion}
 						onEditClick={() => Actions.editMarker()}
+						user={this.props.user}
 				/>
 		)
 	}
 	
 }
 
-UserMarkerViewContainer.propTypes = {
+MarkerViewContainer.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape,
 }
@@ -26,7 +27,8 @@ UserMarkerViewContainer.propTypes = {
 const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
-		currentRegion: state.map.currentRegion
+		currentRegion: state.map.currentRegion,
+		user: state.auth.user
 	}
 }
 
@@ -34,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
 	return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserMarkerViewContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MarkerViewContainer)

@@ -31,7 +31,7 @@ export class UserMarkersContainer extends Component {
 	
 	handlePress(marker) {
 		this.props.setMarkerSelected(marker)
-		Actions.userMarkerView()
+		Actions.markerView()
 	}
 	
 	render () {
