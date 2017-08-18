@@ -1,4 +1,4 @@
-package com.eksy;
+package com.eksyapp;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
