@@ -8,19 +8,23 @@ import MarkerCardList from '../Common/MarkerCardList'
 import TextArea from '../Common/TextArea'
 import Divider from '../Common/Divider'
 import RouteView from '../Common/RouteView'
+import Button from '../Common/Button'
 
 export default class RouteViewComponent extends Component {
 	
 	render() {
 		return(
 				<View style={styles.container}>
-					<Header backButton title="Your route"/>
+					<Header backButton title="Route"/>
 					<ScrollView style={styles.container}>
 						<RouteView
 								initialRegion={this.props.currentRegion}
 								route={this.props.route}
 								onMarkerClick={this.props.onMarkerClick}
 						/>
+						<Button onPress={() => this.props.onEditClick()}>
+							Edit
+						</Button>
 					</ScrollView>
 				</View>
 		)

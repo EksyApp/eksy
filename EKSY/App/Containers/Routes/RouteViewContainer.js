@@ -11,15 +11,21 @@ export class RouteViewContainer extends Component {
 		Actions.markerView()
 	}
 	
+	handleEditClick() {
+		Actions.editRoute()
+	}
+	
 	render() {
 		return(
 				<RouteViewComponent
 						route={this.props.route}
 						currentRegion={this.props.currentRegion}
 						onMarkerClick={(marker) => this.handleMarkerClick(marker)}
+						onEditClick={() => this.handleEditClick()}
 				/>
 		)
 	}
+	
 	
 	
 }
