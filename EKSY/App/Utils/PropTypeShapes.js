@@ -57,7 +57,7 @@ export const UserShape = PropTypes.shape({
 export const RouteShape = PropTypes.shape({
 	title: PropTypes.string,
 	text: PropTypes.string,
-	markers: PropTypes.object
+	markers: MarkersShape
 })
 
 export const RoutesShape = PropTypes.arrayOf(RouteShape)
