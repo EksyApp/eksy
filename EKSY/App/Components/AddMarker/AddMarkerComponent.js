@@ -4,10 +4,8 @@ import * as Theme from "../../Theme/index";
 import {Button, Header} from "../../Components/Common/index";
 import MarkerForm from "./MarkerForm";
 
-class AddMarkerComponent extends Component {
-	
-	
-	
+class AddMarkerComponent extends Component {	
+
 	render() {
 		return (
 				<View style={styles.container}>
@@ -16,16 +14,16 @@ class AddMarkerComponent extends Component {
 						<MarkerForm
 								initialRegion={this.props.initialRegion}
 								onRegionChange={this.props.onRegionChange}
-								
+
 								initialTitle=""
 								onTitleChange={this.props.onTitleChange}
-								
+
 								initialText=""
 								onTextChange={this.props.onTextChange}
-								
+
 								images={this.props.images}
 								onNewImage={this.props.onNewImage}
-								
+
 								filters={this.props.filters}
 								onFilterChange={this.props.onFilterChange}
 						/>
@@ -38,10 +36,10 @@ class AddMarkerComponent extends Component {
 						</View>
 					</ScrollView>
 				</View >
-		
+
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -49,13 +47,12 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor,
 		flex: 1
 	},
-	
+
 	buttonContainer: {
 		marginTop: 10,
 		marginBottom: 20
 	},
-	
+
 })
 
 export default AddMarkerComponent
-

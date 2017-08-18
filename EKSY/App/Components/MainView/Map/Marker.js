@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import {Actions} from 'react-native-router-flux'
 import * as ReduxActions from '../../../Actions/index'
 
+//Renders the marker tags on Map
+//When marker tag is pressed opens marker view modal (MarkerModal)
 class Marker extends Component {
   constructor (props) {
     super(props)
