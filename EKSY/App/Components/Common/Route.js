@@ -12,8 +12,8 @@ export default class Route extends Component {
 						style={this.props.style}
 						initialRegion={{
 							...this.props.initialRegion,
-							latitude: this.props.markers[0].latitude,
-							longitude: this.props.markers[0].longitude
+							latitude: this.props.markers[0] ? this.props.markers[0].latitude : this.props.initialRegion.latitude,
+							longitude: this.props.markers[0] ? this.props.markers[0].longitude : this.props.initialRegion.longitude
 						}}
 				>
 					{this.props.markers.map((marker, index) => {

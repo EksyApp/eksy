@@ -11,7 +11,7 @@ export default class SettingsComponent extends Component {
 	render () {
 		return (
 				<View style={styles.container}>
-					<Header title='Filter Settings' backButton />
+					<Header title='Settings' backButton />
 					<ProfileContainer/>
 					<FilterSettingsContainer/>
 				</View>

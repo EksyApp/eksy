@@ -16,6 +16,7 @@ import AddToRouteContainer from '../Containers/Routes/AddToRouteContainer'
 import CreateRouteContainer from '../Containers/Routes/CreateRouteContainer'
 import UserRoutesContainer from '../Containers/Routes/UserRoutesContainer'
 import RouteViewContainer from '../Containers/Routes/RouteViewContainer'
+import EditRouteContainer from '../Containers/Routes/EditRouteContainer'
 
 // defines all routes in the app
 const scenes = Actions.create(
@@ -35,7 +36,8 @@ const scenes = Actions.create(
       <Scene key="addToRoute" component={AddToRouteContainer} title="Add to route"/>
       <Scene key="createRoute" component={CreateRouteContainer} title="Create route" />
       <Scene key="userRoutes" component={UserRoutesContainer} title="Your routes"/>
-      <Scene key="routeView" component={RouteViewContainer} title="Your route" />
+      <Scene key="routeView" component={RouteViewContainer} title="Route" />
+      <Scene key="editRoute" component={EditRouteContainer} title="Edit route" />
     </Scene>
   </Scene>
 );

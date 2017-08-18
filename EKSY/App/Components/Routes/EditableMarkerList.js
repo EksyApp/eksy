@@ -11,7 +11,7 @@ export default class EditableMarkerList extends Component {
 	constructor(props) {
 		super(props)
 		
-		this.dataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
+		this.dataSource = new ListView.DataSource({rowHasChanged: (r1,r2) => true})
 		
 		this.state = {
 			markers: this.props.markers
@@ -47,11 +47,10 @@ export default class EditableMarkerList extends Component {
 				<ListView
 						dataSource={this.dataSource}
 						renderRow = {(marker, sectionID, rowID) => {
-							console.log(rowID)
 							return(
 									<Row
 											marker={marker}
-											index={rowID}
+											index={parseInt(rowID)}
 											onRowDelete={(index) => {this.deleteRow(index)}}
 											onRowSwap={(index, change) => {this.swapRows(index, change)}}
 									/>

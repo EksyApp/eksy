@@ -34,7 +34,7 @@ export class AddToRouteContainer extends Component {
 	}
 	
 	handleRouteClick(route) {
-		route.markers.push(this.props.marker.key)
+		route.markers.push(this.props.marker)
 		new Dao().updateRoute(route)
 		Actions.pop()
 	}
