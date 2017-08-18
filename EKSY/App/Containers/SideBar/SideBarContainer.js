@@ -6,18 +6,19 @@ import SideBarComponent from "../../Components/SideBar/SideBarComponent";
 import PropTypes from 'prop-types'
 import {UserShape} from "../../Utils/PropTypeShapes";
 
+//Renders sidebar view and holds it's logic
 export class SideBarContainer extends Component {
 	
 	render() {
 		return (
-        <SideBarComponent
-            goToMap={this.props.goToMap}
-            goToUserSettings={this.props.goToUserSettings}
-            goToAddMarker={this.props.goToAddMarker}
-            goToLoginScreen={this.props.goToLoginScreen}
-            goToAdminTools={this.props.goToAdminTools}
-            user={this.props.user}
-        />
+				<SideBarComponent
+						goToMap={this.props.goToMap}
+						goToUserSettings={this.props.goToUserSettings}
+						goToAddMarker={this.props.goToAddMarker}
+						goToLoginScreen={this.props.goToLoginScreen}
+						goToAdminTools={this.props.goToAdminTools}
+						user={this.props.user}
+				/>
 		)
 	}
 }

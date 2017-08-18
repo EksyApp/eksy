@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import MainViewComponent from "../../Components/MainView/MainViewComponent";
 import PropTypes from 'prop-types'
 
+//Renders the main view and handles it's logic
 export class MainViewContainer extends Component {
 	
 	render() {

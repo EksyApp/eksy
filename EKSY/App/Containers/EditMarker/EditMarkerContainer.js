@@ -8,14 +8,15 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
+//Renders the view for user to edit and update marker's content and holds it's logic
 export class EditMarkerContainer extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.dao = new Dao();
 		this.filters = [...Filters.mainFilters];
-		
+
 		this.state = {
 			region: {
 				...this.props.currentRegion,
@@ -27,7 +28,7 @@ export class EditMarkerContainer extends Component {
 			images: this.props.selectedMarker.images ? this.props.selectedMarker.images : [] ,
 			filters: this.props.selectedMarker.filters ? this.props.selectedMarker.filters : []
 		}
-		
+
 		if(this.state.filters) {
 			for (let filter of this.filters) {
 				if (this.state.filters.includes(filter.name)) {
@@ -37,10 +38,10 @@ export class EditMarkerContainer extends Component {
 				}
 			}
 		}
-		
-		
+
+
 	}
-	
+
 	onFilterChange(name, checked) {
 		if (checked) {
 			this.setState({filters: [...this.state.filters, name]})
@@ -48,7 +49,7 @@ export class EditMarkerContainer extends Component {
 			this.setState({filters: this.state.filters.filter((filter) => name !== filter)})
 		}
 	}
-	
+
 	saveMarker() {
 		this.props.selectedMarker.latitude = this.state.region.latitude
 		this.props.selectedMarker.longitude = this.state.region.longitude
@@ -56,12 +57,12 @@ export class EditMarkerContainer extends Component {
 		this.props.selectedMarker.title = this.state.title
 		this.props.selectedMarker.images = this.state.images
 		this.props.selectedMarker.filters = this.state.filters
-		
-		
+
+
 		this.dao.updateMarker(this.props.selectedMarker)
 		Actions.pop()
 	}
-	
+
 	deleteMarker() {
 		Alert.alert(
 				'Delete marker',
@@ -74,9 +75,9 @@ export class EditMarkerContainer extends Component {
 					}}
 				]
 		)
-		
+
 	}
-	
+
 	render() {
 		return (
 				<EditMarkerComponent
@@ -85,31 +86,31 @@ export class EditMarkerContainer extends Component {
 							latitude: this.props.selectedMarker.latitude,
 							longitude: this.props.selectedMarker.longitude
 						}}
-						
+
 						onRegionChange={(region) => {
 							this.setState({region: region})
 						}}
-						
+
 						initialTitle={this.state.title}
 						onTitleChange={(title) => {
 							this.setState({title: title})
 						}}
-						
+
 						initialText={this.state.text}
 						onTextChange={(text) => {
 							this.setState({text: text})
 						}}
-						
+
 						images={this.state.images}
 						onNewImage={(image) => {
 							this.setState({images: [...this.state.images, image]})
 						}}
-						
+
 						filters={this.filters}
 						onFilterChange={(name, checked) => {
 							this.onFilterChange(name, checked)
 						}}
-						
+
 						onSaveClick={() => {
 							this.saveMarker()
 						}}
@@ -119,7 +120,7 @@ export class EditMarkerContainer extends Component {
 				/>
 		)
 	}
-	
+
 }
 
 EditMarkerContainer.propTypes = {

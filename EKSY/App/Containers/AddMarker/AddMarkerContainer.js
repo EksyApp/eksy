@@ -9,13 +9,14 @@ import Filters from '../../Data/Filters'
 import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
 import {RegionShape} from "../../Utils/PropTypeShapes";
 
+//Renders the view for adding marker and holds it's logic
 export class AddMarkerContainer extends Component {
 	constructor(props) {
 		super(props)
 		
 		this.dao = new Dao();
 		this.filters = [...Filters.mainFilters];
-
+		
 		this.state = {
 			region: this.props.currentRegion,
 			text: '',
@@ -27,10 +28,10 @@ export class AddMarkerContainer extends Component {
 		for (let filter of this.filters) {
 			filter.checked = false
 		}
-
+		
 		this.mapManager = new MapManager()
 	}
-
+	
 	addNewMarker() {
 		let marker = {
 			latitude: this.state.region.latitude,
@@ -55,7 +56,7 @@ export class AddMarkerContainer extends Component {
 		}
 	}
 	
-
+	
 	render() {
 		return (
 				<AddMarkerComponent
@@ -74,7 +75,7 @@ export class AddMarkerContainer extends Component {
 						onFilterChange={(name, checked) => {this.onFilterChange(name, checked)}}
 						
 						onAddMarkerClick={() => {this.addNewMarker()}}
-				  
+				
 				/>
 		)
 	}

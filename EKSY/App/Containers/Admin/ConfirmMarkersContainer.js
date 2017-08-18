@@ -6,8 +6,10 @@ import {Actions} from 'react-native-router-flux'
 import ConfirmMarkersComponent from "../../Components/Admin/ConfirmMarkersComponent";
 import PropTypes from 'prop-types'
 
+//Renders the admin's list of unconfirmed markers and holds its logic
+//Clickable list of markers leads to admins marker view to govern markers
 export class ConfirmMarkersContainer extends Component {
-	
+
 	constructor(props){
 		super(props)
 		this.dao= new Dao()
@@ -16,16 +18,16 @@ export class ConfirmMarkersContainer extends Component {
 			pendingMarkers: null,
 		}
 	}
-	
+
 	componentWillMount() {
 		this.refresh()
 	}
-	
+
 	refresh() {
 		this.setState({loading: true})
 		this.getMarkers()
 	}
-	
+
 	async getMarkers() {
 		let markers = await this.dao.getPendingMarkers()
 		markers.sort((a,b) => {
@@ -33,12 +35,12 @@ export class ConfirmMarkersContainer extends Component {
 		})
 		this.setState({loading: false, pendingMarkers: markers})
 	}
-	
+
 	handlePress(marker) {
 		this.props.setMarkerSelected(marker)
 		Actions.adminMarkerView()
 	}
-	
+
 	render () {
 		return (
 				<ConfirmMarkersComponent

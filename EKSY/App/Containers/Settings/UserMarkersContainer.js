@@ -6,6 +6,8 @@ import {Actions} from 'react-native-router-flux'
 import UserMarkersComponent from "../../Components/Settings/UserMarkersComponent";
 import PropTypes from 'prop-types'
 
+//Renders a list of user's markers and holds it's logic
+//List component (marker) takes to user's marker view
 export class UserMarkersContainer extends Component {
 	
 	constructor(props){
@@ -17,7 +19,6 @@ export class UserMarkersContainer extends Component {
 		}
 		this.getMarkers()
 	}
-	
 	
 	refresh() {
 		this.setState({loading: true})

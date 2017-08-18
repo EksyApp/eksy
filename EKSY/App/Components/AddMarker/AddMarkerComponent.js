@@ -75,4 +75,3 @@ AddMarkerComponent.propTypes = {
 }
 
 export default AddMarkerComponent
-

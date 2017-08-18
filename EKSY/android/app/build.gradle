@@ -91,8 +91,8 @@ android {
         applicationId "com.eksy"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -120,15 +120,24 @@ android {
         debug {
             applicationIdSuffix ".debug"
             buildConfigField "String", "CODEPUSH_KEY", '""'
+            if (System.getenv('GOOGLE_MAPS_API_KEY_DEBUG')) {
+              resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_DEBUG')
+            }
         }
         releaseStaging {
             buildConfigField "String", "CODEPUSH_KEY", '"hNWpX5andRKkXjxTw4f70DJ4rZde615ea5ad-9e61-4e33-8df9-98285bcf804a"'
+            if (System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')) {
+              resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')
+            }
         }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
  signingConfig signingConfigs.release
             buildConfigField "String", "CODEPUSH_KEY", '"ClWH_d9F-kKZOnkCxI15b0ZBkmyy615ea5ad-9e61-4e33-8df9-98285bcf804a"'
+            if (System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')) {
+              resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')
+            }
         }
     }
     // applicationVariants are e.g. debug, release

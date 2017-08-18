@@ -13,10 +13,11 @@ import Dao from "../../Dao/Dao";
 import PropTypes from 'prop-types'
 import {Actions} from 'react-native-router-flux'
 
+//Renders the login view and holds it's logic
 export class LoginContainer extends Component {
 	constructor (props) {
 		super(props)
-
+		
 		this.state = {
 			email: '',
 			password: '',
@@ -25,14 +26,13 @@ export class LoginContainer extends Component {
 		}
 		
 		this.dao = new Dao()
-
+		
 	}
 	
-
 	async login () {
 		DismissKeyboard()
 		try {
-
+			
 			await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 			this.setState({
 				response: 'Logged In!'
@@ -41,7 +41,7 @@ export class LoginContainer extends Component {
 			await this.dao.userLoggedIn()
 			
 			setTimeout(() => {Actions.pop()}, 1000)
-
+			
 		} catch (error) {
 			console.warn(error)
 			this.setState({
@@ -49,15 +49,15 @@ export class LoginContainer extends Component {
 			})
 		}
 	}
-
+	
 	render () {
 		return (
-        <LoginComponent
-            onEmailChange = {(email) => {this.setState({email: email})}}
-            onPasswordChange = {(password) => {this.setState({password: password})}}
-            onLoginClick = {() => {this.login()}}
-            response = {this.state.response}
-        />
+				<LoginComponent
+						onEmailChange = {(email) => {this.setState({email: email})}}
+						onPasswordChange = {(password) => {this.setState({password: password})}}
+						onLoginClick = {() => {this.login()}}
+						response = {this.state.response}
+				/>
 		)
 	}
 }

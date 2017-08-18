@@ -1,26 +1,41 @@
 language: android
-
 before_install:
+- openssl aes-256-cbc -K $encrypted_5dee9b998ce7_key -iv $encrypted_5dee9b998ce7_iv
+  -in EKSY/android/app/my-release-key.keystore.enc -out EKSY/android/app/my-release-key.keystore -d
 - nvm install 7
 - node --version
 - cd EKSY/
-
 install:
 - npm install
-
-
+- npm install -g code-push-cli
 android:
   components:
   - build-tools-23.0.1
+  - build-tools-23.0.3
+  - build-tools-25.0.3
   - android-23
+  - android-25
   - extra-android-m2repository
   - extra-google-google_play_services
   - extra-google-m2repository
   - addon-google_apis-google-19
-
 script:
 - npm test
-
-after_success: 
+after_success:
 - npm run coverageToCoveralls
-
+- bash ../.travis/assembleRelease.sh
+- bash ../.travis/set_tags.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: TzslTjMzi5fS+juTqisXU49SssgvQb4AfjrhQ8k5LO2Ne0nb1nVXiljOUdU4EL8FuJ9fjJnsY/j+05EHiUHcjerrA+hHvSpW6CljvoNuTNEf9vsCutEwFsioZvlQTlkr5x9CG0Ft2OBtEgO7xz1vj2DdT4ljsJnzYgy8GBk0yQ9GHqYtGJpJvewKUnFLiYxQ3Q+F49IUPMZP3450KkXaVFjS3JDNIYY20r6vuWK6EMPY24TF1MpYD0rYyp0sc/WMWiVsTf7qZkxpMiwjbsDG64yKOS/7B0fv9ojPxf5qCUepMp4eNnxq1VMiwZsGM28C6kCty0AG3udA7RUIinWOmd/ogRVDPqyYJKfq+wUJiNHsOFxl9Zkgn8trVLrfD8i5C6rvt8r0teUherQJ4itfBhCWCE+X1QpX5e1OmhSRn0vZv2c4e+xdYXiVBSn4W1BGHwNzECh6bMnxt+P0KydthVfNIAjL8uEdKpBLjfpPFqq2wFe52ViBuekKfpPKjkm3HLFreMzs3pGxyQIzSDZtwjNj4Rp7k8XFFcX3Y3FBmcQ8rERb379TViFAhLPBfNxRWTjFyWX/73NjbYSk05aGWh2fFyApUKPB3UfakPcA5stTpY2t8lZ5YAUZDBUlwugFsfk6Rmdek+qSgFGwOQIljGw6hKD35+D98gyoTNQ50WU=
+  file: "$TRAVIS_BUILD_DIR/EKSY/android/app/build/outputs/apk/app-release*.apk"
+  file_glob: true
+  skip_cleanup: true
+  on:
+    branch: master
+    repo: EksyApp/eksy
+env:
+  global:
+  - secure: vrC3cZzBjzALsJafQJ0ajBn6qh+woA2RPuq3bME35g9oQb6t9AH8Aq/v0IbyAYHWSyQnicrnpFPMumKAE9IbFXbULXhFJWxkgVdclb32H2b1EPLTYHvOCGTJKFMsqPDW5DQGHSInYJ+TSAx8JqjVIpePpxx3q1pvzd6PFTww0faheMUCSR7tdRshoUiYfmJVVwJQ7YpNaMZpYxyCoN7D4jVkj5W+arcQNOviaAPjkreffOhj/5sFV8oURh+PXelREIXR0ALB6DTt5YhnElqF6eilxVwK+WCOcIfaJbIdjFTsqINUkkElBaN+fh00GCIF9xYlpSUIbgvKVuHfU85i4p20XuVpXKD07ubs4/FHlXDiSV6YvcOf4KjM0qGfJHYWiqKXVm5s8F7IXCwDzeHxjAJNUNNAgd6+K6lfndR2LT+6gDM9Pfjiy+soVtYWNxHNZERUYQhvwanKhblj6xX/5iEBqhpDKJZYHCA58Wda7mVYYov7RYYq/v8cHUSY/KMNbOkG/3Jd4PyQ6bNE6PlL5R1mRO8osRzjCBpLXFUeWjO4M4NBowJK0gv2qOveFChjo52jwlHqkWZQE3Yy701zNBSANRg/NiEqsI0cjTq8D4mWTIjvk+s8cMiaIUvTxHZYe8WfvSIr1SrOoj54YSGNXoo4owXcPz9M9Q8cJf996mc=
+  - secure: KpettaI65fd19wVa3XY8EFzOOe53I4tb12YJh3NnifDRZdriuJ4POu8ZKQXHWCzy3eh43O0XMm6071S0y2+HfDdMdslvbHgX5fX13UnBPtehYzqQSUub9WfFEo66f+8ntdLQGpAeLVYgQCEmc/jnm2+WZ+/jSLrj9gXERtloFnzMHVJc1Bj3Z1HcuU/pT1nebGLcMWMouVMoTxswSGI/hxxUYwzLldjxTvoNqXD+ewu+QllV9onrQZVTtJQaGKXF4kiE4fCoYjBV6Au737ug1f07dnFeSlV0lOb1EAcCOLQr5WwG8G2w2jXlIPJdtPR8bHpitWXgsYFbXzfhVDjKYHAvWyxjwsigKEQoWj2/7QAkKsDG/TEl5TMp/+vkScY6kOLcuPnBmiGhhoXww7TzuDMOJIqucxnqZURlju/xRY4J6wcx3pVDBdTbNmqpUZWbzNsmHAyTL1DNqwFsUtCYIIAOxasZJZUQycFas0GrYdtGCYGFxXQ3rwiNWawIh8Fu+RlzjvpSzwn/+6YcSsJkVSqjf0+irMa+KK1zclYG9y2ivyOcp6JnAmv0NqfIHQltZTri2GxMU6cJkhp+IaZCYyRJwGV4TkIMEtcC21onEfiFyOokZ5uQG8xpbMezYgUULjckf9UUMYNpIs+7ssmVHGNMiNpMQGVNv55egU3Y3C8=
