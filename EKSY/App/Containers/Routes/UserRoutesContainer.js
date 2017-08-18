@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import UserRoutesComponent from '../../Components/Routes/UserRoutesComponent'
 import Dao from '../../Dao/FirebaseDao'
 import * as ReduxActions from '../../Actions'
+import {Actions} from 'react-native-router-flux'
 
 export class UserRoutesContainer extends Component {
 	
@@ -29,7 +30,7 @@ export class UserRoutesContainer extends Component {
 	
 	handleCardClick(route) {
 		this.props.setRouteSelected(route)
-		Actions.userMarkerView()
+		Actions.routeView()
 	}
 	
 	render() {
@@ -38,7 +39,7 @@ export class UserRoutesContainer extends Component {
 					loading={this.state.loading}
 					routes={this.state.routes}
 					onRefresh={() => this.refresh()}
-					onCardClick={() => this.handleCardClick()}
+					onCardClick={(route) => this.handleCardClick(route)}
 			/>
 		)
 	}

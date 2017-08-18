@@ -11,10 +11,11 @@ import AdminToolsContainer from '../Containers/Admin/AdminToolsContainer'
 import AdminMarkerViewContainer from "../Containers/Admin/AdminMarkerViewContainer";
 import ConfirmMarkersContainer from "../Containers/Admin/ConfirmMarkersContainer";
 import UserMarkersContainer from "../Containers/Settings/UserMarkersContainer";
-import UserMarkerViewContainer from "../Containers/Settings/UserMarkerViewContainer";
+import MarkerViewContainer from "../Containers/Settings/MarkerViewContainer";
 import AddToRouteContainer from '../Containers/Routes/AddToRouteContainer'
 import CreateRouteContainer from '../Containers/Routes/CreateRouteContainer'
 import UserRoutesContainer from '../Containers/Routes/UserRoutesContainer'
+import RouteViewContainer from '../Containers/Routes/RouteViewContainer'
 
 // defines all routes in the app
 const scenes = Actions.create(
@@ -30,10 +31,11 @@ const scenes = Actions.create(
       <Scene key="signUp" component={SignUpContainer} title="Sign up"/>
       <Scene key="editMarker" component={EditMarkerContainer} title="Edit marker" />
 	    <Scene key="usersMarkers" component={UserMarkersContainer} title="Your markers" />
-	    <Scene key="userMarkerView" component={UserMarkerViewContainer} title="Your Marker" />
+	    <Scene key="markerView" component={MarkerViewContainer} title="Marker" />
       <Scene key="addToRoute" component={AddToRouteContainer} title="Add to route"/>
       <Scene key="createRoute" component={CreateRouteContainer} title="Create route" />
-      <Scene key="userRoutes" component={UserRoutesContainer}/>
+      <Scene key="userRoutes" component={UserRoutesContainer} title="Your routes"/>
+      <Scene key="routeView" component={RouteViewContainer} title="Your route" />
     </Scene>
   </Scene>
 );
