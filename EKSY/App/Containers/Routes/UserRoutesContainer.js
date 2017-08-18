@@ -4,6 +4,7 @@ import UserRoutesComponent from '../../Components/Routes/UserRoutesComponent'
 import Dao from '../../Dao/FirebaseDao'
 import * as ReduxActions from '../../Actions'
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
 
 export class UserRoutesContainer extends Component {
 	
@@ -43,8 +44,10 @@ export class UserRoutesContainer extends Component {
 			/>
 		)
 	}
-	
-	
+}
+
+UserRoutesContainer.propTypes = {
+	setRouteSelected: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {

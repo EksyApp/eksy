@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import MarkerViewComponent from "../../Components/Settings/MarkerViewComponent";
 import {Actions} from 'react-native-router-flux'
 import {connect} from "react-redux";
-import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
+import {MarkerShape, RegionShape, UserShape} from "../../Utils/PropTypeShapes";
 
 export class MarkerViewContainer extends Component {
 	
@@ -22,6 +22,7 @@ export class MarkerViewContainer extends Component {
 MarkerViewContainer.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape,
+	user: UserShape
 }
 
 const mapStateToProps = (state) => {

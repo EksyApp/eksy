@@ -2,12 +2,9 @@ import React, {Component} from 'react'
 import {View, StyleSheet, ScrollView} from 'react-native'
 import Header from '../Common/Header'
 import * as Theme from '../../Theme'
-import Route from '../Common/Route'
-import Label from '../Common/Label'
-import MarkerCardList from '../Common/MarkerCardList'
-import TextArea from '../Common/TextArea'
-import Divider from '../Common/Divider'
 import RouteView from '../Common/RouteView'
+import PropTypes from 'prop-types'
+import {RegionShape, RouteShape} from "../../Utils/PropTypeShapes";
 
 export default class RouteViewComponent extends Component {
 	
@@ -35,3 +32,9 @@ const styles = StyleSheet.create({
 	},
 	
 })
+
+RouteViewComponent.propTypes = {
+	currentRegion: RegionShape,
+	route: RouteShape,
+	onMarkerClick: PropTypes.func
+}
