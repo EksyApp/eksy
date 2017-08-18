@@ -352,14 +352,30 @@ class FirebaseDao {
 		if (user.routes) {
 			return Promise.all(Object.keys(user.routes).map(async (routeKey) => {
 				let snapshot = await firebase.database().ref('/routes/' + routeKey).once('value')
-				return {...snapshot.val(), key: snapshot.key}
+				let route = {...snapshot.val(), key: routeKey}
+				route.markers = await this.getRoutesMarkerObjects(route)
+				return route
 			}))
 		}
 		return []
 	}
 	
+	async getRoutesMarkerObjects(route) {
+		return await Promise.all(route.markers.map(async (markerKey) => {
+			let markerRef = await firebase.database().ref('/markers/markers_info/' + markerKey).once('value')
+			return {...markerRef.val(), key: markerKey}
+		}))
+	}
+	
+	async getRouteMarkersKeyArray(route) {
+		return await Promise.all(route.markers.map(async (marker) => {
+			return marker.key
+		}))
+	}
+	
 	async updateRoute(route) {
 		route.editedAt = new Date().getTime()
+		route.markers = await this.getRouteMarkersKeyArray(route)
 		let oldRouteSnapshot = await firebase.database().ref('/routes/' + route.key).once('value')
 		await firebase.database().ref('/markers/marker_info/' + oldRouteSnapshot.val().markers[0] + '/routes/' + route.key).remove()
 		firebase.database().ref('/markers/marker_info/' + route.markers[0] + '/routes/' + route.key).set(true)
@@ -384,6 +400,7 @@ class FirebaseDao {
 		let key = snapshot.key
 		if (snapshot.val() != null) {
 			let route = {...snapshot.val(), key}
+			route.markers = await this.getRoutesMarkerObjects(route)
 			this.store.dispatch(Actions.setRouteSelected(route))
 		}
 	}
