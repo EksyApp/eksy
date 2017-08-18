@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 	}
 })
 
-MarkerViewComponent = {
+MarkerViewComponent.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape,
 	onEditClick: PropTypes.func
