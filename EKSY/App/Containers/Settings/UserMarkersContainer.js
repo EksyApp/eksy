@@ -15,11 +15,9 @@ export class UserMarkersContainer extends Component {
 			loading: true,
 			userMarkers: null,
 		}
+		this.getMarkers()
 	}
 	
-	componentWillMount() {
-		this.refresh()
-	}
 	
 	refresh() {
 		this.setState({loading: true})

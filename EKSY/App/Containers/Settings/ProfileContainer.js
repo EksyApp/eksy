@@ -23,6 +23,7 @@ export class ProfileContainer extends Component {
 							this.signout()
 						}}
 						onMarkersClick = {() => Actions.usersMarkers()}
+						onRoutesClick = {() => Actions.userRoutes()}
 				/>
 		)
 	}
@@ -42,7 +43,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		userSignedOut: () => {dispatch(ReduxActions.userSignedOut())}
+		userSignedOut: () => {dispatch(ReduxActions.userLoggedOut())}
 	}
 }
 

@@ -19,6 +19,6 @@ export default class Pointer extends Component {
 }
 
 Pointer.propTypes = {
-	style: StyleShape ,
+	style: StyleShape,
 	initialRegion: RegionShape
 }
