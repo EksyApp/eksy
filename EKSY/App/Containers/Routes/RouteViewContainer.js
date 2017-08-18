@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import RouteViewComponent from '../../Components/Routes/RouteViewComponent'
 import {Actions} from 'react-native-router-flux'
 import * as ReduxActions from '../../Actions'
+import Proptypes from 'prop-types'
+import {RegionShape, RouteShape} from "../../Utils/PropTypeShapes";
 
 export class RouteViewContainer extends Component {
 	
@@ -26,8 +28,12 @@ export class RouteViewContainer extends Component {
 		)
 	}
 	
-	
-	
+}
+
+RouteViewContainer.propTypes = {
+	setMarkerSelected: Proptypes.func,
+	route: RouteShape,
+	currentRegion: RegionShape
 }
 
 const mapStateToProps = (state) => {
