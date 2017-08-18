@@ -5,9 +5,11 @@ import MarkerModalContainer from "../../Containers/MainView/MarkerModal/MarkerMo
 import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSheetContainer";
 import MapContainer from "../../Containers/MainView/Map/MapContainer";
 
-
+//Renders the main View
+//Map view (MapComponent) holds marker tags (Marker)
+//Drawable bottom sheet (BottomSheetComponent) holds marker carousel (MarkerCarousel) 
 class MainViewComponent extends Component {
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
