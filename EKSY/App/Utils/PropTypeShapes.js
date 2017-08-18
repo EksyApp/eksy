@@ -36,7 +36,7 @@ export const MarkerShape = PropTypes.shape({
 	editInfo: PropTypes.shape({
 		lastEdited: PropTypes.number
 	}),
-	filter: PropTypes.arrayOf(PropTypes.string),
+	filters: PropTypes.arrayOf(PropTypes.string),
 	images: ImagesShape,
 	key: PropTypes.string ,
 	latitude:PropTypes.number,

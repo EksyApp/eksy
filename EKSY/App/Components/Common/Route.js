@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
-import PropTypes from 'prop-types';
 import {MarkersShape, RegionShape, StyleShape} from '../../Utils/PropTypeShapes'
 
 export default class Route extends Component {
