@@ -22,15 +22,18 @@ class Main extends Component {
     FirebaseConfig.initialise()
   }
 
+//Retrieves store and sets it to state
   async componentWillMount() {
     const store = await Store()
     this.setState({ store })
   }
 
+//For waiting the app to load
   componentDidMount() {
     SplashScreen.hide()
   }
 
+//Renders the main view using NavigationRouter
   render () {
     if (!this.state.store) {
       return (
