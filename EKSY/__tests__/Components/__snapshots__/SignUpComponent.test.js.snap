@@ -494,7 +494,9 @@ exports[`SignUpComponent renders correctly 1`] = `
               undefined,
             ]
           }
-        />
+        >
+          
+        </Text>
       </View>
       <View
         style={

@@ -45,6 +45,13 @@ test('AddMarkerComponent renders correctly', () => {
 			<AddMarkerComponent
 				initialRegion={{latitude: 1, longitude: 1}}
 			  filters={[]}
+				onRegionChange = {() => {}}
+				onTitleChange={() => {}}
+				onTextChange={() => {}}
+				images={[]}
+				onNewImage={() => {}}
+				onFilterChange={() => {}}
+				onAddMarkerClick={() => {}}
 			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
