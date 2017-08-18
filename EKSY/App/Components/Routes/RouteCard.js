@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Card from '../Common/Card'
-import {TouchableWithoutFeedback} from 'react-native'
+import {TouchableWithoutFeedback, StyleSheet} from 'react-native'
 import CardSection from '../Common/CardSection'
 import Label from '../Common/Label'
 import TextArea from '../Common/TextArea'

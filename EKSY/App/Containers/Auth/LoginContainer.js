@@ -7,10 +7,11 @@ import React, {Component} from 'react'
 import firebase from 'firebase'
 import DismissKeyboard from 'dismissKeyboard'
 import {connect} from 'react-redux'
-import * as Actions from '../../Actions/index'
+import * as ReduxActions from '../../Actions/index'
 import LoginComponent from "../../Components/Auth/LoginComponent";
 import Dao from "../../Dao/Dao";
 import PropTypes from 'prop-types'
+import {Actions} from 'react-native-router-flux'
 
 export class LoginContainer extends Component {
 	constructor (props) {
@@ -37,7 +38,9 @@ export class LoginContainer extends Component {
 				response: 'Logged In!'
 			})
 			
-			this.props.userLoggedIn(await this.dao.getUserObject(null));
+			await this.dao.userLoggedIn()
+			
+			setTimeout(() => {Actions.pop()}, 1000)
 
 		} catch (error) {
 			console.warn(error)
@@ -69,9 +72,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		menuButtonPress: () => { dispatch(Actions.drawerOpen()) },
-		userCreated: () => {dispatch(Actions.userCreated())},
-		userLoggedIn: (user) => {dispatch(Actions.userLoggedIn(user))}
+		menuButtonPress: () => { dispatch(ReduxActions.drawerOpen()) },
+		userCreated: () => {dispatch(ReduxActions.userCreated())},
+		userLoggedIn: (user) => {dispatch(ReduxActions.userLoggedIn(user))}
 	}
 }
 

@@ -31,12 +31,18 @@ export default class ProfileComponent extends Component {
 		}
 	}
 	
-	renderShowMarkersButton() {
+	renderListButtons() {
 		if (this.props.user) {
 			return (
-					<Button onPress={() => {this.props.onMarkersClick()}}>
-						Markers
-					</Button>
+					<View>
+						<Button onPress={() => this.props.onMarkersClick()}>
+							Markers
+						</Button>
+						<Button onPress={() => this.props.onRoutesClick()}>
+							Routes
+						</Button>
+					</View>
+					
 			)
 		}
 	}
@@ -46,7 +52,7 @@ export default class ProfileComponent extends Component {
 				<View>
 					<Label>Profile</Label>
 					{this.renderUserInfo()}
-					{this.renderShowMarkersButton()}
+					{this.renderListButtons()}
 					{this.renderProfileActionButton()}
 				</View>
 		)
@@ -56,5 +62,6 @@ export default class ProfileComponent extends Component {
 ProfileComponent.propTypes = {
 	user: UserShape,
 	onSignoutClick: PropTypes.func,
-	onMarkersClick: PropTypes.func
+	onMarkersClick: PropTypes.func,
+	onRoutesClick: PropTypes.func,
 }
