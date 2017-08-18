@@ -18,15 +18,17 @@ export default getStore = async () => {
 function configureStore() {
   return new Promise((resolve, reject) => {
     try {
-      const logger = createLogger({
+      let middlewares = []
+      if (__DEV__) {
+        middlewares.push(createLogger({
 
-      })
-
+        }))
+      }
       const storeInst = createStore(
         reducers,
         undefined,
         compose(
-          applyMiddleware(__DEV__ && logger),
+          applyMiddleware(...middlewares),
           autoRehydrate()
         )
       )
