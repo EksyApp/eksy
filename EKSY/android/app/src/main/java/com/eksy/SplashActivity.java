@@ -1,4 +1,4 @@
-package com.eksy;
+package com.eksyapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

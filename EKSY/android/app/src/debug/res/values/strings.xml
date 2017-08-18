@@ -3,7 +3,7 @@
     <string moduleConfig="true" name="mobileCenterCrashes_whenToSendCrashes">ALWAYS_SEND</string>
     <string moduleConfig="true" name="mobileCenterAnalytics_whenToEnableAnalytics">ALWAYS_SEND</string>
     <string name="app_name">EKSY-debug</string>
-    <string name="account_type">com.eksy.account</string>
-    <string name="content_authority">com.eksy.authority</string>
+    <string name="account_type">com.eksyapp.account</string>
+    <string name="content_authority">com.eksyapp.authority</string>
 
 </resources>
