@@ -4,6 +4,7 @@ import * as ReduxActions from '../../Actions/index'
 import {connect} from 'react-redux'
 import SideBarComponent from "../../Components/SideBar/SideBarComponent";
 
+//Renders sidebar view and holds it's logic
 export class SideBarContainer extends Component {
 
   render() {
@@ -45,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(ReduxActions.drawerClose())
     },
     goToAdminTools: () => {
-      Actions.adminTools()      
+      Actions.adminTools()
       dispatch(ReduxActions.drawerClose())
     }
   }

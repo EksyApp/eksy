@@ -3,8 +3,9 @@ import BottomSheetComponent from "../../../Components/MainView/BottomSheet/Botto
 import {connect} from "react-redux";
 import * as ReduxActions from "../../../Actions/index";
 
+//Renders the drawable bottomsheet and handles it's logic 
 class BottomSheetContainer extends Component {
-	
+
 	render() {
 		return (
 			<BottomSheetComponent
@@ -15,7 +16,7 @@ class BottomSheetContainer extends Component {
 			/>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = (state) => {

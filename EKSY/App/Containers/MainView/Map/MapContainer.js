@@ -3,8 +3,9 @@ import * as ReduxActions from "../../../Actions/index";
 import MapComponent from "../../../Components/MainView/Map/MapComponent";
 import {connect} from "react-redux";
 
+//Renders the map and handles it's logic
 export class MapContainer extends Component {
-	
+
 	render() {
 		return (
 				<MapComponent
@@ -19,7 +20,7 @@ export class MapContainer extends Component {
 				/>
 		)
 	}
-	
+
 }
 
 const mapStateToProps = (state) => {

@@ -4,9 +4,9 @@ import {connect} from "react-redux";
 import MarkerModalComponent from "../../../Components/MainView/MarkerModal/MarkerModalComponent";
 
 
-
+//Renders the marker's modal and handles it's logic
 export class MarkerModalContainer extends Component {
-	
+
 	render() {
 		return (
 				<MarkerModalComponent

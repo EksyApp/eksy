@@ -5,8 +5,10 @@ import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 import UserMarkersComponent from "../../Components/Settings/UserMarkersComponent";
 
+//Renders a list of user's markers and holds it's logic
+//List component (marker) takes to user's marker view
 export class UserMarkersContainer extends Component {
-	
+
 	constructor(props){
 		super(props)
 		this.dao= new Dao()
@@ -15,26 +17,26 @@ export class UserMarkersContainer extends Component {
 			userMarkers: null,
 		}
 	}
-	
+
 	componentWillMount() {
 		this.refresh()
 	}
-	
+
 	refresh() {
 		this.setState({loading: true})
 		this.getMarkers()
 	}
-	
+
 	async getMarkers() {
 		let markers = await this.dao.getUserMarkers()
 		this.setState({loading: false, userMarkers: markers})
 	}
-	
+
 	handlePress(marker) {
 		this.props.setMarkerSelected(marker)
 		Actions.userMarkerView()
 	}
-	
+
 	render () {
 		return (
 				<UserMarkersComponent

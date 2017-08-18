@@ -4,9 +4,9 @@ import * as ReduxActions from '../../Actions/index'
 import {connect} from 'react-redux'
 import MainViewComponent from "../../Components/MainView/MainViewComponent";
 
-
+//Renders the main view and handles it's logic
 export class MainViewContainer extends Component {
-	
+
 	render() {
 		return (
 				<MainViewComponent
@@ -15,6 +15,7 @@ export class MainViewContainer extends Component {
 		)
 	}
 }
+
 
 const mapStateToProps = (state) => {
 	return {

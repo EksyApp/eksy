@@ -11,6 +11,7 @@ import * as Actions from '../../Actions/index'
 import LoginComponent from "../../Components/Auth/LoginComponent";
 import Dao from "../../Dao/Dao";
 
+//Renders the login view and holds it's logic
 export class LoginContainer extends Component {
 	constructor (props) {
 		super(props)
@@ -21,11 +22,11 @@ export class LoginContainer extends Component {
 			response: '',
 			remembered: false
 		}
-		
+
 		this.dao = new Dao()
 
 	}
-	
+
 
 	async login () {
 		DismissKeyboard()
@@ -35,7 +36,7 @@ export class LoginContainer extends Component {
 			this.setState({
 				response: 'Logged In!'
 			})
-			
+
 			this.props.userLoggedIn(await this.dao.getUserObject(null));
 
 		} catch (error) {

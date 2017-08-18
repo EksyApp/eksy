@@ -4,8 +4,10 @@ import AdminToolsComponent from "../../Components/Admin/AdminToolsComponent";
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 
+//Renders the admin's main view and it's logic
 export class AdminToolsContainer extends Component {
-	
+
+//Admin can adjust the radius (distance) of markers visible
 	handleRadius(radius) {
 		radius = parseInt(radius)
 		radius = radius/1000
@@ -15,11 +17,12 @@ export class AdminToolsContainer extends Component {
 			this.props.updateRadius(0.1)
 		}
 	}
-	
+
+//To the list of unconfirmed marker's	
 	confirmClick() {
 		Actions.adminConfirmMarkers()
 	}
-	
+
   render () {
     return (
       <AdminToolsComponent
@@ -29,9 +32,9 @@ export class AdminToolsContainer extends Component {
       />
     )
   }
-	
-	
-	
+
+
+
 }
 
 const mapStateToProps = (state) => {
