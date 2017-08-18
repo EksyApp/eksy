@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkerCardList renders correctly 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 0,
+    }
+  }
+  enableEmptySections={true}
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+>
+  <View />
+</RCTScrollView>
+`;
