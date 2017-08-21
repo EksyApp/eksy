@@ -18,11 +18,10 @@ export default getStore = async () => {
 function configureStore() {
   return new Promise((resolve, reject) => {
     try {
-      let middlewares = []
-      if (__DEV__) {
-        middlewares.push(createLogger({
+      var middlewares = []
 
-        }))
+      if (__DEV__) {
+        middlewares.push(createLogger({}))
       }
       const storeInst = createStore(
         reducers,

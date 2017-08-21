@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import EditRouteComponent from '../../Components/Routes/EditRouteComponent'
-import Dao from '../../Dao/Dao'
+import EditRouteComponent from '../../../Components/Routes/RouteManaging/EditRouteComponent'
+import Dao from '../../../Dao/Dao'
 import {Actions} from 'react-native-router-flux'
 
 //Renders the view for user to edit a route and holds it's logic

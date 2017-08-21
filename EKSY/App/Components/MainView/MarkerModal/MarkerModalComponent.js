@@ -9,7 +9,7 @@ import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 //Modal is opened by clickable marker carousel's marker card or  map view's marker tags
 //Marker modal component holds MarkerModalView
 export default class MarkerModalComponent extends Component {
-	
+
 	render() {
 		return (
 				<TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
@@ -30,6 +30,11 @@ export default class MarkerModalComponent extends Component {
 									Actions.addToRoute()
 									this.props.setMarkerViewHidden()
 								}}
+								onPlayClick={() => {
+									Actions.routesOfMarker()
+									this.props.setMarkerViewHidden()
+								}}
+								routeIsActive={this.props.routeIsActive}
 						/>
 					</Modal>
 				</TouchableWithoutFeedback>
@@ -42,4 +47,7 @@ MarkerModalComponent.propTypes = {
 	markerViewVisible: PropTypes.bool,
 	marker: MarkerShape,
 	user: UserShape
+}
+	user: UserShape,
+	routeIsActive: PropTypes.bool
 }

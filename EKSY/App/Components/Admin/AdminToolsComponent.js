@@ -7,6 +7,7 @@ import Button from "../Common/Button";
 import Input from "../Common/Input";
 import Divider from "../Common/Divider";
 import PropTypes from 'prop-types';
+import Container from '../Common/Container'
 
 //Renders view to access admin's Tools
 //Contains access (button) to manage markers' confirmation  
@@ -14,8 +15,7 @@ export default class AdminToolsComponent extends Component {
 
 	render () {
 		return (
-				<View style={styles.container}>
-					<Header title='Admin Tools' backButton />
+				<Container title='Admin Tools' backButton>
 					<Label>Map circle radius</Label>
 					<Input
 							label='Radius (meters)'
@@ -29,7 +29,7 @@ export default class AdminToolsComponent extends Component {
 					<Button onPress={this.props.onConfirmClick}>
 						See unconfirmed markers
 					</Button>
-				</View>
+				</Container>
 		)
 	}
 

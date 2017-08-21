@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {ListView, View, StyleSheet} from 'react-native'
-import Card from '../Common/Card'
+import Card from '../../Common/Card'
 import {Icon} from 'react-native-elements'
-import Label from '../Common/Label'
+import Label from '../../Common/Label'
 import PropTypes from 'prop-types'
-import {MarkerShape, MarkersShape} from "../../Utils/PropTypeShapes";
+import {MarkerShape, MarkersShape} from "../../../Utils/PropTypeShapes";
 
 export default class EditableMarkerList extends Component {
 	

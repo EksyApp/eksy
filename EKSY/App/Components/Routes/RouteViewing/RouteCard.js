@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import Card from '../Common/Card'
+import Card from '../../Common/Card'
 import {TouchableWithoutFeedback, StyleSheet} from 'react-native'
-import CardSection from '../Common/CardSection'
-import Label from '../Common/Label'
-import TextArea from '../Common/TextArea'
+import CardSection from '../../Common/CardSection'
+import Label from '../../Common/Label'
+import TextArea from '../../Common/TextArea'
 import PropTypes from 'prop-types'
-import {RouteShape, StyleShape} from "../../Utils/PropTypeShapes";
+import {RouteShape, StyleShape} from "../../../Utils/PropTypeShapes";
 
 export default class RouteCard extends Component {
 	

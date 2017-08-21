@@ -14,6 +14,7 @@ import com.microsoft.codepush.react.CodePush;
 import com.microsoft.azure.mobile.react.crashes.RNCrashesPackage;
 import com.microsoft.azure.mobile.react.analytics.RNAnalyticsPackage;
 import com.microsoft.azure.mobile.react.mobilecenter.RNMobileCenterPackage;
+import com.apsl.versionnumber.RNVersionNumberPackage;
 
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -30,7 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
     private CodePush CodePush;
-    
+
     @Override
     protected String getJSBundleFile() {
       return CodePush.getJSBundleFile();
@@ -53,6 +54,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFetchBlobPackage(),
             new FastImageViewPackage(),
             // new BackgroundGeolocationPackage()
+            new RNVersionNumberPackage(),
             new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG),
             new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
             new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
