@@ -10,28 +10,30 @@ import {Icon} from "react-native-elements";
 import PropTypes from 'prop-types'
 import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
+
+//Renders marker view inside main view's modal component (MarkerModalComponent)
 export default class MarkerModalView extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this.state = {
 			isCollapsed: true
 		}
 	}
-	
+
 	_setCollapsed = () => {
 		if (!this.state.isCollapsed) {
 			this.setState({isCollapsed: true})
 		}
 	}
-	
+
 	_setExpanded = () => {
 		if (this.state.isCollapsed) {
 			this.setState({isCollapsed: false})
 		}
 	}
-	
-	
+
+
 	_renderImages() {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
 			return (
@@ -40,7 +42,7 @@ export default class MarkerModalView extends Component {
 						<View style={styles.labelWrapper}>
 							<Divider/>
 						</View>
-						
+
 						<PictureSwiper data={this.props.marker.images}/>
 					</View>
 			)
@@ -48,7 +50,7 @@ export default class MarkerModalView extends Component {
 			return null
 		}
 	}
-	
+
 	_renderText() {
 		if (this.props.marker.images && this.props.marker.images.length > 0) {
 			return (<ViewMoreText
@@ -66,9 +68,9 @@ export default class MarkerModalView extends Component {
 					</TextArea>
 			)
 		}
-		
+
 	}
-	
+
 	_renderEditingIcon() {
 		if (
 				this.props.user
@@ -89,7 +91,7 @@ export default class MarkerModalView extends Component {
 			)
 		}
 	}
-	
+
 	_renderAddToRouteIcon() {
 		if (this.props.user) {
 			return (
@@ -102,7 +104,7 @@ export default class MarkerModalView extends Component {
 			)
 		}
 	}
-	
+
 	_renderTitleAndText() {
 		return (
 				<View
@@ -114,16 +116,16 @@ export default class MarkerModalView extends Component {
 							{this._renderEditingIcon()}
 							{this._renderAddToRouteIcon()}
 						</View>
-						
+
 					</View>
-					
+
 					<ScrollView>
 						{this._renderText()}
 					</ScrollView>
 				</View>
 		)
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.content}>
@@ -132,11 +134,11 @@ export default class MarkerModalView extends Component {
 				</View>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
-	
+
 	content: {
 		backgroundColor: Theme.backgroundColor,
 		justifyContent: 'flex-start',
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
 		margin: 20,
 		flex: 1
 	},
-	
+
 	imagesCollapsed: {
 		justifyContent: 'center',
 		height: 0
@@ -155,19 +157,19 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		margin: 5
 	},
-	
+
 	titleAndTextWrapperCollapsed: {
 		alignItems: 'center',
 		margin: 10,
 		height: 100
 	},
-	
+
 	titleAndTextWrapperExpanded: {
 		flex: 1,
 		alignItems: 'center',
 		margin: 10,
 	},
-	
+
 	swiper: {
 		// width: 300,
 		// margin: 20,
@@ -176,29 +178,29 @@ const styles = StyleSheet.create({
 		// justifyContent: 'center',
 		// alignItems: 'center',
 	},
-	
+
 	title: {
 		fontSize: 22,
 		fontWeight: 'bold',
 		color: Theme.accentColor
 	},
-	
+
 	labelWrapper: {
 		padding: 10
 	},
-	
+
 	listStyle: {
 		margin: 10
 	},
-	
+
 	icon: {
 		marginLeft: 5
 	},
-	
+
 	titleContainer: {
 		width: '100%'
 	},
-	
+
 	iconHolder: {
 		width: '100%',
 		height: 25,

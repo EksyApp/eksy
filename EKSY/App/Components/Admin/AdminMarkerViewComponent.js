@@ -8,6 +8,9 @@ import MarkerView from "../Common/MarkerView";
 import PropTypes from 'prop-types';
 import { RegionShape, MarkerShape } from '../../Utils/PropTypeShapes'
 
+//Renders view for admin to manage a marker
+//Admin can accept or reject the markers
+//Edit button takes to EditMarker
 export default class AdminMarkerViewComponent extends Component {
 	
 	render() {
@@ -29,11 +32,11 @@ export default class AdminMarkerViewComponent extends Component {
 							Edit
 						</Button>
 					</ScrollView>
-				
+
 				</View>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({

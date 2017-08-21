@@ -9,10 +9,11 @@ import Button from "../Common/Button";
 import PropTypes from 'prop-types';
 import { MarkersShape } from '../../Utils/PropTypeShapes'
 
+
+//Renders list of unconfirmed markers
+//MarkerCards in MarkerCardList takes to AdminMarkerViewComponent
 export default class ConfirmMarkersComponent extends Component {
-	
-	
-	
+
 	renderList() {
 		if(this.props.loading) {
 			return(<Message>Loading</Message>)
@@ -20,7 +21,7 @@ export default class ConfirmMarkersComponent extends Component {
 			return(<MarkerCardList data={this.props.pendingMarkers} onPress={this.props.onCardClick} style={styles.card} />)
 		}
 	}
-	
+
 	render () {
 		return (
 				<View style={styles.container}>
@@ -33,7 +34,7 @@ export default class ConfirmMarkersComponent extends Component {
 				</View>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor,
 	},
-	
+
 	card: {
 		width: '95%',
 		alignSelf: 'center'
