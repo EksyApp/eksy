@@ -6,6 +6,7 @@ import map from './MapReducer'
 import filters from './FilterListReducer'
 import routes from './RoutesReducer'
 
+//helper class to export reducers
 export default combineReducers(
   {auth, ui, map, markers, filters, routes}
 )

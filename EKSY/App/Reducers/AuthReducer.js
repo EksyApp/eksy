@@ -1,5 +1,6 @@
 import {LOGIN, SIGNOUT} from '../Actions/Types'
 
+//Updates the user's state of login/logout
 const initialState = {
 	user: null
 }
