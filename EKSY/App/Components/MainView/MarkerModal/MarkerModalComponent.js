@@ -27,6 +27,7 @@ export default class MarkerModalComponent extends Component {
 									Actions.addToRoute()
 									this.props.setMarkerViewHidden()
 								}}
+								routeIsActive={this.props.routeIsActive}
 						/>
 					</Modal>
 				</TouchableWithoutFeedback>
@@ -38,5 +39,6 @@ MarkerModalComponent.propTypes = {
 	setMarkerViewHidden: PropTypes.func,
 	markerViewVisible: PropTypes.bool,
 	marker: MarkerShape,
-	user: UserShape
+	user: UserShape,
+	routeIsActive: PropTypes.bool
 }

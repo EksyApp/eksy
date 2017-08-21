@@ -5,6 +5,7 @@ import {Button, Header} from "../../Components/Common/index";
 import MarkerForm from "./MarkerForm";
 import PropTypes from 'prop-types';
 import { RegionShape, ImagesShape, FiltersShape } from '../../Utils/PropTypeShapes'
+import Container from '../Common/Container'
 
 
 /* Component shows form for new marker addition.
@@ -15,35 +16,31 @@ class AddMarkerComponent extends Component {
 	
 	render() {
 		return (
-				<View style={styles.container}>
-					<Header title='Add Marker' backButton/>
-					<ScrollView>
-						<MarkerForm
-								initialRegion={this.props.initialRegion}
-								onRegionChange={this.props.onRegionChange}
-								
-								initialTitle=""
-								onTitleChange={this.props.onTitleChange}
-								
-								initialText=""
-								onTextChange={this.props.onTextChange}
-								
-								images={this.props.images}
-								onNewImage={this.props.onNewImage}
-								
-								filters={this.props.filters}
-								onFilterChange={this.props.onFilterChange}
-						/>
-						<View style={styles.buttonContainer}>
-							<Button onPress={() => {
-								this.props.onAddMarkerClick()
-							}}>
-								Add marker
-							</Button>
-						</View>
-					</ScrollView>
-				</View >
-		
+				<Container backButton title="Add marker">
+					<MarkerForm
+							initialRegion={this.props.initialRegion}
+							onRegionChange={this.props.onRegionChange}
+							
+							initialTitle=""
+							onTitleChange={this.props.onTitleChange}
+							
+							initialText=""
+							onTextChange={this.props.onTextChange}
+							
+							images={this.props.images}
+							onNewImage={this.props.onNewImage}
+							
+							filters={this.props.filters}
+							onFilterChange={this.props.onFilterChange}
+					/>
+					<View style={styles.buttonContainer}>
+						<Button onPress={() => {
+							this.props.onAddMarkerClick()
+						}}>
+							Add marker
+						</Button>
+					</View>
+				</Container>
 		)
 	}
 	

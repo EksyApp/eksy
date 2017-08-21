@@ -6,6 +6,7 @@ import Button from '../Common/Button'
 import * as Theme from '../../Theme'
 import PropTypes from 'prop-types'
 import {MarkerShape, RegionShape} from '../../Utils/PropTypeShapes'
+import Container from '../Common/Container'
 
 export default class MarkerViewComponent extends Component {
 	
@@ -21,17 +22,13 @@ export default class MarkerViewComponent extends Component {
 	
 	render() {
 		return (
-				<View style={styles.container}>
-					<Header title="Marker" backButton/>
-					<ScrollView style={styles.container}>
-						<MarkerView
-								marker={this.props.marker}
-								currentRegion={this.props.currentRegion}
-						/>
-						{this.renderEditButton()}
-					</ScrollView>
-				
-				</View>
+				<Container title="Marker" backButton>
+					<MarkerView
+							marker={this.props.marker}
+							currentRegion={this.props.currentRegion}
+					/>
+					{this.renderEditButton()}
+				</Container>
 		)
 	}
 	

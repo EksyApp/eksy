@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import * as Theme from "../../../Theme";
-import {ScrollView, View, StyleSheet} from "react-native";
-import Divider from "../../Common/Divider";
-import ViewMoreText from "../../Common/ViewMoreText";
-import TextArea from "../../Common/TextArea";
-import PictureSwiper from "../../Common/PictureSwiper";
-import Label from "../../Common/Label";
-import {Icon} from "react-native-elements";
+import * as Theme from '../../../Theme'
+import {ScrollView, View, StyleSheet} from 'react-native'
+import Divider from '../../Common/Divider'
+import ViewMoreText from '../../Common/ViewMoreText'
+import TextArea from '../../Common/TextArea'
+import PictureSwiper from '../../Common/PictureSwiper'
+import Label from '../../Common/Label'
+import {Icon} from 'react-native-elements'
 import PropTypes from 'prop-types'
-import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
+import {MarkerShape, UserShape} from '../../../Utils/PropTypeShapes'
 
 export default class MarkerModalView extends Component {
 	
@@ -83,7 +83,7 @@ export default class MarkerModalView extends Component {
 					<Icon
 							name="edit"
 							size={25}
-							containerStyle = {styles.icon}
+							containerStyle={styles.icon}
 							onPress={this.props.onEditClick}
 					/>
 			)
@@ -103,6 +103,20 @@ export default class MarkerModalView extends Component {
 		}
 	}
 	
+	_renderPlayIcon() {
+		if (this.props.routeIsActive) {
+			return (
+					<Icon
+							name="playlist-play"
+							size={25}
+							containerStyle={styles.icon}
+							onPress={this.props.onPlayClick}
+					/>
+			)
+		}
+		
+	}
+	
 	_renderTitleAndText() {
 		return (
 				<View
@@ -113,8 +127,9 @@ export default class MarkerModalView extends Component {
 						<View style={styles.iconHolder}>
 							{this._renderEditingIcon()}
 							{this._renderAddToRouteIcon()}
+							{this._renderPlayIcon()}
 						</View>
-						
+					
 					</View>
 					
 					<ScrollView>
@@ -123,6 +138,7 @@ export default class MarkerModalView extends Component {
 				</View>
 		)
 	}
+	
 	
 	render() {
 		return (
@@ -204,7 +220,7 @@ const styles = StyleSheet.create({
 		height: 25,
 		flexDirection: 'row-reverse',
 		position: 'absolute',
-		top:0,
+		top: 0,
 		left: 0
 	}
 })
@@ -213,5 +229,7 @@ MarkerModalView.propTypes = {
 	marker: MarkerShape,
 	user: UserShape,
 	onEditClick: PropTypes.func,
-	onAddClick: PropTypes.func
+	onAddClick: PropTypes.func,
+	onPlayClick: PropTypes.func,
+	routeIsActive: PropTypes.bool
 }

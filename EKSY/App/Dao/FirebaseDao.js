@@ -45,6 +45,7 @@ class FirebaseDao {
 			this.filterer = new Filterer()
 			this.selectedMarkerKey = null
 			this.selectedRouteKey = null
+			this.activeRouteKey = null
 		}
 		return FirebaseDao.instance
 	}
@@ -408,6 +409,29 @@ class FirebaseDao {
 			let route = {...snapshot.val(), key}
 			route.markers = await this.getRoutesMarkerObjects(route)
 			this.store.dispatch(Actions.setRouteSelected(route))
+		}
+	}
+	
+	async listenAsActiveRoute(key) {
+		if (this.activeRouteKey) {
+			let oldRef = await firebase.database().ref('/routes/' + this.activeRouteKey)
+			oldRef.off('value', this.updateActiveRoute, this)
+		}
+		if (key) {
+			this.activeRouteKey = key
+			let newRef = await firebase.database().ref('/routes/' + key)
+			newRef.on('value', this.updateActiveRoute, this)
+		} else {
+			this.activeRouteKey = null
+		}
+	}
+	
+	async updateActiveRoute(snapshot) {
+		let key = snapshot.key
+		if (snapshot.val() != null) {
+			let route = {...snapshot.val(), key}
+			route.markers = await this.getRoutesMarkerObjects(route)
+			this.store.dispatch(Actions.setRouteActive(route))
 		}
 	}
 	

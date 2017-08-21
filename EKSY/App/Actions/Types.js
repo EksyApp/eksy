@@ -24,3 +24,6 @@ export const FILTER_ADDED = "filter added"
 export const FILTER_REMOVED = "filter removed"
 
 export const ROUTE_SELECTED = "route selected"
+export const ACTIVE_ROUTE = "active route"
+export const NEXT_MARKER = "next marker"
+export const ROUTE_IS_ACTIVE = "route is active"

@@ -1,32 +1,32 @@
 import React, {Component} from 'react'
-import {View, StyleSheet} from "react-native";
-import Header from "../Common/Header";
-import * as Theme from "../../Theme";
+import {View, StyleSheet} from 'react-native'
+import Header from '../Common/Header'
+import * as Theme from '../../Theme'
 import Message from '../Common/Message'
 import MarkerCardList from '../Common/MarkerCardList'
-import Button from "../Common/Button";
+import Button from '../Common/Button'
 import PropTypes from 'prop-types'
-import {MarkersShape} from "../../Utils/PropTypeShapes";
+import {MarkersShape} from '../../Utils/PropTypeShapes'
+import Container from '../Common/Container'
 
 export default class UserMarkersComponent extends Component {
 	
 	renderList() {
-		if(this.props.loading) {
-			return(<Message>Loading</Message>)
+		if (this.props.loading) {
+			return (<Message>Loading</Message>)
 		} else {
-			return(<MarkerCardList data={this.props.userMarkers} onPress={this.props.onCardClick} style={styles.card} />)
+			return (<MarkerCardList data={this.props.userMarkers} onPress={this.props.onCardClick} style={styles.card}/>)
 		}
 	}
 	
-	render () {
+	render() {
 		return (
-				<View style={styles.container}>
-					<Header title='Your markers' backButton />
+				<Container title='Your markers' backButton>
 					<Button onPress={this.props.onRefresh}>
 						Refresh
 					</Button>
 					{this.renderList()}
-				</View>
+				</Container>
 		)
 	}
 	

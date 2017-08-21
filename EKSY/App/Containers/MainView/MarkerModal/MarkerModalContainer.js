@@ -15,6 +15,7 @@ export class MarkerModalContainer extends Component {
 					markerViewVisible = {this.props.markerViewVisible}
 					setMarkerViewHidden = {this.props.setMarkerViewHidden}
 					user = {this.props.user}
+					routeIsActive={this.props.routeIsActive}
 				/>
 		)
 	}
@@ -24,14 +25,16 @@ MarkerModalContainer.propTypes = {
 	marker: MarkerShape,
 	markerViewVisible: PropTypes.bool,
 	setMarkerViewHidden: PropTypes.func,
-	user: UserShape
+	user: UserShape,
+	routeIsActive: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
 	return {
 		marker: state.markers.markerSelected,
 		markerViewVisible: state.ui.markerView.markerViewVisible,
-		user: state.auth.user
+		user: state.auth.user,
+		routeIsActive: state.routes.active
 	}
 }
 
