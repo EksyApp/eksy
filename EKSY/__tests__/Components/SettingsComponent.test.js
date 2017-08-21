@@ -10,6 +10,12 @@ jest.mock('react-native-fetch-blob', () => {
 	}
 })
 
+jest.mock('react-native-version-number', () => {
+    return {
+      appversion: 'test'
+    }
+})
+
 jest.mock('../../App/Containers/Settings/FilterSettingsContainer', () => {
 	return require('react-native').View
 })

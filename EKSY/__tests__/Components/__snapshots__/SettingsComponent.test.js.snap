@@ -111,5 +111,26 @@ exports[`SettingsComponent renders correctly 1`] = `
   </View>
   <View />
   <View />
+  <View
+    style={
+      Object {
+        "alignItems": "flex-end",
+        "flex": 1,
+        "flexDirection": "row",
+        "margin": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "fontSize": 12,
+        }
+      }
+    />
+  </View>
 </View>
 `;
