@@ -5,6 +5,12 @@ jest.unmock('ScrollView')
 
 import Index from '../../index.ios.js'
 
+jest.mock('react-native-version-number', () => {
+    return {
+      appversion: 'test'
+    }
+})
+
 jest.mock('react-native-code-push', () => {
     function MockCodePush(options = {}) {
       return jest.fn()
