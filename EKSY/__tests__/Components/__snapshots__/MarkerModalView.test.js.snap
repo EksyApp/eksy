@@ -60,7 +60,54 @@ exports[`MarkerModalView renders correctly 1`] = `
             "width": "100%",
           }
         }
-      />
+      >
+        <View
+          onPress={undefined}
+          style={
+            Array [
+              false,
+              false,
+              false,
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              },
+              Object {
+                "marginLeft": 5,
+              },
+            ]
+          }
+          underlayColor="white"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 25,
+                },
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  undefined,
+                ],
+                Object {
+                  "fontFamily": "Material Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
     </View>
     <RCTScrollView>
       <View>
