@@ -6,9 +6,14 @@ import Button from '../../Common/Button'
 import Message from '../../Common/Message'
 import RouteCardList from '../RouteViewing/RouteCardList'
 import Container from '../../Common/Container'
+import PropTypes from 'prop-types'
+import {RoutesShape} from "../../../Utils/PropTypeShapes";
 
+
+//Renders a view for user to select route from list of routes
+//RouteCard takes to RouteViewComponent
 export default class UserRoutesComponent extends Component {
-	
+
 	renderList() {
 		if (this.props.loading) {
 			return (<Message>Loading</Message>)
@@ -16,7 +21,7 @@ export default class UserRoutesComponent extends Component {
 			return (<RouteCardList routes={this.props.routes} onPress={this.props.onCardClick} style={styles.card}/>)
 		}
 	}
-	
+
 	render() {
 		return (
 				<Container backButton title="Your Routes">
@@ -27,7 +32,7 @@ export default class UserRoutesComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -35,9 +40,16 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor
 	},
-	
+
 	card: {
 		width: '95%',
 		alignSelf: 'center'
 	}
 })
+
+UserRoutesComponent.propTypes = {
+	loading: PropTypes.bool,
+	routes: RoutesShape,
+	onCardClick: PropTypes.func,
+	onRefresh: PropTypes.func
+}

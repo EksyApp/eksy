@@ -8,24 +8,26 @@ import PropTypes from 'prop-types'
 import {FiltersShape, ImagesShape, RegionShape} from '../../Utils/PropTypeShapes'
 import Container from '../Common/Container'
 
+//Renders view for user to edit markers data
+//Contains MarkerForm and buttons to save and delete
 export default class EditMarkerComponent extends Component {
-	
+
 	render() {
 		return(
 				<Container title='Edit Marker' backButton>
 					<MarkerForm
 							initialRegion={this.props.initialRegion}
 							onRegionChange={this.props.onRegionChange}
-							
+
 							initialTitle={this.props.initialTitle}
 							onTitleChange={this.props.onTitleChange}
-							
+
 							initialText={this.props.initialText}
 							onTextChange={this.props.onTextChange}
-							
+
 							images={this.props.images}
 							onNewImage={this.props.onNewImage}
-							
+
 							filters={this.props.filters}
 							onFilterChange={this.props.onFilterChange}
 					/>
@@ -40,7 +42,7 @@ export default class EditMarkerComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -48,12 +50,12 @@ const styles = StyleSheet.create({
 		backgroundColor: Theme.backgroundColor,
 		flex: 1
 	},
-	
+
 	buttonContainer: {
 		marginTop: 10,
 		marginBottom: 20
 	},
-	
+
 })
 
 EditMarkerComponent.propTypes = {

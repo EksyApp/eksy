@@ -17,6 +17,8 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
+//Renders map view inside the main view (MainViewComponent)
+//Map component holds clickable markers (Marker)
 export default class MapComponent extends Component {
 	
 	constructor(props) {
@@ -40,7 +42,6 @@ export default class MapComponent extends Component {
 		this.props.regionChange(region)
 		this.setState({zoomLevel: (360 * ((Screen.width / 256) / region.longitudeDelta)) + 1})
 	}
-	
 	
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) =>
@@ -172,3 +173,4 @@ MapComponent.propTypes = {
 	route: RouteShape,
 	nextMarker: MarkerShape
 }
+
