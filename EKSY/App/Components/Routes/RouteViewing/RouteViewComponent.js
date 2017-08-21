@@ -8,8 +8,11 @@ import PropTypes from 'prop-types'
 import {RegionShape, RouteShape} from "../../../Utils/PropTypeShapes";
 import Container from '../../Common/Container'
 
+//Renders a view that contains RouteView and edit button
+//RouteView shows the route's metadata
+//Edit button takes to EditRouteComponent
 export default class RouteViewComponent extends Component {
-	
+
 	render() {
 		return(
 				<Container backButton title="Route">
@@ -24,7 +27,7 @@ export default class RouteViewComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor
 	},
-	
+
 })
 
 RouteViewComponent.propTypes = {

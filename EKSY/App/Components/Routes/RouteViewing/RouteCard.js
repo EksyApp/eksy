@@ -7,8 +7,9 @@ import TextArea from '../../Common/TextArea'
 import PropTypes from 'prop-types'
 import {RouteShape, StyleShape} from "../../../Utils/PropTypeShapes";
 
+//Renders a view to show route's metadata
 export default class RouteCard extends Component {
-	
+
 	render() {
 		return(
 				<TouchableWithoutFeedback onPress={() => this.props.onPress(this.props.route)}>
@@ -16,13 +17,13 @@ export default class RouteCard extends Component {
 						<CardSection style={styles.infoContainer}>
 							<Label style={styles.title}>{this.props.route.title}</Label>
 						</CardSection>
-						
+
 						<TextArea>{this.props.route.text}</TextArea>
 					</Card>
 				</TouchableWithoutFeedback>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -31,14 +32,14 @@ const styles = StyleSheet.create({
 		marginLeft: 0,
 		width: '100%'
 	},
-	
+
 	infoContainer: {
 		width: "100%",
 		alignItems: "center",
 		justifyContent: "center",
 		overflow: "scroll"
 	},
-	
+
 	title: {
 		marginTop: 10
 	}
