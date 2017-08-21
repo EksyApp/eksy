@@ -46,8 +46,6 @@ MarkerModalComponent.propTypes = {
 	setMarkerViewHidden: PropTypes.func,
 	markerViewVisible: PropTypes.bool,
 	marker: MarkerShape,
-	user: UserShape
-}
 	user: UserShape,
 	routeIsActive: PropTypes.bool
 }

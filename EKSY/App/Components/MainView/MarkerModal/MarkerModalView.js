@@ -104,9 +104,6 @@ export default class MarkerModalView extends Component {
 			)
 		}
 	}
-<<<<<<< HEAD
-
-=======
 
 	_renderPlayIcon() {
 		if (!this.props.routeIsActive) {
@@ -134,11 +131,7 @@ export default class MarkerModalView extends Component {
 							{this._renderAddToRouteIcon()}
 							{this._renderPlayIcon()}
 						</View>
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195
 					</View>
 
 					<ScrollView>
@@ -147,12 +140,7 @@ export default class MarkerModalView extends Component {
 				</View>
 		)
 	}
-<<<<<<< HEAD
 
-=======
-
-
->>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195
 	render() {
 		return (
 				<View style={styles.content}>
@@ -161,7 +149,6 @@ export default class MarkerModalView extends Component {
 				</View>
 		)
 	}
-
 }
 
 const styles = StyleSheet.create({
@@ -242,12 +229,7 @@ MarkerModalView.propTypes = {
 	marker: MarkerShape,
 	user: UserShape,
 	onEditClick: PropTypes.func,
-<<<<<<< HEAD
-	onAddClick: PropTypes.func
-}
-=======
 	onAddClick: PropTypes.func,
 	onPlayClick: PropTypes.func,
 	routeIsActive: PropTypes.bool
 }
->>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195
