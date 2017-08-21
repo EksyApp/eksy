@@ -9,8 +9,10 @@ import Divider from "../Common/Divider";
 import PropTypes from 'prop-types';
 import Container from '../Common/Container'
 
+//Renders view to access admin's Tools
+//Contains access (button) to manage markers' confirmation  
 export default class AdminToolsComponent extends Component {
-	
+
 	render () {
 		return (
 				<Container title='Admin Tools' backButton>
@@ -30,7 +32,7 @@ export default class AdminToolsComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor,
 	},
-	
+
 	card: {
 		width: '95%',
 		alignSelf: 'center'

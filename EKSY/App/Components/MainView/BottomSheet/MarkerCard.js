@@ -9,6 +9,9 @@ import Image from 'react-native-fast-image'
 import PropTypes from 'prop-types'
 import {MarkerShape, StyleShape} from "../../../Utils/PropTypeShapes";
 
+
+//Renders marker cards inside the marker carousel (MarkerCarousel)
+//Clickable marker card component opens a modal (MarkerModal) to view marker's content 
 export default class MarkerCard extends Component {
 
 	renderWithImage() {

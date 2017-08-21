@@ -1,5 +1,5 @@
 import Dao from '../Dao/Dao'
-import {ACTIVE_ROUTE, ROUTE_IS_ACTIVE, ROUTE_SELECTED} from './Types'
+import {ACTIVE_ROUTE, NEXT_MARKER, ROUTE_IS_ACTIVE, ROUTE_SELECTED} from './Types'
 
 export const setRouteSelected = (route) => {
 	let dao = new Dao()
@@ -27,5 +27,12 @@ export const routeIsActive = (status) => {
 	return {
 		type: ROUTE_IS_ACTIVE,
 		active: status
+	}
+}
+
+export const setNextMarker = (marker) => {
+	return {
+		type: NEXT_MARKER,
+		marker
 	}
 }

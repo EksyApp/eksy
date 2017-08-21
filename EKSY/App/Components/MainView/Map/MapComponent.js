@@ -21,30 +21,32 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
+//Renders map view inside the main view (MainViewComponent)
+//Map component holds clickable markers (Marker)
 export default class MapComponent extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this._manager = new MapManager();
 		this._manager.setMapObject(this);
 		this._map = null;
-		
+
 		this.state = {
 			zoomLevel: (360 * ((Screen.width / 256) / this.props.currentRegion.longitudeDelta)) + 1
 		}
 	}
-	
+
 	animateToCoordinate(position, delay) {
 		if (this._map) {
 			this._map._component.animateToCoordinate(position, delay)
 		}
 	}
-	
+
 	handleRegionChange(region) {
 		this.props.regionChange(region)
 		this.setState({...this.state, zoomLevel: (360 * ((Screen.width / 256) / region.longitudeDelta)) + 1})
 	}
-	
+
 	async componentWillReceiveProps(nextProps) {
 		if (!isEqual(nextProps, this.props)) {
 			// this.store = await Store()
@@ -59,7 +61,7 @@ export default class MapComponent extends Component {
 			// )
 		}
 	}
-	
+
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) =>
 				<Marker
@@ -70,8 +72,8 @@ export default class MapComponent extends Component {
 						key={marker.key}
 				/>)
 	}
-	
-	
+
+
 	renderUserCircle() {
 		if (this.props.currentLocation.isKnown) {
 			return (
@@ -96,7 +98,7 @@ export default class MapComponent extends Component {
 			// 		<View style={styles.userMarker} />
 			// 	</Animated.View>
 			// </MapView.Marker>
-			
+
 			// <MapView.Circle
 			// 					center={this.props.currentLocation}
 			// 					radius={100}
@@ -111,10 +113,10 @@ export default class MapComponent extends Component {
 			// 		style={{flex: 1}}
 			// >
 		}
-		
+
 		return null
 	}
-	
+
 	renderMapView() {
 		return (
 				<MapView.Animated
@@ -134,7 +136,7 @@ export default class MapComponent extends Component {
 				</MapView.Animated>
 		)
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
