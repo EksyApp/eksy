@@ -14,7 +14,6 @@ export class RoutesOfMarkerContainer extends Component {
 			loading: true,
 			routes: []
 		}
-		
 		this.getRoutes()
 		
 	}
@@ -26,13 +25,17 @@ export class RoutesOfMarkerContainer extends Component {
 	
 	async getRoutes() {
 		let routes = await new Dao().getRoutesOfMarker(this.props.marker)
+		routes = routes.filter((route) => route.markers.length >= 2)
 		this.setState({routes, loading:false})
 	}
 	
 	handleCardClick(route) {
-		this.props.setActiveRoute(route)
-		this.props.routeIsActive(true)
-		Actions.pop()
+		if(route.markers.length >= 2) {
+			this.props.setActiveRoute(route)
+			this.props.routeIsActive(true)
+			this.props.setNextMarker(route.markers[1])
+			Actions.pop()
+		}
 	}
 	
 	render() {
@@ -56,7 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		setActiveRoute: (route) => {dispatch(ReduxActions.setRouteActive(route))},
-		routeIsActive: (state) => {dispatch(ReduxActions.routeIsActive(state))}
+		routeIsActive: (state) => {dispatch(ReduxActions.routeIsActive(state))},
+		setNextMarker: (marker) => {dispatch(ReduxActions.setNextMarker(marker))}
 	}
 }
 
