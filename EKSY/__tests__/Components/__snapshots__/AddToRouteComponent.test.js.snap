@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfirmMarkersComponent renders correctly 1`] = `
+exports[`AddToRouteComponent renders correctly 1`] = `
 <View
   style={
     Object {
@@ -106,7 +106,7 @@ exports[`ConfirmMarkersComponent renders correctly 1`] = `
         ]
       }
     >
-      Admin Tools
+      Add to route
     </Text>
   </View>
   <RCTScrollView
@@ -120,27 +120,9 @@ exports[`ConfirmMarkersComponent renders correctly 1`] = `
         undefined,
       ]
     }
-    title="Admin Tools"
+    title="Add to route"
   >
     <View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "rgb(101,114,122)",
-              "fontSize": 20,
-              "fontWeight": "bold",
-              "textAlign": "center",
-            },
-            undefined,
-          ]
-        }
-      >
-        Confirm markers
-      </Text>
       <View
         accessibilityComponentType={undefined}
         accessibilityLabel={undefined}
@@ -188,27 +170,41 @@ exports[`ConfirmMarkersComponent renders correctly 1`] = `
             }
           }
         >
-          Refersh
+          Create a new route
         </Text>
       </View>
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+      <View
         style={
           Array [
             Object {
-              "color": "rgb(89,85,78)",
-              "fontSize": 18,
-              "textAlign": "center",
-              "width": "100%",
+              "backgroundColor": "#e1e8ee",
+              "height": 1,
             },
-            undefined,
+            Array [
+              Object {
+                "backgroundColor": "rgb(112,112,112)",
+                "height": 1,
+                "margin": 3,
+                "marginLeft": 10,
+                "marginRight": 10,
+              },
+              undefined,
+            ],
           ]
         }
+      />
+      <RCTScrollView
+        dataSource={
+          ListViewDataSource {
+            "items": 0,
+          }
+        }
+        enableEmptySections={true}
+        renderRow={[Function]}
+        renderScrollComponent={[Function]}
       >
-        Loading
-      </Text>
+        <View />
+      </RCTScrollView>
     </View>
   </RCTScrollView>
 </View>

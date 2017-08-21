@@ -1,5 +1,5 @@
 import Dao from '../Dao/Dao'
-import {ROUTE_SELECTED} from './Types'
+import {ACTIVE_ROUTE, ROUTE_IS_ACTIVE, ROUTE_SELECTED} from './Types'
 
 export const setRouteSelected = (route) => {
 	let dao = new Dao()
@@ -9,5 +9,23 @@ export const setRouteSelected = (route) => {
 	return {
 		type: ROUTE_SELECTED,
 		route
+	}
+}
+
+export const setRouteActive = (route) => {
+	let dao = new Dao()
+	if(dao.activeRouteKey !== route.key) {
+		dao.listenAsActiveRoute(route.key)
+	}
+	return {
+		type: ACTIVE_ROUTE,
+		route
+	}
+}
+
+export const routeIsActive = (status) => {
+	return {
+		type: ROUTE_IS_ACTIVE,
+		active: status
 	}
 }

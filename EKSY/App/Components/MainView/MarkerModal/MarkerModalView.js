@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import * as Theme from "../../../Theme";
-import {ScrollView, View, StyleSheet} from "react-native";
-import Divider from "../../Common/Divider";
-import ViewMoreText from "../../Common/ViewMoreText";
-import TextArea from "../../Common/TextArea";
-import PictureSwiper from "../../Common/PictureSwiper";
-import Label from "../../Common/Label";
-import {Icon} from "react-native-elements";
+import * as Theme from '../../../Theme'
+import {ScrollView, View, StyleSheet} from 'react-native'
+import Divider from '../../Common/Divider'
+import ViewMoreText from '../../Common/ViewMoreText'
+import TextArea from '../../Common/TextArea'
+import PictureSwiper from '../../Common/PictureSwiper'
+import Label from '../../Common/Label'
+import {Icon} from 'react-native-elements'
 import PropTypes from 'prop-types'
-import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
+import {MarkerShape, UserShape} from '../../../Utils/PropTypeShapes'
 
 
 //Renders marker view inside main view's modal component (MarkerModalComponent)
@@ -85,7 +85,7 @@ export default class MarkerModalView extends Component {
 					<Icon
 							name="edit"
 							size={25}
-							containerStyle = {styles.icon}
+							containerStyle={styles.icon}
 							onPress={this.props.onEditClick}
 					/>
 			)
@@ -104,7 +104,24 @@ export default class MarkerModalView extends Component {
 			)
 		}
 	}
+<<<<<<< HEAD
 
+=======
+
+	_renderPlayIcon() {
+		if (!this.props.routeIsActive) {
+			return (
+					<Icon
+							name="playlist-play"
+							size={25}
+							containerStyle={styles.icon}
+							onPress={this.props.onPlayClick}
+					/>
+			)
+		}
+
+	}
+	
 	_renderTitleAndText() {
 		return (
 				<View
@@ -115,8 +132,13 @@ export default class MarkerModalView extends Component {
 						<View style={styles.iconHolder}>
 							{this._renderEditingIcon()}
 							{this._renderAddToRouteIcon()}
+							{this._renderPlayIcon()}
 						</View>
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195
 					</View>
 
 					<ScrollView>
@@ -125,7 +147,12 @@ export default class MarkerModalView extends Component {
 				</View>
 		)
 	}
+<<<<<<< HEAD
 
+=======
+
+
+>>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195
 	render() {
 		return (
 				<View style={styles.content}>
@@ -206,7 +233,7 @@ const styles = StyleSheet.create({
 		height: 25,
 		flexDirection: 'row-reverse',
 		position: 'absolute',
-		top:0,
+		top: 0,
 		left: 0
 	}
 })
@@ -215,5 +242,12 @@ MarkerModalView.propTypes = {
 	marker: MarkerShape,
 	user: UserShape,
 	onEditClick: PropTypes.func,
+<<<<<<< HEAD
 	onAddClick: PropTypes.func
 }
+=======
+	onAddClick: PropTypes.func,
+	onPlayClick: PropTypes.func,
+	routeIsActive: PropTypes.bool
+}
+>>>>>>> 3819a9bedee037ae169ae393df0542d4f0696195

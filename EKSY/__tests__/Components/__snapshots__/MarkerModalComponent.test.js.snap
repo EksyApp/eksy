@@ -69,9 +69,7 @@ exports[`MarkerModalComponent renders correctly 1`] = `
               },
             ]
           }
-        >
-          Hieno marker
-        </Text>
+        />
         <View
           style={
             Object {
@@ -167,9 +165,7 @@ exports[`MarkerModalComponent renders correctly 1`] = `
                 undefined,
               ]
             }
-          >
-            Hieno tarina
-          </Text>
+          />
         </View>
       </RCTScrollView>
     </View>

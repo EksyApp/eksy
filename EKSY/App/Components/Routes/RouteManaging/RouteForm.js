@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {View, StyleSheet} from 'react-native'
-import Input from '../Common/Input'
-import TextInputArea from '../Common/TextInputArea'
+import Input from '../../Common/Input'
+import TextInputArea from '../../Common/TextInputArea'
 import EditableMarkerList from './EditableMarkerList'
 import PropTypes from 'prop-types'
-import {MarkersShape} from "../../Utils/PropTypeShapes";
-import Route from '../Common/Route'
+import {MarkersShape} from "../../../Utils/PropTypeShapes";
+import Route from '../../Common/Route'
 
 export default class RouteForm extends Component {
 	

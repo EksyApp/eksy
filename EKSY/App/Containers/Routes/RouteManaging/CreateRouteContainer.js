@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import CreateRouteComponent from '../../Components/Routes/CreateRouteComponent'
+import CreateRouteComponent from '../../../Components/Routes/RouteManaging/CreateRouteComponent'
 import {connect} from 'react-redux'
-import Dao from '../../Dao/Dao'
-import {MarkerShape} from "../../Utils/PropTypeShapes";
+import Dao from '../../../Dao/Dao'
+import {MarkerShape} from "../../../Utils/PropTypeShapes";
 import {Actions} from 'react-native-router-flux'
 
 //Renders the view for user to create a new route and holds it's logic

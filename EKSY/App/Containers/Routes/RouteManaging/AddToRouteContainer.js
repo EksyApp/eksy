@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import AddToRouteComponent from '../../Components/Routes/AddToRouteComponent'
+import AddToRouteComponent from '../../../Components/Routes/RouteManaging/AddToRouteComponent'
 import {Actions} from 'react-native-router-flux'
 import PropTypes from 'prop-types'
-import {MarkerShape} from '../../Utils/PropTypeShapes'
-import Dao from '../../Dao/Dao'
+import {MarkerShape} from '../../../Utils/PropTypeShapes'
+import Dao from '../../../Dao/Dao'
 
 //Renders the view for user to create a new route or add marker to an existing route
 //Consists of create new route -button and RouteCardList that holds RouteCards
