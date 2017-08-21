@@ -1,12 +1,20 @@
 import React, {Component} from 'react'
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import Header from "../Common/Header";
 import FilterSettingsContainer from "../../Containers/Settings/FilterSettingsContainer";
 import * as Theme from "../../Theme";
 import ProfileContainer from "../../Containers/Settings/ProfileContainer";
 import VersionNumber from "react-native-version-number"
+import codePush from "react-native-code-push"
 
 export default class SettingsComponent extends Component {
+
+	checkUpdate() {
+			codePush.sync({
+				updateDialog: true,
+				installMode: codePush.InstallMode.IMMEDIATE
+			})
+	}
 
 	render () {
 		return (
@@ -15,7 +23,9 @@ export default class SettingsComponent extends Component {
 					<ProfileContainer/>
 					<FilterSettingsContainer/>
 					<View style={styles.versionView}>
-						<Text style={styles.versionText}>{VersionNumber.appVersion}</Text>
+						<TouchableOpacity onPress={this.checkUpdate}>
+							<Text style={styles.versionText}>{VersionNumber.appVersion}</Text>
+						</TouchableOpacity>
 					</View>
 				</View>
 		)
