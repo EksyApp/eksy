@@ -11,8 +11,8 @@ import {RoutesShape} from '../../../Utils/PropTypeShapes'
 import Container from '../../Common/Container'
 
 export default class AddToRouteComponent extends Component {
-	
-	
+
+
 	renderRoutes() {
 		if (this.props.loading) {
 			return (
@@ -27,8 +27,8 @@ export default class AddToRouteComponent extends Component {
 			)
 		}
 	}
-	
-	
+
+
 	render() {
 		return (
 				<Container backButton title="Add to route">
@@ -40,8 +40,8 @@ export default class AddToRouteComponent extends Component {
 				</Container>
 		)
 	}
-	
-	
+
+
 }
 
 const styles = StyleSheet.create({

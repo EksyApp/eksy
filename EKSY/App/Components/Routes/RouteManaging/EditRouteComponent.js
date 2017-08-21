@@ -5,9 +5,11 @@ import * as Theme from '../../../Theme/index'
 import RouteForm from './RouteForm'
 import Button from '../../Common/Button'
 import Container from '../../Common/Container'
+import PropTypes from 'prop-types'
+import {RegionShape, MarkersShape} from '../../../Utils/PropTypeShapes'
 
 export default class EditRouteComponent extends Component {
-	
+
 	render() {
 		return (
 				<Container backButton title="Route">
@@ -29,7 +31,7 @@ export default class EditRouteComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -37,5 +39,17 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: Theme.backgroundColor
 	},
-	
+
 })
+
+EditRouteComponent.propTypes = {
+	currentRegion: RegionShape,
+	initialTitle: PropTypes.string,
+	initialText: PropTypes.string,
+	onTitleChange: PropTypes.func,
+	onTextChange: PropTypes.func,
+	markers: MarkersShape,
+	onMarkerListChange: PropTypes.func,
+	onSaveClick: PropTypes.func,
+	onDeleteClick: PropTypes.func
+}
