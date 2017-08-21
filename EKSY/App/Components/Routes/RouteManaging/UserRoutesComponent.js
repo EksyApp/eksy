@@ -6,6 +6,8 @@ import Button from '../../Common/Button'
 import Message from '../../Common/Message'
 import RouteCardList from '../RouteViewing/RouteCardList'
 import Container from '../../Common/Container'
+import PropTypes from 'prop-types'
+import {RoutesShape} from "../../../Utils/PropTypeShapes";
 
 export default class UserRoutesComponent extends Component {
 	
@@ -41,3 +43,10 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+UserRoutesComponent.propTypes = {
+	loading: PropTypes.bool,
+	routes: RoutesShape,
+	onCardClick: PropTypes.func,
+	onRefresh: PropTypes.func
+}

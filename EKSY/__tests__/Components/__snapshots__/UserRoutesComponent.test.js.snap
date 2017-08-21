@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SettingsComponent renders correctly 1`] = `
+exports[`UserRoutesComponent renders correctly 1`] = `
 <View
   style={
     Object {
@@ -106,7 +106,7 @@ exports[`SettingsComponent renders correctly 1`] = `
         ]
       }
     >
-      Settings
+      Your Routes
     </Text>
   </View>
   <RCTScrollView
@@ -120,55 +120,71 @@ exports[`SettingsComponent renders correctly 1`] = `
         undefined,
       ]
     }
-    title="Settings"
+    title="Your Routes"
   >
     <View>
-      <View />
-      <View />
       <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "alignItems": "flex-end",
-            "flex": 1,
-            "flexDirection": "row",
-            "margin": 15,
+            "alignSelf": "stretch",
+            "backgroundColor": "rgb(230,232,227)",
+            "borderColor": "rgb(101,114,122)",
+            "borderRadius": 5,
+            "borderWidth": 1,
+            "height": 40,
+            "marginBottom": 15,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
           }
         }
+        testID={undefined}
+        tvParallaxProperties={undefined}
       >
-        <View
-          accessibilityComponentType={undefined}
-          accessibilityLabel={undefined}
-          accessibilityTraits={undefined}
+        <Text
           accessible={true}
-          hitSlop={undefined}
-          isTVSelectable={true}
-          onLayout={undefined}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
           style={
             Object {
-              "opacity": 1,
+              "alignSelf": "center",
+              "color": "rgb(101,114,122)",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "paddingBottom": 10,
+              "paddingTop": 10,
             }
           }
-          testID={undefined}
-          tvParallaxProperties={undefined}
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontSize": 12,
-              }
-            }
-          />
-        </View>
+          Refresh
+        </Text>
       </View>
+      <RCTScrollView
+        dataSource={
+          ListViewDataSource {
+            "items": 0,
+          }
+        }
+        enableEmptySections={true}
+        renderRow={[Function]}
+        renderScrollComponent={[Function]}
+      >
+        <View />
+      </RCTScrollView>
     </View>
   </RCTScrollView>
 </View>
