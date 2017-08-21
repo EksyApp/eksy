@@ -15,26 +15,6 @@ import Container from '../Common/Container'
 export default class AdminMarkerViewComponent extends Component {
 
 	render() {
-		return(
-				<View style={styles.container}>
-					<Header title="Confirm Marker" backButton />
-					<ScrollView style={styles.container}>
-						<MarkerView
-								marker={this.props.marker}
-								currentRegion={this.props.currentRegion}
-						/>
-						<Button onPress={this.props.onAcceptClick}>
-							Accept
-						</Button>
-						<Button onPress={this.props.onRejectClick}>
-							Reject
-						</Button>
-						<Button onPress={this.props.onEditClick}>
-							Edit
-						</Button>
-					</ScrollView>
-
-				</View>
 
 		return (
 				<Container title="Confirm Marker" backButton>
@@ -70,8 +50,4 @@ AdminMarkerViewComponent.propTypes = {
 	onAcceptClick:PropTypes.func,
 	onRejectClick:PropTypes.func,
 	onEditClick:PropTypes.func,
-}
-	onAcceptClick: PropTypes.func,
-	onRejectClick: PropTypes.func,
-	onEditClick: PropTypes.func,
 }
