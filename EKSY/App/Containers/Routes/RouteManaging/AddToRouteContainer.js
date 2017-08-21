@@ -6,39 +6,41 @@ import PropTypes from 'prop-types'
 import {MarkerShape} from '../../../Utils/PropTypeShapes'
 import Dao from '../../../Dao/Dao'
 
+//Renders the view for user to create a new route or add marker to an existing route
+//Consists of create new route -button and RouteCardList that holds RouteCards
 export class AddToRouteContainer extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.state={
 			loading: true,
 			routes: []
 		}
-		
+
 		this.refresh()
 	}
-	
+
 	refresh() {
 		this.setState({loading: true})
 		this.getRoutes()
 	}
-	
+
 	async getRoutes() {
 		let routes = await new Dao().getUserRoutes()
 		this.setState({loading: false, routes})
 	}
-	
+
 	handleCreateClick() {
 		Actions.createRoute()
 	}
-	
+
 	handleRouteClick(route) {
 		route.markers.push(this.props.marker)
 		new Dao().updateRoute(route)
 		Actions.pop()
 	}
-	
+
 	render() {
 		return (
 				<AddToRouteComponent
@@ -49,8 +51,8 @@ export class AddToRouteContainer extends Component {
 				/>
 		)
 	}
-	
-	
+
+
 }
 
 AddToRouteContainer.propTypes = {

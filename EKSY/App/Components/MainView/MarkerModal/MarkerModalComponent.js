@@ -5,8 +5,11 @@ import {Actions} from 'react-native-router-flux'
 import PropTypes from 'prop-types'
 import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
+//Renders a modal on top of main view to view markers content
+//Modal is opened by clickable marker carousel's marker card or  map view's marker tags
+//Marker modal component holds MarkerModalView
 export default class MarkerModalComponent extends Component {
-	
+
 	render() {
 		return (
 				<TouchableWithoutFeedback onPress={this.props.setMarkerViewHidden}>
@@ -43,6 +46,8 @@ MarkerModalComponent.propTypes = {
 	setMarkerViewHidden: PropTypes.func,
 	markerViewVisible: PropTypes.bool,
 	marker: MarkerShape,
+	user: UserShape
+}
 	user: UserShape,
 	routeIsActive: PropTypes.bool
 }

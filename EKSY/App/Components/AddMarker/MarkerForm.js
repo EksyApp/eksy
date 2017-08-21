@@ -10,16 +10,17 @@ import Input from "../Common/Input";
 import PropTypes from 'prop-types';
 import { RegionShape, ImagesShape, FiltersShape } from '../../Utils/PropTypeShapes'
 
+//Renders form to edit marker. Part of the AddMarkerComponent
 export default class MarkerForm extends Component {
-	
+
 	constructor(props) {
 		super(props)
-		
+
 		this.state = {
 			imageResponse: ""
 		}
 	}
-	
+
 	render() {
 		return (
 				<View>
@@ -63,20 +64,20 @@ export default class MarkerForm extends Component {
 				</View>
 		)
 	}
-	
+
 }
 const styles = StyleSheet.create({
-	
+
 	selectorContainer: {
 		height: 300,
 		width: '100%'
 	},
-	
+
 	selector: {
 		width: '100%',
 		height: '100%'
 	}
-	
+
 })
 
 MarkerForm.propTypes = {
