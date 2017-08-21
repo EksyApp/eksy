@@ -27,6 +27,10 @@ export default class MarkerModalComponent extends Component {
 									Actions.addToRoute()
 									this.props.setMarkerViewHidden()
 								}}
+								onPlayClick={() => {
+									Actions.routesOfMarker()
+									this.props.setMarkerViewHidden()
+								}}
 								routeIsActive={this.props.routeIsActive}
 						/>
 					</Modal>
