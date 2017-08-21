@@ -109,7 +109,19 @@ exports[`EditMarkerComponent renders correctly 1`] = `
       Edit Marker
     </Text>
   </View>
-  <RCTScrollView>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Edit Marker"
+  >
     <View>
       <View>
         <View

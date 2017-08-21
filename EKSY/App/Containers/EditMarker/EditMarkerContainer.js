@@ -5,6 +5,8 @@ import Dao from "../../Dao/Dao";
 import Filters from "../../Data/Filters";
 import {Actions} from 'react-native-router-flux'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
+import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
 //Renders the view for user to edit and update marker's content and holds it's logic
 export class EditMarkerContainer extends Component {
@@ -119,6 +121,11 @@ export class EditMarkerContainer extends Component {
 		)
 	}
 
+}
+
+EditMarkerContainer.propTypes = {
+	currentRegion: RegionShape,
+	selectedMarker: MarkerShape,
 }
 
 const mapStateToProps = (state) => {

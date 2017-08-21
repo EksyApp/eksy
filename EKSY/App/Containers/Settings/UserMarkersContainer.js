@@ -4,11 +4,12 @@ import Dao from "../../Dao/Dao"
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 import UserMarkersComponent from "../../Components/Settings/UserMarkersComponent";
+import PropTypes from 'prop-types'
 
 //Renders a list of user's markers and holds it's logic
 //List component (marker) takes to user's marker view
 export class UserMarkersContainer extends Component {
-
+	
 	constructor(props){
 		super(props)
 		this.dao= new Dao()
@@ -16,27 +17,24 @@ export class UserMarkersContainer extends Component {
 			loading: true,
 			userMarkers: null,
 		}
+		this.getMarkers()
 	}
-
-	componentWillMount() {
-		this.refresh()
-	}
-
+	
 	refresh() {
 		this.setState({loading: true})
 		this.getMarkers()
 	}
-
+	
 	async getMarkers() {
 		let markers = await this.dao.getUserMarkers()
 		this.setState({loading: false, userMarkers: markers})
 	}
-
+	
 	handlePress(marker) {
 		this.props.setMarkerSelected(marker)
-		Actions.userMarkerView()
+		Actions.markerView()
 	}
-
+	
 	render () {
 		return (
 				<UserMarkersComponent
@@ -49,6 +47,9 @@ export class UserMarkersContainer extends Component {
 	}
 }
 
+UserMarkersContainer.propTypes = {
+	setMarkerSelected: PropTypes.func,
+}
 
 const mapStateToProps = (state) => {
 	return {}

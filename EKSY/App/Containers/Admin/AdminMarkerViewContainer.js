@@ -3,6 +3,7 @@ import AdminMarkerViewComponent from "../../Components/Admin/AdminMarkerViewComp
 import {connect} from "react-redux";
 import Dao from "../../Dao/Dao";
 import {Actions} from 'react-native-router-flux'
+import {MarkerShape, RegionShape} from "../../Utils/PropTypeShapes";
 
 //Renders the admin's marker view and holds it's logic
 //This view is for admin to explore a marker's content and to accept or reject it
@@ -42,6 +43,10 @@ export class AdminMarkerViewContainer extends Component {
 
 }
 
+AdminMarkerViewContainer.propTypes = {
+	marker: MarkerShape,
+	currentRegion: RegionShape
+}
 
 const mapStateToProps = (state) => {
 	return {

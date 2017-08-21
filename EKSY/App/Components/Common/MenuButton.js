@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import * as Theme from '../../Theme/index'
+import PropTypes from 'prop-types';
 
 class MenuButton extends Component {
 
@@ -25,4 +26,9 @@ const styles = {
     color: Theme.accentColor,
   }
 }
+
+MenuButton.propTypes = {
+  onPress: PropTypes.func
+}
+
 export default MenuButton

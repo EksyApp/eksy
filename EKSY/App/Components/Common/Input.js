@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import {FormLabel, FormInput} from 'react-native-elements'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types';
 
 export default class Input extends Component {
 	
@@ -40,3 +41,7 @@ const styles = StyleSheet.create({
 		color: Theme.accentColor
 	}
 });
+
+Input.propTypes = {
+	label: PropTypes.string,
+}

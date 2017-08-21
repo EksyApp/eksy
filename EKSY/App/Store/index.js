@@ -23,7 +23,6 @@ function configureStore() {
       if (__DEV__) {
         middlewares.push(createLogger({}))
       }
-
       const storeInst = createStore(
         reducers,
         undefined,

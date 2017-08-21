@@ -7,15 +7,16 @@ import {connect} from 'react-redux'
 import Dao from '../../Dao/Dao'
 import Filters from '../../Data/Filters'
 import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
+import {RegionShape} from "../../Utils/PropTypeShapes";
 
 //Renders the view for adding marker and holds it's logic
 export class AddMarkerContainer extends Component {
 	constructor(props) {
 		super(props)
-
+		
 		this.dao = new Dao();
 		this.filters = [...Filters.mainFilters];
-
+		
 		this.state = {
 			region: this.props.currentRegion,
 			text: '',
@@ -23,14 +24,14 @@ export class AddMarkerContainer extends Component {
 			images: [],
 			filters: []
 		}
-
+		
 		for (let filter of this.filters) {
 			filter.checked = false
 		}
-
+		
 		this.mapManager = new MapManager()
 	}
-
+	
 	addNewMarker() {
 		let marker = {
 			latitude: this.state.region.latitude,
@@ -45,8 +46,8 @@ export class AddMarkerContainer extends Component {
 		setTimeout(() => this.mapManager.flyToPosition(marker.latitude, marker.longitude), 1000)
 		Actions.pop()
 	}
-
-
+	
+	
 	onFilterChange(name, checked) {
 		if (checked) {
 			this.setState({filters: [...this.state.filters, name]})
@@ -54,34 +55,35 @@ export class AddMarkerContainer extends Component {
 			this.setState({filters: this.state.filters.filter((filter) => name !== filter)})
 		}
 	}
-
-
+	
+	
 	render() {
 		return (
 				<AddMarkerComponent
-
+						
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.setState({region: region})}
-
+						
 						onTitleChange={(title) => {this.setState({title: title})}}
-
+						
 						onTextChange={(text) => {this.setState({text: text})}}
-
+						
 						images={this.state.images}
 						onNewImage={(image) => this.setState({images: [...this.state.images, image]})}
-
+						
 						filters={this.filters}
 						onFilterChange={(name, checked) => {this.onFilterChange(name, checked)}}
-
+						
 						onAddMarkerClick={() => {this.addNewMarker()}}
-
+				
 				/>
 		)
 	}
-
-
 }
 
+AddMarkerContainer.propTypes = {
+	currentRegion: RegionShape,
+}
 
 const mapStateToProps = (state) => {
 	return {

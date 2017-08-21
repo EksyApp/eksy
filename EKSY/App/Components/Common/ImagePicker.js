@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Button from "./Button";
 import Picker from 'react-native-image-picker'
 import {Image} from 'react-native'
+import PropTypes from 'prop-types';
 
 export default class ImagePicker extends Component {
 	
@@ -53,4 +54,13 @@ export default class ImagePicker extends Component {
 	_imageUriError(error) {
 		this.props.onUriError !== null ? this.props.onUriError(error) : false;
 	}
+}
+
+ImagePicker.propTypes = {
+	buttonText: PropTypes.string,
+	options: PropTypes.object,
+	onPickerCancelled: PropTypes.func,
+	onPickerError: PropTypes.func,
+	onNewImage: PropTypes.func,
+	onUriError: PropTypes.func,
 }

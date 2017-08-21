@@ -2,30 +2,18 @@ import React, {Component} from 'react'
 import {Text, View, StyleSheet} from "react-native";
 import Header from "../Common/Header";
 import * as Theme from "../../Theme";
-import Message from '../Common/Message'
-import MarkerCardList from '../Common/MarkerCardList'
 import Label from "../Common/Label";
 import Button from "../Common/Button";
 import Input from "../Common/Input";
 import Divider from "../Common/Divider";
-
+import PropTypes from 'prop-types';
+import Container from '../Common/Container'
 
 export default class AdminToolsComponent extends Component {
-
 	
-
-  renderList() {
-    if(this.props.loading) {
-      return(<Message>Loading</Message>)
-    } else {
-      return(<MarkerCardList data={this.props.userMarkers} onPress={this.props.onCardClick} style={styles.card} />)
-    }
-  }
-
 	render () {
 		return (
-				<View style={styles.container}>
-					<Header title='Admin Tools' backButton />
+				<Container title='Admin Tools' backButton>
 					<Label>Map circle radius</Label>
 					<Input
 							label='Radius (meters)'
@@ -39,10 +27,10 @@ export default class AdminToolsComponent extends Component {
 					<Button onPress={this.props.onConfirmClick}>
 						See unconfirmed markers
 					</Button>
-				</View>
+				</Container>
 		)
 	}
-
+	
 }
 
 const styles = StyleSheet.create({
@@ -56,3 +44,9 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+AdminToolsComponent.propTypes = {
+	onRadiusChange: PropTypes.func,
+	radius: PropTypes.number,
+	onConfirmClick: PropTypes.func
+}

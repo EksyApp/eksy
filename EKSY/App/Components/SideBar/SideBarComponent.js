@@ -3,7 +3,8 @@ import {View, Text} from 'react-native'
 import SideBarLogo from '../../Components/SideBar/SideBarLogo'
 import {Button} from '../../Components/Common/index'
 import * as Theme from '../../Theme/index'
-import firebase from 'firebase'
+import PropTypes from 'prop-types'
+import {UserShape} from "../../Utils/PropTypeShapes";
 
 export default class SideBarComponent extends Component {
 
@@ -74,4 +75,13 @@ const styles = {
 	logoStyle: {
 		// Three blue lines are from the logo picture
 	}
+}
+
+SideBarComponent.propTypes = {
+	user: UserShape,
+	goToLoginScreen: PropTypes.func,
+	goToAddMarker: PropTypes.func,
+	goToAdminTools: PropTypes.func,
+	goToMap: PropTypes.func,
+	goToUserSettings: PropTypes.func,
 }

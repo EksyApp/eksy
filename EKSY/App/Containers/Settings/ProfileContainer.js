@@ -4,6 +4,8 @@ import {connect} from "react-redux";
 import firebase from 'firebase'
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
+import {UserShape} from "../../Utils/PropTypeShapes";
 
 //Renders the view for user tool's list and holds it's logic
 //Upper part of user setting view
@@ -24,10 +26,16 @@ export class ProfileContainer extends Component {
 							this.signout()
 						}}
 						onMarkersClick = {() => Actions.usersMarkers()}
+						onRoutesClick = {() => Actions.userRoutes()}
 				/>
 		)
 	}
 
+}
+
+ProfileContainer.propTypes  = {
+	userSignedOut: PropTypes.func,
+	user: UserShape
 }
 
 const mapStateToProps = (state) => {
@@ -38,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		userSignedOut: () => {dispatch(ReduxActions.userSignedOut())}
+		userSignedOut: () => {dispatch(ReduxActions.userLoggedOut())}
 	}
 }
 

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompactPictureLit renders correctly 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 0,
+    }
+  }
+  enableEmptySections={true}
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+  style={undefined}
+>
+  <View />
+</RCTScrollView>
+`;

@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 import {FormLabel, FormInput} from 'react-native-elements'
 import * as Theme from '../../Theme'
+import PropTypes from 'prop-types';
+import {StyleShape} from "../../Utils/PropTypeShapes";
 
 export class TextInputArea extends Component {
 
@@ -56,4 +58,12 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: Theme.accentColor
 	}
-});
+})
+
+TextInputArea.propTypes = {
+	...FormInput.propTypes,
+	label:PropTypes.string,
+	inputStyle: StyleShape,
+	containerStyle:StyleShape,
+	onChange: PropTypes.func
+}

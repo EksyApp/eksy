@@ -4,6 +4,7 @@ import Dao from "../../Dao/Dao"
 import * as ReduxActions from "../../Actions";
 import {Actions} from 'react-native-router-flux'
 import ConfirmMarkersComponent from "../../Components/Admin/ConfirmMarkersComponent";
+import PropTypes from 'prop-types'
 
 //Renders the admin's list of unconfirmed markers and holds its logic
 //Clickable list of markers leads to admins marker view to govern markers
@@ -68,6 +69,10 @@ let markerTimeCompare = function (a, b) {
 	return aTime - bTime
 };
 
+
+ConfirmMarkersContainer.propTypes = {
+	setMarkerSelected: PropTypes.func
+}
 
 const mapStateToProps = (state) => {
 	return {}

@@ -3,6 +3,7 @@ import Filters from '../../Data/Filters'
 import * as ReduxActions from '../../Actions'
 import {connect} from 'react-redux'
 import FilterSettingsComponent from "../../Components/Settings/FilterSettingsComponent";
+import PropTypes from 'prop-types'
 
 //Renders the view for user tho manage filters and holds it's logic
 //Lower part of user settings view 
@@ -38,6 +39,11 @@ export class FilterSettingsContainer extends Component {
 		)
 	}
 
+}
+
+FilterSettingsContainer.propTypes = {
+	addFilter: PropTypes.func,
+	removeFilter: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
