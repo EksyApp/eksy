@@ -1,20 +1,16 @@
 import React, {Component} from 'react'
 import {
-	StyleSheet,         // CSS-like styles
-	Text,               // Renders text
-	TouchableOpacity,   // Pressable container
-	View,               // Container component
-	ActivityIndicator,
+	StyleSheet,
+	View,
 	Animated,
 	Dimensions
 } from 'react-native'
 import MapView from 'react-native-maps'
 import MapManager from '../../../Utils/MapManager'
 import Marker from './Marker'
-import isEqual from 'lodash/isEqual'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types';
-import {LocationShape, MarkersShape, RegionShape} from "../../../Utils/PropTypeShapes";
+import PropTypes from 'prop-types'
+import {LocationShape, MarkerShape, MarkersShape, RegionShape, RouteShape} from '../../../Utils/PropTypeShapes'
+import GeoFire from 'geofire'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -25,9 +21,9 @@ export default class MapComponent extends Component {
 	
 	constructor(props) {
 		super(props)
-		this._manager = new MapManager();
-		this._manager.setMapObject(this);
-		this._map = null;
+		this._manager = new MapManager()
+		this._manager.setMapObject(this)
+		this._map = null
 		
 		this.state = {
 			zoomLevel: (360 * ((Screen.width / 256) / this.props.currentRegion.longitudeDelta)) + 1
@@ -42,23 +38,9 @@ export default class MapComponent extends Component {
 	
 	handleRegionChange(region) {
 		this.props.regionChange(region)
-		this.setState({...this.state, zoomLevel: (360 * ((Screen.width / 256) / region.longitudeDelta)) + 1})
+		this.setState({zoomLevel: (360 * ((Screen.width / 256) / region.longitudeDelta)) + 1})
 	}
 	
-	async componentWillReceiveProps(nextProps) {
-		if (!isEqual(nextProps, this.props)) {
-			// this.store = await Store()
-			// navigator.geolocation.getCurrentPosition(
-			// 	(position) => {
-			// 		this.store.dispatch(ReduxActions.updateLocation(position.coords))
-			// 		this.store.dispatch(ReduxActions.locationKnown(true))
-			// 		this.animateToCoordinate(position.coords, 100)
-			// 	},
-			// 	(error) => this.store.dispatch(ReduxActions.locationKnown(false)),
-			// 	{enableHighAccuracy: false, timeout: 500, maximumAge: 1000000, distanceFilter: 1}
-			// )
-		}
-	}
 	
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) =>
@@ -68,7 +50,9 @@ export default class MapComponent extends Component {
 						setMarkerViewVisible={this.props.setMarkerViewVisible}
 						disableGestures={this.props.disableGestures}
 						key={marker.key}
-				/>)
+				/>
+		)
+		
 	}
 	
 	
@@ -77,7 +61,7 @@ export default class MapComponent extends Component {
 			return (
 					<Animated.View>
 						<MapView.Circle center={this.props.currentLocation}
-						                radius={this.props.radius*1000}
+						                radius={this.props.radius * 1000}
 						                strokeWidth={0.5}
 						                strokeColor="rgba(66, 180, 230, 1)"
 						                fillColor="rgba(66, 180, 230, 0.2)"
@@ -90,29 +74,24 @@ export default class MapComponent extends Component {
 						/>
 					</Animated.View>
 			)
-			// <MapView.Marker key='user' coordinate={this.props.currentLocation} style={{flex: 1}}>
-			// 	<Animated.View style={[styles.userMarkerWrap]}>
-			// 		<Animated.View style={[styles.userRing]} />
-			// 		<View style={styles.userMarker} />
-			// 	</Animated.View>
-			// </MapView.Marker>
-			
-			// <MapView.Circle
-			// 					center={this.props.currentLocation}
-			// 					radius={100}
-			// 					strokeWidth={2}
-			// 					strokeColor={circleStrokeColor}
-			// 					fillColor={circleFillColor}
-			// 					key={(this.props.currentLocation.longitude + this.props.currentLocation.latitude)}
-			// 				/>
-			// <MapView.Marker
-			// 		key='user'
-			// 		coordinate={this.props.currentLocation}
-			// 		style={{flex: 1}}
-			// >
 		}
 		
 		return null
+	}
+	
+	renderRouteLine() {
+		if (this.props.routeIsActive) {
+			let distance = GeoFire.distance([this.props.currentLocation.latitude, this.props.currentLocation.longitude], [this.props.nextMarker.latitude, this.props.nextMarker.longitude])
+			console.log(distance)
+			console.log(this.props.radius)
+			if (distance >= this.props.radius) {
+				let latitude = this.props.currentLocation.latitude + (this.props.radius / distance) * (this.props.nextMarker.latitude - this.props.currentLocation.latitude)
+				let longitude = this.props.currentLocation.longitude + (this.props.radius / distance) * (this.props.nextMarker.longitude - this.props.currentLocation.longitude)
+				return (<MapView.Polyline coordinates={[this.props.currentLocation, {latitude, longitude}]}/>)
+			} else {
+				return (<MapView.Polyline coordinates={[this.props.currentLocation, this.props.nextMarker]}/>)
+			}
+		}
 	}
 	
 	renderMapView() {
@@ -122,13 +101,12 @@ export default class MapComponent extends Component {
 						style={styles.map}
 						initialRegion={this.props.currentRegion}
 						onRegionChange={(region) => this.handleRegionChange(region)}
-						/*loadingEnabled*/
-						/*showsUserLocation*/
 						followUserLocation
 						showsMyLocationButton={true}
 						showsBuildings={true}
 						showCompass={false}
 				>
+					{this.renderRouteLine()}
 					{this.renderUserCircle()}
 					{this.renderMarkers()}
 				</MapView.Animated>
@@ -142,6 +120,8 @@ export default class MapComponent extends Component {
 				</View>
 		)
 	}
+	
+	
 }
 
 
@@ -173,12 +153,12 @@ const styles = StyleSheet.create({
 	},
 	circle: {
 		borderRadius: 12,
-		backgroundColor: "rgba(130,4,150, 0.3)",
-		position: "absolute",
+		backgroundColor: 'rgba(130,4,150, 0.3)',
+		position: 'absolute',
 		borderWidth: 1,
-		borderColor: "rgba(130,4,150, 0.5)"
+		borderColor: 'rgba(130,4,150, 0.5)'
 	}
-});
+})
 
 MapComponent.propTypes = {
 	currentRegion: RegionShape,
@@ -188,4 +168,7 @@ MapComponent.propTypes = {
 	setMarkerSelected: PropTypes.func,
 	setMarkerViewVisible: PropTypes.func,
 	disableGestures: PropTypes.func,
+	routeIsActive: PropTypes.bool,
+	route: RouteShape,
+	nextMarker: MarkerShape
 }
