@@ -9,9 +9,13 @@ import PropTypes from 'prop-types'
 import {RegionShape, MarkerShape} from '../../Utils/PropTypeShapes'
 import Container from '../Common/Container'
 
+//Renders view for admin to manage a marker
+//Admin can accept or reject the markers
+//Edit button takes to EditMarker
 export default class AdminMarkerViewComponent extends Component {
-	
+
 	render() {
+
 		return (
 				<Container title="Confirm Marker" backButton>
 					<MarkerView
@@ -30,7 +34,7 @@ export default class AdminMarkerViewComponent extends Component {
 				</Container>
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
 AdminMarkerViewComponent.propTypes = {
 	marker: MarkerShape,
 	currentRegion: RegionShape,
-	onAcceptClick: PropTypes.func,
-	onRejectClick: PropTypes.func,
-	onEditClick: PropTypes.func,
+	onAcceptClick:PropTypes.func,
+	onRejectClick:PropTypes.func,
+	onEditClick:PropTypes.func,
 }

@@ -8,6 +8,8 @@ import Container from '../../Common/Container'
 import PropTypes from 'prop-types'
 import {RegionShape, MarkersShape} from '../../../Utils/PropTypeShapes'
 
+//Renders the view to edit route's metadata
+//Contains RouteForm and buttons to save and delete
 export default class EditRouteComponent extends Component {
 
 	render() {

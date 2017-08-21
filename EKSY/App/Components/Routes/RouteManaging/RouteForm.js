@@ -7,8 +7,9 @@ import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
 import Route from '../../Common/Route'
 
+//Renders a view to manage route's metadata
 export default class RouteForm extends Component {
-	
+
 	render() {
 		return(
 				<View>
@@ -35,7 +36,7 @@ export default class RouteForm extends Component {
 								onChange={this.props.onMarkerListChange}
 						/>
 					</View>
-					
+
 				</View>
 		)
 	}
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
 		height: 300,
 		width: '100%'
 	},
-	
+
 	map: {
 		width: '100%',
 		height: '100%'
