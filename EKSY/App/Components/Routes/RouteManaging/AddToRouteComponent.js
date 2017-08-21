@@ -10,6 +10,8 @@ import Message from '../../Common/Message'
 import {RoutesShape} from '../../../Utils/PropTypeShapes'
 import Container from '../../Common/Container'
 
+//Renders a view for user to add marker to consisting route or create a new route
+//Create new route takes to CreateRouteComponent
 export default class AddToRouteComponent extends Component {
 
 

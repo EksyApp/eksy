@@ -8,20 +8,22 @@ import PropTypes from 'prop-types'
 import {MarkersShape} from '../../../Utils/PropTypeShapes'
 import Container from '../../Common/Container'
 
+//Renders a view for user to create a new route
+//Consists of RouteForm and button to create
 export default class CreateRouteComponent extends Component {
-	
+
 	render() {
 		return (
 				<Container backButton title="Create a route">
 					<RouteForm
 							initialRegion={this.props.currentRegion}
-							
+
 							initialTitle=""
 							onTitleChange={this.props.onTitleChange}
-							
+
 							initialText=""
 							onTextChange={this.props.onTextChange}
-							
+
 							markers={this.props.markers}
 							onMarkerListChange={this.props.onMarkerListChange}
 					/>
@@ -29,10 +31,10 @@ export default class CreateRouteComponent extends Component {
 						Create
 					</Button>
 				</Container>
-		
+
 		)
 	}
-	
+
 }
 
 const styles = StyleSheet.create({
