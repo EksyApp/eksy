@@ -1,5 +1,6 @@
 import {DRAWER_OPEN, DRAWER_CLOSE, DRAWER_TOGGLE, DISABLE_GESTURES} from '../Actions/Types'
 
+//Updates the state of sidebar beeing open/close
 const initial = {
   drawerOpen: false
 }

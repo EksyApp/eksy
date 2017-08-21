@@ -1,5 +1,6 @@
 import {MARKERVIEW_VISIBLE, MARKERVIEW_HIDDEN} from '../Actions/Types'
 
+//Updates the state of marker's visibility
 const initial = {
   markerViewVisible: false
 }

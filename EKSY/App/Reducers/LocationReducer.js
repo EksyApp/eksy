@@ -1,5 +1,6 @@
 import {UPDATE_CURRENT_LOCATION, LOCATION_KNOWN} from '../Actions/Types'
 
+//Updates the state of user's location if known
 const initial = {
   latitude: 60.184356,
   longitude: 24.949326,
