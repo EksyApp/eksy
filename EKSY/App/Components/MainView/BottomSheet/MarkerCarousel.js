@@ -14,6 +14,9 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
+
+//Renders marker carousel view inside the bottom sheet
+//Carousel contains clickable marker cards (MarkerCard) 
 export default class MarkerCarousel extends Component {
 	constructor(props) {
 		super(props)

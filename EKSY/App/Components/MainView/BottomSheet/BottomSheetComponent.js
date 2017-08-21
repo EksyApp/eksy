@@ -12,13 +12,15 @@ const Screen = {
 	height: Dimensions.get('window').height - 75
 }
 
+//Renders the bottom sheet  view
+//Holds marker carousel (MarkerCarousel) containing marker cards (MarkerCard)
 class BottomSheetComponent extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this._deltaY = new Animated.Value(Screen.height - 100);
 	}
-	
+
 	render() {
 		return (
 				<View style={styles.container}>
@@ -57,7 +59,7 @@ class BottomSheetComponent extends Component {
 										markerList={this.props.markerList}
 										pointerEvents="none"/>
 							</View>
-						
+
 						</Animated.View>
 					</Interactable.View>
 				</View>
@@ -66,7 +68,7 @@ class BottomSheetComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-	
+
 	container: {
 		position: 'absolute',
 		top: 0,
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
 		width: Screen.width,
 		height: Screen.height,
 	},
-	
+
 	panelVisible: {
 		paddingTop: 20,
 		width: "100%",
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
 		shadowRadius: 5,
 		shadowOpacity: 0.4
 	},
-	
+
 	panelHeader: {
 		alignItems: 'center',
 		position: 'relative',

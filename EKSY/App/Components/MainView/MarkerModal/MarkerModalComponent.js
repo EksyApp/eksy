@@ -5,6 +5,9 @@ import {Actions} from 'react-native-router-flux'
 import PropTypes from 'prop-types'
 import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
+//Renders a modal on top of main view to view markers content
+//Modal is opened by clickable marker carousel's marker card or  map view's marker tags
+//Marker modal component holds MarkerModalView
 export default class MarkerModalComponent extends Component {
 	
 	render() {
