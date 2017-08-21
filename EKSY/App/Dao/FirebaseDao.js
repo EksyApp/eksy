@@ -441,6 +441,15 @@ class FirebaseDao {
 			this.userLoggedIn()
 		}
 	}
+	
+	async getRoutesOfMarker(marker) {
+		return await Promise.all(Object.keys(marker.routes).map(async (routeKey) => {
+			let snapshot = await firebase.database().ref('/routes/' + routeKey).once('value')
+			let route = snapshot.val()
+			route.markers = await this.getRoutesMarkerObjects(route)
+			return {...route, key: routeKey}
+		}))
+	}
 }
 
 export default FirebaseDao

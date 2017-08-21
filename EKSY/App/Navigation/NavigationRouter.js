@@ -17,6 +17,7 @@ import CreateRouteContainer from '../Containers/Routes/RouteManaging/CreateRoute
 import UserRoutesContainer from '../Containers/Routes/RouteManaging/UserRoutesContainer'
 import RouteViewContainer from '../Containers/Routes/RouteViewing/RouteViewContainer'
 import EditRouteContainer from '../Containers/Routes/RouteManaging/EditRouteContainer'
+import RoutesOfMarkerContainer from '../Containers/Routes/RouteViewing/RoutesOfMarkerContainer'
 
 // defines all routes in the app
 const scenes = Actions.create(
@@ -38,6 +39,7 @@ const scenes = Actions.create(
       <Scene key="userRoutes" component={UserRoutesContainer} title="Your routes"/>
       <Scene key="routeView" component={RouteViewContainer} title="Route" />
       <Scene key="editRoute" component={EditRouteContainer} title="Edit route" />
+      <Scene key="routesOfMarker" component={RoutesOfMarkerContainer} title="Routes" />
     </Scene>
   </Scene>
 );

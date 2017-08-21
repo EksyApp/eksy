@@ -10,14 +10,14 @@ export default class RoutesOfMarkerComponent extends Component {
 		if(this.props.loading) {
 			return(<Message>Loading...</Message>)
 		} else {
-		
+			return(<RouteCardList routes={this.props.routes} onPress={(route) => this.props.onCardClick(route)} style={styles.card}/>)
 		}
 	}
 	
 	render() {
 		return(
 				<Container backButton title="Start a route">
-					<RouteCardList routes={this.props.routes} onPress={(route) => this.props.onCardClick(route)} style={styles.card}/>
+					{this.renderList()}
 				</Container>
 		)
 	}

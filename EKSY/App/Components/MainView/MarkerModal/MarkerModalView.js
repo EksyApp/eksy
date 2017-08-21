@@ -104,7 +104,7 @@ export default class MarkerModalView extends Component {
 	}
 	
 	_renderPlayIcon() {
-		if (this.props.routeIsActive) {
+		if (!this.props.routeIsActive) {
 			return (
 					<Icon
 							name="playlist-play"
