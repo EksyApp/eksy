@@ -2,6 +2,11 @@ import 'react-native';
 // import React from 'react';
 jest.unmock('ScrollView')
 
+jest.mock('react-native-version-number', () => {
+    return {
+      appversion: 'test'
+    }
+})
 
 jest.mock('react-native-code-push', () => {
     function MockCodePush(options = {}) {
@@ -9,8 +14,14 @@ jest.mock('react-native-code-push', () => {
     }
 
     Object.assign(MockCodePush, {
+      sync: jest.fn(),
+      installMode: null,
+      updateDialog: null,
       CheckFrequency: {
         ON_APP_RESUME: null
+      },
+      InstallMode: {
+        IMMEDIATE: null
       }
     })
 
