@@ -379,7 +379,7 @@ class FirebaseDao {
 		route.markers = await this.getRouteMarkersKeyArray(route)
 		let oldRouteSnapshot = await firebase.database().ref('/routes/' + route.key).once('value')
 		await firebase.database().ref('/markers/marker_info/' + oldRouteSnapshot.val().markers[0] + '/routes/' + route.key).remove()
-		firebase.database().ref('/markers/marker_info/' + route.markers[0] + '/routes/' + route.key).set(true)
+		firebase.database().ref('/markers/markers_info/' + route.markers[0] + '/routes/' + route.key).set(true)
 		firebase.database().ref('/routes/' + route.key).set(route)
 	}
 	
