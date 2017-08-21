@@ -5,7 +5,12 @@ import LoginComponent from "../../App/Components/Auth/LoginComponent";
 
 test('LoginComponent renders correctly', () => {
 	const tree = renderer.create(
-			<LoginComponent />
+			<LoginComponent
+					onEmailChange = {() => {} }
+					onPasswordChange = {() => {} }
+					onLoginClick = {() => {} }
+					response = ''
+			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });

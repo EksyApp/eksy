@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import BottomSheetComponent from "../../../Components/MainView/BottomSheet/BottomSheetComponent";
 import {connect} from "react-redux";
 import * as ReduxActions from "../../../Actions/index";
+import PropTypes from 'prop-types'
+import {MarkersShape} from "../../../Utils/PropTypeShapes";
 
 //Renders the drawable bottomsheet and handles it's logic 
 class BottomSheetContainer extends Component {
@@ -17,6 +19,13 @@ class BottomSheetContainer extends Component {
 		)
 	}
 
+}
+
+BottomSheetContainer.propTypes = {
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+	markerList: MarkersShape,
 }
 
 const mapStateToProps = (state) => {

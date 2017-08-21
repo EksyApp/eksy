@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import FastImage from "react-native-fast-image";
 const OrgImage = require('react-native').Image
+import PropTypes from 'prop-types';
 
 export default class Image extends Component {
 	
@@ -15,5 +16,6 @@ export default class Image extends Component {
 			)
 		}
 	}
-	
 }
+
+Image.propTypes = OrgImage.PropTypes

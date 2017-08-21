@@ -6,7 +6,9 @@ import Message from '../Common/Message'
 import MarkerCardList from '../Common/MarkerCardList'
 import Label from "../Common/Label";
 import Button from "../Common/Button";
-
+import PropTypes from 'prop-types';
+import { MarkersShape } from '../../Utils/PropTypeShapes'
+import Container from '../Common/Container'
 
 export default class ConfirmMarkersComponent extends Component {
 	
@@ -22,14 +24,13 @@ export default class ConfirmMarkersComponent extends Component {
 	
 	render () {
 		return (
-				<View style={styles.container}>
-					<Header title='Admin Tools' backButton />
+				<Container title='Admin Tools' backButton>
 					<Label>Confirm markers</Label>
 					<Button onPress={this.props.onRefresh}>
 						Refersh
 					</Button>
 					{this.renderList()}
-				</View>
+				</Container>
 		)
 	}
 	
@@ -46,3 +47,11 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+
+ConfirmMarkersComponent.propTypes = {
+	loading: PropTypes.bool,
+	pendingMarkers: MarkersShape,
+	onCardClick: PropTypes.func,
+	onRefresh: PropTypes.func
+}

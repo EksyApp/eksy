@@ -7,6 +7,8 @@ import CompactPictureList from "../Common/CompactPictureList";
 import CheckBoxList from "../Common/CheckBoxList";
 import Message from "../Common/Message";
 import Input from "../Common/Input";
+import PropTypes from 'prop-types';
+import { RegionShape, ImagesShape, FiltersShape } from '../../Utils/PropTypeShapes'
 
 export default class MarkerForm extends Component {
 	
@@ -76,3 +78,16 @@ const styles = StyleSheet.create({
 	}
 	
 })
+
+MarkerForm.propTypes = {
+	initialTitle: PropTypes.string,
+	initialText: PropTypes.string,
+	initialRegion: RegionShape,
+	onRegionChange:PropTypes.func,
+	onTitleChange:PropTypes.func,
+	onTextChange:PropTypes.func,
+	images: ImagesShape,
+	onNewImage: PropTypes.func,
+	filters: FiltersShape,
+	onFilterChange:PropTypes.func,
+}

@@ -109,7 +109,19 @@ exports[`LoginComponent renders correctly 1`] = `
       Login
     </Text>
   </View>
-  <RCTScrollView>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Login"
+  >
     <View>
       <View>
         <View>
@@ -314,7 +326,9 @@ exports[`LoginComponent renders correctly 1`] = `
               undefined,
             ]
           }
-        />
+        >
+          
+        </Text>
       </View>
       <View
         style={

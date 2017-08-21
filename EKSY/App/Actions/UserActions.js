@@ -16,7 +16,7 @@ export const userLoggedIn = (user) => {
 	}
 }
 
-export const userSignedOut = () => {
+export const userLoggedOut = () => {
 	return {
 		type: LOGIN,
 	}

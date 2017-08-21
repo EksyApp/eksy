@@ -5,7 +5,13 @@ import ImagePicker from "../../App/Components/Common/ImagePicker";
 
 test('ImagePicker renders correctly', () => {
 	const tree = renderer.create(
-			<ImagePicker />
+			<ImagePicker
+					buttonText=""
+					onPickerCancelled={() => {}}
+					onPickerError= {() => {}}
+					onNewImage={() => {}}
+					onUriError= {() => {}}
+			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });

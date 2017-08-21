@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkerModalView renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgb(243,244,229)",
+      "borderRadius": 20,
+      "flex": 1,
+      "justifyContent": "flex-start",
+      "margin": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 100,
+        "margin": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "rgb(101,114,122)",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            },
+            Object {
+              "color": "rgb(101,114,122)",
+              "fontSize": 22,
+              "fontWeight": "bold",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "height": 25,
+            "left": 0,
+            "position": "absolute",
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          onPress={undefined}
+          style={
+            Array [
+              false,
+              false,
+              false,
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              },
+              Object {
+                "marginLeft": 5,
+              },
+            ]
+          }
+          underlayColor="white"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 25,
+                },
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  undefined,
+                ],
+                Object {
+                  "fontFamily": "Material Icons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+    </View>
+    <RCTScrollView>
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "rgb(89,85,78)",
+                "fontSize": 18,
+                "margin": 10,
+              },
+              undefined,
+            ]
+          }
+        />
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;

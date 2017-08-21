@@ -4,6 +4,7 @@ import Header from "../Common/Header";
 import FilterSettingsContainer from "../../Containers/Settings/FilterSettingsContainer";
 import * as Theme from "../../Theme";
 import ProfileContainer from "../../Containers/Settings/ProfileContainer";
+import Container from '../Common/Container'
 import VersionNumber from "react-native-version-number"
 import codePush from "react-native-code-push"
 
@@ -18,8 +19,7 @@ export default class SettingsComponent extends Component {
 
 	render () {
 		return (
-				<View style={styles.container}>
-					<Header title='Filter Settings' backButton />
+				<Container title='Settings' backButton>
 					<ProfileContainer/>
 					<FilterSettingsContainer/>
 					<View style={styles.versionView}>
@@ -27,10 +27,9 @@ export default class SettingsComponent extends Component {
 							<Text style={styles.versionText}>{VersionNumber.appVersion}</Text>
 						</TouchableOpacity>
 					</View>
-				</View>
+				</Container>
 		)
 	}
-
 }
 
 const styles = StyleSheet.create({
@@ -48,3 +47,4 @@ const styles = StyleSheet.create({
 		fontSize: 12
 	}
 })
+

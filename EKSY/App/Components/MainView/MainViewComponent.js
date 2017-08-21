@@ -4,10 +4,12 @@ import {View, StyleSheet} from 'react-native'
 import MarkerModalContainer from "../../Containers/MainView/MarkerModal/MarkerModalContainer";
 import BottomSheetContainer from "../../Containers/MainView/BottomSheet/BottomSheetContainer";
 import MapContainer from "../../Containers/MainView/Map/MapContainer";
+import PropTypes from 'prop-types'
 
 //Renders the main View
 //Map view (MapComponent) holds marker tags (Marker)
 //Drawable bottom sheet (BottomSheetComponent) holds marker carousel (MarkerCarousel) 
+
 class MainViewComponent extends Component {
 
 	render() {
@@ -35,4 +37,9 @@ const styles = StyleSheet.create({
 	}
 })
 
+
+MainViewComponent.propTypes = {
+	menuButtonPress: PropTypes.func
+}
 export default MainViewComponent
+

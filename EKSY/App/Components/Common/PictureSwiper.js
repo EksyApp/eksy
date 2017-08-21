@@ -3,6 +3,8 @@ import Swiper from 'react-native-swipe-a-lot'
 import {View, StyleSheet} from "react-native";
 import Image from "./Image";
 import FastImage from 'react-native-fast-image'
+import PropTypes from 'prop-types';
+import {ImagesShape, StyleShape} from "../../Utils/PropTypeShapes";
 
 export default class PictureSwiper extends Component {
 	
@@ -37,3 +39,8 @@ const styles = StyleSheet.create({
 		height: '100%'
 	}
 })
+
+PictureSwiper.propTypes = {
+	style: StyleShape,
+	data: ImagesShape
+}

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {Modal, TouchableWithoutFeedback} from 'react-native'
 import MarkerModalView from "./MarkerModalView";
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
+import {MarkerShape, UserShape} from "../../../Utils/PropTypeShapes";
 
 export default class MarkerModalComponent extends Component {
 	
@@ -21,9 +23,26 @@ export default class MarkerModalComponent extends Component {
 						    	Actions.editMarker()
 							    this.props.setMarkerViewHidden()
 						    }}
+								onAddClick={() => {
+									Actions.addToRoute()
+									this.props.setMarkerViewHidden()
+								}}
+								onPlayClick={() => {
+									Actions.routesOfMarker()
+									this.props.setMarkerViewHidden()
+								}}
+								routeIsActive={this.props.routeIsActive}
 						/>
 					</Modal>
 				</TouchableWithoutFeedback>
 		)
 	}
+}
+
+MarkerModalComponent.propTypes = {
+	setMarkerViewHidden: PropTypes.func,
+	markerViewVisible: PropTypes.bool,
+	marker: MarkerShape,
+	user: UserShape,
+	routeIsActive: PropTypes.bool
 }

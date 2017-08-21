@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {ListView, View, StyleSheet} from 'react-native'
 import Image from "./Image";
+import { ImagesShape, StyleShape } from '../../Utils/PropTypeShapes'
 
 const imagesPerRow = 4
 
@@ -90,3 +91,8 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover'
 	}
 })
+
+CompactPictureList.propTypes = {
+	data: ImagesShape,
+	listStyle: StyleShape
+}

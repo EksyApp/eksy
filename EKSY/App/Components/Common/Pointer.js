@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
+import {RegionShape, StyleShape} from "../../Utils/PropTypeShapes";
 
 export default class Pointer extends Component {
 	
@@ -14,6 +15,9 @@ export default class Pointer extends Component {
 				</MapView>
 		)
 	}
-	
 }
 
+Pointer.propTypes = {
+	style: StyleShape,
+	initialRegion: RegionShape
+}

@@ -4,10 +4,11 @@ import {DefaultRenderer} from 'react-native-router-flux'
 import * as Actions from '../../Actions/index'
 import {SideMenu} from 'react-native-elements'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 
 //to manage sidebars visibility (hidden/display)
 class NavigationDrawer extends Component {
-
+	
 	render() {
 		const children = this.props.navigationState.children
 		return (
@@ -21,7 +22,15 @@ class NavigationDrawer extends Component {
 				</SideMenu>
 		)
 	}
+	
+}
 
+NavigationDrawer.propTypes = {
+	navigationState: PropTypes.object,
+	drawerClose: PropTypes.func,
+	drawerOpen: PropTypes.bool,
+	disableGestures: PropTypes.bool,
+	onNavigate: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
