@@ -14,8 +14,14 @@ jest.mock('react-native-code-push', () => {
     }
 
     Object.assign(MockCodePush, {
+      sync: jest.fn(),
+      installMode: null,
+      updateDialog: null,
       CheckFrequency: {
         ON_APP_RESUME: null
+      },
+      InstallMode: {
+        IMMEDIATE: null
       }
     })
 
