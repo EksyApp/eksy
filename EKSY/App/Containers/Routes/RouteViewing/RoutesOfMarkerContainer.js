@@ -7,7 +7,9 @@ export class RoutesOfMarkerContainer extends Component {
 	
 	render() {
 		return(
-				<RoutesOfMarkerComponent/>
+				<RoutesOfMarkerComponent
+						marker={this.props.marker}
+				/>
 		)
 	}
 	
@@ -15,8 +17,7 @@ export class RoutesOfMarkerContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		route: state.routes.routeSelected,
-		currentRegion: state.map.currentRegion
+		marker: state.markers.markerSelected,
 	}
 }
 
