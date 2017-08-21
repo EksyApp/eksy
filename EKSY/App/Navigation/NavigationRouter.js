@@ -12,11 +12,11 @@ import AdminMarkerViewContainer from "../Containers/Admin/AdminMarkerViewContain
 import ConfirmMarkersContainer from "../Containers/Admin/ConfirmMarkersContainer";
 import UserMarkersContainer from "../Containers/Settings/UserMarkersContainer";
 import MarkerViewContainer from "../Containers/Settings/MarkerViewContainer";
-import AddToRouteContainer from '../Containers/Routes/AddToRouteContainer'
-import CreateRouteContainer from '../Containers/Routes/CreateRouteContainer'
-import UserRoutesContainer from '../Containers/Routes/UserRoutesContainer'
-import RouteViewContainer from '../Containers/Routes/RouteViewContainer'
-import EditRouteContainer from '../Containers/Routes/EditRouteContainer'
+import AddToRouteContainer from '../Containers/Routes/RouteManaging/AddToRouteContainer'
+import CreateRouteContainer from '../Containers/Routes/RouteManaging/CreateRouteContainer'
+import UserRoutesContainer from '../Containers/Routes/RouteManaging/UserRoutesContainer'
+import RouteViewContainer from '../Containers/Routes/RouteViewing/RouteViewContainer'
+import EditRouteContainer from '../Containers/Routes/RouteManaging/EditRouteContainer'
 
 // defines all routes in the app
 const scenes = Actions.create(

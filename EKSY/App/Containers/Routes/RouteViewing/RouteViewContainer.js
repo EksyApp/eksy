@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import RouteViewComponent from '../../Components/Routes/RouteViewComponent'
+import RouteViewComponent from '../../../Components/Routes/RouteViewing/RouteViewComponent'
 import {Actions} from 'react-native-router-flux'
-import * as ReduxActions from '../../Actions'
+import * as ReduxActions from '../../../Actions/index'
 import Proptypes from 'prop-types'
-import {RegionShape, RouteShape} from "../../Utils/PropTypeShapes";
+import {RegionShape, RouteShape} from "../../../Utils/PropTypeShapes";
 
 export class RouteViewContainer extends Component {
 	

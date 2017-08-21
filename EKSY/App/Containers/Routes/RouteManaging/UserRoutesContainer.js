@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import UserRoutesComponent from '../../Components/Routes/UserRoutesComponent'
-import Dao from '../../Dao/FirebaseDao'
-import * as ReduxActions from '../../Actions'
+import UserRoutesComponent from '../../../Components/Routes/RouteManaging/UserRoutesComponent'
+import Dao from '../../../Dao/FirebaseDao'
+import * as ReduxActions from '../../../Actions/index'
 import {Actions} from 'react-native-router-flux'
 import PropTypes from 'prop-types'
 

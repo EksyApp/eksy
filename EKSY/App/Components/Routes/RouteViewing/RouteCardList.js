@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import RouteCard from './RouteCard'
 import {ListView} from 'react-native'
-import {RoutesShape, StyleShape} from '../../Utils/PropTypeShapes'
+import {RoutesShape, StyleShape} from '../../../Utils/PropTypeShapes'
 import PropTypes from 'prop-types'
 
 export default class RouteCardList extends Component {

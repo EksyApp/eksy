@@ -4,25 +4,18 @@ import Header from "../Common/Header";
 import FilterSettingsContainer from "../../Containers/Settings/FilterSettingsContainer";
 import * as Theme from "../../Theme";
 import ProfileContainer from "../../Containers/Settings/ProfileContainer";
+import Container from '../Common/Container'
 
 
 export default class SettingsComponent extends Component {
 	
 	render () {
 		return (
-				<View style={styles.container}>
-					<Header title='Settings' backButton />
+				<Container title='Settings' backButton>
 					<ProfileContainer/>
 					<FilterSettingsContainer/>
-				</View>
+				</Container>
 		)
 	}
 	
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: Theme.backgroundColor,
-	}
-})
