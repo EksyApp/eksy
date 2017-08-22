@@ -46,10 +46,8 @@ export default class MapComponent extends Component {
 	renderMarkers() {
 		return this.props.markerList.map((marker, index) =>
 				<Marker
-						data={marker}
-						setMarkerSelected={this.props.setMarkerSelected}
-						setMarkerViewVisible={this.props.setMarkerViewVisible}
-						disableGestures={this.props.disableGestures}
+						marker={marker}
+						onPress={this.props.onMarkerClick}
 						key={marker.key}
 				/>
 		)
@@ -82,17 +80,39 @@ export default class MapComponent extends Component {
 	
 	renderRouteLine() {
 		if (this.props.routeIsActive) {
-			let distance = GeoFire.distance([this.props.currentLocation.latitude, this.props.currentLocation.longitude], [this.props.nextMarker.latitude, this.props.nextMarker.longitude])
-			console.log(distance)
-			console.log(this.props.radius)
-			if (distance >= this.props.radius) {
-				let latitude = this.props.currentLocation.latitude + (this.props.radius / distance) * (this.props.nextMarker.latitude - this.props.currentLocation.latitude)
-				let longitude = this.props.currentLocation.longitude + (this.props.radius / distance) * (this.props.nextMarker.longitude - this.props.currentLocation.longitude)
-				return (<MapView.Polyline coordinates={[this.props.currentLocation, {latitude, longitude}]}/>)
-			} else {
-				return (<MapView.Polyline coordinates={[this.props.currentLocation, this.props.nextMarker]}/>)
-			}
+			return [
+					this.renderLineFromUserToNextMarker(),
+					this.renderLinesBetweenVisitedMarkers()
+			]
+			
 		}
+	}
+	
+	renderLineFromUserToNextMarker() {
+		console.log("linefromuser")
+		let currentLatitude = this.props.currentLocation.latitude
+		let currentLongitude = this.props.currentLocation.longitude
+		let nextMarkerLatitude = this.props.nextMarker.latitude
+		let nextMarkerLongitude = this.props.nextMarker.longitude
+		
+		let distance = GeoFire.distance([currentLatitude, currentLongitude], [nextMarkerLatitude, nextMarkerLongitude])
+		
+		if (distance >= this.props.radius) {
+			console.log("small radius")
+			let shrinkerMultiplier = (this.props.radius / distance)
+			let latitudeOfDotOnRadius = currentLatitude + shrinkerMultiplier * (nextMarkerLatitude - currentLatitude)
+			let longitudeOfDotOnRadius = currentLongitude + shrinkerMultiplier * (nextMarkerLongitude - currentLongitude)
+			
+			return (<MapView.Polyline coordinates={[this.props.currentLocation, {latitude: latitudeOfDotOnRadius, longitude: longitudeOfDotOnRadius}]}/>)
+			
+		} else {
+			console.log("big radius")
+			return (<MapView.Polyline coordinates={[this.props.currentLocation, this.props.nextMarker]}/>)
+		}
+	}
+	
+	renderLinesBetweenVisitedMarkers() {
+		return (<MapView.Polyline coordinates={this.props.markerList.filter((marker) => marker.key !== this.props.nextMarker.key)}/>)
 	}
 	
 	renderMapView() {
@@ -107,9 +127,10 @@ export default class MapComponent extends Component {
 						showsBuildings={true}
 						showCompass={false}
 				>
-					{this.renderRouteLine()}
+					
 					{this.renderUserCircle()}
 					{this.renderMarkers()}
+					{this.renderRouteLine()}
 				</MapView.Animated>
 		)
 	}
@@ -121,6 +142,7 @@ export default class MapComponent extends Component {
 				</View>
 		)
 	}
+	
 	
 	
 }

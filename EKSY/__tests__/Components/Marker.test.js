@@ -20,7 +20,7 @@ jest.mock('react-native-fetch-blob', () => {
 
 test('Marker renders correctly', () => {
 	const tree = renderer.create(
-			<Marker data={{latitude: 1, longitude: 1}} />
+			<Marker marker={{latitude: 1, longitude: 1}} />
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });
