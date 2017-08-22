@@ -1,5 +1,6 @@
 import {MARKER_SELECTED} from '../Actions/Types'
 
+//Updates the state of user adding a marker
 const initial = {
 	marker: {
 		latitude: null,

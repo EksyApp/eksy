@@ -1,5 +1,6 @@
 import {UPDATE_CURRENT_REGION} from '../Actions/Types'
 
+//Updates the state of users current location
 const initial = {
   latitude: 60.184356,
   longitude: 24.949326,

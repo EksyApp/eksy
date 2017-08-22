@@ -1,5 +1,6 @@
 import {MARKER_VISIBLE, MARKER_HIDDEN} from '../Actions/Types'
 
+//Updates the state of markers visibility
 const initial = []
 
 export default function (state = initial, action) {
