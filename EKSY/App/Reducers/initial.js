@@ -1,3 +1,4 @@
+//Sets the state of the ap when started (and signed out)
 export default {
 	auth: {
 		response: "",
