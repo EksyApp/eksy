@@ -11,10 +11,7 @@ class Marker extends Component {
 	}
 
 	_handlePress() {
-		this.props.setMarkerSelected(this.props.data)
-		this.props.disableGestures(true)
-		this.props.setMarkerViewVisible()
-		//ReduxActions.markerView();
+		this.props.onPress(this.props.marker)
 	}
 
 	_markerColor(status) {
@@ -28,8 +25,8 @@ class Marker extends Component {
 	render () {
 		return (
 				<MapView.Marker
-						coordinate={{latitude: this.props.data.latitude, longitude: this.props.data.longitude}}
-						pinColor={this._markerColor(this.props.data.status)}
+						coordinate={{latitude: this.props.marker.latitude, longitude: this.props.marker.longitude}}
+						pinColor={this._markerColor(this.props.marker.status)}
 						onPress={() => {this._handlePress()}}
 				>
 				</MapView.Marker>
@@ -40,7 +37,7 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-	data: MarkerShape
+	marker: MarkerShape
 }
 
 export default Marker

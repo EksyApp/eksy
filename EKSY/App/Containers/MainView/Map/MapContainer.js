@@ -37,16 +37,34 @@ export class MapContainer extends Component {
 			this.setState({markers: this.props.markerList})
 		}
 	}
-
+	
+	handleMarkerClick(marker) {
+		this.handleRouteUpdating(marker)
+		this.props.setMarkerSelected(marker)
+		this.props.disableGestures(true)
+		this.props.setMarkerViewVisible()
+	}
+	
+	handleRouteUpdating(marker) {
+		if (this.props.routeIsActive) {
+			if (marker.key === this.props.nextMarker.key) {
+				if (this.props.route.markers.length > this.state.markers.length) {
+					this.props.setNextMarker(this.props.route.markers[this.state.markers.length])
+				} else {
+					this.props.setRouteIsActive(false)
+				}
+				
+			}
+		}
+	}
+	
 	render() {
 		return (
 				<MapComponent
+						onMarkerClick={(marker) => this.handleMarkerClick(marker)}
 						currentRegion={this.props.currentRegion}
 						regionChange={this.props.regionChange}
 						markerList={this.state.markers}
-						setMarkerSelected={this.props.setMarkerSelected}
-						setMarkerViewVisible={this.props.setMarkerViewVisible}
-						disableGestures={this.props.disableGestures}
 						currentLocation={this.props.currentLocation}
 						radius={this.props.radius}
 						routeIsActive={this.props.routeIsActive}
@@ -69,7 +87,9 @@ MapContainer.propTypes = {
 	radius: PropTypes.number,
 	routeIsActive: PropTypes.bool,
 	route: RouteShape,
-	nextMarker: MarkerShape
+	nextMarker: MarkerShape,
+	setNextMarker: PropTypes.func,
+	setRouteIsActive: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
@@ -97,6 +117,12 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		disableGestures: (value) => {
 			dispatch(ReduxActions.disableGestures(value))
+		},
+		setNextMarker: (marker) => {
+			dispatch(ReduxActions.setNextMarker(marker))
+		},
+		setRouteIsActive: (state) => {
+			dispatch(ReduxActions.routeIsActive(state))
 		}
 	}
 }
