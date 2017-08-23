@@ -3,21 +3,6 @@ import { AddMarkerContainer } from '../../App/Containers/AddMarker/AddMarkerCont
 import {shallow} from 'enzyme'
 import renderer from 'react-test-renderer'
 
-jest.mock('react-native-fetch-blob', () => {
-	return {
-		DocumentDir: () => {},
-		polyfill: {
-			Fetch: class Fetch {
-				constructor(params) {
-				
-				}
-				
-				build = jest.fn()
-			}
-		}
-	}
-})
-
 describe('AddMarkerContainer', () => {
 	
 	it('sets the region correctly', () => {
