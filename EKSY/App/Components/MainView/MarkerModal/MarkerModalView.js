@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 import {MarkerShape, UserShape} from '../../../Utils/PropTypeShapes'
 
 
-//Renders marker view inside main view's modal component (MarkerModalComponent)
+//Renders marker view inside main view's modal component (MarkerViewComponent)
 export default class MarkerModalView extends Component {
 
 	constructor(props) {
