@@ -3,13 +3,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import SettingsComponent from "../../App/Components/Settings/SettingsComponent";
 
-jest.mock('react-native-fetch-blob', () => {
-	return {
-		DocumentDir: () => {},
-		polyfill: () => {}
-	}
-})
-
 jest.mock('react-native-version-number', () => {
     return {
       appversion: 'test'
