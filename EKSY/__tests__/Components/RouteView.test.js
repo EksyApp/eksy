@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Route from "../../App/Components/Common/Route";
+import RouteView from "../../App/Components/Common/RouteView";
 
-test('Route renders correctly', () => {
+test('RouteViewComponent renders correctly', () => {
 	const tree = renderer.create(
-			<Route
+			<RouteView
 					initialRegion = {{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}
-					markers = {[{latitude: 1, longitude: 1}]}
+					route = {{markers: [{latitude: 1, longitude: 1}]}}
 			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();

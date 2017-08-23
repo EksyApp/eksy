@@ -1,15 +1,22 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MarkerModalComponent from "../../App/Components/MainView/MarkerModal/MarkerModalComponent";
+import MarkerViewComponent from "../../App/Components/Settings/MarkerViewComponent";
 
-test('MarkerModalComponent renders correctly', () => {
+test('MarkerViewComponent renders correctly', () => {
 	const tree = renderer.create(
-			<MarkerModalComponent
+			<MarkerViewComponent
 					marker={{
-						title: "Hieno marker",
-						text: "Hieno tarina",
+						filters: [],
+						images : [],
+						key: '' ,
+						latitude: 1,
+						longitude: 1,
+						status: 1 ,
+						text:  '' ,
+						title:  ''
 					}}
+					currentRegion= {{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}
 			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
