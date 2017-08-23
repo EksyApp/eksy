@@ -6,7 +6,7 @@ before_install:
   -in EKSY/android/app/my-release-key.keystore.enc -out EKSY/android/app/my-release-key.keystore
   -d
 - nvm install 7
-- gem install fastlane --no-ri --no-rdoc --no-document
+- bash .travis/fastlane_setup.sh
 - node --version
 - cd EKSY/
 install:
