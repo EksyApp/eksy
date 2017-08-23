@@ -1,14 +1,12 @@
 import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import { MarkerShape } from "../../../Utils/PropTypeShapes";
+import PropTypes from 'prop-types'
 
 //Renders the marker tags on Map
 //Clickable marker component opens a modal (MarkerModal) to view marker's content 
 class Marker extends Component {
-	constructor (props) {
-		super(props)
-
-	}
+	
 
 	_handlePress() {
 		this.props.onPress(this.props.marker)
@@ -16,10 +14,12 @@ class Marker extends Component {
 
 	_markerColor(status) {
 		switch (status) {
-			case 0: return '#FFFF00'
-			case 1: return '#00FF00'
+			case 0: return 'rgb(255,255,0)'
+			case 1: return 'rgb(0,255,0)'
+			case -1: return 'rgb(255,0,0)'
+			default: return 'rgb(211,211,211)'
 		}
-		return '#FF0000'
+		
 	}
 
 	render () {
@@ -37,7 +37,8 @@ class Marker extends Component {
 }
 
 Marker.propTypes = {
-	marker: MarkerShape
+	marker: MarkerShape,
+	onPress: PropTypes.func
 }
 
 export default Marker

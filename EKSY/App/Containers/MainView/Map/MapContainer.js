@@ -12,30 +12,6 @@ export class MapContainer extends Component {
 	constructor(props) {
 		super(props)
 		
-		this.state = {
-			markers: this.props.markerList
-		}
-		
-	}
-	
-	componentWillReceiveProps(props) {
-		if(props.routeIsActive) {
-			let markers = []
-			for (let marker of props.route.markers) {
-				
-				if(marker.key === props.nextMarker.key) {
-					if(GeoFire.distance([this.props.currentLocation.latitude, this.props.currentLocation.longitude], [marker.latitude, marker.longitude]) <= this.props.radius) {
-						markers.push(marker)
-					}
-					break
-				} else {
-					markers.push(marker)
-				}
-			}
-			this.setState({markers})
-		} else {
-			this.setState({markers: this.props.markerList})
-		}
 	}
 	
 	handleMarkerClick(marker) {
@@ -48,8 +24,8 @@ export class MapContainer extends Component {
 	handleRouteUpdating(marker) {
 		if (this.props.routeIsActive) {
 			if (marker.key === this.props.nextMarker.key) {
-				if (this.props.route.markers.length > this.state.markers.length) {
-					this.props.setNextMarker(this.props.route.markers[this.state.markers.length])
+				if (this.props.nextMarker.key !== this.props.route.markers[this.props.route.markers.length-1].key) {
+					this.props.setNextMarker(this.getNextMarkerOnRoute(this.props.nextMarker))
 				} else {
 					this.props.setRouteIsActive(false)
 				}
@@ -58,13 +34,22 @@ export class MapContainer extends Component {
 		}
 	}
 	
+	getNextMarkerOnRoute(marker) {
+		for (var i = 0; i < this.props.route.markers.length; i++) {
+			if(marker.key === this.props.route.markers[i].key) {
+				return this.props.route.markers[i+1]
+			}
+		}
+		return {}
+	}
+	
 	render() {
 		return (
 				<MapComponent
 						onMarkerClick={(marker) => this.handleMarkerClick(marker)}
 						currentRegion={this.props.currentRegion}
 						regionChange={this.props.regionChange}
-						markerList={this.state.markers}
+						markerList={this.props.markerList}
 						currentLocation={this.props.currentLocation}
 						radius={this.props.radius}
 						routeIsActive={this.props.routeIsActive}

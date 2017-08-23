@@ -15,6 +15,7 @@ class BottomSheetContainer extends Component {
 			  setMarkerSelected={this.props.setMarkerSelected}
 			  setMarkerViewVisible={this.props.setMarkerViewVisible}
 			  disableGestures={this.props.disableGestures}
+				routeIsActive={this.props.routeIsActive}
 			/>
 		)
 	}
@@ -26,11 +27,13 @@ BottomSheetContainer.propTypes = {
 	setMarkerViewVisible: PropTypes.func,
 	disableGestures: PropTypes.func,
 	markerList: MarkersShape,
+	routeIsActive: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
 	return {
 		markerList: state.markers.markerList,
+		routeIsActive: state.routes.routeActive.active
 	}
 }
 

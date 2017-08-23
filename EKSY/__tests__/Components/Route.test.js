@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Route from "../../App/Components/Common/Route";
+import Route from "../../App/Components/Common/RouteMap";
 
 jest.mock('react-native-maps', () => {
 	const React = require.requireActual('react');
@@ -46,7 +46,7 @@ jest.mock('react-native-maps', () => {
 	return MockMapView;
 });
 
-test('Route renders correctly', () => {
+test('RouteMap renders correctly', () => {
 	const tree = renderer.create(
 			<Route
 					initialRegion = {{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}
