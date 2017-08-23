@@ -5,7 +5,11 @@ import ProfileComponent from "../../App/Components/Settings/ProfileComponent";
 
 test('ProfileComponent renders correctly', () => {
 	const tree = renderer.create(
-			<ProfileComponent />
+			<ProfileComponent
+			user={
+				{firebaseUser:{displayName: "user"}}
+			}
+			/>
 	).toJSON();
 	expect(tree).toMatchSnapshot();
 });

@@ -10,6 +10,7 @@ export const RegionShape = PropTypes.shape({
 export const LocationShape = PropTypes.shape({
 	latitude: PropTypes.number,
 	longitude: PropTypes.number,
+	isKnown: PropTypes.bool
 })
 
 export const ImagesShape = PropTypes.arrayOf(PropTypes.shape({

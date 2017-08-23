@@ -17,6 +17,7 @@ exports[`MapComponent renders correctly 1`] = `
         "latitude": 1,
         "latitudeDelta": 1,
         "longitude": 1,
+        "longitudeDelta": 1,
       }
     }
     onRegionChange={[Function]}
@@ -32,6 +33,53 @@ exports[`MapComponent renders correctly 1`] = `
         "top": 0,
       }
     }
-  />
+  >
+    <View>
+      <View>
+        <Circle
+          center={
+            Object {
+              "isKnown": false,
+              "latitude": 1,
+              "longitude": 1,
+            }
+          }
+          fillColor="rgba(66, 180, 230, 0.2)"
+          radius={10000}
+          strokeColor="rgba(66, 180, 230, 1)"
+          strokeWidth={0.5}
+        />
+        <Circle
+          center={
+            Object {
+              "isKnown": false,
+              "latitude": 1,
+              "longitude": 1,
+            }
+          }
+          fillColor="rgba(66, 180, 230, 1)"
+          radius={284.17500444023443}
+          strokeColor="rgba(66, 180, 230, 1)"
+          strokeWidth={0.5}
+        />
+      </View>
+      <View>
+        <View />
+        <Marker
+          coordinate={
+            Object {
+              "latitude": 1,
+              "longitude": 1,
+            }
+          }
+          onPress={[Function]}
+          pinColor="rgb(211,211,211)"
+        />
+        <Polyline
+          coordinates={Array []}
+        />
+      </View>
+    </View>
+  </MapView>
 </View>
 `;

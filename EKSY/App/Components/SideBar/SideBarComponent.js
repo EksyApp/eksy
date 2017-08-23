@@ -8,7 +8,7 @@ import {UserShape} from "../../Utils/PropTypeShapes";
 
 //Renders the sidebar view that holds buttons to navigate in app
 //Go to map closes the sidebar and returns to MainViewComponent
-//Settings takes to SettingsComponent
+//Settings takes to UserMarkersComponent
 //Add marker takes to AddMarkerComponent
 //Login takes to LoginComponent or SignUpComponent
 //Admin takes to AdminToolsComponent

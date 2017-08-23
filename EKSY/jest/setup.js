@@ -44,6 +44,12 @@ jest.mock('react-native-maps', () => {
 		}
 	}
 	
+	class MockCircle extends React.Component {
+		render() {
+			return React.createElement('Circle', this.props, this.props.children);
+		}
+	}
+	
 	MockCallout.propTypes = MapView.Callout.propTypes;
 	MockMarker.propTypes = MapView.Marker.propTypes;
 	MockMapView.propTypes = MapView.propTypes;
@@ -51,12 +57,63 @@ jest.mock('react-native-maps', () => {
 	MockMapView.Callout = MockCallout;
 	MockMapView.Animated = MockMapViewAnimated;
 	MockMapView.Polyline = MockPolyline;
+	MockMapView.Circle = MockCircle;
+	
 	return MockMapView;
 });
+
 
 jest.mock('react-native-fetch-blob', () => {
 	return {
 		DocumentDir: () => {},
-		polyfill: () => {}
+		fetch: () => {},
+		base64: () => {},
+		android: () => {},
+		ios: () => {},
+		config: () => {},
+		session: () => {},
+		fs: {
+			dirs: {
+				MainBundleDir: () => {},
+				CacheDir: () => {},
+				DocumentDir: () => {},
+			},
+		},
+		wrap: () => {},
+		polyfill: {
+			Fetch: class Fetch {
+				constructor(params) {
+				
+				}
+				
+				build = jest.fn()
+			}
+		},
+		JSONStream: () => {}
+	}
+})
+
+jest.mock('firebase', () => {
+	
+	const update = jest.fn(() => {
+		return Promise.resolve()
+	})
+	
+	const ref = jest.fn(() => {
+		return {
+			child: jest.fn(() => {
+				return ref
+			}),
+			update: update
+		}
+	})
+	
+	return {
+		initializeApp: jest.fn(),
+		database: jest.fn(() =>{
+			return {
+				ref:ref
+			}
+		})
 	}
 })

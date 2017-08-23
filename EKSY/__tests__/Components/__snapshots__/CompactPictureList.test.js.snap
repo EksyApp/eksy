@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CompactPictureLit renders correctly 1`] = `
+exports[`CompactPictureList renders correctly when data not null 1`] = `
 <RCTScrollView
   dataSource={
     ListViewDataSource {
@@ -10,7 +10,23 @@ exports[`CompactPictureLit renders correctly 1`] = `
   enableEmptySections={true}
   renderRow={[Function]}
   renderScrollComponent={[Function]}
-  style={undefined}
+  style={Object {}}
+>
+  <View />
+</RCTScrollView>
+`;
+
+exports[`CompactPictureList renders correctly when data null 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 0,
+    }
+  }
+  enableEmptySections={true}
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+  style={Object {}}
 >
   <View />
 </RCTScrollView>
