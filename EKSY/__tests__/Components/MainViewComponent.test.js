@@ -3,13 +3,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MainViewComponent from "../../App/Components/MainView/MainViewComponent";
 
-jest.mock('react-native-fetch-blob', () => {
-	return {
-		DocumentDir: () => {},
-		polyfill: () => {}
-	}
-})
-
 jest.mock('react-native-snap-carousel', () => {
 	const React = require.requireActual('react');
 	const {View} = require('react-native')

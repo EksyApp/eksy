@@ -53,3 +53,10 @@ jest.mock('react-native-maps', () => {
 	MockMapView.Polyline = MockPolyline;
 	return MockMapView;
 });
+
+jest.mock('react-native-fetch-blob', () => {
+	return {
+		DocumentDir: () => {},
+		polyfill: () => {}
+	}
+})
