@@ -8,8 +8,8 @@ import PropTypes from 'prop-types'
 import {RegionShape, RouteShape} from "../../../Utils/PropTypeShapes";
 import Container from '../../Common/Container'
 
-//Renders a view that contains RouteView and edit button
-//RouteView shows the route's metadata
+//Renders a view that contains RouteViewComponent and edit button
+//RouteViewComponent shows the route's metadata
 //Edit button takes to EditRouteComponent
 export default class RouteViewComponent extends Component {
 

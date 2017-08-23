@@ -1,55 +1,157 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MarkerModalComponent renders correctly 1`] = `
-<Modal
-  accessibilityComponentType={undefined}
-  accessibilityLabel={undefined}
-  accessibilityTraits={undefined}
-  accessible={true}
-  animationType="fade"
-  hardwareAccelerated={false}
-  hitSlop={undefined}
-  onLayout={undefined}
-  onRequestClose={undefined}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={undefined}
-  testID={undefined}
-  transparent={true}
-  visible={true}
+exports[`MarkerViewComponent renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(243,244,229)",
+      "flex": 1,
+    }
+  }
 >
   <View
     style={
       Object {
-        "alignItems": "center",
-        "backgroundColor": "rgb(243,244,229)",
-        "borderRadius": 20,
-        "flex": 1,
-        "justifyContent": "flex-start",
-        "margin": 20,
+        "backgroundColor": "rgb(226,227,217)",
+        "height": 50,
+        "justifyContent": "center",
       }
     }
   >
     <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "height": 100,
-          "margin": 10,
-        }
-      }
-    >
-      <View
-        style={
+        Array [
           Object {
-            "width": "100%",
-          }
+            "backgroundColor": "transparent",
+          },
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "height": 50,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": 50,
+              "zIndex": 1,
+            },
+          ],
+        ]
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 35,
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "color": "rgb(101,114,122)",
+              },
+            ],
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+          ]
         }
       >
+        
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "rgb(101,114,122)",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Marker
+    </Text>
+  </View>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Marker"
+  >
+    <View>
+      <View>
+        <MapView
+          initialRegion={
+            Object {
+              "latitude": 1,
+              "latitudeDelta": 1,
+              "longitude": 1,
+              "longitudeDelta": 1,
+            }
+          }
+          style={
+            Object {
+              "height": 300,
+              "marginBottom": 30,
+              "width": "100%",
+            }
+          }
+        >
+          <Marker
+            coordinate={
+              Object {
+                "latitude": 1,
+                "latitudeDelta": 1,
+                "longitude": 1,
+                "longitudeDelta": 1,
+              }
+            }
+          />
+        </MapView>
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -62,117 +164,102 @@ exports[`MarkerModalComponent renders correctly 1`] = `
                 "fontWeight": "bold",
                 "textAlign": "center",
               },
+              undefined,
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
               Object {
-                "color": "rgb(101,114,122)",
-                "fontSize": 22,
-                "fontWeight": "bold",
+                "color": "rgb(89,85,78)",
+                "fontSize": 18,
+                "textAlign": "center",
+                "width": "100%",
+              },
+              undefined,
+            ]
+          }
+        >
+          Accepted
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "rgb(89,85,78)",
+                "fontSize": 18,
+                "margin": 10,
+              },
+              undefined,
+            ]
+          }
+        >
+          
+        </Text>
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Array [
+                Object {
+                  "height": "100%",
+                  "width": "100%",
+                },
+                Object {
+                  "height": 300,
+                  "marginTop": 30,
+                  "width": "100%",
+                },
+              ],
+              Object {
+                "flex": 1,
               },
             ]
           }
         >
-          Hieno marker
-        </Text>
-        <View
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 25,
-              "left": 0,
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hasTVPreferredFocus={undefined}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "transparent",
-                },
-                Array [
-                  false,
-                  false,
-                  false,
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "justifyContent": "center",
-                  },
-                  Object {
-                    "marginLeft": 5,
-                  },
-                ],
-              ]
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
+          <RCTScrollView
+            automaticallyAdjustContentInsets={false}
+            bounces={false}
+            horizontal={true}
+            onLayout={[Function]}
+            onMomentumScrollEnd={[Function]}
+            pagingEnabled={true}
+            removeClippedSubviews={true}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "black",
-                    "fontSize": 25,
-                  },
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                    },
-                    undefined,
-                  ],
-                  Object {
-                    "fontFamily": "Material Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
-          </View>
-        </View>
-      </View>
-      <RCTScrollView>
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+            <View />
+          </RCTScrollView>
+          <View
+            pointerEvents="box-none"
             style={
               Array [
                 Object {
-                  "color": "rgb(89,85,78)",
-                  "fontSize": 18,
-                  "margin": 10,
+                  "bottom": 0,
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "height": 32,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
                 },
                 undefined,
               ]
             }
-          >
-            Hieno tarina
-          </Text>
+          />
         </View>
-      </RCTScrollView>
+      </View>
     </View>
-  </View>
-</Modal>
+  </RCTScrollView>
+</View>
 `;
