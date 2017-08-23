@@ -3,6 +3,8 @@ import Container from '../../Common/Container'
 import RouteCardList from './RouteCardList'
 import {StyleSheet} from 'react-native'
 import Message from '../../Common/Message'
+import PropTypes from 'prop-types'
+import {RoutesShape} from "../../../Utils/PropTypeShapes";
 
 export default class RoutesOfMarkerComponent extends Component {
 	
@@ -30,3 +32,9 @@ const styles = StyleSheet.create({
 		alignSelf: 'center'
 	}
 })
+
+RoutesOfMarkerComponent.propTypes = {
+	loading: PropTypes.bool,
+	routes: RoutesShape,
+	onCardClick: PropTypes.func
+}
