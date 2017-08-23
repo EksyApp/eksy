@@ -2,7 +2,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import RouteMap from "../../App/Components/Common/RouteMap";
 
-
 test('RouteMap renders correctly', () => {
 	const tree = renderer.create(
 			<RouteMap

@@ -5,7 +5,9 @@ import renderer from 'react-test-renderer';
 
 test('pointselector renders correctly', () => {
   const tree = renderer.create(
-    <PointSelector initialRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}} style={StyleSheet.create({width: 10, height: 10})}/>
+    <PointSelector
+        initialRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}
+        style={StyleSheet.create({width: 10, height: 10})}/>
   ).toJSON();
   expect(tree).toMatchSnapshot();
 });

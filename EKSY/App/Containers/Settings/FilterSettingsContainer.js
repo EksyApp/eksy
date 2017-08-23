@@ -8,13 +8,13 @@ import PropTypes from 'prop-types'
 //Renders the view for user tho manage filters and holds it's logic
 //Lower part of user settings view 
 export class FilterSettingsContainer extends Component {
-
+	
 	constructor(props) {
 		super(props)
 		this.filters = [...Filters.mainFilters];
 		this.setCheckedStatuses(this.props);
 	}
-
+	
 	_handlePress(name, checked) {
 		if(checked) {
 			this.props.addFilter(name);
@@ -22,23 +22,23 @@ export class FilterSettingsContainer extends Component {
 			this.props.removeFilter(name);
 		}
 	}
-
+	
 	componentWillReceiveProps(props) {
 		this.setCheckedStatuses(props);
 	}
-
+	
 	setCheckedStatuses(props) {
 		for (let filter of this.filters) {
 			filter.checked = props.activeFilters.includes(filter.name);
 		}
 	}
-
+	
 	render() {
 		return(
 				<FilterSettingsComponent data={this.filters} onPress={(name, checked) => {this._handlePress(name, checked)}}/>
 		)
 	}
-
+	
 }
 
 FilterSettingsContainer.propTypes = {

@@ -3,21 +3,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Marker from "../../App/Components/MainView/Map/Marker";
 
-jest.mock('react-native-fetch-blob', () => {
-    return {
-      DocumentDir: () => {},
-      polyfill: {
-        Fetch: class Fetch {
-          constructor(params) {
-
-          }
-
-          build = jest.fn()
-        }
-      }
-    }
-  })
-
 test('Marker renders correctly', () => {
 	const tree = renderer.create(
 			<Marker marker={{latitude: 1, longitude: 1}} />

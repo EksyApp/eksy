@@ -1,0 +1,497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserMarkersComponent renders correctly when loading 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(243,244,229)",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgb(226,227,217)",
+        "height": 50,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "height": 50,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": 50,
+              "zIndex": 1,
+            },
+          ],
+        ]
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 35,
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "color": "rgb(101,114,122)",
+              },
+            ],
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "rgb(101,114,122)",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Your markers
+    </Text>
+  </View>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Your markers"
+  >
+    <View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignSelf": "stretch",
+            "backgroundColor": "rgb(230,232,227)",
+            "borderColor": "rgb(101,114,122)",
+            "borderRadius": 5,
+            "borderWidth": 1,
+            "height": 40,
+            "marginBottom": 15,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "center",
+              "color": "rgb(101,114,122)",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "paddingBottom": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          Refresh
+        </Text>
+      </View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "rgb(89,85,78)",
+              "fontSize": 18,
+              "textAlign": "center",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      >
+        Loading
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`UserMarkersComponent renders correctly when not loading 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(243,244,229)",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgb(226,227,217)",
+        "height": 50,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "height": 50,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": 50,
+              "zIndex": 1,
+            },
+          ],
+        ]
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 35,
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "color": "rgb(101,114,122)",
+              },
+            ],
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "rgb(101,114,122)",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Your markers
+    </Text>
+  </View>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Your markers"
+  >
+    <View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignSelf": "stretch",
+            "backgroundColor": "rgb(230,232,227)",
+            "borderColor": "rgb(101,114,122)",
+            "borderRadius": 5,
+            "borderWidth": 1,
+            "height": 40,
+            "marginBottom": 15,
+            "marginLeft": 5,
+            "marginRight": 5,
+            "marginTop": 5,
+            "opacity": 1,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "center",
+              "color": "rgb(101,114,122)",
+              "fontSize": 16,
+              "fontWeight": "600",
+              "paddingBottom": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          Refresh
+        </Text>
+      </View>
+      <RCTScrollView
+        dataSource={
+          ListViewDataSource {
+            "items": 1,
+          }
+        }
+        enableEmptySections={true}
+        renderRow={[Function]}
+        renderScrollComponent={[Function]}
+      >
+        <View>
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "rgb(226,227,217)",
+                  "borderBottomWidth": 0,
+                  "borderColor": "#ddd",
+                  "borderRadius": 2,
+                  "borderWidth": 1,
+                  "elevation": 1,
+                  "marginLeft": 5,
+                  "marginTop": 10,
+                  "shadowColor": "#000",
+                  "shadowOffset": Object {
+                    "height": 2,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.1,
+                  "shadowRadius": 2,
+                },
+                Array [
+                  Object {
+                    "height": 200,
+                    "marginLeft": 0,
+                    "width": "100%",
+                  },
+                  Object {
+                    "width": 740,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "width": "95%",
+                  },
+                ],
+              ]
+            }
+            testID={undefined}
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "borderBottomWidth": 1,
+                    "borderColor": "rgb(112,112,112)",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "padding": 5,
+                    "position": "relative",
+                  },
+                  Object {
+                    "alignItems": "center",
+                    "justifyContent": "center",
+                    "overflow": "scroll",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "rgb(101,114,122)",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                      "textAlign": "center",
+                    },
+                    Object {
+                      "marginTop": 10,
+                    },
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "rgb(89,85,78)",
+                    "fontSize": 18,
+                    "margin": 10,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+  </RCTScrollView>
+</View>
+`;

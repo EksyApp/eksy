@@ -38,7 +38,7 @@ exports[`MarkerModalComponent renders correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "height": 100,
+          "flex": 1,
           "margin": 10,
         }
       }
@@ -144,7 +144,7 @@ exports[`MarkerModalComponent renders correctly 1`] = `
                 ]
               }
             >
-              
+              
             </Text>
           </View>
         </View>

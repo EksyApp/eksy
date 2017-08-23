@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Route renders correctly 1`] = `
+exports[`RouteMap renders correctly 1`] = `
 <MapView
   initialRegion={
     Object {

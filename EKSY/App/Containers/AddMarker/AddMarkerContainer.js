@@ -9,7 +9,7 @@ import Filters from '../../Data/Filters'
 import AddMarkerComponent from "../../Components/AddMarker/AddMarkerComponent";
 import {RegionShape} from "../../Utils/PropTypeShapes";
 
-//Renders the view for adding marker and holds it's logic
+//Renders the view for adding marker and holds its logic
 export class AddMarkerContainer extends Component {
 	constructor(props) {
 		super(props)

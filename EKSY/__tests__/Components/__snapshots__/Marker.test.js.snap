@@ -9,6 +9,6 @@ exports[`Marker renders correctly 1`] = `
     }
   }
   onPress={[Function]}
-  pinColor="#FF0000"
+  pinColor="rgb(211,211,211)"
 />
 `;

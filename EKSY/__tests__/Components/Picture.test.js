@@ -2,7 +2,6 @@ import React from 'react';
 import Picture from '../../App/Components/Common/Picture';
 import renderer from 'react-test-renderer';
 
-
 describe("Picture", () => {
   it('picture renders correctly', () => {
     const tree = renderer.create(
