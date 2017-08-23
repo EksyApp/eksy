@@ -17,7 +17,7 @@ export default class MarkerModalView extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			isCollapsed: true
+			isCollapsed: this.props.marker.images && this.props.marker.images.length > 0
 		}
 	}
 

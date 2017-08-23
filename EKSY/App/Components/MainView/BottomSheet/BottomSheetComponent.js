@@ -6,6 +6,7 @@ import Interactable from 'react-native-interactable'
 import * as Theme from "../../../Theme";
 import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
+import RouteInfoContainer from '../../../Containers/MainView/BottomSheet/RouteInfoContainer'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -19,6 +20,24 @@ class BottomSheetComponent extends Component {
 	constructor(props) {
 		super(props)
 		this._deltaY = new Animated.Value(Screen.height - 100);
+	}
+	
+	renderContent() {
+		if(this.props.routeIsActive) {
+			return(
+					<RouteInfoContainer/>
+			)
+		} else {
+			return (
+					<MarkerCarousel
+							setMarkerSelected={this.props.setMarkerSelected}
+							setMarkerViewVisible={this.props.setMarkerViewVisible}
+							disableGestures={this.props.disableGestures}
+							markerList={this.props.markerList}
+							pointerEvents="none"
+					/>
+			)
+		}
 	}
 
 	render() {
@@ -52,12 +71,7 @@ class BottomSheetComponent extends Component {
 								}
 							</Animated.View>
 							<View style={styles.panelVisible}>
-								<MarkerCarousel
-										setMarkerSelected={this.props.setMarkerSelected}
-										setMarkerViewVisible={this.props.setMarkerViewVisible}
-										disableGestures={this.props.disableGestures}
-										markerList={this.props.markerList}
-										pointerEvents="none"/>
+								{this.renderContent()}
 							</View>
 
 						</Animated.View>
@@ -128,6 +142,7 @@ BottomSheetComponent.propTypes = {
 	setMarkerSelected: PropTypes.func,
 	setMarkerViewVisible: PropTypes.func,
 	disableGestures: PropTypes.func,
+	routeIsActive: PropTypes.bool
 }
 
 export default BottomSheetComponent

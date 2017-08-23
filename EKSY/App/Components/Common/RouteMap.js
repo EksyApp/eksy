@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import MapView from 'react-native-maps'
 import {MarkersShape, RegionShape, StyleShape} from '../../Utils/PropTypeShapes'
 
-export default class Route extends Component {
+export default class RouteMap extends Component {
 	
 	
 	render() {
@@ -31,7 +31,7 @@ export default class Route extends Component {
 	}
 }
 
-Route.propTypes = {
+RouteMap.propTypes = {
 	style: StyleShape ,
 	initialRegion: RegionShape,
 	markers: MarkersShape

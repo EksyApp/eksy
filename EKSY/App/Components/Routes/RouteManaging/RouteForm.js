@@ -5,7 +5,7 @@ import TextInputArea from '../../Common/TextInputArea'
 import EditableMarkerList from './EditableMarkerList'
 import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
-import Route from '../../Common/Route'
+import RouteMap from '../../Common/RouteMap'
 
 //Renders a view to manage route's metadata
 export default class RouteForm extends Component {
@@ -14,7 +14,7 @@ export default class RouteForm extends Component {
 		return(
 				<View>
 					<View style={styles.mapContainer}>
-						<Route
+						<RouteMap
 								style={styles.map}
 								initialRegion={this.props.initialRegion}
 								markers={this.props.markers}

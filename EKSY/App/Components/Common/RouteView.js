@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, StyleSheet} from 'react-native'
-import Route from './Route'
+import RouteMap from './RouteMap'
 import Label from './Label'
 import TextArea from './TextArea'
 import Divider from './Divider'
@@ -14,7 +14,7 @@ export default class RouteView extends Component {
 		return(
 				<View>
 					<View style={styles.mapContainer}>
-						<Route
+						<RouteMap
 								style={styles.map}
 								initialRegion={this.props.initialRegion}
 								markers={this.props.route.markers}
