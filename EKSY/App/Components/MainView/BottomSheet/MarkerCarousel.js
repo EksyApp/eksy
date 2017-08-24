@@ -7,7 +7,8 @@ import {
 import Carousel from 'react-native-snap-carousel'
 import MarkerCard from './MarkerCard'
 import PropTypes from 'prop-types'
-import {MarkersShape} from "../../../Utils/PropTypeShapes";
+import {LocationShape, MarkerShape, MarkersShape} from '../../../Utils/PropTypeShapes'
+import TeaserCard from './RouteInfo/TeaserCard'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -20,32 +21,34 @@ const Screen = {
 export default class MarkerCarousel extends Component {
 	constructor(props) {
 		super(props)
-		this.itemWidth = (Screen.width*2)/3;
+		this.itemWidth = (Screen.width * 2) / 3
 		this.sliderWidth = Screen.width
 	}
-
-	handlePress(marker) {
-		this.props.setMarkerSelected(marker)
-		this.props.setMarkerViewVisible()
-		this.props.disableGestures(true)
-	}
-
+	
+	
 	renderCards() {
 		return this.props.markerList.map((marker, index) => {
 			return <MarkerCard
-					onPress={(marker) => {
-						this.handlePress(marker)
-					}}
-					setMarkerSelected={this.props.setMarkerSelected}
-					setMarkerViewVisible={this.props.setMarkerViewVisible}
-					disableGestures={this.props.disableGestures}
+					onPress={this.props.onMarkerClick}
 					width={this.itemWidth}
 					marker={marker}
 					key={index}
 			/>
 		})
 	}
-
+	
+	renderTeaser() {
+		if (this.props.showTeaser) {
+			return (
+					<TeaserCard
+							currentLocation={this.props.currentLocation}
+							nextMarker={this.props.nextMarker}
+							width={this.itemWidth}
+					/>
+			)
+		}
+	}
+	
 	render() {
 		return (
 				<View style={styles.container}>
@@ -55,10 +58,13 @@ export default class MarkerCarousel extends Component {
 							enableSnap={true}
 					>
 						{this.renderCards()}
+						{this.renderTeaser()}
 					</Carousel>
 				</View>
 		)
 	}
+	
+	
 }
 
 const styles = StyleSheet.create({
@@ -72,4 +78,7 @@ MarkerCarousel.propTypes = {
 	setMarkerViewVisible: PropTypes.func,
 	disableGestures: PropTypes.func,
 	markerList: MarkersShape,
+	showTeaser: PropTypes.bool,
+	currentLocation: LocationShape,
+	nextMarker: MarkerShape
 }

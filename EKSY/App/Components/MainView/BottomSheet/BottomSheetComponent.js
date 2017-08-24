@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import {View, Animated, StyleSheet, Dimensions} from 'react-native'
 import {Badge} from "react-native-elements";
-import MarkerCarousel from "./MarkerCarousel";
 import Interactable from 'react-native-interactable'
 import * as Theme from "../../../Theme";
 import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
-import RouteInfoContainer from '../../../Containers/MainView/BottomSheet/RouteInfoContainer'
+import RouteInfoContainer from '../../../Containers/MainView/BottomSheet/RouteInfo/RouteInfoContainer'
+import MarkersInfoContainer from '../../../Containers/MainView/BottomSheet/MarkersInfo/MarkersInfoContainer'
 
 const Screen = {
 	width: Dimensions.get('window').width,
@@ -29,13 +29,7 @@ class BottomSheetComponent extends Component {
 			)
 		} else {
 			return (
-					<MarkerCarousel
-							setMarkerSelected={this.props.setMarkerSelected}
-							setMarkerViewVisible={this.props.setMarkerViewVisible}
-							disableGestures={this.props.disableGestures}
-							markerList={this.props.markerList}
-							pointerEvents="none"
-					/>
+					<MarkersInfoContainer/>
 			)
 		}
 	}
@@ -139,9 +133,6 @@ const styles = StyleSheet.create({
 
 BottomSheetComponent.propTypes = {
 	markerList: MarkersShape,
-	setMarkerSelected: PropTypes.func,
-	setMarkerViewVisible: PropTypes.func,
-	disableGestures: PropTypes.func,
 	routeIsActive: PropTypes.bool
 }
 
