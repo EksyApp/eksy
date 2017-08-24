@@ -44,6 +44,7 @@ export default class MarkerCarousel extends Component {
 							currentLocation={this.props.currentLocation}
 							nextMarker={this.props.nextMarker}
 							width={this.itemWidth}
+							onCloseClick={this.props.onCloseClick}
 					/>
 			)
 		}
@@ -80,5 +81,6 @@ MarkerCarousel.propTypes = {
 	markerList: MarkersShape,
 	showTeaser: PropTypes.bool,
 	currentLocation: LocationShape,
-	nextMarker: MarkerShape
+	nextMarker: MarkerShape,
+	onCloseClick: PropTypes.func
 }

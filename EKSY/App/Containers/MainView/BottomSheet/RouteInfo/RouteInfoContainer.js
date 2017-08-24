@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import * as ReduxActions from '../../../../Actions/index'
 import RouteInfoComponent from '../../../../Components/MainView/BottomSheet/RouteInfo/RouteInfoComponent'
 import {LocationShape, MarkerShape, RouteShape} from '../../../../Utils/PropTypeShapes'
+import PropTypes from 'prop-types'
 
 export class RouteInfoContainer extends Component {
 	
@@ -42,6 +43,10 @@ export class RouteInfoContainer extends Component {
 		this.props.setMarkerViewVisible()
 		this.props.disableGestures(true)
 	}
+	
+	handleCloseClick() {
+		this.props.setRouteIsActive(false)
+	}
 
 	render() {
 		return(
@@ -50,6 +55,7 @@ export class RouteInfoContainer extends Component {
 						nextMarker={this.props.nextMarker}
 						currentLocation={this.props.currentLocation}
 						onMarkerClick={(marker) => this.props.handleMarkerClick(marker)}
+						onCloseClick={() => this.handleCloseClick()}
 				/>
 		)
 	}
@@ -61,6 +67,10 @@ RouteInfoContainer.propTypes = {
 	route: RouteShape,
 	nextMarker: MarkerShape,
 	currentLocation: LocationShape,
+	setMarkerSelected: PropTypes.func,
+	setMarkerViewVisible: PropTypes.func,
+	disableGestures: PropTypes.func,
+	setRouteIsActive: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
@@ -81,6 +91,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		disableGestures: (value) => {
 			dispatch(ReduxActions.disableGestures(value))
+		},
+		setRouteIsActive: (state) => {
+			dispatch(ReduxActions.routeIsActive(state))
 		}
 	}
 }

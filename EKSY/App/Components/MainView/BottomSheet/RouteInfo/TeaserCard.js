@@ -4,6 +4,9 @@ import Label from '../../../Common/Label'
 import Message from '../../../Common/Message'
 import Geometry from '../../../../Utils/Geometry'
 import {StyleSheet} from 'react-native'
+import {Icon} from 'react-native-elements'
+import PropTypes from 'prop-types'
+import {LocationShape, MarkerShape} from '../../../../Utils/PropTypeShapes'
 
 export default class TeaserCard extends Component {
 	
@@ -20,6 +23,12 @@ export default class TeaserCard extends Component {
 					<Message>
 						{this.getDistance() + 'm away'}
 					</Message>
+					<Icon
+							name="close"
+							size={35}
+							containerStyle={styles.icon}
+							onPress={this.props.onCloseClick}
+					/>
 				</Card>
 		)
 	}
@@ -27,10 +36,24 @@ export default class TeaserCard extends Component {
 	
 }
 
+TeaserCard.propTypes = {
+	width: PropTypes.number,
+	currentLocation: LocationShape,
+	nextMarker: MarkerShape,
+	onCloseClick: PropTypes.func
+}
+
 const styles = StyleSheet.create({
 	container: {
 		height: 200,
 		marginLeft: 0,
 		width: '100%'
+	},
+	
+	icon: {
+		position: 'absolute',
+		bottom: 10,
+		right: 10,
+		width: 35
 	}
 })
