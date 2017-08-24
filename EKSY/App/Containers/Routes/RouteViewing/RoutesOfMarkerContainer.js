@@ -32,8 +32,8 @@ export class RoutesOfMarkerContainer extends Component {
 	handleCardClick(route) {
 		if(route.markers.length >= 2) {
 			this.props.setActiveRoute(route)
-			this.props.routeIsActive(true)
 			this.props.setNextMarker(route.markers[1])
+			this.props.routeIsActive(true)
 			Actions.pop()
 		}
 	}

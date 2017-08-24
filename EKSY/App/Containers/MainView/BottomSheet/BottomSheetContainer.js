@@ -11,11 +11,8 @@ class BottomSheetContainer extends Component {
 	render() {
 		return (
 			<BottomSheetComponent
-				markerList={this.props.markerList}
-			  setMarkerSelected={this.props.setMarkerSelected}
-			  setMarkerViewVisible={this.props.setMarkerViewVisible}
-			  disableGestures={this.props.disableGestures}
 				routeIsActive={this.props.routeIsActive}
+				markerList={this.props.markerList}
 			/>
 		)
 	}
@@ -23,31 +20,19 @@ class BottomSheetContainer extends Component {
 }
 
 BottomSheetContainer.propTypes = {
-	setMarkerSelected: PropTypes.func,
-	setMarkerViewVisible: PropTypes.func,
-	disableGestures: PropTypes.func,
-	markerList: MarkersShape,
-	routeIsActive: PropTypes.bool
+	routeIsActive: PropTypes.bool,
+	markerList: MarkersShape
 }
 
 const mapStateToProps = (state) => {
 	return {
-		markerList: state.markers.markerList,
-		routeIsActive: state.routes.routeActive.active
+		routeIsActive: state.routes.routeActive.active,
+		markerList: state.markers.markerList
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		setMarkerSelected: (marker) => {
-			dispatch(ReduxActions.setMarkerSelected(marker))
-		},
-		setMarkerViewVisible: () => {
-			dispatch(ReduxActions.setMarkerViewVisible())
-		},
-		disableGestures: (value) => {
-			dispatch(ReduxActions.disableGestures(value))
-		}
 	}
 }
 
