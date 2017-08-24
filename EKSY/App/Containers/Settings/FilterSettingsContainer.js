@@ -44,6 +44,7 @@ export class FilterSettingsContainer extends Component {
 FilterSettingsContainer.propTypes = {
 	addFilter: PropTypes.func,
 	removeFilter: PropTypes.func,
+	activeFilters: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
