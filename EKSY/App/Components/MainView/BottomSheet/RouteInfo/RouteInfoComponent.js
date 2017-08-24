@@ -14,6 +14,7 @@ export default class RouteInfoComponent extends Component {
 					showTeaser
 					currentLocation={this.props.currentLocation}
 					nextMarker={this.props.nextMarker}
+					onCloseClick={this.props.onCloseClick}
 			/>
 		)
 	}
@@ -24,5 +25,6 @@ RouteInfoComponent.propTypes = {
 	previousMarkers: MarkersShape,
 	onMarkerClick: PropTypes.func,
 	currentLocation: LocationShape,
-	nextMarker: MarkerShape
+	nextMarker: MarkerShape,
+	onCloseClick: PropTypes.func
 }
