@@ -109,6 +109,7 @@ jest.mock('firebase', () => {
 	})
 	
 	return {
+		apps: () => {} ,
 		initializeApp: jest.fn(),
 		database: jest.fn(() =>{
 			return {

@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 //to manage sidebars visibility (hidden/display)
-class NavigationDrawer extends Component {
+export class NavigationDrawer extends Component {
 	
 	render() {
 		const children = this.props.navigationState.children
