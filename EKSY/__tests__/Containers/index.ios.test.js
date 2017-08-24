@@ -25,21 +25,6 @@ jest.mock('react-native-code-push', () => {
     return MockCodePush
 })
 
-jest.mock('react-native-fetch-blob', () => {
-  return {
-    DocumentDir: () => {},
-    polyfill: {
-      Fetch: class Fetch {
-        constructor(params) {
-
-        }
-
-        build = jest.fn()
-      }
-    }
-  }
-})
-
 jest.mock('react-native-snap-carousel', () => {
   return {
     style: {}
