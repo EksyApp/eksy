@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import {MarkersShape} from "../../../Utils/PropTypeShapes";
 
 //Renders the drawable bottomsheet and handles it's logic 
-class BottomSheetContainer extends Component {
+export class BottomSheetContainer extends Component {
 
 	render() {
 		return (

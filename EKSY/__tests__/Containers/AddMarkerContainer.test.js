@@ -1,13 +1,22 @@
 import React from 'react'
 import { AddMarkerContainer } from '../../App/Containers/AddMarker/AddMarkerContainer'
-import {shallow, mount} from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
-import Dao from "../../App/Dao/Dao";
 
 // jest.mock('../../App/Dao/Dao', () => {
-// 	return Dao
-// })
+// 	const React = require.requireActual('react');
+// 	const {View} = require('react-native')
 //
+// 	class MockDao extends React.Component {
+//
+// 		render() {
+// 			return (<View {...this.props} />);
+// 		}
+// 	}
+//
+// 	return MockDao
+// })
+
 describe('AddMarkerContainer', () => {
 
 	it('sets the state correctly', () => {
@@ -21,14 +30,14 @@ describe('AddMarkerContainer', () => {
 			images: [],
 			filters: []})
 	})
-//
-// 	test('addNewMarker calls dao.addMarker', () => {
-// 		const addMarkerContainer = mount(<AddMarkerContainer currentRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}/>)
-//
-// 		addMarkerContainer.addNewMarker();
-// 		expect(Dao.addMarker()).toHaveBeenCalled()
-// 	})
-//
+
+	// it('addNewMarker calls dao.addMarker', () => {
+	// 	const addMarkerContainer = shallow(<AddMarkerContainer currentRegion={{latitude: 1, longitude: 1, latitudeDelta: 1, longitudeDelta: 1}}/>)
+	//
+	// 	addMarkerContainer.addNewMarker();
+	// 	expect(MockDao.calls.length).toBe(1)
+	// })
+
 })
 
 test('AddMarkerContainer renders correctly', () => {
