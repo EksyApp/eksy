@@ -117,3 +117,18 @@ jest.mock('firebase', () => {
 		})
 	}
 })
+
+jest.mock('react-native-snap-carousel', () => {
+	const React = require.requireActual('react');
+	const {View} = require('react-native')
+	
+	class MockCarousel extends React.Component {
+		
+		render() {
+			return (<View {...this.props} />);
+		}
+	}
+	
+	MockCarousel.style = {}
+	return MockCarousel
+})

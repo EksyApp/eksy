@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouteInfoContainer renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    enableSnap={true}
+    itemWidth={500}
+    sliderWidth={750}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgb(226,227,217)",
+            "borderBottomWidth": 0,
+            "borderColor": "#ddd",
+            "borderRadius": 2,
+            "borderWidth": 1,
+            "elevation": 1,
+            "marginLeft": 5,
+            "marginTop": 10,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.1,
+            "shadowRadius": 2,
+          },
+          Array [
+            Object {
+              "height": 200,
+              "marginLeft": 0,
+              "width": "100%",
+            },
+            Object {
+              "width": 500,
+            },
+            undefined,
+          ],
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "rgb(101,114,122)",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            },
+            undefined,
+          ]
+        }
+      >
+        Next marker
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "rgb(89,85,78)",
+              "fontSize": 18,
+              "textAlign": "center",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      >
+        0m away
+      </Text>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              false,
+              false,
+              false,
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              },
+              Object {
+                "bottom": 10,
+                "position": "absolute",
+                "right": 10,
+                "width": 35,
+              },
+            ],
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "black",
+                "fontSize": 35,
+              },
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                undefined,
+              ],
+              Object {
+                "fontFamily": "Material Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

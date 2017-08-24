@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapContainer renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <MapView
+    followUserLocation={true}
+    initialRegion={
+      Object {
+        "latitude": 1,
+        "longitude": 1,
+      }
+    }
+    onRegionChange={[Function]}
+    showCompass={false}
+    showsBuildings={true}
+    showsMyLocationButton={true}
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View>
+      <View>
+        <Circle
+          center={
+            Object {
+              "isKnown": true,
+              "latitude": 1,
+              "longitude": 1,
+            }
+          }
+          fillColor="rgba(66, 180, 230, 0.2)"
+          radius={10000}
+          strokeColor="rgba(66, 180, 230, 1)"
+          strokeWidth={0.5}
+        />
+        <Circle
+          center={
+            Object {
+              "isKnown": true,
+              "latitude": 1,
+              "longitude": 1,
+            }
+          }
+          fillColor="rgba(66, 180, 230, 1)"
+          radius={NaN}
+          strokeColor="rgba(66, 180, 230, 1)"
+          strokeWidth={0.5}
+        />
+      </View>
+      <View>
+        <View />
+        <Marker
+          coordinate={
+            Object {
+              "latitude": 1.089932160591873,
+              "longitude": 1,
+            }
+          }
+          onPress={[Function]}
+          pinColor="rgb(211,211,211)"
+        />
+        <Polyline
+          coordinates={Array []}
+        />
+      </View>
+    </View>
+  </MapView>
+</View>
+`;
