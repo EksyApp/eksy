@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import EditRouteComponent from '../../../Components/Routes/RouteManaging/EditRouteComponent'
 import Dao from '../../../Dao/Dao'
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
+import {RegionShape, RouteShape} from "../../../Utils/PropTypeShapes";
 
 //Renders the view for user to edit a route and holds it's logic
 //Consists of EditRouteComponent that holds RouteForm and buttons for save and delete
@@ -59,8 +61,11 @@ export class EditRouteContainer extends Component {
 				/>
 		)
 	}
+}
 
-
+EditRouteContainer.propTypes = {
+	route: RouteShape,
+	currentRegion: RegionShape,
 }
 
 const mapStateToProps = (state) => {

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import CreateRouteComponent from '../../../Components/Routes/RouteManaging/CreateRouteComponent'
 import {connect} from 'react-redux'
 import Dao from '../../../Dao/Dao'
-import {MarkerShape} from "../../../Utils/PropTypeShapes";
+import {MarkerShape, RegionShape} from "../../../Utils/PropTypeShapes";
 import {Actions} from 'react-native-router-flux'
 
 //Renders the view for user to create a new route and holds it's logic
@@ -51,6 +51,7 @@ export class CreateRouteContainer extends Component {
 
 CreateRouteContainer.propTypes = {
 	marker: MarkerShape,
+	currentRegion: RegionShape
 }
 
 const mapStateToProps = (state) => {

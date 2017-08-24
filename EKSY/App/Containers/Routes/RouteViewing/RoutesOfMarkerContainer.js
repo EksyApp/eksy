@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import * as ReduxActions from '../../../Actions/'
 import Dao from '../../../Dao/Dao'
 import {Actions} from 'react-native-router-flux'
+import PropTypes from 'prop-types'
+import {MarkerShape} from "../../../Utils/PropTypeShapes";
 
 export class RoutesOfMarkerContainer extends Component {
 	
@@ -48,6 +50,13 @@ export class RoutesOfMarkerContainer extends Component {
 		)
 	}
 	
+}
+
+RoutesOfMarkerContainer.propTypes = {
+	marker: MarkerShape,
+	setActiveRoute: PropTypes.func,
+	setNextMarker: PropTypes.func,
+	routeIsActive: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoutesOfMarkerContainer renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "rgb(243,244,229)",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "rgb(226,227,217)",
+        "height": 50,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "height": 50,
+              "left": 0,
+              "position": "absolute",
+              "top": 0,
+              "width": 50,
+              "zIndex": 1,
+            },
+          ],
+        ]
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "black",
+              "fontSize": 35,
+            },
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "color": "rgb(101,114,122)",
+              },
+            ],
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "color": "rgb(101,114,122)",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Start a route
+    </Text>
+  </View>
+  <RCTScrollView
+    backButton={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "rgb(243,244,229)",
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+    title="Start a route"
+  >
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "rgb(89,85,78)",
+              "fontSize": 18,
+              "textAlign": "center",
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+      >
+        Loading...
+      </Text>
+    </View>
+  </RCTScrollView>
+</View>
+`;

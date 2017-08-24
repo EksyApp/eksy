@@ -11,7 +11,7 @@ import CodePush from 'react-native-code-push'
 
 let codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME }
 
-class Main extends Component {
+export class Main extends Component {
 
   state = {
     store: null,
