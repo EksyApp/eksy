@@ -119,12 +119,14 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
             buildConfigField "String", "CODEPUSH_KEY", '""'
             if (System.getenv('GOOGLE_MAPS_API_KEY_DEBUG')) {
               resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_DEBUG')
             }
         }
         releaseStaging {
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
             buildConfigField "String", "CODEPUSH_KEY", '"hNWpX5andRKkXjxTw4f70DJ4rZde615ea5ad-9e61-4e33-8df9-98285bcf804a"'
             if (System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')) {
               resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')
@@ -134,6 +136,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
             buildConfigField "String", "CODEPUSH_KEY", '"ClWH_d9F-kKZOnkCxI15b0ZBkmyy615ea5ad-9e61-4e33-8df9-98285bcf804a"'
             if (System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')) {
               resValue "string", "google_maps_api_key", System.getenv('GOOGLE_MAPS_API_KEY_RELEASE')

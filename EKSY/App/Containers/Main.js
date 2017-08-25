@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 import {ActivityIndicator} from 'react-native'
 import Store from '../Store'
 import SplashScreen from 'react-native-splash-screen'
-import CodePush from 'react-native-code-push'
+import codePush from 'react-native-code-push'
 
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
@@ -49,4 +49,4 @@ export class Main extends Component {
   }
 }
 
-export default CodePush(codePushOptions)(Main)
+export default codePush(codePushOptions)(Main)
