@@ -206,3 +206,19 @@ jest.mock('../App/Dao/Dao', () => {
 	}
 	return MockDao
 })
+
+jest.mock('../App/Utils/MapManager', () => {
+	class MapManagerMock {
+		constructor() {
+		
+		}
+		
+		startLocationWatcher = jest.fn()
+		storeListener = jest.fn()
+		goToCurrentPosition = jest.fn()
+		flyToPosition = jest.fn()
+		setMapObject = jest.fn()
+	}
+	
+	return MapManagerMock
+})
