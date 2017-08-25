@@ -1,9 +1,9 @@
 language: android
 before_install:
 - openssl aes-256-cbc -K $encrypted_3f6c7d7f6cfe_key -iv $encrypted_3f6c7d7f6cfe_iv
-  -in EKSY/android/fastlane/fastlane.json.enc -out EKSY/android/fastlane/fastlane.json -d
+  -in $TRAVIS_BUILD_DIR/EKSY/android/fastlane/fastlane.json.enc -out $TRAVIS_BUILD_DIR/EKSY/android/fastlane/fastlane.json -d
 - openssl aes-256-cbc -K $encrypted_5dee9b998ce7_key -iv $encrypted_5dee9b998ce7_iv
-  -in EKSY/android/app/my-release-key.keystore.enc -out EKSY/android/app/my-release-key.keystore
+  -in $TRAVIS_BUILD_DIR/EKSY/android/app/my-release-key.keystore.enc -out $TRAVIS_BUILD_DIR/EKSY/android/app/my-release-key.keystore
   -d
 - nvm install 7
 - bash .travis/fastlane_setup.sh
