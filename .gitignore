@@ -5,5 +5,5 @@ gen/*
 coverage/*
 node_modules/
 
-**/*/android/fastlane.json
+**/*/android/fastlane/fastlane.json
 **/*/android/app/*.keystore
