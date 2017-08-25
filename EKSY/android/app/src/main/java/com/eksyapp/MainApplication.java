@@ -55,7 +55,9 @@ public class MainApplication extends Application implements ReactApplication {
             new FastImageViewPackage(),
             // new BackgroundGeolocationPackage()
             new RNVersionNumberPackage(),
-            new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG),
+            new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG_MODE),
+            /* originally BuildConfig.DEBUG but seems to be buggy, so now this is set
+               explicitly in build.gradle */
             new RNCrashesPackage(MainApplication.this, getResources().getString(R.string.mobileCenterCrashes_whenToSendCrashes)),
             new RNAnalyticsPackage(MainApplication.this, getResources().getString(R.string.mobileCenterAnalytics_whenToEnableAnalytics)),
             new RNMobileCenterPackage(MainApplication.this)
