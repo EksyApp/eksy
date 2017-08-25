@@ -118,7 +118,11 @@ jest.mock('firebase', () => {
 		}),
 		auth: jest.fn(() => {
 			return {
-				signInWithEmailAndPassword: jest.fn()
+				signInWithEmailAndPassword: jest.fn(),
+				createUserWithEmailAndPassword: jest.fn(),
+				currentUser: {
+					updateProfile: jest.fn()
+				}
 			}
 		})
 	}
@@ -198,6 +202,7 @@ jest.mock('../App/Dao/Dao', () => {
 			return markers
 		})
 		userLoggedIn= jest.fn()
+		updateMarker = jest.fn()
 	}
 	return MockDao
 })
