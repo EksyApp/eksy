@@ -30,6 +30,11 @@ xcode-select --install
 
 # Available Actions
 ## Android
+### android shenv
+```
+fastlane android shenv
+```
+debug
 ### android test
 ```
 fastlane android test
