@@ -9,7 +9,10 @@ import codePush from 'react-native-code-push'
 
 //import BackgroundGeolocation from 'react-native-mauron85-background-geolocation'
 
-let codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME }
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME
+}
 
 export class Main extends Component {
 
