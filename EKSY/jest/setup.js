@@ -115,6 +115,11 @@ jest.mock('firebase', () => {
 			return {
 				ref:ref
 			}
+		}),
+		auth: jest.fn(() => {
+			return {
+				signInWithEmailAndPassword: jest.fn()
+			}
 		})
 	}
 })
@@ -149,7 +154,8 @@ jest.mock('react-native-router-flux', () => {
 			pop: jest.fn(),
 			create: jest.fn(),
 			editMarker: jest.fn(),
-			adminConfirmMarkers: jest.fn()
+			adminConfirmMarkers: jest.fn(),
+			adminMarkerView: jest.fn()
 		}
 	}
 	mock.DefaultRenderer=DefaultRenderer
@@ -158,10 +164,40 @@ jest.mock('react-native-router-flux', () => {
 })
 
 jest.mock('../App/Dao/Dao', () => {
+	let markers = [{
+		creationInfo: {
+			createdAt: 1,
+		},
+		editInfo: {
+			lastEdited: 1
+		}
+	},
+		{
+			creationInfo: {
+				createdAt: 1,
+			}
+		},
+		{
+			creationInfo: {
+				createdAt: 1,
+			}
+		},
+		{
+			creationInfo: {
+				createdAt: 1,
+			},
+			editInfo: {
+				lastEdited: 1
+			}
+		}]
 	class MockDao {
 		addMarker = jest.fn()
 		setMarkerStatus = jest.fn()
 		updateLocation = jest.fn()
+		getPendingMarkers = jest.fn(() => {
+			return markers
+		})
+		userLoggedIn= jest.fn()
 	}
 	return MockDao
 })
