@@ -133,3 +133,35 @@ jest.mock('react-native-snap-carousel', () => {
 	MockCarousel.style = {}
 	return MockCarousel
 })
+
+jest.mock('react-native-router-flux', () => {
+	const React = require.requireActual('react');
+	const {View} = require('react-native')
+	
+	class DefaultRenderer extends React.Component{
+		render(){
+			return (<View {...this.props} />);
+		}
+	}
+	
+	const mock = {
+		Actions : {
+			pop: jest.fn(),
+			create: jest.fn(),
+			editMarker: jest.fn(),
+			adminConfirmMarkers: jest.fn()
+		}
+	}
+	mock.DefaultRenderer=DefaultRenderer
+	
+	return mock
+})
+
+jest.mock('../App/Dao/Dao', () => {
+	class MockDao {
+		addMarker = jest.fn()
+		setMarkerStatus = jest.fn()
+		updateLocation = jest.fn()
+	}
+	return MockDao
+})
