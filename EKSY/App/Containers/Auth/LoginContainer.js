@@ -63,7 +63,7 @@ export class LoginContainer extends Component {
 }
 
 LoginContainer.propTypes = {
-	userLoggedIn: PropTypes.func
+
 }
 
 const mapStateToProps = (state) => {
@@ -72,9 +72,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		menuButtonPress: () => { dispatch(ReduxActions.drawerOpen()) },
-		userCreated: () => {dispatch(ReduxActions.userCreated())},
-		userLoggedIn: (user) => {dispatch(ReduxActions.userLoggedIn(user))}
 	}
 }
 
