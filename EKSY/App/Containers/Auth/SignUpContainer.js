@@ -37,7 +37,7 @@ export class SignUpContainer extends Component {
 			})
 			this.props.userCreated()
 			this.setState({
-				response: 'account created'
+				response: 'Account created!'
 			})
 			await this.dao.userLoggedIn()
 			
@@ -65,8 +65,7 @@ export class SignUpContainer extends Component {
 }
 
 SignUpContainer.propTypes = {
-	userCreated: PropTypes.func,
-	userLoggedIn: PropTypes.func
+	userCreated: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
