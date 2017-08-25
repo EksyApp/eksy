@@ -63,6 +63,10 @@ exports[`NavigationDrawer renders correctly 1`] = `
     }
   >
     <View
+      navigationState={undefined}
+      onNavigate={[Function]}
+    />
+    <View
       accessibilityComponentType={undefined}
       accessibilityLabel={undefined}
       accessibilityTraits={undefined}
