@@ -3,22 +3,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MapComponent from "../../App/Components/MainView/Map/MapComponent";
 
-jest.mock('../../App/Utils/MapManager', () => {
-	class MapManagerMock {
-		constructor() {
-		
-		}
-		
-		startLocationWatcher = jest.fn()
-		storeListener = jest.fn()
-		goToCurrentPosition = jest.fn()
-		flyToPosition = jest.fn()
-		setMapObject = jest.fn()
-	}
-	
-	return MapManagerMock
-})
-
 test('MapComponent renders correctly', () => {
 	const tree = renderer.create(
 			<MapComponent
