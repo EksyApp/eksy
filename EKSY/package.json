@@ -30,7 +30,7 @@
     "react": "15.4.1",
     "react-addons-shallow-compare": "^15.6.0",
     "react-native": "0.42.0",
-    "react-native-code-push": "1.17.3-beta",
+    "react-native-code-push": "2.1.0-beta",
     "react-native-elements": "^0.12.2",
     "react-native-expandable-view": "^0.1.4",
     "react-native-fast-image": "0.0.11",
