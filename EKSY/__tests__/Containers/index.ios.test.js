@@ -19,6 +19,9 @@ jest.mock('react-native-code-push', () => {
     Object.assign(MockCodePush, {
       CheckFrequency: {
         ON_APP_RESUME: null
+      },
+      InstallMode: {
+        ON_NEXT_RESUME: null
       }
     })
 
