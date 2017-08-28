@@ -243,11 +243,25 @@ class FirebaseDao {
 	
 	async removeMarker(marker) {
 		await this.removeImages(marker.images)
+		await this.removeMarkerFromRoutes(marker)
 		let markerRef = await firebase.database().ref('/markers/markers_info/' + marker.key)
 		await markerRef.remove()
 		let userRef = await firebase.database().ref('/users/' + marker.creationInfo.user + '/markers/' + marker.key)
 		userRef.remove()
 		this._geofire.remove(marker.key)
+	}
+	
+	async removeMarkerFromRoutes(marker) {
+		let routes = await firebase.database().ref('/routes').once('value')
+		for (let routeKey of Object.keys(routes.val())) {
+			let route = await firebase.database().ref('/routes/' + routeKey).once('value')
+			let markers = route.val().markers
+			let markersLength = markers.length
+			markers = markers.filter((markerKey) => markerKey !== marker.key)
+			if(markersLength !== markers.length) {
+				firebase.database().ref('/routes/' + routeKey + '/markers').set(markers)
+			}
+		}
 	}
 	
 	async userLoggedIn() {
