@@ -398,9 +398,15 @@ class FirebaseDao {
 	}
 	
 	async removeRoute(route) {
-		firebase.database().ref('/route/' + route.key).remove()
-		firebase.database().ref('/users/' + route.creator + '/routes' + route.key).remove()
-		firebase.database().ref('/markers/markers_info/' + route.markers[0].key + '/routes/' + route.key).remove()
+		let routeRef = firebase.database().ref('/routes/' + route.key)
+		let userRouteRef = firebase.database().ref('/users/' + route.creator + '/routes/' + route.key)
+		let markerRouteRef = firebase.database().ref('/markers/markers_info/' + route.markers[0].key + '/routes/' + route.key)
+		await routeRef
+		await userRouteRef
+		await markerRouteRef
+		routeRef.remove()
+		userRouteRef.remove()
+		markerRouteRef.remove()
 	}
 	
 	async listenAsSelectedRoute(key) {
