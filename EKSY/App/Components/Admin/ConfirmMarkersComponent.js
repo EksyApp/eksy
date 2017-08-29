@@ -28,7 +28,7 @@ export default class ConfirmMarkersComponent extends Component {
 				<Container title='Admin Tools' backButton>
 					<Label>Confirm markers</Label>
 					<Button onPress={this.props.onRefresh}>
-						Refersh
+						Refresh
 					</Button>
 					{this.renderList()}
 				</Container>
