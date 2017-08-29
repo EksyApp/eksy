@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Alert} from 'react-native'
 import EditRouteComponent from '../../../Components/Routes/RouteManaging/EditRouteComponent'
 import Dao from '../../../Dao/Dao'
 import {Actions} from 'react-native-router-flux'
