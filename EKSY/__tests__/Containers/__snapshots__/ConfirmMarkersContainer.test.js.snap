@@ -188,7 +188,7 @@ exports[`ConfirmMarkersContainer renders correctly 1`] = `
             }
           }
         >
-          Refersh
+          Refresh
         </Text>
       </View>
       <Text
